@@ -1,0 +1,180 @@
+/* =========================================================================
+   /css/mobile-nav.css — shared mobile navigation drawer.
+   Turns the standard site nav (.nav-toggle + #primary-menu.nav-links) into a
+   slide-in drawer on screens <= 980px. Desktop navigation is untouched.
+
+   Loaded on every page that renders the site header (inline per-page markup,
+   the site-chrome pages, and the chrome.js/partials.js blog articles).
+   js/mobile-nav.js wires the behaviour; this file carries the presentation.
+   ========================================================================= */
+
+/* "All Products" overview link: dropdown item on mobile only (desktop menus
+   intentionally keep their existing six items). */
+@media (min-width: 981px) {
+  .nav-links .dropdown a.dd-overview { display: none; }
+}
+
+/* Drawer header (injected by mobile-nav.js) — mobile only; without this
+   rule the injected row would also render on desktop. */
+.tgw-nav-head { display: none; }
+
+/* Page scroll lock while the drawer is open. */
+html.tgw-nav-lock,
+body.tgw-nav-lock { overflow: hidden !important; }
+
+/* Dimmed backdrop behind the drawer. */
+.tgw-nav-overlay {
+  position: fixed; inset: 0; z-index: 998;
+  background: rgba(8, 11, 14, .55);
+  opacity: 0; visibility: hidden;
+  transition: opacity .25s ease, visibility 0s linear .25s;
+}
+.tgw-nav-overlay.open { opacity: 1; visibility: visible; transition: opacity .25s ease; }
+
+@media (max-width: 980px) {
+  /* ---------- Un-trap the drawer from the header's stacking contexts.
+     The pages give header.site { position:relative; z-index:2 } plus
+     backdrop-filter — both create stacking contexts (and backdrop-filter
+     also a containing block for fixed descendants), which capped the
+     drawer below the overlay and anchored it to the header box. Flatten
+     them on mobile so the fixed drawer (z 999) paints above the overlay
+     (z 998) inside .site-top's context and stays viewport-anchored. ---------- */
+  header.site {
+    z-index: auto !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: #fff !important;
+  }
+
+  /* ---------- The drawer ---------- */
+  .nav-links {
+    position: fixed !important;
+    top: 0; right: 0; left: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    width: min(340px, 86vw);
+    height: 100vh; height: 100dvh;
+    max-height: 100vh; max-height: 100dvh;
+    margin: 0 !important;
+    padding: 0 0 calc(28px + env(safe-area-inset-bottom, 0px)) !important;
+    background: #fff !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: -18px 0 50px -12px rgba(10, 13, 16, .4) !important;
+    transform: translateX(105%);
+    visibility: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: 999;
+    transition: transform .34s cubic-bezier(.2, .7, .2, 1), visibility 0s linear .34s;
+  }
+  .nav-links.open {
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform .34s cubic-bezier(.2, .7, .2, 1);
+  }
+
+  /* ---------- Drawer header (injected by mobile-nav.js) ---------- */
+  .tgw-nav-head {
+    position: sticky; top: 0; z-index: 2;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 20px;
+    background: #fff;
+    border-bottom: 1px solid #eef1f5;
+  }
+  .tgw-nav-title {
+    font-size: 12px; font-weight: 800; letter-spacing: .18em;
+    text-transform: uppercase; color: #9aa4af;
+  }
+  .tgw-nav-close {
+    width: 44px; height: 44px;
+    display: grid; place-items: center;
+    border: 1px solid #e5e9ee; border-radius: 50%;
+    background: #f6f7f9; color: #0a0d10;
+    font-size: 18px; line-height: 1; cursor: pointer;
+    transition: background .2s ease, color .2s ease, border-color .2s ease;
+  }
+  .tgw-nav-close:hover { background: #114172; border-color: #114172; color: #fff; }
+  .tgw-nav-close:focus-visible { outline: 3px solid rgba(17, 65, 114, .45); outline-offset: 2px; }
+
+  /* ---------- Top-level rows ---------- */
+  .nav-links > a,
+  .nav-links > .nav-item > a {
+    display: flex !important;
+    align-items: center; justify-content: space-between;
+    min-height: 54px;
+    padding: 14px 20px !important;
+    font-size: 16.5px !important;
+    font-weight: 600 !important;
+    color: #0a0d10 !important;
+    border-bottom: 1px solid #eef1f5 !important;
+  }
+  .nav-links > a:active,
+  .nav-links > .nav-item > a:active { color: #114172 !important; }
+  .nav-links > a.active { color: #114172 !important; box-shadow: inset 4px 0 0 #e01030; }
+  .nav-links > a:focus-visible,
+  .nav-links > .nav-item > a:focus-visible { outline: 3px solid rgba(17, 65, 114, .45); outline-offset: -3px; }
+
+  /* ---------- Products accordion ---------- */
+  .nav-links .has-dropdown { position: static !important; }
+  .nav-links .has-dropdown > a .caret { margin-left: 10px; }
+  .nav-links .dropdown {
+    position: static !important;
+    display: block !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: #f6f8fb !important;
+    box-shadow: none !important;
+    transition: max-height .34s cubic-bezier(.2, .7, .2, 1) !important;
+  }
+  .nav-links .has-dropdown.open > .dropdown { max-height: 480px !important; }
+  .nav-links .dropdown li { margin: 0 !important; }
+  .nav-links .dropdown a {
+    display: flex !important;
+    align-items: center; justify-content: space-between;
+    min-height: 50px;
+    padding: 12px 20px 12px 26px !important;
+    font-size: 15.5px !important;
+    font-weight: 500 !important;
+    color: #114172 !important;
+    border-bottom: 1px solid #e4e9f0 !important;
+  }
+  .nav-links .dropdown a::before { display: none !important; }
+  .nav-links .dropdown a:active { background: rgba(17, 65, 114, .06) !important; }
+  .nav-links .dropdown a.dd-overview {
+    font-weight: 800 !important;
+    color: #e01030 !important;
+  }
+  .nav-links .dropdown a.dd-overview::after { content: "→"; font-weight: 800; }
+
+  /* ---------- Entrance stagger ---------- */
+  .nav-links.open > * { animation: tgwNavIn .4s cubic-bezier(.2, .7, .2, 1) both; }
+  .nav-links.open > *:nth-child(1) { animation-delay: .04s; }
+  .nav-links.open > *:nth-child(2) { animation-delay: .09s; }
+  .nav-links.open > *:nth-child(3) { animation-delay: .14s; }
+  .nav-links.open > *:nth-child(4) { animation-delay: .19s; }
+  .nav-links.open > *:nth-child(5) { animation-delay: .24s; }
+  .nav-links.open > *:nth-child(n+6) { animation-delay: .29s; }
+}
+
+@keyframes tgwNavIn {
+  from { opacity: 0; transform: translateX(18px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-links, .tgw-nav-overlay { transition: none !important; }
+  .nav-links.open > * { animation: none !important; }
+  .nav-links .dropdown { transition: none !important; }
+}

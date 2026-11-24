@@ -1,0 +1,12 @@
+{
+  "mcp": {
+    "servers": {
+      "my-mcp-server": {
+        "type": "http",
+        "url": "https://mcp.typeui.sh/mcp",
+        "timeoutMs": 3000,
+        "protocolVersion": "2026-07-28"
+      }
+    }
+  }
+}

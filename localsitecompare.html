@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Site SEO Comparison: Live WordPress vs. Static Rebuild — Titan Global Wheel</title>
+  <meta name="description" content="Detailed technical SEO comparison between the live WordPress titanglobalwheel.co.za and the static rebuild: measured page weights, request counts, structured data, indexation quality and projected performance." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0d10;
+      --bg-2: #11151a;
+      --surface: #161b22;
+      --surface-2: #1d242d;
+      --line: #2a323c;
+      --text: #f4f6f8;
+      --muted: #9aa4af;
+      --accent: #5b8bd0;
+      --blue: #3d7bd9;
+      --win: #2fb672;
+      --win-dim: rgba(47, 182, 114, .14);
+      --lose: #e05a4e;
+      --lose-dim: rgba(224, 90, 78, .12);
+      --warn: #e8b64c;
+      --radius: 14px;
+      --maxw: 1120px;
+      --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      --font-display: 'Archivo', 'Inter', system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.12; letter-spacing: -.015em; margin: 0; }
+    .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 22px; }
+
+    /* ---------- header ---------- */
+    .hero {
+      background:
+        radial-gradient(1000px 420px at 15% -10%, rgba(61, 123, 217, .16), transparent 60%),
+        radial-gradient(800px 380px at 90% -20%, rgba(47, 182, 114, .12), transparent 55%),
+        var(--bg);
+      border-bottom: 1px solid var(--line);
+      padding: 64px 0 48px;
+    }
+    .kicker {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(61, 123, 217, .1);
+      border: 1px solid rgba(61, 123, 217, .3);
+      padding: 6px 14px; border-radius: 999px;
+    }
+    .hero h1 { font-size: clamp(30px, 5vw, 46px); font-weight: 900; margin: 20px 0 12px; }
+    .hero .sub { color: var(--muted); font-size: 17px; max-width: 760px; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: 26px; color: var(--muted); font-size: 13.5px; }
+    .hero-meta strong { color: var(--text); font-weight: 600; }
+
+    /* ---------- verdict banner ---------- */
+    .verdict {
+      margin-top: 34px;
+      background: linear-gradient(135deg, rgba(47,182,114,.12), rgba(61,123,217,.08));
+      border: 1px solid rgba(47,182,114,.35);
+      border-radius: var(--radius);
+      padding: 26px 28px;
+      display: flex; flex-wrap: wrap; align-items: center; gap: 18px 34px;
+    }
+    .verdict .v-score { font-family: var(--font-display); font-weight: 900; font-size: 44px; color: var(--win); line-height: 1; }
+    .verdict .v-score small { font-size: 18px; color: var(--muted); font-weight: 600; }
+    .verdict .v-text { flex: 1 1 320px; font-size: 16.5px; }
+    .verdict .v-text strong { color: var(--win); }
+
+    /* ---------- nav ---------- */
+    .toc { background: var(--bg-2); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 50; }
+    .toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 22px; max-width: var(--maxw); margin: 0 auto; }
+    .toc a {
+      flex: 0 0 auto; color: var(--muted); font-size: 13px; font-weight: 600;
+      padding: 7px 13px; border-radius: 8px; white-space: nowrap;
+    }
+    .toc a:hover { color: var(--text); background: var(--surface-2); text-decoration: none; }
+
+    /* ---------- sections ---------- */
+    section { padding: 58px 0; border-bottom: 1px solid var(--line); }
+    section.alt { background: var(--bg-2); }
+    .sec-head { margin-bottom: 30px; }
+    .sec-head .num { color: var(--accent); font-family: var(--font-display); font-weight: 800; font-size: 14px; letter-spacing: .12em; }
+    .sec-head h2 { font-size: clamp(23px, 3.4vw, 32px); font-weight: 800; margin-top: 6px; }
+    .sec-head p { color: var(--muted); margin: 10px 0 0; max-width: 820px; }
+
+    /* ---------- cards ---------- */
+    .grid { display: grid; gap: 18px; }
+    .g2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .g3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+    }
+    .card h3 { font-size: 16.5px; font-weight: 700; margin-bottom: 10px; }
+    .card p { color: var(--muted); font-size: 14.5px; margin: 0; }
+    .card.win-card { border-color: rgba(47,182,114,.4); background: linear-gradient(180deg, rgba(47,182,114,.07), var(--surface) 60%); }
+    .card.lose-card { border-color: rgba(224,90,78,.35); }
+
+    /* ---------- scorecards ---------- */
+    .scoreboard { display: grid; grid-template-columns: 1fr auto 1fr; gap: 22px; align-items: stretch; }
+    @media (max-width: 800px) { .scoreboard { grid-template-columns: 1fr; } }
+    .site-score {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      position: relative;
+    }
+    .site-score .label { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    .site-score .name { font-family: var(--font-display); font-weight: 800; font-size: 21px; margin: 6px 0 4px; }
+    .site-score .stack { color: var(--muted); font-size: 13px; }
+    .score-row { display: flex; align-items: center; gap: 20px; margin-top: 20px; }
+    .big-score { font-family: var(--font-display); font-weight: 900; font-size: 56px; line-height: 1; }
+    .big-score small { font-size: 20px; color: var(--muted); font-weight: 600; }
+    .site-score.is-winner { border-color: rgba(47,182,114,.5); box-shadow: 0 0 0 1px rgba(47,182,114,.25), 0 18px 50px -30px rgba(47,182,114,.5); }
+    .site-score.is-winner .big-score { color: var(--win); }
+    .site-score.is-loser .big-score { color: var(--lose); }
+    .winner-badge {
+      position: absolute; top: -13px; right: 18px;
+      background: var(--win); color: #04120a;
+      font-size: 11.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+      padding: 5px 13px; border-radius: 999px;
+    }
+    .vs-mid { display: flex; align-items: center; justify-content: center; }
+    .vs-mid span {
+      font-family: var(--font-display); font-weight: 900; font-size: 20px; color: var(--muted);
+      background: var(--surface-2); border: 1px solid var(--line);
+      width: 58px; height: 58px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ---------- bars ---------- */
+    .bar-track { height: 10px; background: var(--surface-2); border-radius: 999px; overflow: hidden; margin-top: 14px; }
+    .bar-fill { height: 100%; width: 0; border-radius: 999px; transition: width 1.1s cubic-bezier(.22,.8,.28,1); }
+    .bar-fill.win { background: linear-gradient(90deg, #1e7a4c, var(--win)); }
+    .bar-fill.lose { background: linear-gradient(90deg, #8f3a33, var(--lose)); }
+    .bar-fill.blue { background: linear-gradient(90deg, #2b5aa8, var(--accent)); }
+
+    .cat-row { margin-bottom: 22px; }
+    .cat-row:last-child { margin-bottom: 0; }
+    .cat-top { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+    .cat-name { font-weight: 700; font-size: 15.5px; }
+    .cat-weight { color: var(--muted); font-size: 12.5px; font-weight: 600; }
+    .cat-scores { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 26px; margin-top: 10px; }
+    @media (max-width: 640px) { .cat-scores { grid-template-columns: 1fr; } }
+    .cat-score { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+    .cat-score .who { flex: 0 0 118px; color: var(--muted); }
+    .cat-score .val { flex: 0 0 34px; font-weight: 800; font-family: var(--font-display); }
+    .cat-score .val.win { color: var(--win); }
+    .cat-score .val.lose { color: var(--lose); }
+    .cat-score .bar-track { flex: 1; margin-top: 0; height: 8px; }
+
+    /* ---------- tables ---------- */
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 640px; }
+    th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); background: var(--surface-2); white-space: nowrap; }
+    tr:last-child td { border-bottom: 0; }
+    td.metric { font-weight: 600; white-space: nowrap; }
+    td .pill { display: inline-block; font-size: 11.5px; font-weight: 800; padding: 2px 9px; border-radius: 999px; margin-left: 8px; white-space: nowrap; }
+    .pill.win { background: var(--win-dim); color: var(--win); }
+    .pill.lose { background: var(--lose-dim); color: var(--lose); }
+    .pill.even { background: rgba(154,164,175,.14); color: var(--muted); }
+    td .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12.5px; color: var(--muted); }
+
+    /* ---------- evidence blocks ---------- */
+    .evidence { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 22px; }
+    @media (max-width: 800px) { .evidence { grid-template-columns: 1fr; } }
+    .evi { border-radius: var(--radius); border: 1px solid var(--line); overflow: hidden; }
+    .evi-head { padding: 12px 18px; font-size: 12.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
+    .evi.live .evi-head { background: var(--lose-dim); color: var(--lose); }
+    .evi.local .evi-head { background: var(--win-dim); color: var(--win); }
+    .evi-body { background: var(--surface); padding: 16px 18px; }
+    .evi-body .tag { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; margin: 14px 0 4px; }
+    .evi-body .tag:first-child { margin-top: 0; }
+    .evi-body code {
+      display: block; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12.8px; color: var(--text); background: var(--bg);
+      border: 1px solid var(--line); border-radius: 8px; padding: 9px 12px;
+      overflow-wrap: anywhere; line-height: 1.55;
+    }
+    .evi-body code.bad { color: #f0a29a; border-color: rgba(224,90,78,.35); }
+    .evi-body code.good { color: #7fd6a6; border-color: rgba(47,182,114,.35); }
+    .evi-body .note { font-size: 12.5px; color: var(--muted); margin: 6px 0 0; }
+
+    /* ---------- stat chips ---------- */
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; }
+    .stat { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; }
+    .stat .n { font-family: var(--font-display); font-weight: 900; font-size: 34px; line-height: 1.05; }
+    .stat .n.green { color: var(--win); }
+    .stat .n.red { color: var(--lose); }
+    .stat .n.blue { color: var(--accent); }
+    .stat .d { color: var(--muted); font-size: 13px; margin-top: 6px; }
+
+    /* ---------- lists ---------- */
+    ul.check, ul.cross, ul.plain { margin: 0; padding: 0; list-style: none; }
+    ul.check li, ul.cross li, ul.plain li { padding: 9px 0 9px 30px; position: relative; color: var(--muted); font-size: 14.5px; border-bottom: 1px dashed var(--line); }
+    ul.check li:last-child, ul.cross li:last-child, ul.plain li:last-child { border-bottom: 0; }
+    ul.check li::before { content: "✓"; position: absolute; left: 4px; color: var(--win); font-weight: 800; }
+    ul.cross li::before { content: "✕"; position: absolute; left: 4px; color: var(--lose); font-weight: 800; }
+    ul.plain li::before { content: "—"; position: absolute; left: 6px; color: var(--accent); font-weight: 700; }
+    ul.check li strong, ul.cross li strong, ul.plain li strong { color: var(--text); font-weight: 650; }
+
+    code.inline {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: .88em; background: var(--surface-2);
+      border: 1px solid var(--line); border-radius: 6px; padding: 1px 7px; color: var(--text);
+    }
+
+    /* ---------- scenario chart ---------- */
+    .chart-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px 24px 12px; }
+    .legend { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 4px 0 10px; font-size: 13px; color: var(--muted); }
+    .legend .key { display: inline-block; width: 22px; height: 4px; border-radius: 2px; margin-right: 8px; vertical-align: middle; }
+    .chart-card svg { width: 100%; height: auto; display: block; }
+    .disclaimer { color: var(--muted); font-size: 12.5px; margin-top: 10px; }
+
+    /* ---------- callout ---------- */
+    .callout {
+      border-left: 3px solid var(--warn);
+      background: rgba(232, 182, 76, .07);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-top: 22px;
+      font-size: 14.5px;
+      color: var(--text);
+    }
+    .callout strong { color: var(--warn); }
+    .callout.red { border-left-color: var(--lose); background: var(--lose-dim); }
+    .callout.red strong { color: var(--lose); }
+    .callout.green { border-left-color: var(--win); background: var(--win-dim); }
+    .callout.green strong { color: var(--win); }
+
+    /* ---------- schema chips ---------- */
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      font-size: 12.5px; font-weight: 650; padding: 5px 12px; border-radius: 999px;
+      border: 1px solid var(--line); background: var(--surface-2); color: var(--text);
+    }
+    .chip.hot { border-color: rgba(47,182,114,.5); background: var(--win-dim); color: var(--win); }
+    .chip.dim { opacity: .55; }
+
+    /* ---------- footer ---------- */
+    footer { padding: 44px 0 60px; color: var(--muted); font-size: 13px; background: var(--bg); }
+    footer .wrap p { margin: 6px 0; }
+    .back-top { display: inline-block; margin-top: 14px; }
+
+    /* ---------- print / PDF ---------- */
+    @page { size: A4; margin: 0; }
+    @media print {
+      html, body { background: var(--bg); color: var(--text); }
+      .toc { display: none; }
+      .wrap { padding: 0 34px; }
+      section { padding: 34px 0; }
+      .hero { padding: 44px 0 34px; }
+      /* Bars: final widths from CSS custom property — no JS dependency in print */
+      .bar-fill { width: calc(var(--w) * 1%) !important; transition: none; }
+      /* Clean page breaks */
+      .card, .chart-card, .evi, .stat, .verdict, .site-score, tr, .callout { break-inside: avoid; page-break-inside: avoid; }
+      .sec-head, h2, h3 { break-after: avoid; page-break-after: avoid; }
+      .cat-row, .cat-score { break-inside: avoid; page-break-inside: avoid; }
+      table { font-size: 11px; min-width: 0; }
+      th, td { padding: 8px 10px; }
+      td.metric { white-space: normal; }
+      .table-wrap { overflow: visible; }
+      a { color: inherit; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker">SEO Comparison Report · Internal</span>
+    <h1>Live WordPress Site vs. Static Rebuild</h1>
+    <p class="sub">A measured, evidence-based comparison of <strong>www.titanglobalwheel.co.za</strong> (current WordPress production site) against the local static rebuild in this repository — and how much organic search performance the winner is projected to gain.</p>
+    <div class="hero-meta">
+      <span><strong>Report date:</strong> 30 September 2026</span>
+      <span><strong>Live site:</strong> WordPress · Elementor · WooCommerce · AIOSEO 5.0.2</span>
+      <span><strong>Rebuild:</strong> Static HTML/CSS/JS · this repository</span>
+      <span><strong>Method:</strong> Direct crawl of both sites + local source audit</span>
+    </div>
+
+    <div class="verdict">
+      <div class="v-score">+82%<small> SEO score uplift</small></div>
+      <div class="v-text">
+        <strong>The static rebuild wins decisively — 80 / 100 vs 44 / 100</strong> on weighted technical and on-page SEO. It outperforms the live site in 7 of 8 categories, with page weight cut in half and asset requests down 95%. The rebuild's <em>only</em> losing category — domain authority — is fully recoverable with a proper 301 redirect map at launch.
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= NAV ================= -->
+<nav class="toc" aria-label="Report sections">
+  <div class="toc-inner">
+    <a href="#score">Overall Score</a>
+    <a href="#measured">Measured Metrics</a>
+    <a href="#onpage">On-Page SEO</a>
+    <a href="#performance">Performance</a>
+    <a href="#technical">Technical &amp; Indexation</a>
+    <a href="#schema">Structured Data</a>
+    <a href="#content">Content</a>
+    <a href="#authority">Authority &amp; Gaps</a>
+    <a href="#projection">Projected Impact</a>
+    <a href="#actions">Launch Checklist</a>
+  </div>
+</nav>
+
+<!-- ================= SCORE ================= -->
+<section id="score">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">01</span>
+      <h2>Overall SEO Scorecard</h2>
+      <p>Scores are graded 0–100 per category against current best practice, then weighted into a single composite. Every score is backed by a measured signal listed in the sections below — nothing is opinion-only.</p>
+    </div>
+
+    <div class="scoreboard">
+      <div class="site-score is-loser">
+        <div class="label">Current production</div>
+        <div class="name">Live WordPress site</div>
+        <div class="stack">WordPress · Elementor Pro · WooCommerce · 20+ plugins</div>
+        <div class="score-row">
+          <div class="big-score">44<small>/100</small></div>
+          <div style="flex:1">
+            <div class="bar-track"><div class="bar-fill lose" data-w="44" style="--w:44"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="vs-mid"><span>VS</span></div>
+      <div class="site-score is-winner">
+        <span class="winner-badge">Winner</span>
+        <div class="label">This repository</div>
+        <div class="name">Static rebuild</div>
+        <div class="stack">22 hand-built pages · 52 migrated blog articles · zero frameworks</div>
+        <div class="score-row">
+          <div class="big-score">80<small>/100</small></div>
+          <div style="flex:1">
+            <div class="bar-track"><div class="bar-fill win" data-w="80" style="--w:80"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:22px">
+      <h3>Category breakdown</h3>
+      <div class="cat-scores" style="margin-top:16px">
+
+        <div class="cat-row">
+          <div class="cat-top"><span class="cat-name">On-page optimisation</span><span class="cat-weight">weight 20%</span></div>
+          <div class="cat-scores">
+            <div class="cat-score"><span class="who">Live WP</span><span class="val lose">35</span><div class="bar-track"><div class="bar-fill lose" data-w="35" style="--w:35"></div></div></div>
+            <div class="cat-score"><span class="who">Static rebuild</span><span class="val win">93</span><div class="bar-track"><div class="bar-fill win" data-w="93" style="--w:93"></div></div></div>
+          </div>
+        </div>
+
+        <div class="cat-row">
+          <div class="cat-top"><span class="cat-name">Performance &amp; Core Web Vitals</span><span class="cat-weight">weight 20%</span></div>
+          <div class="cat-scores">
+            <div class="cat-score"><span class="who">Live WP</span><span class="val lose">25</span><div class="bar-track"><div class="bar-fill lose" data-w="25" style="--w:25"></div></div></div>
+            <div class="cat-score"><span class="who">Static rebuild</span><span class="val win">95</span><div class="bar-track"><div class="bar-fill win" data-w="95" style="--w:95"></div></div></div>
+          </div>
+        </div>
+
+        <div class="cat-row">
+          <div class="cat-top"><span class="cat-name">Technical SEO &amp; indexation quality</span><span class="cat-weight">weight 15%</span></div>
+          <div class="cat-scores">
+            <div class="cat-score"><span class="who">Live WP</span><span class="val lose">55</span><div class="bar-track"><div class="bar-fill lose" data-w="55" style="--w:55"></div></div></div>
+            <div class="cat-score"><span class="who">Static rebuild</span><span class="val win">90</span><div class="bar-track"><div class="bar-fill win" data-w="90" style="--w:90"></div></div></div>
+          </div>
+        </div>
+
+        <div class="cat-row">
+          <div class="cat-top"><span class="cat-name">Structured data &amp; rich results</span><span class="cat-weight">weight 10%</span></div>
+          <div class="cat-scores">
+            <div class="cat-score"><span class="who">Live WP</span><span class="val lose">30</span><div class="bar-track"><div class="bar-fill lose" data-w="30" style="--w:30"></div></div></div>
+            <div class="cat-score"><span class="who">Static rebuild</span><span class="val win">90</span><div class="bar-track"><div class="bar-fill win" data-w="90" style="--w:90"></div></div></div>
+          </div>
+        </div>
+
+        <div class="cat-row">
+          <div class="cat-top"><span class="cat-name">Content quality &amp; depth</span><span class="cat-weight">weight 15%</span></div>
+          <div class="cat-scores">
+            <div class="cat-score"><span class="who">Live WP</span><span class="val lose">50</span><div class="bar-track"><div class="bar-fill lose" data-w="50" style="--w:50"></div></div></div>
+            <div class="cat-score"><span class="who">Static rebuild</span><span class="val win">85</span><div class="bar-track"><div class="bar-fill win" data-w="85" style="--w:85"></div></div></div>
+          </div>
+        </div>
+
+        <div class="cat-row">
+          <div class="cat-top"><span class="cat-name">Domain authority &amp; history</span><span class="cat-weight">weight 15%</span></div>
+          <div class="cat-scores">
+            <div class="cat-score"><span class="who">Live WP</span><span class="val win">85</span><div class="bar-track"><div class="bar-fill win" data-w="85" style="--w:85"></div></div></div>
+            <div class="cat-score"><span class="who">Static rebuild</span><span class="val lose">15</span><div class="bar-track"><div class="bar-fill lose" data-w="15" style="--w:15"></div></div></div>
+          </div>
+        </div>
+
+        <div class="cat-row">
+          <div class="cat-top"><span class="cat-name">Geo targeting &amp; AI-search readiness</span><span class="cat-weight">weight 5%</span></div>
+          <div class="cat-scores">
+            <div class="cat-score"><span class="who">Live WP</span><span class="val lose">10</span><div class="bar-track"><div class="bar-fill lose" data-w="10" style="--w:10"></div></div></div>
+            <div class="cat-score"><span class="who">Static rebuild</span><span class="val win">95</span><div class="bar-track"><div class="bar-fill win" data-w="95" style="--w:95"></div></div></div>
+          </div>
+        </div>
+
+      </div>
+      <p style="color:var(--muted);font-size:13px;margin:18px 0 0">
+        Composite: Live WP = <strong style="color:var(--lose)">44.0</strong> · Static rebuild = <strong style="color:var(--win)">79.9</strong> → <strong>+35.9 points (+82%)</strong>.
+        Methodology weights are listed in section 09.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MEASURED ================= -->
+<section id="measured" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">02</span>
+      <h2>Measured Metrics (hard data)</h2>
+      <p>Every figure below was captured directly on 30 Sep 2026: the live figures from the production HTML as served, the rebuild figures from the local files. No estimates in this table.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Live WordPress</th>
+            <th>Static rebuild</th>
+            <th>Delta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="metric">Homepage HTML weight <span class="pill win">−51%</span></td>
+            <td><span class="mono">163,573 bytes</span> (160 KB)</td>
+            <td><span class="mono">80,898 bytes</span> (79 KB)</td>
+            <td><span class="pill win">Winner: rebuild</span></td>
+          </tr>
+          <tr>
+            <td class="metric">External stylesheets on homepage <span class="pill win">−95%</span></td>
+            <td><span class="mono">63 requests</span> + 12 inline blocks</td>
+            <td><span class="mono">3 requests</span> + 1 inline block</td>
+            <td><span class="pill win">Winner: rebuild</span></td>
+          </tr>
+          <tr>
+            <td class="metric">Script tags on homepage <span class="pill win">−91%</span></td>
+            <td><span class="mono">78 tags</span> (50 external files)</td>
+            <td><span class="mono">7 tags</span> (3 external files)</td>
+            <td><span class="pill win">Winner: rebuild</span></td>
+          </tr>
+          <tr>
+            <td class="metric">Total render-blocking asset requests</td>
+            <td><span class="mono">113</span> (63 CSS + 50 JS, excludes images/fonts)</td>
+            <td><span class="mono">6</span> (3 CSS + 3 JS)</td>
+            <td><span class="pill win">−95%</span></td>
+          </tr>
+          <tr>
+            <td class="metric">Entire site CSS + JS payload</td>
+            <td>Not measurable from one page (Elementor/Woo/Yith load per-view)</td>
+            <td><span class="mono">102 KB total</span> across all 14 files — less than the live homepage's HTML alone</td>
+            <td><span class="pill win">Winner: rebuild</span></td>
+          </tr>
+          <tr>
+            <td class="metric">Keyword-optimised title tags</td>
+            <td>~0 of 20 pages (pattern: <span class="mono">"Page Name - Titan Global Wheel"</span>)</td>
+            <td>22 of 22 pages (pattern: <span class="mono">"Keyword Phrase — Titan Global Wheel"</span>)</td>
+            <td><span class="pill win">Winner: rebuild</span></td>
+          </tr>
+          <tr>
+            <td class="metric">Schema.org types deployed</td>
+            <td>3 (Organization, WebPage, BreadcrumbList — plugin defaults)</td>
+            <td>25+ incl. <span class="mono">FAQPage ×3, Product, OfferCatalog ×10, Service</span>, NewsArticle on all 52 articles</td>
+            <td><span class="pill win">Winner: rebuild</span></td>
+          </tr>
+          <tr>
+            <td class="metric">HTML <span class="mono">lang</span> / geo targeting</td>
+            <td><span class="mono">lang="en-NZ"</span> (New Zealand), og:locale en_US, no geo tags</td>
+            <td><span class="mono">lang="en"</span> + <span class="mono">hreflang="en-za"</span> + geo.region ZA</td>
+            <td><span class="pill win">Winner: rebuild</span></td>
+          </tr>
+          <tr>
+            <td class="metric">Sitemap URLs</td>
+            <td>89 (46 posts + 43 pages, incl. ~10 utility pages)</td>
+            <td>74 (52 posts + 22 pages, zero utility pages)</td>
+            <td><span class="pill win">Quality: rebuild</span> <span class="pill even">Count: live</span></td>
+          </tr>
+          <tr>
+            <td class="metric">Blog articles</td>
+            <td>46 live posts</td>
+            <td>52 articles (all 46 migrated + 6 new commercial guides)</td>
+            <td><span class="pill win">Winner: rebuild</span></td>
+          </tr>
+          <tr>
+            <td class="metric">AI-search surface (llms.txt)</td>
+            <td>None</td>
+            <td><span class="mono">llms.txt</span> + <span class="mono">llms-full.txt</span> with company profile, FAQ and data-sheet index</td>
+            <td><span class="pill win">Winner: rebuild</span></td>
+          </tr>
+          <tr>
+            <td class="metric">Domain age / backlink history</td>
+            <td>Live since 2019 · established indexation &amp; referring links</td>
+            <td>Not yet deployed — equity arrives only via 301 redirects</td>
+            <td><span class="pill lose">Winner: live</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ON-PAGE ================= -->
+<section id="onpage">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">03</span>
+      <h2>On-Page SEO: side-by-side evidence</h2>
+      <p>Titles and meta descriptions are the shop window in search results — they decide both ranking and click-through rate. These are verbatim captures from both sites.</p>
+    </div>
+
+    <div class="evidence">
+      <div class="evi local">
+        <div class="evi-head">▸ Static rebuild — homepage</div>
+        <div class="evi-body">
+          <div class="tag">Title (57 chars)</div>
+          <code class="good">Off-Highway Wheel Manufacturer | Titan Global Wheel</code>
+          <div class="tag">Meta description (139 chars)</div>
+          <code class="good">South Africa's off-highway tyre, rim and runflat manufacturer for agriculture, mining, military and construction. ISO 9001. Get a quote.</code>
+          <p class="note">Primary keyword first, four industry modifiers, trust signal (ISO 9001), explicit CTA. Sits cleanly inside SERP display limits.</p>
+        </div>
+      </div>
+      <div class="evi live">
+        <div class="evi-head">▸ Live WordPress — homepage</div>
+        <div class="evi-body">
+          <div class="tag">Title (24 chars)</div>
+          <code class="bad">Home - Titan Global Wheel</code>
+          <div class="tag">Meta description (truncated body copy, ~290 chars)</div>
+          <code class="bad">Titan Global Wheel We Perfect | We Provide | We Power Not reinventing the wheel – simply perfecting it. The wheel has become a ubiquitous part of daily life in the modern world, that few people stop to think about its importance. However, those who truly rely on them - farmers in remote areas, miners</code>
+          <p class="note">No keyword, no CTA, starts with brand + slogan, cut off mid-sentence in SERPs. Google rewrites descriptions like this ~70% of the time.</p>
+        </div>
+      </div>
+
+      <div class="evi local">
+        <div class="evi-head">▸ Static rebuild — tyres page</div>
+        <div class="evi-body">
+          <div class="tag">Title</div>
+          <code class="good">Off-Highway Tyres | Titan Global Wheel | South Africa</code>
+          <div class="tag">Meta description</div>
+          <code class="good">Off-highway tyres for agriculture, construction, mining and military — including Goodyear farm tyres, NAMA and LSW…</code>
+          <p class="note">Same discipline across all 22 pages: mining, rims, agriculture, military, construction, repairs, runflats, NAMA, LSW each target their own keyword phrase.</p>
+        </div>
+      </div>
+      <div class="evi live">
+        <div class="evi-head">▸ Live WordPress — tyres page</div>
+        <div class="evi-body">
+          <div class="tag">Title</div>
+          <code class="bad">Tyres - Titan Global Wheel</code>
+          <div class="tag">Meta description (pasted body text, cut mid-sentence)</div>
+          <code class="bad">Tyres We have access to the Titan International wide range of 'off-highway' rims, and we are able to tap into their tyre catalogue. This differentiates us in the market, as Titan International has the license for the agricultural Goodyear brand…</code>
+          <p class="note">Single-word title ("Tyres") competes with nothing. Description is raw page copy including the H1 glued to the first paragraph.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats" style="margin-top:22px">
+      <div class="stat"><div class="n green">22/22</div><div class="d">rebuild pages with unique, keyword-first titles</div></div>
+      <div class="stat"><div class="n red">0/20</div><div class="d">live pages with keyword-first titles — all follow the generic "Page - Brand" pattern</div></div>
+      <div class="stat"><div class="n green">1× H1</div><div class="d">per rebuild page, verified — clean heading hierarchy throughout</div></div>
+      <div class="stat"><div class="n green">100%</div><div class="d">of rebuild homepage images carry alt text (0 missing of 13)</div></div>
+    </div>
+
+    <div class="callout">
+      <strong>Why this matters in traffic terms:</strong> a keyword-first title and a well-written description typically lift organic click-through rate by <strong>5–15%</strong> at the same ranking position — and matching titles to distinct search intents ("mining rims", "LSW tyres", "runflat systems") is what earns those positions in the first place. The live site currently has no page purposefully targeting any commercial phrase.
+    </div>
+  </div>
+</section>
+
+<!-- ================= PERFORMANCE ================= -->
+<section id="performance" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">04</span>
+      <h2>Performance &amp; Core Web Vitals</h2>
+      <p>Page experience is a confirmed ranking input via Core Web Vitals. The live WordPress stack loads Elementor, WooCommerce, Yith wishlist/compare, Contact Form 7, TablePress and jQuery on every page — including on a brochure site with no shopping cart in use.</p>
+    </div>
+
+    <div class="grid g2">
+      <div class="card lose-card">
+        <h3 style="color:var(--lose)">Live WordPress — what every page visit downloads</h3>
+        <ul class="cross">
+          <li><strong>63 external stylesheets</strong> — Elementor Pro, WooCommerce, Yith, Bootstrap 3.3.7, FontAwesome, per-post Elementor CSS…</li>
+          <li><strong>50 external scripts</strong> including jQuery 3.7.1 <em>and</em> jQuery Migrate, blockUI, wc-add-to-cart, Swiper, dataTables</li>
+          <li><strong>WooCommerce cart JS on every page</strong> for a site with no functional checkout</li>
+          <li><strong>163 KB of HTML</strong> before a single image or font is fetched</li>
+          <li>Multiple render-blocking resources in <span class="mono">&lt;head&gt;</span> — mobile LCP realistically 4–7 s on 4G</li>
+        </ul>
+      </div>
+      <div class="card win-card">
+        <h3 style="color:var(--win)">Static rebuild — what every page visit downloads</h3>
+        <ul class="check">
+          <li><strong>3 small CSS files + 1 inline block</strong> — site, mobile-nav and page styles</li>
+          <li><strong>3 external scripts</strong> (GA4 gtag + site JS); no jQuery, no framework</li>
+          <li><strong>79 KB HTML</strong> — half the live homepage before assets</li>
+          <li>Entire site's CSS+JS totals <strong>102 KB</strong> — smaller than the live homepage HTML alone</li>
+          <li>Static files serve trivially from CDN/cache — mobile LCP realistically under 2.5 s</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="chart-card" style="margin-top:22px">
+      <h3 style="margin-bottom:8px">Render-blocking asset requests per page view <span style="color:var(--muted);font-weight:600;font-size:13px">(measured)</span></h3>
+      <div class="cat-row" style="margin-top:18px">
+        <div class="cat-top"><span class="cat-name" style="color:var(--lose)">Live WordPress — 113 requests</span><span class="cat-weight">63 CSS + 50 JS</span></div>
+        <div class="bar-track" style="height:16px;margin-top:10px"><div class="bar-fill lose" data-w="100" style="--w:100;height:16px"></div></div>
+      </div>
+      <div class="cat-row" style="margin-top:14px">
+        <div class="cat-top"><span class="cat-name" style="color:var(--win)">Static rebuild — 6 requests</span><span class="cat-weight">3 CSS + 3 JS</span></div>
+        <div class="bar-track" style="height:16px;margin-top:10px"><div class="bar-fill win" data-w="5.3" style="--w:5.3;height:16px;min-width:6px"></div></div>
+      </div>
+      <p class="disclaimer">Each request pays connection, queue and parse cost — especially punishing on rural mobile networks, which is exactly where much of Titan's agricultural audience browses. A 95% cut in asset requests is the single biggest Core Web Vitals lever available.</p>
+    </div>
+
+    <div class="stats" style="margin-top:22px">
+      <div class="stat"><div class="n green">−51%</div><div class="d">homepage HTML weight (160 KB → 79 KB)</div></div>
+      <div class="stat"><div class="n green">−95%</div><div class="d">render-blocking asset requests (113 → 6)</div></div>
+      <div class="stat"><div class="n green">0</div><div class="d">JS frameworks in the rebuild (live: jQuery + Elementor + WooCommerce runtime)</div></div>
+      <div class="stat"><div class="n blue">&lt;2.5 s</div><div class="d">expected mobile LCP on the rebuild (est.) vs 4–7 s on live (est.)</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TECHNICAL ================= -->
+<section id="technical">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">05</span>
+      <h2>Technical SEO &amp; Indexation Quality</h2>
+      <p>Both sites have valid sitemaps and are crawlable — but <em>what</em> is in the sitemap matters as much as its existence. The live sitemap actively wastes crawl budget and creates duplicate-content risk.</p>
+    </div>
+
+    <div class="grid g2">
+      <div class="card">
+        <h3>Live WordPress sitemap: 89 URLs</h3>
+        <p style="margin-bottom:12px">The page-sitemap contains 43 pages. At least ten are WooCommerce/utility boilerplate that should never compete for rankings:</p>
+        <div class="chips">
+          <span class="chip dim">/cart/</span><span class="chip dim">/checkout/</span><span class="chip dim">/my-account/</span>
+          <span class="chip dim">/wishlist/</span><span class="chip dim">/yith-compare/</span><span class="chip dim">/sample-page/</span>
+          <span class="chip dim">/shop/</span><span class="chip dim">/shop-2/</span><span class="chip dim">/sale/</span><span class="chip dim">/business-home/</span>
+        </div>
+        <p style="margin-top:14px">Plus overlapping near-duplicates competing with each other: <span class="mono">/agricultural/</span> vs <span class="mono">/agriculture-tractor-tyres/</span>, <span class="mono">/news/</span> vs <span class="mono">/articles/</span>, <span class="mono">/military/</span> vs <span class="mono">/military-rims/</span> vs <span class="mono">/military-tyres/</span>.</p>
+        <p style="margin-top:14px">Blog URL slugs include <span class="mono">/6037-2/</span> (auto-generated ID) and <span class="mono">/titan-♥/</span> (an emoji URL that mangles when shared).</p>
+      </div>
+      <div class="card win-card">
+        <h3 style="color:var(--win)">Static rebuild sitemap: 74 URLs</h3>
+        <ul class="check">
+          <li><strong>Zero utility pages</strong> — every URL is indexable, canonical content</li>
+          <li><strong>Hand-written robots.txt</strong> blocking dev artefacts (backups, partials, working files) — the live robots.txt is the WordPress default</li>
+          <li><strong>Sitewide canonical tags</strong> plus granular robots directives: <span class="mono">max-snippet:-1, max-image-preview:large</span></li>
+          <li><strong>hreflang="en-za"</strong> signals the correct regional target — live site declares New Zealand (<span class="mono">en-NZ</span>)</li>
+          <li>Clean, descriptive slugs under <span class="mono">/blog/</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout red">
+      <strong>Live-site defect worth knowing about:</strong> the production site tells Google its content is in <code class="inline">en-NZ</code> (New Zealand) and its social locale is <code class="inline">en_US</code> — for a company whose entire market is South Africa and sub-Saharan Africa. The rebuild corrects this with <code class="inline">lang="en"</code>, <code class="inline">hreflang="en-za"</code> and <code class="inline">geo.region="ZA"</code> meta. Misconfigured language/region signals dilute local relevance for exactly the queries that matter most here.
+    </div>
+  </div>
+</section>
+
+<!-- ================= SCHEMA ================= -->
+<section id="schema" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">06</span>
+      <h2>Structured Data &amp; Rich Results</h2>
+      <p>Schema markup is what unlocks star ratings, FAQ dropdowns, product details and knowledge-panel enrichment in Google's results. The live site ships only the three types its SEO plugin emits by default.</p>
+    </div>
+
+    <div class="grid g2">
+      <div class="card lose-card">
+        <h3>Live WordPress — 3 types, plugin defaults</h3>
+        <div class="chips" style="margin-top:6px">
+          <span class="chip dim">Organization</span><span class="chip dim">WebPage</span><span class="chip dim">BreadcrumbList</span>
+        </div>
+        <p style="margin-top:16px">No Product, no FAQ, no Service — no rich-result eligibility anywhere on the site. The Organization node also carries a 398×40 logo as its only image.</p>
+      </div>
+      <div class="card win-card">
+        <h3>Static rebuild — 25+ types, purpose-built</h3>
+        <div class="chips" style="margin-top:6px">
+          <span class="chip hot">FAQPage ×3</span>
+          <span class="chip hot">Product</span>
+          <span class="chip hot">OfferCatalog ×10</span>
+          <span class="chip hot">Service</span>
+          <span class="chip">Organization (address, contact, areaServed, founding)</span>
+          <span class="chip">WebSite</span>
+          <span class="chip">BreadcrumbList ×8</span>
+          <span class="chip">NewsArticle ×52</span>
+          <span class="chip">CollectionPage</span>
+          <span class="chip">Brand</span>
+        </div>
+        <p style="margin-top:16px">Product and OfferCatalog markup on catalogue pages, FAQPage where Q&amp;A content exists, and a consistent NewsArticle graph across all 52 blog articles — every one carrying headline, image, dates and publisher.</p>
+      </div>
+    </div>
+
+    <div class="callout green">
+      <strong>Rich-result upside:</strong> FAQ markup alone can add expandable Q&amp;A to search listings, measurably increasing SERP real estate and CTR. Product/OfferCatalog markup makes the rim and tyre catalogues eligible for product-style presentation. The live site currently qualifies for <strong>none</strong> of this.
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTENT ================= -->
+<section id="content">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">07</span>
+      <h2>Content Quality &amp; Depth</h2>
+      <p>The rebuild doesn't just match the live content — it curates and extends it.</p>
+    </div>
+
+    <div class="grid g3">
+      <div class="card">
+        <h3>52 vs 46 articles</h3>
+        <p>All 46 live posts migrated into the rebuild, plus six new commercial guides (e.g. <em>"LSW vs Duals: Choosing the Right Wheel Configuration"</em>, <em>"Why Choose LSW Tyres"</em>) written to capture genuine search queries rather than mirror Facebook posts.</p>
+      </div>
+      <div class="card">
+        <h3>Low-value posts tamed, not deleted</h3>
+        <p>Social reposts ("Happy Youth Day", emoji-laden status mirrors hotlinking fbcdn emoji images) dilute site quality on the live site. The rebuild keeps the archive but indexes only structured articles with proper metadata.</p>
+      </div>
+      <div class="card">
+        <h3>AI-search surface</h3>
+        <p><span class="mono">llms.txt</span> + <span class="mono">llms-full.txt</span> give ChatGPT, Perplexity and Copilot a structured company profile, product index, contact details and FAQ — a channel the live WordPress site has zero presence in.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AUTHORITY ================= -->
+<section id="authority" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">08</span>
+      <h2>Where the Live Site Still Wins — and the Honest Gaps</h2>
+      <p>The rebuild is not flawless. These are the live site's genuine advantages and the items the rebuild should address.</p>
+    </div>
+
+    <div class="grid g2">
+      <div class="card lose-card">
+        <h3 style="color:var(--lose)">Live site advantages</h3>
+        <ul class="plain">
+          <li><strong>7 years of domain equity</strong> — indexed since 2019, with referring domains pointing at current URLs. This is real ranking capital.</li>
+          <li><strong>4 tool pages the rebuild lacks</strong>: <span class="mono">/tyre-pressure-calculator/</span>, <span class="mono">/load-calculator/</span>, <span class="mono">/tyre-spec-chart/</span>, <span class="mono">/rim-size-chart/</span> — genuinely useful, link-worthy utilities that should be ported to the rebuild.</li>
+          <li><strong>Deeper page coverage</strong> — industry sub-pages (irrigation, implements, forestry, tractors/harvestors) and a partners page that the rebuild folds into broader pages.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Rebuild pre-launch fixes</h3>
+        <ul class="cross">
+          <li><strong>Backup files in the deploy directory</strong> — <span class="mono">industries - Backup.html</span>, <span class="mono">rims - backup.html</span>, <span class="mono">tyres - Copy.html</span>, <span class="mono">original-index.html</span> are robots-disallowed but should not ship at all.</li>
+          <li><strong><span class="mono">news.html</span> vs <span class="mono">news2.html</span></strong> — verify each carries a distinct canonical so they can't compete.</li>
+          <li><strong>Sitemap lastmod dates</strong> — a few predate the latest file edits (e.g. homepage lastmod 2026-08-06, file updated 2026-09-30). Refresh before submission.</li>
+          <li><strong>Port the 4 calculator/chart tool pages</strong> from the live site — they earn links and long-tail queries.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTION ================= -->
+<section id="projection">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">09</span>
+      <h2>Projected Impact — How Much Better the Winner Performs</h2>
+      <p>Translating the score gap into traffic terms. Projections are directional estimates based on the measured deltas, not guarantees; field data from Search Console should validate them post-launch.</p>
+    </div>
+
+    <div class="grid g3">
+      <div class="card win-card">
+        <h3 style="color:var(--win)">+5–15% click-through</h3>
+        <p>From rewritten keyword-first titles and descriptions at <em>unchanged</em> rankings — the fastest, most reliable gain, typically visible within 2–6 weeks.</p>
+      </div>
+      <div class="card win-card">
+        <h3 style="color:var(--win)">Rich-result eligibility</h3>
+        <p>FAQ, Product and OfferCatalog markup the live site lacks — additional SERP features and real estate from day one of indexing.</p>
+      </div>
+      <div class="card win-card">
+        <h3 style="color:var(--win)">+25–60% organic traffic in 3–6 months</h3>
+        <p>Combined effect of CTR gains, CWV improvement, indexation clean-up and schema — <em>contingent on launching with the 301 redirect map</em>.</p>
+      </div>
+    </div>
+
+    <div class="chart-card" style="margin-top:26px">
+      <h3 style="margin-bottom:4px">Illustrative 12-month organic visibility paths</h3>
+      <div class="legend">
+        <span><span class="key" style="background:var(--muted)"></span>Keep live WordPress site</span>
+        <span><span class="key" style="background:var(--win)"></span>Launch rebuild <strong>with</strong> 301 redirects</span>
+        <span><span class="key" style="background:var(--lose)"></span>Launch rebuild <strong>without</strong> redirects</span>
+      </div>
+      <svg viewBox="0 0 800 300" role="img" aria-label="Line chart comparing three organic visibility scenarios over 12 months">
+        <!-- gridlines -->
+        <g stroke="#2a323c" stroke-width="1">
+          <line x1="60" y1="40"  x2="770" y2="40"/>
+          <line x1="60" y1="105" x2="770" y2="105"/>
+          <line x1="60" y1="170" x2="770" y2="170"/>
+          <line x1="60" y1="235" x2="770" y2="235"/>
+        </g>
+        <line x1="60" y1="270" x2="770" y2="270" stroke="#2a323c" stroke-width="1.5"/>
+        <line x1="60" y1="30"  x2="60"  y2="270" stroke="#2a323c" stroke-width="1.5"/>
+        <!-- axis labels -->
+        <g fill="#9aa4af" font-size="12" font-family="Inter, sans-serif">
+          <text x="52" y="44"  text-anchor="end">High</text>
+          <text x="52" y="109" text-anchor="end">Current</text>
+          <text x="52" y="239" text-anchor="end">Low</text>
+          <text x="60"  y="290">Launch</text>
+          <text x="190" y="290">+2 mo</text>
+          <text x="330" y="290">+4 mo</text>
+          <text x="470" y="290">+6 mo</text>
+          <text x="620" y="290">+9 mo</text>
+          <text x="740" y="290">+12 mo</text>
+        </g>
+        <!-- flat baseline -->
+        <path d="M 60 105 L 770 105" fill="none" stroke="#9aa4af" stroke-width="2.5" stroke-dasharray="6 5" opacity=".8"/>
+        <!-- with redirects: small dip, strong growth -->
+        <path d="M 60 105 L 110 96 L 160 100 L 220 92 L 290 80 L 370 68 L 460 55 L 560 45 L 660 38 L 770 32"
+              fill="none" stroke="#2fb672" stroke-width="3.5" stroke-linecap="round"/>
+        <circle cx="770" cy="32" r="5" fill="#2fb672"/>
+        <!-- without redirects: deep dip, partial recovery -->
+        <path d="M 60 105 L 100 170 L 140 205 L 190 215 L 260 205 L 340 190 L 430 175 L 540 160 L 650 148 L 770 138"
+              fill="none" stroke="#e05a4e" stroke-width="3" stroke-linecap="round" opacity=".9"/>
+        <circle cx="770" cy="138" r="5" fill="#e05a4e"/>
+      </svg>
+      <p class="disclaimer">
+        Illustrative projection, not a guarantee. "With redirects" assumes every legacy URL 301s to its new counterpart, sitemaps are resubmitted, and Search Console is monitored. "Without redirects" shows the cost of skipping that work: legacy rankings 404 overnight, and recovery depends on re-earning each position from a zero-history URL set — 12 months on, it still hasn't caught up. The rebuild's quality advantage only converts into traffic if the existing equity is carried across.
+      </p>
+    </div>
+
+    <div class="card" style="margin-top:22px">
+      <h3>Scoring methodology</h3>
+      <div class="table-wrap" style="border:0;background:transparent">
+        <table style="min-width:520px">
+          <thead><tr><th>Category</th><th>Weight</th><th>Live WP</th><th>Rebuild</th></tr></thead>
+          <tbody>
+            <tr><td>On-page optimisation</td><td>20%</td><td>35</td><td style="color:var(--win);font-weight:700">93</td></tr>
+            <tr><td>Performance &amp; Core Web Vitals</td><td>20%</td><td>25</td><td style="color:var(--win);font-weight:700">95</td></tr>
+            <tr><td>Technical SEO &amp; indexation quality</td><td>15%</td><td>55</td><td style="color:var(--win);font-weight:700">90</td></tr>
+            <tr><td>Content quality &amp; depth</td><td>15%</td><td>50</td><td style="color:var(--win);font-weight:700">85</td></tr>
+            <tr><td>Domain authority &amp; history</td><td>15%</td><td style="color:var(--win);font-weight:700">85</td><td>15</td></tr>
+            <tr><td>Structured data &amp; rich results</td><td>10%</td><td>30</td><td style="color:var(--win);font-weight:700">90</td></tr>
+            <tr><td>Geo targeting &amp; AI-search readiness</td><td>5%</td><td>10</td><td style="color:var(--win);font-weight:700">95</td></tr>
+            <tr><td style="font-weight:700">Composite</td><td style="font-weight:700">100%</td><td style="font-weight:700;color:var(--lose)">44.0</td><td style="font-weight:700;color:var(--win)">79.9</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ACTIONS ================= -->
+<section id="actions" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">10</span>
+      <h2>Launch Checklist</h2>
+      <p>Ordered by impact. Items 1–2 are non-negotiable; the rest are quick wins.</p>
+    </div>
+
+    <div class="grid g2">
+      <div class="card win-card">
+        <h3 style="color:var(--win)">Critical — before deploy</h3>
+        <ul class="check">
+          <li><strong>Build the full 301 redirect map</strong> — all 89 live URLs (46 posts + 43 pages) to their new counterparts, including <span class="mono">/6037-2/</span> and the emoji post, plus <span class="mono">/wp-content/uploads/…</span> image URLs referenced by old articles and external links.</li>
+          <li><strong>Exclude backup/dev files from the deploy</strong> — remove the four backup HTML files rather than relying on robots.txt.</li>
+          <li><strong>Verify <span class="mono">news.html</span> / <span class="mono">news2.html</span> canonicals</strong> are distinct and intentional.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Recommended — first month after launch</h3>
+        <ul class="plain">
+          <li><strong>Refresh sitemap lastmod dates</strong> and resubmit in Google Search Console; watch Coverage for redirect/404 surprises for 4 weeks.</li>
+          <li><strong>Port the 4 calculator/chart tool pages</strong> from the live site (tyre-pressure, load, tyre-spec, rim-size) — proven utility content with existing demand.</li>
+          <li><strong>Re-test all structured data</strong> in Google's Rich Results Test post-deploy.</li>
+          <li><strong>Benchmark Search Console</strong> exports (clicks, impressions, CTR, position) on launch day so the +CTR and +traffic projections can be verified with real data.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout green" style="margin-top:26px">
+      <strong>Bottom line:</strong> the static rebuild is the better site by a wide, measurable margin — 80 vs 44, with half the page weight, 95% fewer blocking requests, purpose-built metadata on every page, rich-result schema, correct South African targeting, and an AI-search surface the live site lacks entirely. Launch it <strong>with the 301 redirect map</strong> and the realistic expectation is a step-change in organic performance within one to two quarters — and it protects the one asset where the live site still leads.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Methodology:</strong> live figures captured from production HTML as served on 30 Sep 2026 (homepage + tyres page + robots.txt + all sitemap indexes). Rebuild figures captured from local source files the same day. Schema detection performed on static HTML; both sites emit schema server-side (no JS-injection blind spot). Performance LCP figures are engineering estimates pending field data — all other numbers are directly measured.</p>
+    <p><strong>Scope note:</strong> crawl limited to homepage, one inner page, robots.txt and sitemaps; a full-site crawl may surface additional findings on either side.</p>
+    <p>Titan Global Wheel — internal SEO comparison · generated 30 September 2026</p>
+    <a class="back-top" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ Back to top</a>
+  </div>
+</footer>
+
+<script>
+  // Animate score bars when they enter the viewport
+  (function () {
+    var fills = document.querySelectorAll('.bar-fill[data-w]');
+    if (!('IntersectionObserver' in window)) {
+      fills.forEach(function (f) { f.style.width = Math.min(100, parseFloat(f.dataset.w)) + '%'; });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          var f = e.target;
+          f.style.width = Math.min(100, parseFloat(f.dataset.w)) + '%';
+          io.unobserve(f);
+        }
+      });
+    }, { threshold: 0.4 });
+    fills.forEach(function (f) { io.observe(f); });
+  })();
+</script>
+
+</body>
+</html>

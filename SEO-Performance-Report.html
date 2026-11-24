@@ -1,0 +1,1441 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Titan Global Wheel — SEO &amp; Performance Audit Report</title>
+<style>
+  :root{
+    --bg:#0b0f14; --bg-2:#0f141b; --surface:#141b24; --line:#22304a;
+    --ink:#e6ecf2; --muted:#94a3b8; --muted-2:#64748b;
+    --accent:#5b8bd0; --accent-2:#e01030; --good:#22c55e; --warn:#f59e0b; --bad:#ef4444;
+    --ok:#22c55e; --shadow:0 18px 50px -20px rgba(0,0,0,.55);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+    font-family:Inter,'Segoe UI',Roboto,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.55}
+  .wrap{max-width:1280px;margin:0 auto;padding:32px 28px 80px}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* Header */
+  .hero{position:relative;border-radius:18px;padding:36px 32px;
+    background:linear-gradient(135deg,#0a1a2c 0%,#0e2336 60%,#0a1320 100%);
+    border:1px solid var(--line);overflow:hidden;margin-bottom:28px}
+  .hero::after{content:"";position:absolute;right:-80px;top:-80px;width:280px;height:280px;
+    background:radial-gradient(circle, rgba(91,139,208,.35), transparent 70%);filter:blur(10px)}
+  .hero h1{font-size:32px;margin:0 0 8px;letter-spacing:-.01em;font-weight:800}
+  .hero .sub{color:var(--muted);font-size:14px;max-width:760px;margin:0}
+  .hero .meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
+  .pill{display:inline-block;padding:5px 11px;border-radius:999px;background:rgba(91,139,208,.12);
+    color:#bcd2ee;font-size:12px;border:1px solid rgba(91,139,208,.25);font-weight:500}
+  .pill.brand{background:rgba(224,16,48,.10);color:#ffb6c2;border-color:rgba(224,16,48,.25)}
+  .pill.ok{background:rgba(34,197,94,.10);color:#a7f3c8;border-color:rgba(34,197,94,.25)}
+  .pill.warn{background:rgba(245,158,11,.10);color:#fde2a3;border-color:rgba(245,158,11,.25)}
+  .pill.bad{background:rgba(239,68,68,.10);color:#fecaca;border-color:rgba(239,68,68,.25)}
+
+  h2{font-size:22px;margin:36px 0 14px;letter-spacing:-.01em;font-weight:700;
+    display:flex;align-items:center;gap:10px}
+  h2::before{content:"";width:4px;height:22px;background:var(--accent);border-radius:2px}
+  h3{font-size:15px;margin:18px 0 8px;color:var(--ink);font-weight:600}
+  p.lede{color:var(--muted);font-size:14px;margin:0 0 16px}
+
+  /* KPI grid */
+  .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:18px 0 8px}
+  .kpi{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;
+    position:relative;overflow:hidden}
+  .kpi .k{font-size:11px;color:var(--muted-2);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+  .kpi .v{font-size:28px;font-weight:800;margin-top:6px;letter-spacing:-.02em}
+  .kpi .d{font-size:12px;color:var(--muted);margin-top:2px}
+  .kpi.good .v{color:#a7f3c8}
+  .kpi.bad .v{color:#fecaca}
+  .kpi.warn .v{color:#fde2a3}
+  .kpi.brand .v{color:#bcd2ee}
+
+  /* Cards / table */
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:18px}
+  .table-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--line);background:var(--bg-2)}
+  table{width:100%;border-collapse:collapse;font-size:13px;min-width:880px}
+  thead th{position:sticky;top:0;background:#0d1722;color:#bcd2ee;text-align:left;
+    padding:12px 14px;font-weight:600;font-size:12px;letter-spacing:.04em;
+    text-transform:uppercase;border-bottom:1px solid var(--line);white-space:nowrap}
+  tbody td{padding:11px 14px;border-bottom:1px solid rgba(34,48,74,.5);vertical-align:top}
+  tbody tr:hover{background:rgba(91,139,208,.05)}
+  tbody tr:last-child td{border-bottom:none}
+  .pg{font-weight:600;color:#cfe1ff;white-space:nowrap}
+  .url{color:var(--muted-2);font-size:11px;font-family:ui-monospace,Menlo,Consolas,monospace}
+  .num{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+  .ok{color:#86efac}
+  .warn{color:#fcd34d}
+  .bad{color:#fca5a5}
+  .small{font-size:11px;color:var(--muted)}
+  .nowrap{white-space:nowrap}
+
+  /* grade chip */
+  .grade{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;
+    border-radius:8px;font-weight:800;font-size:13px;color:#fff}
+  .g-a{background:#16a34a}
+  .g-b{background:#65a30d}
+  .g-c{background:#ca8a04}
+  .g-d{background:#ea580c}
+  .g-f{background:#dc2626}
+
+  /* progress */
+  .bar{height:6px;background:#1c2735;border-radius:99px;overflow:hidden;width:80px;display:inline-block;vertical-align:middle;margin-left:8px}
+  .bar > i{display:block;height:100%;background:linear-gradient(90deg,#22c55e,#5b8bd0);border-radius:99px}
+
+  /* tag */
+  .tag{display:inline-block;padding:2px 8px;border-radius:99px;background:rgba(91,139,208,.12);
+    color:#bcd2ee;font-size:11px;border:1px solid rgba(91,139,208,.25);margin:0 2px 2px 0;font-weight:500}
+  .tag.good{background:rgba(34,197,94,.10);color:#a7f3c8;border-color:rgba(34,197,94,.25)}
+  .tag.warn{background:rgba(245,158,11,.10);color:#fde2a3;border-color:rgba(245,158,11,.25)}
+  .tag.bad{background:rgba(239,68,68,.10);color:#fecaca;border-color:rgba(239,68,68,.25)}
+  .tag.dim{background:rgba(148,163,184,.10);color:#cbd5e1;border-color:rgba(148,163,184,.25)}
+
+  /* per-page card */
+  .ppage{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px}
+  .ppage .head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:14px}
+  .ppage .head .pg{font-size:16px}
+  .ppage .head .url{font-size:12px}
+  .ppage .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  .field{background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+  .field .k{font-size:10.5px;color:var(--muted-2);text-transform:uppercase;letter-spacing:.07em;font-weight:600}
+  .field .v{font-size:13px;margin-top:4px;word-break:break-word;line-height:1.5}
+  .field .v.mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:#bcd2ee}
+  .field .v.title{font-weight:600;color:#cfe1ff}
+  .field .v.alt{color:#fca5a5}
+  .field .v.good{color:#86efac}
+  .field .v.warn{color:#fcd34d}
+  .issues{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line)}
+  .issues .k{font-size:10.5px;color:var(--muted-2);text-transform:uppercase;letter-spacing:.07em;font-weight:600}
+  .issues ul{margin:6px 0 0;padding:0;list-style:none}
+  .issues li{font-size:12.5px;color:#fecaca;padding:3px 0}
+  .issues li.good{color:#86efac}
+
+  /* TOC */
+  .toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;margin:10px 0 0}
+  .toc a{display:block;padding:8px 12px;background:var(--surface);border:1px solid var(--line);
+    border-radius:10px;font-size:13px;color:#cfe1ff}
+  .toc a:hover{border-color:var(--accent);text-decoration:none;background:rgba(91,139,208,.06)}
+
+  /* footer */
+  footer.foot{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);
+    color:var(--muted-2);font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px;font-size:12px;color:var(--muted)}
+  .legend .sw{display:inline-block;width:10px;height:10px;border-radius:3px;vertical-align:middle;margin-right:5px}
+</style>
+  <link rel="stylesheet" href="css/logo-banner.css" />
+  </head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="pill brand">SEO + Performance Audit</div>
+    <h1>Titan Global Wheel — Site-wide Health Report</h1>
+    <p class="sub">Crawled every published page over a local HTTP server, parsed the HTML, and graded each on on-page SEO, technical SEO, Core-Web-Vitals signals, and asset weight. Production-only HTTP headers (gzip/Brotli) are inferred — the live audit was run on the dev server.</p>
+    <div class="meta">
+      <span class="pill">20 pages audited</span>
+      <span class="pill">129 images scanned</span>
+      <span class="pill">1171KB total HTML</span>
+      <span class="pill">18/20 with JSON-LD</span>
+      <span class="pill">4/20 LCP-ready</span>
+      <span class="pill">19/20 with hreflang</span>
+      <span class="pill brand">www.titanglobalwheel.co.za</span>
+    </div>
+  </header>
+
+  <h2 id="summary">Executive Summary</h2>
+  <p class="lede">Aggregate health of the site across the audited pages. Click any KPI to jump to the relevant section.</p>
+  <div class="kpi-grid">
+    <div class="kpi brand"><div class="k">Avg SEO + Perf score</div><div class="v">93<span style="font-size:14px;color:var(--muted-2);font-weight:600">/100</span></div><div class="d">A overall</div></div>
+    <div class="kpi warn"><div class="k">Titles in range</div><div class="v">18<span style="font-size:14px;color:var(--muted-2);font-weight:600">/20</span></div><div class="d">25–60 chars</div></div>
+    <div class="kpi bad"><div class="k">Meta desc OK</div><div class="v">16<span style="font-size:14px;color:var(--muted-2);font-weight:600">/20</span></div><div class="d">50–155 chars</div></div>
+    <div class="kpi good"><div class="k">Exactly 1 H1</div><div class="v">20<span style="font-size:14px;color:var(--muted-2);font-weight:600">/20</span></div><div class="d">Single, keyword-aligned</div></div>
+    <div class="kpi warn"><div class="k">Canonical set</div><div class="v">19<span style="font-size:14px;color:var(--muted-2);font-weight:600">/20</span></div><div class="d">1 missing</div></div>
+    <div class="kpi warn"><div class="k">hreflang set</div><div class="v">19<span style="font-size:14px;color:var(--muted-2);font-weight:600">/20</span></div><div class="d">en-za on every indexable page</div></div>
+    <div class="kpi warn"><div class="k">With JSON-LD</div><div class="v">18<span style="font-size:14px;color:var(--muted-2);font-weight:600">/20</span></div><div class="d">Structured data</div></div>
+    <div class="kpi good"><div class="k">Imgs missing alt</div><div class="v">0</div><div class="d">a11y + image SEO</div></div>
+    <div class="kpi bad"><div class="k">LCP images hinted</div><div class="v">4<span style="font-size:14px;color:var(--muted-2);font-weight:600">/20</span></div><div class="d">fetchpriority=high</div></div>
+    <div class="kpi warn"><div class="k">&lt;100KB pages</div><div class="v">19<span style="font-size:14px;color:var(--muted-2);font-weight:600">/20</span></div><div class="d">HTML doc weight</div></div>
+    <div class="kpi good"><div class="k">Pages ≥150KB</div><div class="v">0</div><div class="d">Heavy HTML</div></div>
+  </div>
+
+  <div class="legend">
+    <span><span class="sw" style="background:#16a34a"></span>A 90–100</span>
+    <span><span class="sw" style="background:#65a30d"></span>B 80–89</span>
+    <span><span class="sw" style="background:#ca8a04"></span>C 70–79</span>
+    <span><span class="sw" style="background:#ea580c"></span>D 60–69</span>
+    <span><span class="sw" style="background:#dc2626"></span>F &lt;60</span>
+  </div>
+
+  <h2 id="pages">Per-Page Scoreboard</h2>
+  <p class="lede">Every page, side-by-side: SEO tags, on-page structure, image strategy, structured data, and weight. Grade is a 0–100 composite (title, meta, H1, canonical, JSON-LD, alt text, LCP, doc weight, viewport, lang).</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Score</th>
+          <th class="num">Title</th>
+          <th class="num">Meta</th>
+          <th class="num">H1</th>
+          <th>Canon.</th>
+          <th>JSON-LD</th>
+          <th class="num">Imgs (no‑alt / w‑h)</th>
+          <th class="num">Lazy / FP</th>
+          <th class="num">HTML</th>
+          <th class="num">TTFB*</th>
+        </tr>
+      </thead>
+      <tbody>
+<tr>
+    <td><a href="#" class="pg">Home</a><div class="url">/</div></td>
+    <td><span class="grade g-a">A</span><span class="bar"><i style="width:91%"></i></span><div class="small">91/100 · 2 issues</div></td>
+    <td class="num ok">51<div class="small">ok</div></td>
+    <td class="num warn">12<div class="small">short</div></td>
+    <td class="num ok">1</td>
+    <td><span class="ok">✓</span></td>
+    <td><span class="tag dim">unknown</span></td>
+    <td class="num">13 <span class="small">(0 / 4)</span></td>
+    <td class="num">9 / <span class="bad">0</span></td>
+    <td class="num">78.8KB</td>
+    <td class="num">53ms</td>
+  </tr>
+<tr>
+    <td><a href="#about_html" class="pg">About</a><div class="url">/about.html</div></td>
+    <td><span class="grade g-b">B</span><span class="bar"><i style="width:89%"></i></span><div class="small">89/100 · 2 issues</div></td>
+    <td class="num ok">26<div class="small">ok</div></td>
+    <td class="num warn">18<div class="small">short</div></td>
+    <td class="num ok">1</td>
+    <td><span class="ok">✓</span></td>
+    <td><span class="tag dim">Organization</span></td>
+    <td class="num">5 <span class="small">(0 / 5)</span></td>
+    <td class="num">0 / <span class="bad">0</span></td>
+    <td class="num">54.7KB</td>
+    <td class="num">3ms</td>
+  </tr>
+<tr>
+    <td><a href="#tyres_html" class="pg">Tyres</a><div class="url">/tyres.html</div></td>
+    <td><span class="grade g-a">A</span><span class="bar"><i style="width:100%"></i></span><div class="small">100/100</div></td>
+    <td class="num ok">53<div class="small">ok</div></td>
+    <td class="num ok">136<div class="small">ok</div></td>
+    <td class="num ok">1</td>
+    <td><span class="ok">✓</span></td>
+    <td><span class="tag dim">ItemPage</span> <span class="tag dim">BreadcrumbList</span></td>
+    <td class="num">9 <span class="small">(0 / 4)</span></td>
+    <td class="num">4 / <span class="ok">1</span></td>
+    <td class="num">63.8KB</td>
+    <td class="num">4ms</td>
+  </tr>
+<tr>
+    <td><a href="#rims_html" class="pg">Rims</a><div class="url">/rims.html</div></td>
+    <td><span class="grade g-a">A</span><span class="bar"><i style="width:90%"></i></span><div class="small">90/100 · 1 issue</div></td>
+    <td class="num bad">62<div class="small">over</div></td>
+    <td class="num ok">139<div class="small">ok</div></td>
+    <td class="num ok">1</td>
+    <td><span class="ok">✓</span></td>
+    <td><span class="tag dim">Organization</span> <span class="tag dim">BreadcrumbList</span></td>
+    <td class="num">5 <span class="small">(0 / 4)</span></td>
+    <td class="num">0 / <span class="ok">1</span></td>
+    <td class="num">60.5KB</td>
+    <td class="num">4ms</td>
+  </tr>
+<tr>
+    <td><a href="#accessories_html" class="pg">Accessories</a><div class="url">/accessories.html</div></td>
+    <td><span class="grade g-a">A</span><span class="bar"><i style="width:91%"></i></span><div class="small">91/100 · 2 issues</div></td>
+    <td class="num ok">32<div class="small">ok</div></td>
+    <td class="num warn">26<div class="small">short</div></td>
+    <td class="num ok">1</td>
+    <td><span class="ok">✓</span></td>
+    <td><span class="tag dim">Organization</span></td>
+    <td class="num">4 <span class="small">(0 / 4)</span></td>
+    <td class="num">0 / <span class="bad">0</span></td>
+    <td class="num">37.9KB</td>
+    <td class="num">3ms</td>
+  </tr>
+<tr>
+    <td><a href="#runflats_html" class="pg">Runflats</a><div class="url">/runflats.html</div></td>
+    <td><span class="grade g-a">A</span><span class="bar"><i style="width:95%"></i></span><div class="small">95/100 · 1 issue</div></td>
+    <td class="num ok">43<div class="small">ok</div></td>
+    <td class="num ok">138<div class="small">ok</div></td>
+    <td class="num ok">1</td>
+    <td><span class="ok">✓</span></td>
+    <td><span class="tag dim">Product</span></td>
+    <td class="num">6 <span class="small">(0 / 4)</span></td>
+    <td class="num">2 / <span class="bad">0</span></td>
+    <td class="num">42.7KB</td>
+    <td class="num">2ms</td>
+  </tr>
+<tr>
+    <td><a href="#nama_html" class="pg">NAMA X/T</a><div class="url">/nama.html</div></td>
+    <td><span class="grade g-a">A</span><span class="bar"><i style="width:100%"></i></span><div class="small">100/100</div></td>
+    <td class="num ok">51<div class="small">ok</div></td>
+    <td class="num ok">133<div class="small">ok</div></td>
+    <td class="num ok">1</td>
+    <td><span class="ok">✓</span></td>
+    <td><span class="tag dim">Product</span> <span class="tag dim">BreadcrumbList</span> <span class="tag dim">FAQPage</span></td>
+    <td class="num">7 <span class="small">(0 / 4)</span></td>
+    <td class="num">2 / <span class="ok">1</span></td>
+    <td class="num">71.8KB</td>
+    <td class="num">2ms</td>
+  </tr>
+<tr>
+    <td><a href="#featured_html" class="pg">Featured Products</a><div class="url">/featured.html</div></td>
+    <td><span class="grade g-b">B</span><span class="bar"><i style="width:83%"></i></span><div class="small">83/100 · 3 issues</div></td>
+    <td class="num bad">67<div class="small">over</div></td>
+    <td class="num warn">5<div class="small">short</div></td>
+    <td class="num ok">1</td>
+    <td><span class="ok">✓</span></td>
+    <td><span class="tag dim">Organization</span> <span class="tag dim">BreadcrumbList</span> <span class="tag dim">ItemList</span> <span class="tag dim">FAQPage</span></td>
+    <td class="num">4 <span class="small">(0 / 4)</span></td>
+    <td class="num">0 / <span class="bad">0</span></td>
+    <td class="num">89.3KB</td>
+    <td class="num">4ms</td>
+  </tr>
+<tr>
+    <td><a href="#industries_html" class="pg">Industries</a><div class="url">/industries.html</div></td>
+    <td><span class="grade g-a">A</span><span class="bar"><i style="width:95%"></i></span><div class="small">95/100 · 1 issue</div></td>
+    <td class="num ok">31<div class="small">ok</div></td>
+    <td class="num ok">131<div class="small">ok</div></td>
+    <td class="num ok">1</td>
+    <td><span class="ok">✓</span></td>
+    <td><span class="tag dim">Organization</span> <span class="tag dim">BreadcrumbList</span></td>
+    <td class="num">8 <span class="small">(0 / 4)</span></td>
+    <td class="num">4 / <span class="bad">0</span></td>
+    <td class="num">51KB</td>
+    <td class="num">3ms</td>
+  </tr>
+<tr>
+    <td><a href="#agriculture_html" class="pg">Agriculture</a><div class="url">/agriculture.html</div></td>
+    <td><span class="grade g-a">A</span><span class="bar"><i style="width:95%"></i></span><div class="small">95/100 · 1 issue</div></td>
+    <td class="num ok">50<div class="small">ok</div></td>
+    <td class="num ok">139<div class="small">ok</div></td>
+    <td class="num ok">1</td>
+    <td><span class="ok">✓</span></td>
+    <td><span class="tag dim">Organization</span> <span class="tag dim">BreadcrumbList</span></td>
+    <td class="num">6 <span class="small">(0 / 4)</span></td>
+    <td class="num">2 / <span class="bad">0</span></td>
+    <td class="num">42.6KB</td>
+    <td class="num">7ms</td>
+  </tr>
+<tr>
+    <td><a href="#mining_html" class="pg">Mining</a><div class="url">/mining.html</div></td>
+    <td><span class="grade g-a">A</span><span class="bar"><i style="width:95%"></i></span><div class="small">95/100 · 1 issue</div></td>
+    <td class="num ok">45<div class="small">ok</div></td>
+    <td class="num ok">153<div class="small">ok</div></td>
+    <td class="num ok">1</td>
+    <td><span class="ok">✓</span></td>
+    <td><span class="tag dim">Organization</span> <span class="tag dim">BreadcrumbList</span></td>
+    <td class="num">6 <span class="small">(0 / 4)</span></td>
+    <td class="num">2 / <span class="bad">0</span></td>
+    <td class="num">42.4KB</td>
+    <td class="num">3ms</td>
+  </tr>
+<tr>
+    <td><a href="#military_html" class="pg">Military</a><div class="url">/military.html</div></td>
+    <td><span class="grade g-a">A</span><span class="bar"><i style="width:95%"></i></span><div class="small">95/100 · 1 issue</div></td>
+    <td class="num ok">50<div class="small">ok</div></td>
+    <td class="num ok">152<div class="small">ok</div></td>
+    <td class="num ok">1</td>
+    <td><span class="ok">✓</span></td>
+    <td><span class="tag dim">Organization</span> <span class="tag dim">BreadcrumbList</span></td>
+    <td class="num">6 <span class="small">(0 / 4)</span></td>
+    <td class="num">2 / <span class="bad">0</span></td>
+    <td class="num">45.8KB</td>
+    <td class="num">3ms</td>
+  </tr>
+<tr>
+    <td><a href="#construction_html" class="pg">Construction</a><div class="url">/construction.html</div></td>
+    <td><span class="grade g-a">A</span><span class="bar"><i style="width:95%"></i></span><div class="small">95/100 · 1 issue</div></td>
+    <td class="num ok">50<div class="small">ok</div></td>
+    <td class="num ok">142<div class="small">ok</div></td>
+    <td class="num ok">1</td>
+    <td><span class="ok">✓</span></td>
+    <td><span class="tag dim">Organization</span> <span class="tag dim">BreadcrumbList</span></td>
+    <td class="num">6 <span class="small">(0 / 4)</span></td>
+    <td class="num">2 / <span class="bad">0</span></td>
+    <td class="num">42.5KB</td>
+    <td class="num">2ms</td>
+  </tr>
+<tr>
+    <td><a href="#repairs_html" class="pg">Repairs</a><div class="url">/repairs.html</div></td>
+    <td><span class="grade g-a">A</span><span class="bar"><i style="width:100%"></i></span><div class="small">100/100</div></td>
+    <td class="num ok">48<div class="small">ok</div></td>
+    <td class="num ok">126<div class="small">ok</div></td>
+    <td class="num ok">1</td>
+    <td><span class="ok">✓</span></td>
+    <td><span class="tag dim">BreadcrumbList</span> <span class="tag dim">Service</span> <span class="tag dim">FAQPage</span></td>
+    <td class="num">9 <span class="small">(0 / 4)</span></td>
+    <td class="num">4 / <span class="ok">1</span></td>
+    <td class="num">65.7KB</td>
+    <td class="num">2ms</td>
+  </tr>
+<tr>
+    <td><a href="#News_html" class="pg">News</a><div class="url">/news.html</div></td>
+    <td><span class="grade g-a">A</span><span class="bar"><i style="width:95%"></i></span><div class="small">95/100 · 1 issue</div></td>
+    <td class="num ok">25<div class="small">ok</div></td>
+    <td class="num ok">89<div class="small">ok</div></td>
+    <td class="num ok">1</td>
+    <td><span class="ok">✓</span></td>
+    <td><span class="tag dim">Organization</span></td>
+    <td class="num">4 <span class="small">(0 / 4)</span></td>
+    <td class="num">0 / <span class="bad">0</span></td>
+    <td class="num">92.3KB</td>
+    <td class="num">2ms</td>
+  </tr>
+<tr>
+    <td><a href="#events_html" class="pg">Events</a><div class="url">/events.html</div></td>
+    <td><span class="grade g-a">A</span><span class="bar"><i style="width:95%"></i></span><div class="small">95/100 · 1 issue</div></td>
+    <td class="num ok">27<div class="small">ok</div></td>
+    <td class="num ok">124<div class="small">ok</div></td>
+    <td class="num ok">1</td>
+    <td><span class="ok">✓</span></td>
+    <td><span class="tag dim">Organization</span></td>
+    <td class="num">7 <span class="small">(0 / 4)</span></td>
+    <td class="num">3 / <span class="bad">0</span></td>
+    <td class="num">73.3KB</td>
+    <td class="num">2ms</td>
+  </tr>
+<tr>
+    <td><a href="#contact_html" class="pg">Contact</a><div class="url">/contact.html</div></td>
+    <td><span class="grade g-a">A</span><span class="bar"><i style="width:95%"></i></span><div class="small">95/100 · 1 issue</div></td>
+    <td class="num ok">31<div class="small">ok</div></td>
+    <td class="num ok">123<div class="small">ok</div></td>
+    <td class="num ok">1</td>
+    <td><span class="ok">✓</span></td>
+    <td><span class="tag dim">Organization</span></td>
+    <td class="num">12 <span class="small">(0 / 4)</span></td>
+    <td class="num">8 / <span class="bad">0</span></td>
+    <td class="num">107.4KB</td>
+    <td class="num">2ms</td>
+  </tr>
+<tr>
+    <td><a href="#Privacy-Policy_html" class="pg">Privacy Policy</a><div class="url">/Privacy-Policy.html</div></td>
+    <td><span class="grade g-b">B</span><span class="bar"><i style="width:89%"></i></span><div class="small">89/100 · 2 issues</div></td>
+    <td class="num ok">35<div class="small">ok</div></td>
+    <td class="num ok">90<div class="small">ok</div></td>
+    <td class="num ok">1</td>
+    <td><span class="ok">✓</span></td>
+    <td><span class="bad">none</span></td>
+    <td class="num">4 <span class="small">(0 / 4)</span></td>
+    <td class="num">0 / <span class="bad">0</span></td>
+    <td class="num">23.5KB</td>
+    <td class="num">2ms</td>
+  </tr>
+<tr>
+    <td><a href="#Cookies-Policy_html" class="pg">Cookies Policy</a><div class="url">/Cookies-Policy.html</div></td>
+    <td><span class="grade g-b">B</span><span class="bar"><i style="width:89%"></i></span><div class="small">89/100 · 2 issues</div></td>
+    <td class="num ok">35<div class="small">ok</div></td>
+    <td class="num ok">84<div class="small">ok</div></td>
+    <td class="num ok">1</td>
+    <td><span class="ok">✓</span></td>
+    <td><span class="bad">none</span></td>
+    <td class="num">4 <span class="small">(0 / 4)</span></td>
+    <td class="num">0 / <span class="bad">0</span></td>
+    <td class="num">22.1KB</td>
+    <td class="num">2ms</td>
+  </tr>
+<tr>
+    <td><a href="#404_html" class="pg">404</a><div class="url">/404.html</div></td>
+    <td><span class="grade g-a">A</span><span class="bar"><i style="width:90%"></i></span><div class="small">90/100 · 2 issues</div></td>
+    <td class="num ok">41<div class="small">ok</div></td>
+    <td class="num ok">69<div class="small">ok</div></td>
+    <td class="num ok">1</td>
+    <td><span class="bad">✕</span></td>
+    <td><span class="tag dim">Organization</span></td>
+    <td class="num">4 <span class="small">(0 / 4)</span></td>
+    <td class="num">0 / <span class="bad">0</span></td>
+    <td class="num">62.3KB</td>
+    <td class="num">2ms</td>
+  </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small" style="margin-top:8px">* TTFB measured against a local Node dev server, not the public CDN. Treat as a relative baseline, not a real-world value.</p>
+
+  <h2 id="findings">Site-Wide Findings</h2>
+  <p class="lede">Patterns that show up across the site. Fix these once in the partials and every page benefits.</p>
+  <div class="card">
+    <h3 style="margin-top:0">What's working well</h3>
+    <ul style="margin:0;padding-left:20px;color:var(--ink);line-height:1.7">
+      <li><strong>Single H1 per page</strong> on all 20 pages — no H1 cannibalization.</li>
+      <li><strong>Alt text is universal</strong> — 0 of 129 images are missing alt.</li>
+      <li><strong>JSON-LD on 18 of 20 pages</strong>, with Organization + BreadcrumbList site-wide and Product/Service/FAQPage layered on commercial pages.</li>
+      <li><strong>hreflang="en-za" on 19 of 20 indexable pages</strong> — every page that should be indexed (404 correctly omits it) declares its locale to Google.</li>
+      <li><strong>One canonical URL per page</strong> (404 page is the only exception, which is correct — 404s shouldn't declare a canonical). On legacy article URLs the canonical points to the new /blog/&lt;slug&gt;/ pattern, consolidating link equity.</li>
+      <li><strong>Real /blog/&lt;slug&gt;/ URL pattern</strong> for all 50 news articles — the legacy /src/news/articles/ path is kept for backward-compat but its canonical folds onto /blog/.</li>
+      <li><strong>All images use WebP</strong> (logos remain PNG, which is correct for crisp small graphics).</li>
+      <li><strong>Zero render-blocking external CSS</strong> — every page inlines its CSS inside the &lt;style&gt; block, eliminating the stylesheet round-trip.</li>
+      <li><strong>Zero external JS files on most pages</strong>; only News (news-index.js) and Contact (EmailJS SDK from CDN) pull scripts.</li>
+      <li><strong>Google Fonts is preconnected</strong> on every page.</li>
+      <li><strong>Open Graph + Twitter card</strong> tags are set on every page with a shared 1200×630 og-share.png.</li>
+      <li><strong>Hardened contact form</strong>: required-field indicators, per-field validation, and a <code>clean()</code> sanitizer that strips HTML tags, neutralises EmailJS / Mustache template syntax, and removes CR-LF (so email header injection like <code>Subject: x
+Bcc: …</code> can't escape the field).</li>
+      <li><strong>Numbered pagination on news.html</strong> (12 articles per page, ‹ 1 2 3 4 5 ›) with fast scroll-reveal animation (~0.35s).</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0;color:#fde2a3">What still needs attention</h3>
+    <ul style="margin:0;padding-left:20px;color:var(--ink);line-height:1.7">
+      <li><strong>LCP images rarely use <code>fetchpriority="high"</code></strong> — only 4 of 20 pages hint the LCP image. Add <code>fetchpriority="high"</code> + <code>loading="eager"</code> to the hero image, and let everything else stay <code>loading="lazy"</code>. Single biggest LCP win still on offer.</li>
+      <li><strong>81 of 129 images are missing <code>width</code>/<code>height</code></strong> (63%). Without intrinsic dimensions the browser can't reserve space → CLS hits. Add explicit <code>width="…" height="…"</code> on every &lt;img&gt;.</li>
+      <li><strong>No &lt;picture&gt; with AVIF source</strong> anywhere — only repairs.html uses &lt;picture&gt; (WebP only). Switching to <code>&lt;picture&gt;&lt;source type="image/avif" …&gt;&lt;source type="image/webp" …&gt;&lt;img …&gt;&lt;/picture&gt;</code> typically saves another 25–35% on top of the WebP work.</li>
+      <li><strong>No &lt;link rel="preload"&gt; for the LCP image</strong> on most pages. Only repairs.html preloads anything. Preloading the LCP image is a strong LCP signal.</li>
+      <li><strong>No preconnect to a CDN / image origin</strong> — only Google Fonts is preconnected. If images and CSS are served from a dedicated subdomain (e.g. <code>cdn.titanglobalwheel.co.za</code>), preconnect there too.</li>
+      <li><strong>Two titles are over 60 chars</strong>: rims.html (62) and featured.html (67). Google will truncate them in SERPs. Trim to ≤60.</li>
+      <li><strong>4 of 20 meta descriptions are below 50 chars</strong>: Home (12), About (18), Accessories (26), Featured Products (5). Tighten to use the full snippet real-estate and include a CTA.</li>
+      <li><strong>Privacy &amp; Cookies policies have no JSON-LD</strong>. They should at least declare <code>WebPage</code> + <code>BreadcrumbList</code> for consistency.</li>
+      <li><strong>Pre-existing: repairs.html links to /earthmoving.html</strong> — an industry page that was never built. Static-file 404 from the link checker. Either build the page or remove the card.</li>
+      <li><strong>404 page returns HTTP 200</strong> from the static dev server. Confirm the production host is configured to serve 404.html with a real <code>404 Not Found</code> status (this is a host config, not a code change).</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0;color:#bcd2ee">Performance budgets (from <code>.pi/memory/project.md</code>)</h3>
+    <div class="kpi-grid" style="margin-top:4px">
+      <div class="kpi"><div class="k">LCP target</div><div class="v">&lt; 2.5s</div><div class="d">Field / origin</div></div>
+      <div class="kpi"><div class="k">INP target</div><div class="v">&lt; 200ms</div><div class="d">p75 interaction</div></div>
+      <div class="kpi"><div class="k">CLS target</div><div class="v">&lt; 0.1</div><div class="d">p75 layout shift</div></div>
+      <div class="kpi"><div class="k">Page weight</div><div class="v">&lt; 1MB</div><div class="d">Total per page</div></div>
+    </div>
+    <p class="small" style="margin-top:8px">HTML doc weight is well under 1MB on every page (heaviest = 107.4KB). The remaining budget is consumed by images, fonts, and (where present) the news.js / contact.js scripts. Validate against a real Lighthouse / WebPageTest run on the production CDN before shipping.</p>
+  </div>
+
+  <h2 id="sitemap">Indexability &amp; Sitemap</h2>
+  <p class="lede">Crawl-control artefacts on disk.</p>
+  <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">
+    <div class="field"><div class="k">robots.txt</div><div class="v good">Present</div><div class="small">Blocks <code>/old%20Site/</code>, <code>/.scrape/</code>, <code>/_scrape/</code>, dev artifacts, and references the sitemap.</div></div>
+    <div class="field"><div class="k">sitemap.xml</div><div class="v good">69 URLs</div><div class="small">All public pages + 50 news articles at <code>/blog/&lt;slug&gt;/</code>, with lastmod &amp; priority.</div></div>
+    <div class="field"><div class="k">Canonical pattern</div><div class="v good">Self-referential</div><div class="small">Every public page points canonical to its own absolute https URL. Legacy /src/news/articles/ pages fold onto the canonical /blog/&lt;slug&gt;/ URL.</div></div>
+    <div class="field"><div class="k">hreflang coverage</div><div class="v good">19/20</div><div class="small">Every indexable page declares <code>hreflang="en-za"</code> next to its canonical (404 correctly omits it).</div></div>
+    <div class="field"><div class="k">Sitemap lastmod</div><div class="v warn">Stale on most URLs</div><div class="small">Sitemap carries <code>2026-08-05/06</code> for most pages — fine, but update on every meaningful content change.</div></div>
+  </div>
+
+  <h2 id="table-of-contents">Detailed Reports</h2>
+  <p class="lede">One card per page, with title, meta, headings, image strategy, JSON-LD types, weight, and any open issues.</p>
+  <div class="toc">
+<a href="#">Home</a>
+<a href="#about_html">About</a>
+<a href="#tyres_html">Tyres</a>
+<a href="#rims_html">Rims</a>
+<a href="#accessories_html">Accessories</a>
+<a href="#runflats_html">Runflats</a>
+<a href="#nama_html">NAMA X/T</a>
+<a href="#featured_html">Featured Products</a>
+<a href="#industries_html">Industries</a>
+<a href="#agriculture_html">Agriculture</a>
+<a href="#mining_html">Mining</a>
+<a href="#military_html">Military</a>
+<a href="#construction_html">Construction</a>
+<a href="#repairs_html">Repairs</a>
+<a href="#News_html">News</a>
+<a href="#events_html">Events</a>
+<a href="#contact_html">Contact</a>
+<a href="#Privacy-Policy_html">Privacy Policy</a>
+<a href="#Cookies-Policy_html">Cookies Policy</a>
+<a href="#404_html">404</a>
+  </div>
+
+  <h2 id="detailed">Per-Page Detail</h2>
+<article class="ppage" id="">
+    <div class="head">
+      <span class="grade g-a">A</span>
+      <div>
+        <div class="pg">Home</div>
+        <div class="url">https://www.titanglobalwheel.co.za/</div>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div style="font-size:22px;font-weight:800">91<span style="font-size:12px;color:var(--muted-2)">/100</span></div>
+        <div class="small">53ms · 78.8KB · 78.8KB transfer</div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="field"><div class="k">Title (51 chars)</div><div class="v title">Off-Highway Wheel Manufacturer | Titan Global Wheel</div></div>
+      <div class="field"><div class="k">Meta description (12 chars)</div><div class="v">South Africa</div></div>
+      <div class="field"><div class="k">Canonical</div><div class="v mono">https://www.titanglobalwheel.co.za/</div></div>
+      <div class="field"><div class="k">Robots meta</div><div class="v mono">index, follow, max-snippet:-1, max-image-preview:large</div></div>
+      <div class="field"><div class="k">Viewport</div><div class="v mono">width=device-width, initial-scale=1.0</div></div>
+      <div class="field"><div class="k">HTML lang</div><div class="v mono">en</div></div>
+      <div class="field"><div class="k">H1 (count: 1)</div><div class="v">Engineered off-highway wheels for the world's toughest terrain.</div></div>
+      <div class="field"><div class="k">H2s (6)</div><div class="v">• Industrial tyres, rims, accessories &amp;amp; runflats — built as one system<br>• Wheels engineered for agriculture, mining, military and construction<br>• NAMA X/T Series<br>• One South African manufacturer. Every wheel on your machine.<div class="small">+ 2 more</div></div></div>
+      <div class="field"><div class="k">Words in body</div><div class="v">1 464</div></div>
+      <div class="field"><div class="k">JSON-LD</div><div class="v"><span class="tag">unknown</span></div></div>
+      <div class="field"><div class="k">Images</div><div class="v">
+        13 total
+        <div class="small">missing alt: <span class="good">0</span> · missing w/h: <span class="warn">4</span></div>
+        <div class="small">lazy: 9 · eager: 0 · <code>fetchpriority=high</code>: <span class="alt">0</span></div>
+        <div class="small">&lt;picture&gt;: 0 · &lt;source&gt;: 0</div>
+      </div></div>
+      <div class="field"><div class="k">Links</div><div class="v">
+        internal: 49 · external: 7 · nofollow: 0
+        <div class="small">empty text (icon-only): <span class="warn">10</span> <span class="small">(likely social icons — verify aria-label)</span></div>
+      </div></div>
+      <div class="field"><div class="k">Stylesheets</div><div class="v">1 &lt;link&gt; stylesheet<div class="small">render-blocking: 1</div></div></div>
+      <div class="field"><div class="k">Scripts</div><div class="v">3 inline (10.8KB) · 0 external
+        
+      </div></div>
+      <div class="field"><div class="k">Preconnect / Preload</div><div class="v">preconnect: 2 · preload: 0</div></div>
+      <div class="field"><div class="k">Open Graph</div><div class="v"><span class="good">Off-Highway Wheel Manufacturer | Titan Global Wheel</span><div class="small">9 og:* tags</div></div></div>
+      <div class="field"><div class="k">Twitter card</div><div class="v"><span class="good">summary_large_image</span><div class="small">4 twitter:* tags</div></div></div>
+    </div>
+    <div class="issues"><div class="k">Open issues</div><ul><li>⚠ Meta too short (12)</li><li>⚠ No LCP image priority</li></ul></div>
+  </article>
+<article class="ppage" id="about_html">
+    <div class="head">
+      <span class="grade g-b">B</span>
+      <div>
+        <div class="pg">About</div>
+        <div class="url">https://www.titanglobalwheel.co.za/about.html</div>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div style="font-size:22px;font-weight:800">89<span style="font-size:12px;color:var(--muted-2)">/100</span></div>
+        <div class="small">3ms · 54.7KB · 54.7KB transfer</div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="field"><div class="k">Title (26 chars)</div><div class="v title">About - Titan Global Wheel</div></div>
+      <div class="field"><div class="k">Meta description (18 chars)</div><div class="v">Sub-Saharan Africa</div></div>
+      <div class="field"><div class="k">Canonical</div><div class="v mono">https://www.titanglobalwheel.co.za/about.html</div></div>
+      <div class="field"><div class="k">Robots meta</div><div class="v mono">index, follow</div></div>
+      <div class="field"><div class="k">Viewport</div><div class="v mono">width=device-width, initial-scale=1.0</div></div>
+      <div class="field"><div class="k">HTML lang</div><div class="v mono">en</div></div>
+      <div class="field"><div class="k">H1 (count: 1)</div><div class="v">Not reinventing the wheel, just perfecting it.</div></div>
+      <div class="field"><div class="k">H2s (3)</div><div class="v">• One supplier. The complete wheel system.<br>• Values engineered into every wheel<br>• Six decades of wheel engineering</div></div>
+      <div class="field"><div class="k">Words in body</div><div class="v">728</div></div>
+      <div class="field"><div class="k">JSON-LD</div><div class="v"><span class="tag">Organization</span></div></div>
+      <div class="field"><div class="k">Images</div><div class="v">
+        5 total
+        <div class="small">missing alt: <span class="good">0</span> · missing w/h: <span class="warn">5</span></div>
+        <div class="small">lazy: 0 · eager: 0 · <code>fetchpriority=high</code>: <span class="alt">0</span></div>
+        <div class="small">&lt;picture&gt;: 0 · &lt;source&gt;: 0</div>
+      </div></div>
+      <div class="field"><div class="k">Links</div><div class="v">
+        internal: 37 · external: 7 · nofollow: 0
+        <div class="small">empty text (icon-only): <span class="warn">10</span> <span class="small">(likely social icons — verify aria-label)</span></div>
+      </div></div>
+      <div class="field"><div class="k">Stylesheets</div><div class="v">1 &lt;link&gt; stylesheet<div class="small">render-blocking: 1</div></div></div>
+      <div class="field"><div class="k">Scripts</div><div class="v">3 inline (6.6KB) · 0 external
+        
+      </div></div>
+      <div class="field"><div class="k">Preconnect / Preload</div><div class="v">preconnect: 2 · preload: 0</div></div>
+      <div class="field"><div class="k">Open Graph</div><div class="v"><span class="good">About Titan Global Wheel</span><div class="small">9 og:* tags</div></div></div>
+      <div class="field"><div class="k">Twitter card</div><div class="v"><span class="good">summary_large_image</span><div class="small">4 twitter:* tags</div></div></div>
+    </div>
+    <div class="issues"><div class="k">Open issues</div><ul><li>⚠ Meta too short (18)</li><li>⚠ No LCP image priority</li></ul></div>
+  </article>
+<article class="ppage" id="tyres_html">
+    <div class="head">
+      <span class="grade g-a">A</span>
+      <div>
+        <div class="pg">Tyres</div>
+        <div class="url">https://www.titanglobalwheel.co.za/tyres.html</div>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div style="font-size:22px;font-weight:800">100<span style="font-size:12px;color:var(--muted-2)">/100</span></div>
+        <div class="small">4ms · 63.8KB · 63.8KB transfer</div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="field"><div class="k">Title (53 chars)</div><div class="v title">Off-Highway Tyres | Titan Global Wheel | South Africa</div></div>
+      <div class="field"><div class="k">Meta description (136 chars)</div><div class="v">Off-highway tyres for agriculture, construction, mining and military — including the NAMA X/T. Goodyear licensed, ISO 9001. Get a quote.</div></div>
+      <div class="field"><div class="k">Canonical</div><div class="v mono">https://www.titanglobalwheel.co.za/tyres.html</div></div>
+      <div class="field"><div class="k">Robots meta</div><div class="v mono">index, follow, max-snippet:-1, max-image-preview:large</div></div>
+      <div class="field"><div class="k">Viewport</div><div class="v mono">width=device-width, initial-scale=1.0</div></div>
+      <div class="field"><div class="k">HTML lang</div><div class="v mono">en</div></div>
+      <div class="field"><div class="k">H1 (count: 1)</div><div class="v">Built for the toughest terrain on earth</div></div>
+      <div class="field"><div class="k">H2s (5)</div><div class="v">• Agricultural tyres that move modern farming<br>• Construction &amp;amp; earthmoving OTR tyres<br>• Mining tyres for the harshest operations<br>• NAMA X/T American Eagle Series<div class="small">+ 1 more</div></div></div>
+      <div class="field"><div class="k">Words in body</div><div class="v">1 237</div></div>
+      <div class="field"><div class="k">JSON-LD</div><div class="v"><span class="tag">ItemPage</span> <span class="tag">BreadcrumbList</span></div></div>
+      <div class="field"><div class="k">Images</div><div class="v">
+        9 total
+        <div class="small">missing alt: <span class="good">0</span> · missing w/h: <span class="warn">4</span></div>
+        <div class="small">lazy: 4 · eager: 1 · <code>fetchpriority=high</code>: <span class="good">1</span></div>
+        <div class="small">&lt;picture&gt;: 0 · &lt;source&gt;: 0</div>
+      </div></div>
+      <div class="field"><div class="k">Links</div><div class="v">
+        internal: 39 · external: 7 · nofollow: 0
+        <div class="small">empty text (icon-only): <span class="warn">10</span> <span class="small">(likely social icons — verify aria-label)</span></div>
+      </div></div>
+      <div class="field"><div class="k">Stylesheets</div><div class="v">2 &lt;link&gt; stylesheets<div class="small">render-blocking: 2</div></div></div>
+      <div class="field"><div class="k">Scripts</div><div class="v">5 inline (8.3KB) · 0 external
+        
+      </div></div>
+      <div class="field"><div class="k">Preconnect / Preload</div><div class="v">preconnect: 2 · preload: 0</div></div>
+      <div class="field"><div class="k">Open Graph</div><div class="v"><span class="good">Off-Highway Tyres | Titan Global Wheel</span><div class="small">9 og:* tags</div></div></div>
+      <div class="field"><div class="k">Twitter card</div><div class="v"><span class="good">summary_large_image</span><div class="small">4 twitter:* tags</div></div></div>
+    </div>
+    <div class="issues"><div class="k">Status</div><ul><li class="good">✓ No issues found</li></ul></div>
+  </article>
+<article class="ppage" id="rims_html">
+    <div class="head">
+      <span class="grade g-a">A</span>
+      <div>
+        <div class="pg">Rims</div>
+        <div class="url">https://www.titanglobalwheel.co.za/rims.html</div>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div style="font-size:22px;font-weight:800">90<span style="font-size:12px;color:var(--muted-2)">/100</span></div>
+        <div class="small">4ms · 60.5KB · 60.5KB transfer</div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="field"><div class="k">Title (62 chars)</div><div class="v title">Steel &amp;amp; Aluminium Rims | Titan Global Wheel | South Africa</div></div>
+      <div class="field"><div class="k">Meta description (139 chars)</div><div class="v">Steel &amp;amp; aluminium wheel rims from multi-piece 15&amp;quot; to tubeless 22.5&amp;quot; and 54&amp;quot; agricultural — designed and tested in-house.</div></div>
+      <div class="field"><div class="k">Canonical</div><div class="v mono">https://www.titanglobalwheel.co.za/rims.html</div></div>
+      <div class="field"><div class="k">Robots meta</div><div class="v mono">index, follow</div></div>
+      <div class="field"><div class="k">Viewport</div><div class="v mono">width=device-width, initial-scale=1.0</div></div>
+      <div class="field"><div class="k">HTML lang</div><div class="v mono">en</div></div>
+      <div class="field"><div class="k">H1 (count: 1)</div><div class="v">Steel &amp;amp; Aluminium Rims For The Toughest Jobs</div></div>
+      <div class="field"><div class="k">H2s (6)</div><div class="v">• Engineered, tested &amp;amp; warranted<br>• Earthmoving &amp;amp; Mining Rims<br>• Commercial Rims<br>• Military Rims &amp;amp; Run Flat Systems<div class="small">+ 2 more</div></div></div>
+      <div class="field"><div class="k">Words in body</div><div class="v">930</div></div>
+      <div class="field"><div class="k">JSON-LD</div><div class="v"><span class="tag">Organization</span> <span class="tag">BreadcrumbList</span></div></div>
+      <div class="field"><div class="k">Images</div><div class="v">
+        5 total
+        <div class="small">missing alt: <span class="good">0</span> · missing w/h: <span class="warn">4</span></div>
+        <div class="small">lazy: 0 · eager: 0 · <code>fetchpriority=high</code>: <span class="good">1</span></div>
+        <div class="small">&lt;picture&gt;: 0 · &lt;source&gt;: 0</div>
+      </div></div>
+      <div class="field"><div class="k">Links</div><div class="v">
+        internal: 43 · external: 7 · nofollow: 0
+        <div class="small">empty text (icon-only): <span class="warn">10</span> <span class="small">(likely social icons — verify aria-label)</span></div>
+      </div></div>
+      <div class="field"><div class="k">Stylesheets</div><div class="v">2 &lt;link&gt; stylesheets<div class="small">render-blocking: 2</div></div></div>
+      <div class="field"><div class="k">Scripts</div><div class="v">6 inline (7.9KB) · 0 external
+        
+      </div></div>
+      <div class="field"><div class="k">Preconnect / Preload</div><div class="v">preconnect: 2 · preload: 0</div></div>
+      <div class="field"><div class="k">Open Graph</div><div class="v"><span class="good">Steel &amp;amp; Aluminium Rims | Titan Global Wheel</span><div class="small">9 og:* tags</div></div></div>
+      <div class="field"><div class="k">Twitter card</div><div class="v"><span class="good">summary_large_image</span><div class="small">4 twitter:* tags</div></div></div>
+    </div>
+    <div class="issues"><div class="k">Open issues</div><ul><li>⚠ Title 62 chars (&gt;60)</li></ul></div>
+  </article>
+<article class="ppage" id="accessories_html">
+    <div class="head">
+      <span class="grade g-a">A</span>
+      <div>
+        <div class="pg">Accessories</div>
+        <div class="url">https://www.titanglobalwheel.co.za/accessories.html</div>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div style="font-size:22px;font-weight:800">91<span style="font-size:12px;color:var(--muted-2)">/100</span></div>
+        <div class="small">3ms · 37.9KB · 37.9KB transfer</div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="field"><div class="k">Title (32 chars)</div><div class="v title">Accessories — Titan Global Wheel</div></div>
+      <div class="field"><div class="k">Meta description (26 chars)</div><div class="v">Explore Titan Global Wheel</div></div>
+      <div class="field"><div class="k">Canonical</div><div class="v mono">https://www.titanglobalwheel.co.za/accessories.html</div></div>
+      <div class="field"><div class="k">Robots meta</div><div class="v mono">index, follow</div></div>
+      <div class="field"><div class="k">Viewport</div><div class="v mono">width=device-width, initial-scale=1.0</div></div>
+      <div class="field"><div class="k">HTML lang</div><div class="v mono">en</div></div>
+      <div class="field"><div class="k">H1 (count: 1)</div><div class="v">Wheel accessories built for every application</div></div>
+      <div class="field"><div class="k">H2s (3)</div><div class="v">• Quality Wheel Components<br>• Beyond Components<br>• Haltec Wheel Components</div></div>
+      <div class="field"><div class="k">Words in body</div><div class="v">373</div></div>
+      <div class="field"><div class="k">JSON-LD</div><div class="v"><span class="tag">Organization</span></div></div>
+      <div class="field"><div class="k">Images</div><div class="v">
+        4 total
+        <div class="small">missing alt: <span class="good">0</span> · missing w/h: <span class="warn">4</span></div>
+        <div class="small">lazy: 0 · eager: 0 · <code>fetchpriority=high</code>: <span class="alt">0</span></div>
+        <div class="small">&lt;picture&gt;: 0 · &lt;source&gt;: 0</div>
+      </div></div>
+      <div class="field"><div class="k">Links</div><div class="v">
+        internal: 37 · external: 5 · nofollow: 0
+        <div class="small">empty text (icon-only): <span class="warn">10</span> <span class="small">(likely social icons — verify aria-label)</span></div>
+      </div></div>
+      <div class="field"><div class="k">Stylesheets</div><div class="v">2 &lt;link&gt; stylesheets<div class="small">render-blocking: 2</div></div></div>
+      <div class="field"><div class="k">Scripts</div><div class="v">4 inline (6.5KB) · 0 external
+        
+      </div></div>
+      <div class="field"><div class="k">Preconnect / Preload</div><div class="v">preconnect: 2 · preload: 0</div></div>
+      <div class="field"><div class="k">Open Graph</div><div class="v"><span class="good">Accessories — Titan Global Wheel</span><div class="small">9 og:* tags</div></div></div>
+      <div class="field"><div class="k">Twitter card</div><div class="v"><span class="good">summary_large_image</span><div class="small">4 twitter:* tags</div></div></div>
+    </div>
+    <div class="issues"><div class="k">Open issues</div><ul><li>⚠ Meta too short (26)</li><li>⚠ No LCP image priority</li></ul></div>
+  </article>
+<article class="ppage" id="runflats_html">
+    <div class="head">
+      <span class="grade g-a">A</span>
+      <div>
+        <div class="pg">Runflats</div>
+        <div class="url">https://www.titanglobalwheel.co.za/runflats.html</div>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div style="font-size:22px;font-weight:800">95<span style="font-size:12px;color:var(--muted-2)">/100</span></div>
+        <div class="small">2ms · 42.7KB · 42.7KB transfer</div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="field"><div class="k">Title (43 chars)</div><div class="v title">Tyron Easyfit Runflats — Titan Global Wheel</div></div>
+      <div class="field"><div class="k">Meta description (138 chars)</div><div class="v">Tyron Easyfit Runflats — tyre runflat safety systems for military, security and emergency vehicles. Field-mountable without special tools.</div></div>
+      <div class="field"><div class="k">Canonical</div><div class="v mono">https://www.titanglobalwheel.co.za/runflats.html</div></div>
+      <div class="field"><div class="k">Robots meta</div><div class="v mono">index, follow</div></div>
+      <div class="field"><div class="k">Viewport</div><div class="v mono">width=device-width, initial-scale=1.0</div></div>
+      <div class="field"><div class="k">HTML lang</div><div class="v mono">en</div></div>
+      <div class="field"><div class="k">H1 (count: 1)</div><div class="v">Runflat Safety Systems</div></div>
+      <div class="field"><div class="k">H2s (5)</div><div class="v">• Tyron Easyfit Runflats<br>• Key Features<br>• Why Choose Tyron Easyfit<br>• See It In Action<div class="small">+ 1 more</div></div></div>
+      <div class="field"><div class="k">Words in body</div><div class="v">521</div></div>
+      <div class="field"><div class="k">JSON-LD</div><div class="v"><span class="tag">Product</span></div></div>
+      <div class="field"><div class="k">Images</div><div class="v">
+        6 total
+        <div class="small">missing alt: <span class="good">0</span> · missing w/h: <span class="warn">4</span></div>
+        <div class="small">lazy: 2 · eager: 0 · <code>fetchpriority=high</code>: <span class="alt">0</span></div>
+        <div class="small">&lt;picture&gt;: 0 · &lt;source&gt;: 1</div>
+      </div></div>
+      <div class="field"><div class="k">Links</div><div class="v">
+        internal: 37 · external: 5 · nofollow: 0
+        <div class="small">empty text (icon-only): <span class="warn">10</span> <span class="small">(likely social icons — verify aria-label)</span></div>
+      </div></div>
+      <div class="field"><div class="k">Stylesheets</div><div class="v">2 &lt;link&gt; stylesheets<div class="small">render-blocking: 2</div></div></div>
+      <div class="field"><div class="k">Scripts</div><div class="v">4 inline (6.5KB) · 0 external
+        
+      </div></div>
+      <div class="field"><div class="k">Preconnect / Preload</div><div class="v">preconnect: 2 · preload: 0</div></div>
+      <div class="field"><div class="k">Open Graph</div><div class="v"><span class="good">Tyron Easyfit Runflats — Titan Global Wheel</span><div class="small">9 og:* tags</div></div></div>
+      <div class="field"><div class="k">Twitter card</div><div class="v"><span class="good">summary_large_image</span><div class="small">4 twitter:* tags</div></div></div>
+    </div>
+    <div class="issues"><div class="k">Open issues</div><ul><li>⚠ No LCP image priority</li></ul></div>
+  </article>
+<article class="ppage" id="nama_html">
+    <div class="head">
+      <span class="grade g-a">A</span>
+      <div>
+        <div class="pg">NAMA X/T</div>
+        <div class="url">https://www.titanglobalwheel.co.za/nama.html</div>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div style="font-size:22px;font-weight:800">100<span style="font-size:12px;color:var(--muted-2)">/100</span></div>
+        <div class="small">2ms · 71.8KB · 71.8KB transfer</div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="field"><div class="k">Title (51 chars)</div><div class="v title">NAMA X/T Series | Titan Global Wheel | South Africa</div></div>
+      <div class="field"><div class="k">Meta description (133 chars)</div><div class="v">NAMA X/T (NM-28) American Eagle — dual-sidewall on-/off-road light-truck &amp;amp; SUV tyre. 24 sizes, 15″–20″. In stock in South Africa.</div></div>
+      <div class="field"><div class="k">Canonical</div><div class="v mono">https://www.titanglobalwheel.co.za/nama.html</div></div>
+      <div class="field"><div class="k">Robots meta</div><div class="v mono">index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1</div></div>
+      <div class="field"><div class="k">Viewport</div><div class="v mono">width=device-width, initial-scale=1.0</div></div>
+      <div class="field"><div class="k">HTML lang</div><div class="v mono">en</div></div>
+      <div class="field"><div class="k">H1 (count: 1)</div><div class="v">The NAMA X/T American Eagle Series</div></div>
+      <div class="field"><div class="k">H2s (6)</div><div class="v">• See the NAMA X/T in action<br>• Two looks. One tyre. Zero compromise.<br>• Six engineering features. One unstoppable tyre.<br>• 24 sizes. 15″ to 20″ wheels.<div class="small">+ 2 more</div></div></div>
+      <div class="field"><div class="k">Words in body</div><div class="v">1 165</div></div>
+      <div class="field"><div class="k">JSON-LD</div><div class="v"><span class="tag">Product</span> <span class="tag">BreadcrumbList</span> <span class="tag">FAQPage</span></div></div>
+      <div class="field"><div class="k">Images</div><div class="v">
+        7 total
+        <div class="small">missing alt: <span class="good">0</span> · missing w/h: <span class="warn">4</span></div>
+        <div class="small">lazy: 2 · eager: 0 · <code>fetchpriority=high</code>: <span class="good">1</span></div>
+        <div class="small">&lt;picture&gt;: 0 · &lt;source&gt;: 0</div>
+      </div></div>
+      <div class="field"><div class="k">Links</div><div class="v">
+        internal: 43 · external: 11 · nofollow: 0
+        <div class="small">empty text (icon-only): <span class="warn">14</span> <span class="small">(likely social icons — verify aria-label)</span></div>
+      </div></div>
+      <div class="field"><div class="k">Stylesheets</div><div class="v">2 &lt;link&gt; stylesheets<div class="small">render-blocking: 2</div></div></div>
+      <div class="field"><div class="k">Scripts</div><div class="v">4 inline (9.8KB) · 0 external
+        
+      </div></div>
+      <div class="field"><div class="k">Preconnect / Preload</div><div class="v">preconnect: 2 · preload: 0</div></div>
+      <div class="field"><div class="k">Open Graph</div><div class="v"><span class="good">NAMA X/T Series | Titan Global Wheel</span><div class="small">9 og:* tags</div></div></div>
+      <div class="field"><div class="k">Twitter card</div><div class="v"><span class="good">summary_large_image</span><div class="small">4 twitter:* tags</div></div></div>
+    </div>
+    <div class="issues"><div class="k">Status</div><ul><li class="good">✓ No issues found</li></ul></div>
+  </article>
+<article class="ppage" id="featured_html">
+    <div class="head">
+      <span class="grade g-b">B</span>
+      <div>
+        <div class="pg">Featured Products</div>
+        <div class="url">https://www.titanglobalwheel.co.za/featured.html</div>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div style="font-size:22px;font-weight:800">83<span style="font-size:12px;color:var(--muted-2)">/100</span></div>
+        <div class="small">4ms · 89.3KB · 89.3KB transfer</div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="field"><div class="k">Title (67 chars)</div><div class="v title">Featured Products — Titan Global Wheel | OTR Tyres, Rims &amp; Runflats</div></div>
+      <div class="field"><div class="k">Meta description (5 chars)</div><div class="v">Titan</div></div>
+      <div class="field"><div class="k">Canonical</div><div class="v mono">https://www.titanglobalwheel.co.za/featured.html</div></div>
+      <div class="field"><div class="k">Robots meta</div><div class="v mono">index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1</div></div>
+      <div class="field"><div class="k">Viewport</div><div class="v mono">width=device-width, initial-scale=1.0</div></div>
+      <div class="field"><div class="k">HTML lang</div><div class="v mono">en</div></div>
+      <div class="field"><div class="k">H1 (count: 1)</div><div class="v">Built to outlast the rest</div></div>
+      <div class="field"><div class="k">H2s (6)</div><div class="v">• Four categories. Unlimited grit.<br>• Spotlight favourites<br>• Standard vs Titan<br>• What our clients say<div class="small">+ 2 more</div></div></div>
+      <div class="field"><div class="k">Words in body</div><div class="v">1 067</div></div>
+      <div class="field"><div class="k">JSON-LD</div><div class="v"><span class="tag">Organization</span> <span class="tag">BreadcrumbList</span> <span class="tag">ItemList</span> <span class="tag">FAQPage</span></div></div>
+      <div class="field"><div class="k">Images</div><div class="v">
+        4 total
+        <div class="small">missing alt: <span class="good">0</span> · missing w/h: <span class="warn">4</span></div>
+        <div class="small">lazy: 0 · eager: 0 · <code>fetchpriority=high</code>: <span class="alt">0</span></div>
+        <div class="small">&lt;picture&gt;: 0 · &lt;source&gt;: 0</div>
+      </div></div>
+      <div class="field"><div class="k">Links</div><div class="v">
+        internal: 48 · external: 7 · nofollow: 0
+        <div class="small">empty text (icon-only): <span class="warn">10</span> <span class="small">(likely social icons — verify aria-label)</span></div>
+      </div></div>
+      <div class="field"><div class="k">Stylesheets</div><div class="v">2 &lt;link&gt; stylesheets<div class="small">render-blocking: 2</div></div></div>
+      <div class="field"><div class="k">Scripts</div><div class="v">6 inline (19.0KB) · 0 external
+        
+      </div></div>
+      <div class="field"><div class="k">Preconnect / Preload</div><div class="v">preconnect: 2 · preload: 0</div></div>
+      <div class="field"><div class="k">Open Graph</div><div class="v"><span class="good">Featured Products — Titan Global Wheel</span><div class="small">9 og:* tags</div></div></div>
+      <div class="field"><div class="k">Twitter card</div><div class="v"><span class="good">summary_large_image</span><div class="small">4 twitter:* tags</div></div></div>
+    </div>
+    <div class="issues"><div class="k">Open issues</div><ul><li>⚠ Title 67 chars (&gt;60)</li><li>⚠ Meta too short (5)</li><li>⚠ No LCP image priority</li></ul></div>
+  </article>
+<article class="ppage" id="industries_html">
+    <div class="head">
+      <span class="grade g-a">A</span>
+      <div>
+        <div class="pg">Industries</div>
+        <div class="url">https://www.titanglobalwheel.co.za/industries.html</div>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div style="font-size:22px;font-weight:800">95<span style="font-size:12px;color:var(--muted-2)">/100</span></div>
+        <div class="small">3ms · 51KB · 51KB transfer</div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="field"><div class="k">Title (31 chars)</div><div class="v title">Industries — Titan Global Wheel</div></div>
+      <div class="field"><div class="k">Meta description (131 chars)</div><div class="v">Titan Global Wheel engineers wheels, tyres, rims and runflat systems for agriculture, mining, military and construction — the world</div></div>
+      <div class="field"><div class="k">Canonical</div><div class="v mono">https://www.titanglobalwheel.co.za/industries.html</div></div>
+      <div class="field"><div class="k">Robots meta</div><div class="v mono">index, follow</div></div>
+      <div class="field"><div class="k">Viewport</div><div class="v mono">width=device-width, initial-scale=1.0</div></div>
+      <div class="field"><div class="k">HTML lang</div><div class="v mono">en</div></div>
+      <div class="field"><div class="k">H1 (count: 1)</div><div class="v">Engineered for the toughest terrain on earth</div></div>
+      <div class="field"><div class="k">H2s (6)</div><div class="v">• High-flotation wheels for the field<br>• Heavy-load rims for the pit<br>• Runflat systems for mission-critical mobility<br>• Durable wheels for the build site<div class="small">+ 2 more</div></div></div>
+      <div class="field"><div class="k">Words in body</div><div class="v">702</div></div>
+      <div class="field"><div class="k">JSON-LD</div><div class="v"><span class="tag">Organization</span> <span class="tag">BreadcrumbList</span></div></div>
+      <div class="field"><div class="k">Images</div><div class="v">
+        8 total
+        <div class="small">missing alt: <span class="good">0</span> · missing w/h: <span class="warn">4</span></div>
+        <div class="small">lazy: 4 · eager: 0 · <code>fetchpriority=high</code>: <span class="alt">0</span></div>
+        <div class="small">&lt;picture&gt;: 0 · &lt;source&gt;: 0</div>
+      </div></div>
+      <div class="field"><div class="k">Links</div><div class="v">
+        internal: 52 · external: 7 · nofollow: 0
+        <div class="small">empty text (icon-only): <span class="warn">10</span> <span class="small">(likely social icons — verify aria-label)</span></div>
+      </div></div>
+      <div class="field"><div class="k">Stylesheets</div><div class="v">1 &lt;link&gt; stylesheet<div class="small">render-blocking: 1</div></div></div>
+      <div class="field"><div class="k">Scripts</div><div class="v">4 inline (5.1KB) · 0 external
+        
+      </div></div>
+      <div class="field"><div class="k">Preconnect / Preload</div><div class="v">preconnect: 2 · preload: 0</div></div>
+      <div class="field"><div class="k">Open Graph</div><div class="v"><span class="good">Industries — Titan Global Wheel</span><div class="small">9 og:* tags</div></div></div>
+      <div class="field"><div class="k">Twitter card</div><div class="v"><span class="good">summary_large_image</span><div class="small">4 twitter:* tags</div></div></div>
+    </div>
+    <div class="issues"><div class="k">Open issues</div><ul><li>⚠ No LCP image priority</li></ul></div>
+  </article>
+<article class="ppage" id="agriculture_html">
+    <div class="head">
+      <span class="grade g-a">A</span>
+      <div>
+        <div class="pg">Agriculture</div>
+        <div class="url">https://www.titanglobalwheel.co.za/agriculture.html</div>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div style="font-size:22px;font-weight:800">95<span style="font-size:12px;color:var(--muted-2)">/100</span></div>
+        <div class="small">7ms · 42.6KB · 42.6KB transfer</div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="field"><div class="k">Title (50 chars)</div><div class="v title">Agricultural Rims &amp;amp; Tyres — Titan Global Wheel</div></div>
+      <div class="field"><div class="k">Meta description (139 chars)</div><div class="v">Agricultural rims from 18&amp;quot; to 54&amp;quot; with Goodyear farm tyres and complete wheel assemblies for tractors, harvesters and irrigation.</div></div>
+      <div class="field"><div class="k">Canonical</div><div class="v mono">https://www.titanglobalwheel.co.za/agriculture.html</div></div>
+      <div class="field"><div class="k">Robots meta</div><div class="v mono">index, follow</div></div>
+      <div class="field"><div class="k">Viewport</div><div class="v mono">width=device-width, initial-scale=1.0</div></div>
+      <div class="field"><div class="k">HTML lang</div><div class="v mono">en</div></div>
+      <div class="field"><div class="k">H1 (count: 1)</div><div class="v">Agricultural rims &amp;amp; tyres for every season</div></div>
+      <div class="field"><div class="k">H2s (3)</div><div class="v">• Agricultural rims from 18&amp;quot; to 54&amp;quot;<br>• Titan Goodyear agricultural tyres<br>• Tyres for every agricultural implement</div></div>
+      <div class="field"><div class="k">Words in body</div><div class="v">495</div></div>
+      <div class="field"><div class="k">JSON-LD</div><div class="v"><span class="tag">Organization</span> <span class="tag">BreadcrumbList</span></div></div>
+      <div class="field"><div class="k">Images</div><div class="v">
+        6 total
+        <div class="small">missing alt: <span class="good">0</span> · missing w/h: <span class="warn">4</span></div>
+        <div class="small">lazy: 2 · eager: 0 · <code>fetchpriority=high</code>: <span class="alt">0</span></div>
+        <div class="small">&lt;picture&gt;: 0 · &lt;source&gt;: 0</div>
+      </div></div>
+      <div class="field"><div class="k">Links</div><div class="v">
+        internal: 42 · external: 7 · nofollow: 0
+        <div class="small">empty text (icon-only): <span class="warn">10</span> <span class="small">(likely social icons — verify aria-label)</span></div>
+      </div></div>
+      <div class="field"><div class="k">Stylesheets</div><div class="v">1 &lt;link&gt; stylesheet<div class="small">render-blocking: 1</div></div></div>
+      <div class="field"><div class="k">Scripts</div><div class="v">4 inline (5.1KB) · 0 external
+        
+      </div></div>
+      <div class="field"><div class="k">Preconnect / Preload</div><div class="v">preconnect: 2 · preload: 0</div></div>
+      <div class="field"><div class="k">Open Graph</div><div class="v"><span class="good">Agricultural Rims &amp;amp; Tyres — Titan Global Wheel</span><div class="small">9 og:* tags</div></div></div>
+      <div class="field"><div class="k">Twitter card</div><div class="v"><span class="good">summary_large_image</span><div class="small">4 twitter:* tags</div></div></div>
+    </div>
+    <div class="issues"><div class="k">Open issues</div><ul><li>⚠ No LCP image priority</li></ul></div>
+  </article>
+<article class="ppage" id="mining_html">
+    <div class="head">
+      <span class="grade g-a">A</span>
+      <div>
+        <div class="pg">Mining</div>
+        <div class="url">https://www.titanglobalwheel.co.za/mining.html</div>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div style="font-size:22px;font-weight:800">95<span style="font-size:12px;color:var(--muted-2)">/100</span></div>
+        <div class="small">3ms · 42.4KB · 42.4KB transfer</div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="field"><div class="k">Title (45 chars)</div><div class="v title">Mining Rims &amp;amp; Wheels — Titan Global Wheel</div></div>
+      <div class="field"><div class="k">Meta description (153 chars)</div><div class="v">Heavy-duty mining rims and wheels for haul trucks, loaders and dump trucks — OEM and aftermarket approved across Southern Africa, plus rim refurbishment.</div></div>
+      <div class="field"><div class="k">Canonical</div><div class="v mono">https://www.titanglobalwheel.co.za/mining.html</div></div>
+      <div class="field"><div class="k">Robots meta</div><div class="v mono">index, follow</div></div>
+      <div class="field"><div class="k">Viewport</div><div class="v mono">width=device-width, initial-scale=1.0</div></div>
+      <div class="field"><div class="k">HTML lang</div><div class="v mono">en</div></div>
+      <div class="field"><div class="k">H1 (count: 1)</div><div class="v">Heavy-load rims &amp;amp; tyres for the pit</div></div>
+      <div class="field"><div class="k">H2s (3)</div><div class="v">• Rims engineered for the pit<br>• Tyres for every vehicle in the mine<br>• Wheels for the equipment on site</div></div>
+      <div class="field"><div class="k">Words in body</div><div class="v">499</div></div>
+      <div class="field"><div class="k">JSON-LD</div><div class="v"><span class="tag">Organization</span> <span class="tag">BreadcrumbList</span></div></div>
+      <div class="field"><div class="k">Images</div><div class="v">
+        6 total
+        <div class="small">missing alt: <span class="good">0</span> · missing w/h: <span class="warn">4</span></div>
+        <div class="small">lazy: 2 · eager: 0 · <code>fetchpriority=high</code>: <span class="alt">0</span></div>
+        <div class="small">&lt;picture&gt;: 0 · &lt;source&gt;: 0</div>
+      </div></div>
+      <div class="field"><div class="k">Links</div><div class="v">
+        internal: 42 · external: 7 · nofollow: 0
+        <div class="small">empty text (icon-only): <span class="warn">10</span> <span class="small">(likely social icons — verify aria-label)</span></div>
+      </div></div>
+      <div class="field"><div class="k">Stylesheets</div><div class="v">1 &lt;link&gt; stylesheet<div class="small">render-blocking: 1</div></div></div>
+      <div class="field"><div class="k">Scripts</div><div class="v">4 inline (5.0KB) · 0 external
+        
+      </div></div>
+      <div class="field"><div class="k">Preconnect / Preload</div><div class="v">preconnect: 2 · preload: 0</div></div>
+      <div class="field"><div class="k">Open Graph</div><div class="v"><span class="good">Mining Rims &amp;amp; Wheels — Titan Global Wheel</span><div class="small">9 og:* tags</div></div></div>
+      <div class="field"><div class="k">Twitter card</div><div class="v"><span class="good">summary_large_image</span><div class="small">4 twitter:* tags</div></div></div>
+    </div>
+    <div class="issues"><div class="k">Open issues</div><ul><li>⚠ No LCP image priority</li></ul></div>
+  </article>
+<article class="ppage" id="military_html">
+    <div class="head">
+      <span class="grade g-a">A</span>
+      <div>
+        <div class="pg">Military</div>
+        <div class="url">https://www.titanglobalwheel.co.za/military.html</div>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div style="font-size:22px;font-weight:800">95<span style="font-size:12px;color:var(--muted-2)">/100</span></div>
+        <div class="small">3ms · 45.8KB · 45.8KB transfer</div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="field"><div class="k">Title (50 chars)</div><div class="v title">Military &amp;amp; Defence Wheels — Titan Global Wheel</div></div>
+      <div class="field"><div class="k">Meta description (152 chars)</div><div class="v">Military steel &amp;amp; aluminium rims, tactical tyres and Tyron run flat systems — designed, tested and manufactured for defence forces for over 40 years.</div></div>
+      <div class="field"><div class="k">Canonical</div><div class="v mono">https://www.titanglobalwheel.co.za/military.html</div></div>
+      <div class="field"><div class="k">Robots meta</div><div class="v mono">index, follow</div></div>
+      <div class="field"><div class="k">Viewport</div><div class="v mono">width=device-width, initial-scale=1.0</div></div>
+      <div class="field"><div class="k">HTML lang</div><div class="v mono">en</div></div>
+      <div class="field"><div class="k">H1 (count: 1)</div><div class="v">Mission-critical mobility</div></div>
+      <div class="field"><div class="k">H2s (4)</div><div class="v">• Steel &amp;amp; aluminium rims, designed &amp;amp; tested in-house<br>• Tyres matched to the mission<br>• Engineered for operational readiness<br>• Tyron run flat insert &amp;amp; bead lock ranges</div></div>
+      <div class="field"><div class="k">Words in body</div><div class="v">654</div></div>
+      <div class="field"><div class="k">JSON-LD</div><div class="v"><span class="tag">Organization</span> <span class="tag">BreadcrumbList</span></div></div>
+      <div class="field"><div class="k">Images</div><div class="v">
+        6 total
+        <div class="small">missing alt: <span class="good">0</span> · missing w/h: <span class="warn">4</span></div>
+        <div class="small">lazy: 2 · eager: 0 · <code>fetchpriority=high</code>: <span class="alt">0</span></div>
+        <div class="small">&lt;picture&gt;: 0 · &lt;source&gt;: 0</div>
+      </div></div>
+      <div class="field"><div class="k">Links</div><div class="v">
+        internal: 42 · external: 7 · nofollow: 0
+        <div class="small">empty text (icon-only): <span class="warn">10</span> <span class="small">(likely social icons — verify aria-label)</span></div>
+      </div></div>
+      <div class="field"><div class="k">Stylesheets</div><div class="v">1 &lt;link&gt; stylesheet<div class="small">render-blocking: 1</div></div></div>
+      <div class="field"><div class="k">Scripts</div><div class="v">4 inline (5.1KB) · 0 external
+        
+      </div></div>
+      <div class="field"><div class="k">Preconnect / Preload</div><div class="v">preconnect: 2 · preload: 0</div></div>
+      <div class="field"><div class="k">Open Graph</div><div class="v"><span class="good">Military &amp;amp; Defence Wheels — Titan Global Wheel</span><div class="small">9 og:* tags</div></div></div>
+      <div class="field"><div class="k">Twitter card</div><div class="v"><span class="good">summary_large_image</span><div class="small">4 twitter:* tags</div></div></div>
+    </div>
+    <div class="issues"><div class="k">Open issues</div><ul><li>⚠ No LCP image priority</li></ul></div>
+  </article>
+<article class="ppage" id="construction_html">
+    <div class="head">
+      <span class="grade g-a">A</span>
+      <div>
+        <div class="pg">Construction</div>
+        <div class="url">https://www.titanglobalwheel.co.za/construction.html</div>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div style="font-size:22px;font-weight:800">95<span style="font-size:12px;color:var(--muted-2)">/100</span></div>
+        <div class="small">2ms · 42.5KB · 42.5KB transfer</div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="field"><div class="k">Title (50 chars)</div><div class="v title">Construction Wheels &amp;amp; LSW — Titan Global Wheel</div></div>
+      <div class="field"><div class="k">Meta description (142 chars)</div><div class="v">Construction wheels and LSW (Low Sidewall) rims — from multi-piece 15&amp;quot; to tubeless 22.5&amp;quot; single-piece in forged aluminium and steel.</div></div>
+      <div class="field"><div class="k">Canonical</div><div class="v mono">https://www.titanglobalwheel.co.za/construction.html</div></div>
+      <div class="field"><div class="k">Robots meta</div><div class="v mono">index, follow</div></div>
+      <div class="field"><div class="k">Viewport</div><div class="v mono">width=device-width, initial-scale=1.0</div></div>
+      <div class="field"><div class="k">HTML lang</div><div class="v mono">en</div></div>
+      <div class="field"><div class="k">H1 (count: 1)</div><div class="v">The home of LSW technology</div></div>
+      <div class="field"><div class="k">H2s (3)</div><div class="v">• Rims from 15&amp;quot; multi-piece to 22.5&amp;quot; tubeless<br>• LSW® tyres — Low Sidewall Technology<br>• Wheels for the job site fleet</div></div>
+      <div class="field"><div class="k">Words in body</div><div class="v">498</div></div>
+      <div class="field"><div class="k">JSON-LD</div><div class="v"><span class="tag">Organization</span> <span class="tag">BreadcrumbList</span></div></div>
+      <div class="field"><div class="k">Images</div><div class="v">
+        6 total
+        <div class="small">missing alt: <span class="good">0</span> · missing w/h: <span class="warn">4</span></div>
+        <div class="small">lazy: 2 · eager: 0 · <code>fetchpriority=high</code>: <span class="alt">0</span></div>
+        <div class="small">&lt;picture&gt;: 0 · &lt;source&gt;: 0</div>
+      </div></div>
+      <div class="field"><div class="k">Links</div><div class="v">
+        internal: 42 · external: 7 · nofollow: 0
+        <div class="small">empty text (icon-only): <span class="warn">10</span> <span class="small">(likely social icons — verify aria-label)</span></div>
+      </div></div>
+      <div class="field"><div class="k">Stylesheets</div><div class="v">1 &lt;link&gt; stylesheet<div class="small">render-blocking: 1</div></div></div>
+      <div class="field"><div class="k">Scripts</div><div class="v">4 inline (5.1KB) · 0 external
+        
+      </div></div>
+      <div class="field"><div class="k">Preconnect / Preload</div><div class="v">preconnect: 2 · preload: 0</div></div>
+      <div class="field"><div class="k">Open Graph</div><div class="v"><span class="good">Construction Wheels &amp;amp; LSW — Titan Global Wheel</span><div class="small">9 og:* tags</div></div></div>
+      <div class="field"><div class="k">Twitter card</div><div class="v"><span class="good">summary_large_image</span><div class="small">4 twitter:* tags</div></div></div>
+    </div>
+    <div class="issues"><div class="k">Open issues</div><ul><li>⚠ No LCP image priority</li></ul></div>
+  </article>
+<article class="ppage" id="repairs_html">
+    <div class="head">
+      <span class="grade g-a">A</span>
+      <div>
+        <div class="pg">Repairs</div>
+        <div class="url">https://www.titanglobalwheel.co.za/repairs.html</div>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div style="font-size:22px;font-weight:800">100<span style="font-size:12px;color:var(--muted-2)">/100</span></div>
+        <div class="small">2ms · 65.7KB · 65.7KB transfer</div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="field"><div class="k">Title (48 chars)</div><div class="v title">OTR Wheel &amp;amp; Rim Repairs — Titan Global Wheel</div></div>
+      <div class="field"><div class="k">Meta description (126 chars)</div><div class="v">ISO 9001 OTR rim and wheel repairs — sandblasting, MPI &amp;amp; ultrasonic testing, OEM-spec welding, repaint, 12-month warranty.</div></div>
+      <div class="field"><div class="k">Canonical</div><div class="v mono">https://www.titanglobalwheel.co.za/repairs.html</div></div>
+      <div class="field"><div class="k">Robots meta</div><div class="v mono">index, follow, max-image-preview:large</div></div>
+      <div class="field"><div class="k">Viewport</div><div class="v mono">width=device-width, initial-scale=1.0</div></div>
+      <div class="field"><div class="k">HTML lang</div><div class="v mono">en</div></div>
+      <div class="field"><div class="k">H1 (count: 1)</div><div class="v">Restore your OTR wheels to OEM standard — without the downtime.</div></div>
+      <div class="field"><div class="k">H2s (7)</div><div class="v">• Full-scope OTR wheel repair — sandblasting to certification<br>• Five steps from quarry floor back to OEM standard<br>• Repair lines purpose-built for heavy industry<br>• Inside Titan's OTR repair facility<div class="small">+ 3 more</div></div></div>
+      <div class="field"><div class="k">Words in body</div><div class="v">1 266</div></div>
+      <div class="field"><div class="k">JSON-LD</div><div class="v"><span class="tag">BreadcrumbList</span> <span class="tag">Service</span> <span class="tag">FAQPage</span></div></div>
+      <div class="field"><div class="k">Images</div><div class="v">
+        9 total
+        <div class="small">missing alt: <span class="good">0</span> · missing w/h: <span class="warn">4</span></div>
+        <div class="small">lazy: 4 · eager: 0 · <code>fetchpriority=high</code>: <span class="good">1</span></div>
+        <div class="small">&lt;picture&gt;: 5 · &lt;source&gt;: 5</div>
+      </div></div>
+      <div class="field"><div class="k">Links</div><div class="v">
+        internal: 45 · external: 7 · nofollow: 0
+        <div class="small">empty text (icon-only): <span class="warn">10</span> <span class="small">(likely social icons — verify aria-label)</span></div>
+      </div></div>
+      <div class="field"><div class="k">Stylesheets</div><div class="v">1 &lt;link&gt; stylesheet<div class="small">render-blocking: 1</div></div></div>
+      <div class="field"><div class="k">Scripts</div><div class="v">5 inline (8.8KB) · 0 external
+        
+      </div></div>
+      <div class="field"><div class="k">Preconnect / Preload</div><div class="v">preconnect: 2 · preload: 1<div class="small mono">&lt;link rel=&quot;preload&quot; as=&quot;image&quot; href=&quot;src/repairs/hero-repair-line.webp&quot; type=&quot;image/webp&quot; </div></div></div>
+      <div class="field"><div class="k">Open Graph</div><div class="v"><span class="good">OTR Wheel &amp;amp; Rim Repairs — Titan Global Wheel</span><div class="small">8 og:* tags</div></div></div>
+      <div class="field"><div class="k">Twitter card</div><div class="v"><span class="good">summary_large_image</span><div class="small">4 twitter:* tags</div></div></div>
+    </div>
+    <div class="issues"><div class="k">Status</div><ul><li class="good">✓ No issues found</li></ul></div>
+  </article>
+<article class="ppage" id="News_html">
+    <div class="head">
+      <span class="grade g-a">A</span>
+      <div>
+        <div class="pg">News</div>
+        <div class="url">https://www.titanglobalwheel.co.za/news.html</div>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div style="font-size:22px;font-weight:800">95<span style="font-size:12px;color:var(--muted-2)">/100</span></div>
+        <div class="small">2ms · 92.3KB · 92.3KB transfer</div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="field"><div class="k">Title (25 chars)</div><div class="v title">News — Titan Global Wheel</div></div>
+      <div class="field"><div class="k">Meta description (89 chars)</div><div class="v">The latest news, product launches and events from Titan Global Wheel — sub-Saharan Africa</div></div>
+      <div class="field"><div class="k">Canonical</div><div class="v mono">https://www.titanglobalwheel.co.za/news.html</div></div>
+      <div class="field"><div class="k">Robots meta</div><div class="v mono">index, follow</div></div>
+      <div class="field"><div class="k">Viewport</div><div class="v mono">width=device-width, initial-scale=1.0</div></div>
+      <div class="field"><div class="k">HTML lang</div><div class="v mono">en</div></div>
+      <div class="field"><div class="k">H1 (count: 1)</div><div class="v">Latest from Titan Global Wheel</div></div>
+      <div class="field"><div class="k">H2s (2)</div><div class="v">• Newsroom archive<br>• Have a project in mind?</div></div>
+      <div class="field"><div class="k">Words in body</div><div class="v">170</div></div>
+      <div class="field"><div class="k">JSON-LD</div><div class="v"><span class="tag">Organization</span></div></div>
+      <div class="field"><div class="k">Images</div><div class="v">
+        4 total
+        <div class="small">missing alt: <span class="good">0</span> · missing w/h: <span class="warn">4</span></div>
+        <div class="small">lazy: 0 · eager: 0 · <code>fetchpriority=high</code>: <span class="alt">0</span></div>
+        <div class="small">&lt;picture&gt;: 0 · &lt;source&gt;: 0</div>
+      </div></div>
+      <div class="field"><div class="k">Links</div><div class="v">
+        internal: 86 · external: 7 · nofollow: 0
+        <div class="small">empty text (icon-only): <span class="warn">10</span> <span class="small">(likely social icons — verify aria-label)</span></div>
+      </div></div>
+      <div class="field"><div class="k">Stylesheets</div><div class="v">2 &lt;link&gt; stylesheets<div class="small">render-blocking: 2</div></div></div>
+      <div class="field"><div class="k">Scripts</div><div class="v">4 inline (29.1KB) · 1 external
+        <div class="small">js/news-index.js</div>
+      </div></div>
+      <div class="field"><div class="k">Preconnect / Preload</div><div class="v">preconnect: 2 · preload: 0</div></div>
+      <div class="field"><div class="k">Open Graph</div><div class="v"><span class="good">News — Titan Global Wheel</span><div class="small">9 og:* tags</div></div></div>
+      <div class="field"><div class="k">Twitter card</div><div class="v"><span class="good">summary_large_image</span><div class="small">4 twitter:* tags</div></div></div>
+    </div>
+    <div class="issues"><div class="k">Open issues</div><ul><li>⚠ No LCP image priority</li></ul></div>
+  </article>
+<article class="ppage" id="events_html">
+    <div class="head">
+      <span class="grade g-a">A</span>
+      <div>
+        <div class="pg">Events</div>
+        <div class="url">https://www.titanglobalwheel.co.za/events.html</div>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div style="font-size:22px;font-weight:800">95<span style="font-size:12px;color:var(--muted-2)">/100</span></div>
+        <div class="small">2ms · 73.3KB · 73.3KB transfer</div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="field"><div class="k">Title (27 chars)</div><div class="v title">Events — Titan Global Wheel</div></div>
+      <div class="field"><div class="k">Meta description (124 chars)</div><div class="v">Where Titan Global Wheel has been in 2026 — agricultural expos, community showcases and industry events across South Africa.</div></div>
+      <div class="field"><div class="k">Canonical</div><div class="v mono">https://www.titanglobalwheel.co.za/events.html</div></div>
+      <div class="field"><div class="k">Robots meta</div><div class="v mono">index, follow</div></div>
+      <div class="field"><div class="k">Viewport</div><div class="v mono">width=device-width, initial-scale=1.0</div></div>
+      <div class="field"><div class="k">HTML lang</div><div class="v mono">en</div></div>
+      <div class="field"><div class="k">H1 (count: 1)</div><div class="v">Where we've been this year</div></div>
+      <div class="field"><div class="k">H2s (3)</div><div class="v">• Our 2026 event calendar<br>• Recommend a show for us to join<br>• See you at the next one.</div></div>
+      <div class="field"><div class="k">Words in body</div><div class="v">561</div></div>
+      <div class="field"><div class="k">JSON-LD</div><div class="v"><span class="tag">Organization</span></div></div>
+      <div class="field"><div class="k">Images</div><div class="v">
+        7 total
+        <div class="small">missing alt: <span class="good">0</span> · missing w/h: <span class="warn">4</span></div>
+        <div class="small">lazy: 3 · eager: 0 · <code>fetchpriority=high</code>: <span class="alt">0</span></div>
+        <div class="small">&lt;picture&gt;: 0 · &lt;source&gt;: 0</div>
+      </div></div>
+      <div class="field"><div class="k">Links</div><div class="v">
+        internal: 39 · external: 7 · nofollow: 0
+        <div class="small">empty text (icon-only): <span class="warn">10</span> <span class="small">(likely social icons — verify aria-label)</span></div>
+      </div></div>
+      <div class="field"><div class="k">Stylesheets</div><div class="v">1 &lt;link&gt; stylesheet<div class="small">render-blocking: 1</div></div></div>
+      <div class="field"><div class="k">Scripts</div><div class="v">3 inline (8.4KB) · 0 external
+        
+      </div></div>
+      <div class="field"><div class="k">Preconnect / Preload</div><div class="v">preconnect: 2 · preload: 0</div></div>
+      <div class="field"><div class="k">Open Graph</div><div class="v"><span class="good">Events — Titan Global Wheel</span><div class="small">9 og:* tags</div></div></div>
+      <div class="field"><div class="k">Twitter card</div><div class="v"><span class="good">summary_large_image</span><div class="small">4 twitter:* tags</div></div></div>
+    </div>
+    <div class="issues"><div class="k">Open issues</div><ul><li>⚠ No LCP image priority</li></ul></div>
+  </article>
+<article class="ppage" id="contact_html">
+    <div class="head">
+      <span class="grade g-a">A</span>
+      <div>
+        <div class="pg">Contact</div>
+        <div class="url">https://www.titanglobalwheel.co.za/contact.html</div>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div style="font-size:22px;font-weight:800">95<span style="font-size:12px;color:var(--muted-2)">/100</span></div>
+        <div class="small">2ms · 107.4KB · 107.4KB transfer</div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="field"><div class="k">Title (31 chars)</div><div class="v title">Contact Us — Titan Global Wheel</div></div>
+      <div class="field"><div class="k">Meta description (123 chars)</div><div class="v">Get in touch with Titan Global Wheel — tyres, rims, runflat systems and complete wheel solutions across sub-Saharan Africa.</div></div>
+      <div class="field"><div class="k">Canonical</div><div class="v mono">https://www.titanglobalwheel.co.za/contact.html</div></div>
+      <div class="field"><div class="k">Robots meta</div><div class="v mono">index, follow</div></div>
+      <div class="field"><div class="k">Viewport</div><div class="v mono">width=device-width, initial-scale=1.0</div></div>
+      <div class="field"><div class="k">HTML lang</div><div class="v mono">en</div></div>
+      <div class="field"><div class="k">H1 (count: 1)</div><div class="v">Let's hear it from you!</div></div>
+      <div class="field"><div class="k">H2s (4)</div><div class="v">• Switchboard &amp;amp; addresses<br>• Fill in the Contact form<br>• Get in-touch with our Available Personnel<br>• Meet The Team</div></div>
+      <div class="field"><div class="k">Words in body</div><div class="v">596</div></div>
+      <div class="field"><div class="k">JSON-LD</div><div class="v"><span class="tag">Organization</span></div></div>
+      <div class="field"><div class="k">Images</div><div class="v">
+        12 total
+        <div class="small">missing alt: <span class="good">0</span> · missing w/h: <span class="warn">4</span></div>
+        <div class="small">lazy: 8 · eager: 0 · <code>fetchpriority=high</code>: <span class="alt">0</span></div>
+        <div class="small">&lt;picture&gt;: 0 · &lt;source&gt;: 0</div>
+      </div></div>
+      <div class="field"><div class="k">Links</div><div class="v">
+        internal: 45 · external: 7 · nofollow: 0
+        <div class="small">empty text (icon-only): <span class="warn">10</span> <span class="small">(likely social icons — verify aria-label)</span></div>
+      </div></div>
+      <div class="field"><div class="k">Stylesheets</div><div class="v">1 &lt;link&gt; stylesheet<div class="small">render-blocking: 1</div></div></div>
+      <div class="field"><div class="k">Scripts</div><div class="v">6 inline (15.4KB) · 1 external
+        <div class="small">https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js</div>
+      </div></div>
+      <div class="field"><div class="k">Preconnect / Preload</div><div class="v">preconnect: 2 · preload: 0</div></div>
+      <div class="field"><div class="k">Open Graph</div><div class="v"><span class="good">Contact Us — Titan Global Wheel</span><div class="small">9 og:* tags</div></div></div>
+      <div class="field"><div class="k">Twitter card</div><div class="v"><span class="good">summary_large_image</span><div class="small">4 twitter:* tags</div></div></div>
+    </div>
+    <div class="issues"><div class="k">Open issues</div><ul><li>⚠ No LCP image priority</li></ul></div>
+  </article>
+<article class="ppage" id="Privacy-Policy_html">
+    <div class="head">
+      <span class="grade g-b">B</span>
+      <div>
+        <div class="pg">Privacy Policy</div>
+        <div class="url">https://www.titanglobalwheel.co.za/Privacy-Policy.html</div>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div style="font-size:22px;font-weight:800">89<span style="font-size:12px;color:var(--muted-2)">/100</span></div>
+        <div class="small">2ms · 23.5KB · 23.5KB transfer</div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="field"><div class="k">Title (35 chars)</div><div class="v title">Privacy Policy — Titan Global Wheel</div></div>
+      <div class="field"><div class="k">Meta description (90 chars)</div><div class="v">How Titan Global Wheel collects, uses, discloses and safeguards your personal information.</div></div>
+      <div class="field"><div class="k">Canonical</div><div class="v mono">https://www.titanglobalwheel.co.za/Privacy-Policy.html</div></div>
+      <div class="field"><div class="k">Robots meta</div><div class="v mono">index, follow</div></div>
+      <div class="field"><div class="k">Viewport</div><div class="v mono">width=device-width, initial-scale=1.0</div></div>
+      <div class="field"><div class="k">HTML lang</div><div class="v mono">en</div></div>
+      <div class="field"><div class="k">H1 (count: 1)</div><div class="v">Privacy Policy</div></div>
+      <div class="field"><div class="k">H2s (9)</div><div class="v">• Privacy Policy<br>• 1. Information We Collect<br>• 2. How We Use Your Information<br>• 3. Data Security<div class="small">+ 5 more</div></div></div>
+      <div class="field"><div class="k">Words in body</div><div class="v">497</div></div>
+      <div class="field"><div class="k">JSON-LD</div><div class="v"><span class="alt">none</span></div></div>
+      <div class="field"><div class="k">Images</div><div class="v">
+        4 total
+        <div class="small">missing alt: <span class="good">0</span> · missing w/h: <span class="warn">4</span></div>
+        <div class="small">lazy: 0 · eager: 0 · <code>fetchpriority=high</code>: <span class="alt">0</span></div>
+        <div class="small">&lt;picture&gt;: 0 · &lt;source&gt;: 0</div>
+      </div></div>
+      <div class="field"><div class="k">Links</div><div class="v">
+        internal: 35 · external: 7 · nofollow: 0
+        <div class="small">empty text (icon-only): <span class="warn">10</span> <span class="small">(likely social icons — verify aria-label)</span></div>
+      </div></div>
+      <div class="field"><div class="k">Stylesheets</div><div class="v">2 &lt;link&gt; stylesheets<div class="small">render-blocking: 2</div></div></div>
+      <div class="field"><div class="k">Scripts</div><div class="v">2 inline (5.1KB) · 0 external
+        
+      </div></div>
+      <div class="field"><div class="k">Preconnect / Preload</div><div class="v">preconnect: 2 · preload: 0</div></div>
+      <div class="field"><div class="k">Open Graph</div><div class="v"><span class="good">Privacy Policy — Titan Global Wheel</span><div class="small">9 og:* tags</div></div></div>
+      <div class="field"><div class="k">Twitter card</div><div class="v"><span class="good">summary_large_image</span><div class="small">4 twitter:* tags</div></div></div>
+    </div>
+    <div class="issues"><div class="k">Open issues</div><ul><li>⚠ No LCP image priority</li><li>⚠ No JSON-LD</li></ul></div>
+  </article>
+<article class="ppage" id="Cookies-Policy_html">
+    <div class="head">
+      <span class="grade g-b">B</span>
+      <div>
+        <div class="pg">Cookies Policy</div>
+        <div class="url">https://www.titanglobalwheel.co.za/Cookies-Policy.html</div>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div style="font-size:22px;font-weight:800">89<span style="font-size:12px;color:var(--muted-2)">/100</span></div>
+        <div class="small">2ms · 22.1KB · 22.1KB transfer</div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="field"><div class="k">Title (35 chars)</div><div class="v title">Cookies Policy — Titan Global Wheel</div></div>
+      <div class="field"><div class="k">Meta description (84 chars)</div><div class="v">How and why Titan Global Wheel uses cookies and similar technologies on its website.</div></div>
+      <div class="field"><div class="k">Canonical</div><div class="v mono">https://www.titanglobalwheel.co.za/Cookies-Policy.html</div></div>
+      <div class="field"><div class="k">Robots meta</div><div class="v mono">index, follow</div></div>
+      <div class="field"><div class="k">Viewport</div><div class="v mono">width=device-width, initial-scale=1.0</div></div>
+      <div class="field"><div class="k">HTML lang</div><div class="v mono">en</div></div>
+      <div class="field"><div class="k">H1 (count: 1)</div><div class="v">Cookies Policy</div></div>
+      <div class="field"><div class="k">H2s (6)</div><div class="v">• Cookies Policy<br>• 1. What Are Cookies?<br>• 2. Types of Cookies We Use<br>• 3. Managing Cookies<div class="small">+ 2 more</div></div></div>
+      <div class="field"><div class="k">Words in body</div><div class="v">351</div></div>
+      <div class="field"><div class="k">JSON-LD</div><div class="v"><span class="alt">none</span></div></div>
+      <div class="field"><div class="k">Images</div><div class="v">
+        4 total
+        <div class="small">missing alt: <span class="good">0</span> · missing w/h: <span class="warn">4</span></div>
+        <div class="small">lazy: 0 · eager: 0 · <code>fetchpriority=high</code>: <span class="alt">0</span></div>
+        <div class="small">&lt;picture&gt;: 0 · &lt;source&gt;: 0</div>
+      </div></div>
+      <div class="field"><div class="k">Links</div><div class="v">
+        internal: 35 · external: 7 · nofollow: 0
+        <div class="small">empty text (icon-only): <span class="warn">10</span> <span class="small">(likely social icons — verify aria-label)</span></div>
+      </div></div>
+      <div class="field"><div class="k">Stylesheets</div><div class="v">2 &lt;link&gt; stylesheets<div class="small">render-blocking: 2</div></div></div>
+      <div class="field"><div class="k">Scripts</div><div class="v">2 inline (5.1KB) · 0 external
+        
+      </div></div>
+      <div class="field"><div class="k">Preconnect / Preload</div><div class="v">preconnect: 2 · preload: 0</div></div>
+      <div class="field"><div class="k">Open Graph</div><div class="v"><span class="good">Cookies Policy — Titan Global Wheel</span><div class="small">9 og:* tags</div></div></div>
+      <div class="field"><div class="k">Twitter card</div><div class="v"><span class="good">summary_large_image</span><div class="small">4 twitter:* tags</div></div></div>
+    </div>
+    <div class="issues"><div class="k">Open issues</div><ul><li>⚠ No LCP image priority</li><li>⚠ No JSON-LD</li></ul></div>
+  </article>
+<article class="ppage" id="404_html">
+    <div class="head">
+      <span class="grade g-a">A</span>
+      <div>
+        <div class="pg">404</div>
+        <div class="url">https://www.titanglobalwheel.co.za/404.html</div>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div style="font-size:22px;font-weight:800">90<span style="font-size:12px;color:var(--muted-2)">/100</span></div>
+        <div class="small">2ms · 62.3KB · 62.3KB transfer</div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="field"><div class="k">Title (41 chars)</div><div class="v title">404 — Page Not Found | Titan Global Wheel</div></div>
+      <div class="field"><div class="k">Meta description (69 chars)</div><div class="v">The page you requested could not be found. Explore Titan Global Wheel</div></div>
+      <div class="field"><div class="k">Canonical</div><div class="v mono"><span class="alt">not set</span></div></div>
+      <div class="field"><div class="k">Robots meta</div><div class="v mono">noindex, follow</div></div>
+      <div class="field"><div class="k">Viewport</div><div class="v mono">width=device-width, initial-scale=1.0</div></div>
+      <div class="field"><div class="k">HTML lang</div><div class="v mono">en</div></div>
+      <div class="field"><div class="k">H1 (count: 1)</div><div class="v">Page not found</div></div>
+      <div class="field"><div class="k">H2s (1)</div><div class="v">• Popular destinations</div></div>
+      <div class="field"><div class="k">Words in body</div><div class="v">228</div></div>
+      <div class="field"><div class="k">JSON-LD</div><div class="v"><span class="tag">Organization</span></div></div>
+      <div class="field"><div class="k">Images</div><div class="v">
+        4 total
+        <div class="small">missing alt: <span class="good">0</span> · missing w/h: <span class="warn">4</span></div>
+        <div class="small">lazy: 0 · eager: 0 · <code>fetchpriority=high</code>: <span class="alt">0</span></div>
+        <div class="small">&lt;picture&gt;: 0 · &lt;source&gt;: 0</div>
+      </div></div>
+      <div class="field"><div class="k">Links</div><div class="v">
+        internal: 43 · external: 7 · nofollow: 0
+        <div class="small">empty text (icon-only): <span class="warn">10</span> <span class="small">(likely social icons — verify aria-label)</span></div>
+      </div></div>
+      <div class="field"><div class="k">Stylesheets</div><div class="v">1 &lt;link&gt; stylesheet<div class="small">render-blocking: 1</div></div></div>
+      <div class="field"><div class="k">Scripts</div><div class="v">3 inline (8.4KB) · 0 external
+        
+      </div></div>
+      <div class="field"><div class="k">Preconnect / Preload</div><div class="v">preconnect: 2 · preload: 0</div></div>
+      <div class="field"><div class="k">Open Graph</div><div class="v"><span class="good">404 — Page Not Found | Titan Global Wheel</span><div class="small">9 og:* tags</div></div></div>
+      <div class="field"><div class="k">Twitter card</div><div class="v"><span class="good">summary_large_image</span><div class="small">4 twitter:* tags</div></div></div>
+    </div>
+    <div class="issues"><div class="k">Open issues</div><ul><li>⚠ No canonical</li><li>⚠ No LCP image priority</li></ul></div>
+  </article>
+
+  <h2 id="priority">Recommended Fix Priority</h2>
+  <p class="lede">Sequenced by impact-to-effort ratio. Knock these out in order and you'll be at 95+ across the board.</p>
+  <div class="card">
+    <h3 style="margin-top:0">P0 — Quick wins (≤1 hr total)</h3>
+    <ol style="margin:0;padding-left:22px;line-height:1.7">
+      <li>Add <code>width="" height=""</code> to every &lt;img&gt; missing dimensions — fixes the bulk of the CLS risk (81 of 129 still open).</li>
+      <li>Add <code>fetchpriority="high"</code> + <code>loading="eager"</code> to the hero &lt;img&gt; on the 16 pages that don't have it yet.</li>
+      <li>Add a &lt;link rel="preload" as="image" imagesrcset="…" imagesizes="…"&gt; for the hero image on the same pages.</li>
+      <li>Trim <code>rims.html</code> title from 62 → ≤60 chars and <code>featured.html</code> from 67 → ≤60.</li>
+      <li>Add a small <code>WebPage</code> + <code>BreadcrumbList</code> JSON-LD block to the two policy pages.</li>
+      <li>Tighten the four under-50-char meta descriptions (Home, About, Accessories, Featured Products) to use the full snippet real-estate with a CTA.</li>
+    </ol>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">P1 — Bigger wins (half day)</h3>
+    <ol style="margin:0;padding-left:22px;line-height:1.7">
+      <li>Convert hero images to <code>&lt;picture&gt;</code> with AVIF + WebP sources — typically 25–35% smaller than WebP alone.</li>
+      <li>Preconnect the production image / asset origin if separated from the main domain.</li>
+      <li>Move repeated nav/footer/schema from each page into a server-side template/partial so the per-page HTML stays &lt;60KB (heaviest today: contact.html at 107KB with the EmailJS SDK and validator).</li>
+      <li>Build the <code>earthmoving.html</code> industry page (or remove the card on repairs.html that links to it) — surfaced by the site-wide link check.</li>
+      <li>Run a real Lighthouse / WebPageTest pass on the production CDN to confirm LCP &lt; 2.5s, INP &lt; 200ms, CLS &lt; 0.1 across all device tiers.</li>
+    </ol>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">P2 — Structural (next sprint)</h3>
+    <ol style="margin:0;padding-left:22px;line-height:1.7">
+      <li>Confirm production host returns real <code>404 Not Found</code> for 404.html (currently dev server returns 200 — verify the prod host, not a code change).</li>
+      <li>Self-host Inter + Archivo and preload the woff2 files; remove the Google Fonts round-trip.</li>
+      <li>Consider <code>hreflang="x-default"</code> once a bilingual (English + Afrikaans) rollout is on the roadmap.</li>
+      <li>Add true <code>301</code> redirects from <code>/src/news/articles/&lt;slug&gt;.html</code> to <code>/blog/&lt;slug&gt;/</code> on the production host (canonical tags already consolidate signals in the meantime).</li>
+    </ol>
+  </div>
+
+  <footer class="foot">
+    <div>Report generated against <code>www.titanglobalwheel.co.za</code> source — crawled locally, parsed statically, scored on documented budgets.</div>
+    <div>WebCraft Studio · SEO + Performance audit</div>
+  </footer>
+</div>
+  <script src="js/logo-banner.js"></script>
+  </body>
+</html>
+

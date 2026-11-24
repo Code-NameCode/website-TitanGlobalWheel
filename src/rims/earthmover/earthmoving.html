@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titan Global Wheel — Earthmoving Rims</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        titan: {
+                            bg: '#0a0d10',
+                            surface: '#11151a',
+                            card: '#161b22',
+                            border: '#2a323c',
+                            red: '#e01030',
+                            steel: '#5b8bd0',
+                            ok: '#2fb672',
+                            muted: '#9aa4af',
+                            mutedInvert: '#b8c2cc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0d10;
+            color: #f4f6f8;
+        }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #11151a; }
+        ::-webkit-scrollbar-thumb { background: #2a323c; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #e01030; }
+        .table-sticky-col {
+            position: sticky;
+            left: 0;
+            z-index: 10;
+            background-color: #161b22;
+        }
+        .table-sticky-col::after {
+            content: "";
+            position: absolute;
+            top: 0; right: -1px; bottom: 0;
+            width: 1px;
+            background: #2a323c;
+        }
+        tr:hover .table-sticky-col { background-color: #1d242d; }
+        .highlight-text {
+            background-color: rgba(224, 16, 48, 0.2);
+            color: #e01030;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Tab button hover */
+        .tab-btn:hover { color: #f4f6f8; }
+
+        /* Modal transitions */
+        #rim-modal, #cert-modal { transition: opacity .25s ease; }
+
+        /* Toast animation */
+        @keyframes toastSlide {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .toast {
+            animation: toastSlide .3s ease;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-[#e01030]/30 selection:text-white">
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-40 bg-[#11151a]/95 backdrop-blur-md border-b border-[#2a323c] shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                
+                <!-- Logo & Brand Title -->
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div>
+                            
+                            <h1 class="text-lg sm:text-xl font-bold tracking-tight text-white flex items-center gap-2">
+                                Earthmoving &amp; Mining Rims
+                            </h1>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile action -->
+                    <div class="flex items-center gap-2 md:hidden">
+                        <button onclick="toggleMobileSearch()" class="p-2.5 rounded-lg bg-[#161b22] border border-[#2a323c] text-[#9aa4af] hover:text-white">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Main Search Bar -->
+                <div class="relative flex-1 max-w-2xl" id="search-container">
+                    <div class="relative flex items-center">
+                        <div class="absolute inset-y-0 left-0 pl-3.5 pointer-events-none flex items-center text-[#e01030]">
+                            <i class="fa-solid fa-magnifying-glass text-lg"></i>
+                        </div>
+                        <input 
+                            type="text" 
+                            id="global-search" 
+                            placeholder="Search by Model, Part # (e.g. EW5038), Size or Tyre..." 
+                            class="w-full pl-11 pr-24 py-2.5 bg-[#161b22] border border-[#2a323c] rounded-xl text-sm text-white placeholder-[#9aa4af] focus:outline-none focus:border-[#e01030] focus:ring-1 focus:ring-[#e01030] transition-all shadow-inner"
+                            onkeyup="handleSearch()"
+                        >
+                        <div class="absolute inset-y-0 right-0 pr-2 flex items-center gap-1.5">
+                            <button id="clear-search-btn" onclick="clearSearch()" class="hidden text-[#9aa4af] hover:text-white p-1 rounded-md">
+                                <i class="fa-solid fa-circle-xmark text-sm"></i>
+                            </button>
+                            <span class="hidden sm:inline-block px-2 py-1 text-xs font-mono bg-[#0a0d10] text-[#9aa4af] border border-[#2a323c] rounded-md shadow-sm">
+                                Ctrl + K
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="hidden md:flex items-center gap-2">
+                    <button onclick="exportFilteredData()" class="px-3 py-2 text-xs font-semibold rounded-lg bg-[#161b22] border border-[#2a323c] hover:border-[#5b8bd0]/50 text-[#5b8bd0] hover:text-[#5b8bd0] flex items-center gap-2 transition">
+                        <i class="fa-solid fa-download"></i>
+                        Export CSV
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero / Info Banner -->
+    <section style="display: none;" class="bg-gradient-to-r from-[#11151a] via-[#161b22] to-[#11151a] border-b border-[#2a323c] py-6 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-2 text-[#e01030] text-xs font-semibold uppercase tracking-wider mb-1">
+                        <i class="fa-solid fa-shield-halved"></i> Southern Africa Mining &amp; Construction Leader
+                    </div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-white mb-2">Heavy Duty Earthmoving Rim Assemblies</h2>
+                    <p class="text-sm text-[#b8c2cc] leading-relaxed">
+                        Titan Global Wheel maintains a strong OEM presence across major mining sites throughout Southern Africa. All rims manufactured and supplied are accompanied with an official <span class="text-[#e01030] font-medium">Certificate of Conformance</span> warranting material specification, precision engineering, and application durability.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 gap-3">
+                    <div class="bg-[#0a0d10]/80 p-3 rounded-xl border border-[#2a323c] text-center">
+                        <span class="text-2xl font-extrabold text-[#e01030] block" id="total-rims-count">112+</span>
+                        <span class="text-xs text-[#9aa4af] font-medium">Rim Solutions</span>
+                    </div>
+                    <div class="bg-[#0a0d10]/80 p-3 rounded-xl border border-[#2a323c] text-center">
+                        <span class="text-2xl font-extrabold text-[#5b8bd0] block">24" - 63"</span>
+                        <span class="text-xs text-[#9aa4af] font-medium">Wheel Diameter</span>
+                    </div>
+                    <div class="bg-[#0a0d10]/80 p-3 rounded-xl border border-[#2a323c] text-center col-span-2 sm:col-span-1 md:col-span-2">
+                        <span class="text-xs text-[#2fb672] font-semibold flex items-center justify-center gap-1">
+                            <i class="fa-solid fa-circle-check"></i> 100% OEM Compatible
+                        </span>
+                        <span class="text-xs text-[#9aa4af]">Approved for CAT, Komatsu, Bell &amp; Volvo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full">
+
+        <!-- Quick Manufacturer Filter Pills -->
+        <div class="mb-6 space-y-2">
+            <div class="flex items-center justify-between text-xs text-[#9aa4af] font-medium">
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-filter text-[#e01030]"></i> Quick Filter by OEM Manufacturer:</span>
+                <span id="active-filter-label" class="text-[#e01030] font-semibold">Showing All</span>
+            </div>
+            <div class="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar text-xs">
+                <button onclick="setManufacturerFilter('ALL')" class="mfr-btn px-3 py-1.5 rounded-lg bg-[#e01030] text-white font-bold whitespace-nowrap transition" data-mfr="ALL">
+                    All Manufacturers
+                </button>
+                <button onclick="setManufacturerFilter('CAT')" class="mfr-btn px-3 py-1.5 rounded-lg bg-[#161b22] hover:bg-[#2a323c] text-[#b8c2cc] whitespace-nowrap transition border border-[#2a323c]" data-mfr="CAT">
+                    Caterpillar (CAT)
+                </button>
+                <button onclick="setManufacturerFilter('KOMATSU')" class="mfr-btn px-3 py-1.5 rounded-lg bg-[#161b22] hover:bg-[#2a323c] text-[#b8c2cc] whitespace-nowrap transition border border-[#2a323c]" data-mfr="KOMATSU">
+                    Komatsu
+                </button>
+                <button onclick="setManufacturerFilter('BELL')" class="mfr-btn px-3 py-1.5 rounded-lg bg-[#161b22] hover:bg-[#2a323c] text-[#b8c2cc] whitespace-nowrap transition border border-[#2a323c]" data-mfr="BELL">
+                    Bell Equipment
+                </button>
+                <button onclick="setManufacturerFilter('VOLVO')" class="mfr-btn px-3 py-1.5 rounded-lg bg-[#161b22] hover:bg-[#2a323c] text-[#b8c2cc] whitespace-nowrap transition border border-[#2a323c]" data-mfr="VOLVO">
+                    Volvo
+                </button>
+                <button onclick="setManufacturerFilter('ATLAS COPCO')" class="mfr-btn px-3 py-1.5 rounded-lg bg-[#161b22] hover:bg-[#2a323c] text-[#b8c2cc] whitespace-nowrap transition border border-[#2a323c]" data-mfr="ATLAS COPCO">
+                    Atlas Copco / Epiroc
+                </button>
+                <button onclick="setManufacturerFilter('SANDVIK')" class="mfr-btn px-3 py-1.5 rounded-lg bg-[#161b22] hover:bg-[#2a323c] text-[#b8c2cc] whitespace-nowrap transition border border-[#2a323c]" data-mfr="SANDVIK">
+                    Sandvik
+                </button>
+                <button onclick="setManufacturerFilter('AARD')" class="mfr-btn px-3 py-1.5 rounded-lg bg-[#161b22] hover:bg-[#2a323c] text-[#b8c2cc] whitespace-nowrap transition border border-[#2a323c]" data-mfr="AARD">
+                    AARD Mining
+                </button>
+                <button onclick="setManufacturerFilter('DEZZI')" class="mfr-btn px-3 py-1.5 rounded-lg bg-[#161b22] hover:bg-[#2a323c] text-[#b8c2cc] whitespace-nowrap transition border border-[#2a323c]" data-mfr="DEZZI">
+                    Dezzi
+                </button>
+                <button onclick="setManufacturerFilter('HITACHI')" class="mfr-btn px-3 py-1.5 rounded-lg bg-[#161b22] hover:bg-[#2a323c] text-[#b8c2cc] whitespace-nowrap transition border border-[#2a323c]" data-mfr="HITACHI">
+                    Hitachi
+                </button>
+                <button onclick="setManufacturerFilter('TEREX')" class="mfr-btn px-3 py-1.5 rounded-lg bg-[#161b22] hover:bg-[#2a323c] text-[#b8c2cc] whitespace-nowrap transition border border-[#2a323c]" data-mfr="TEREX">
+                    Terex
+                </button>
+                <button onclick="setManufacturerFilter('LIEBHERR')" class="mfr-btn px-3 py-1.5 rounded-lg bg-[#161b22] hover:bg-[#2a323c] text-[#b8c2cc] whitespace-nowrap transition border border-[#2a323c]" data-mfr="LIEBHERR">
+                    Liebherr
+                </button>
+            </div>
+        </div>
+
+        <!-- Category Navigation Tabs -->
+        <div class="border-b border-[#2a323c] mb-6">
+            <div class="flex items-center gap-1 overflow-x-auto no-scrollbar scroll-smooth" id="tabs-header">
+                <button onclick="switchTab('tab-all')" id="btn-tab-all" class="tab-btn px-4 py-3 font-semibold text-sm border-b-2 border-[#e01030] text-[#e01030] flex items-center gap-2 whitespace-nowrap transition">
+                    <i class="fa-solid fa-list-check"></i>
+                    All Earthmoving Rims
+                    <span class="tab-count px-2 py-0.5 text-xs rounded-full bg-[#e01030]/20 text-[#e01030]" id="count-all">0</span>
+                </button>
+                <button onclick="switchTab('tab-24')" id="btn-tab-24" class="tab-btn px-4 py-3 font-medium text-sm border-b-2 border-transparent text-[#9aa4af] hover:text-[#b8c2cc] flex items-center gap-2 whitespace-nowrap transition">
+                    24" Rims
+                    <span class="tab-count px-2 py-0.5 text-xs rounded-full bg-[#161b22] text-[#9aa4af]" id="count-24">0</span>
+                </button>
+                <button onclick="switchTab('tab-25-3p')" id="btn-tab-25-3p" class="tab-btn px-4 py-3 font-medium text-sm border-b-2 border-transparent text-[#9aa4af] hover:text-[#b8c2cc] flex items-center gap-2 whitespace-nowrap transition">
+                    25" 3-Piece
+                    <span class="tab-count px-2 py-0.5 text-xs rounded-full bg-[#161b22] text-[#9aa4af]" id="count-25-3p">0</span>
+                </button>
+                <button onclick="switchTab('tab-25-5p')" id="btn-tab-25-5p" class="tab-btn px-4 py-3 font-medium text-sm border-b-2 border-transparent text-[#9aa4af] hover:text-[#b8c2cc] flex items-center gap-2 whitespace-nowrap transition">
+                    25" 5-Piece
+                    <span class="tab-count px-2 py-0.5 text-xs rounded-full bg-[#161b22] text-[#9aa4af]" id="count-25-5p">0</span>
+                </button>
+                <button onclick="switchTab('tab-29-34')" id="btn-tab-29-34" class="tab-btn px-4 py-3 font-medium text-sm border-b-2 border-transparent text-[#9aa4af] hover:text-[#b8c2cc] flex items-center gap-2 whitespace-nowrap transition">
+                    29" – 34" Rims
+                    <span class="tab-count px-2 py-0.5 text-xs rounded-full bg-[#161b22] text-[#9aa4af]" id="count-29-34">0</span>
+                </button>
+                <button onclick="switchTab('tab-35-39')" id="btn-tab-35-39" class="tab-btn px-4 py-3 font-medium text-sm border-b-2 border-transparent text-[#9aa4af] hover:text-[#b8c2cc] flex items-center gap-2 whitespace-nowrap transition">
+                    35" – 39" Rims
+                    <span class="tab-count px-2 py-0.5 text-xs rounded-full bg-[#161b22] text-[#9aa4af]" id="count-35-39">0</span>
+                </button>
+                <button onclick="switchTab('tab-giant')" id="btn-tab-giant" class="tab-btn px-4 py-3 font-medium text-sm border-b-2 border-transparent text-[#9aa4af] hover:text-[#b8c2cc] flex items-center gap-2 whitespace-nowrap transition">
+                    <i class="fa-solid fa-truck-monster text-[#e01030]"></i>
+                    49" – 63" Giant Mining
+                    <span class="tab-count px-2 py-0.5 text-xs rounded-full bg-[#161b22] text-[#9aa4af]" id="count-giant">0</span>
+                </button>
+                <button onclick="switchTab('tab-components')" id="btn-tab-components" class="tab-btn px-4 py-3 font-medium text-sm border-b-2 border-transparent text-[#9aa4af] hover:text-[#b8c2cc] flex items-center gap-2 whitespace-nowrap transition">
+                    <i class="fa-solid fa-gears text-[#5b8bd0]"></i>
+                    Components &amp; Tech Guide
+                </button>
+            </div>
+        </div>
+
+        <!-- Search Results Counter Bar -->
+        <div id="search-feedback-bar" class="mb-4 bg-[#161b22]/60 border border-[#2a323c] rounded-xl p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+            <div class="flex items-center gap-2 text-[#b8c2cc]">
+                <span>Showing <strong id="visible-rows-count" class="text-[#e01030] font-bold">0</strong> matching earthmoving rim items</span>
+                <span id="search-term-display" class="text-[#9aa4af] italic"></span>
+            </div>
+            <div class="flex items-center gap-2 text-[#9aa4af]">
+                <i class="fa-solid fa-circle-info text-[#e01030]"></i>
+                <span>Click any row for complete technical details &amp; quote inquiry</span>
+            </div>
+        </div>
+
+        <!-- TAB CONTENT CONTAINERS -->
+        <div id="tab-contents">
+            <!-- Content filled dynamically via JavaScript from dataset -->
+        </div>
+
+    </main>
+
+    <!-- Detailed Technical Guide & Vehicle Application Legend -->
+    <section class="bg-[#11151a] border-t border-[#2a323c] py-8 px-4 mt-12">
+        <div class="max-w-7xl mx-auto">
+            <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-book-bookmark text-[#e01030]"></i>
+                Vehicle Application Codes &amp; Technical Abbreviations
+            </h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 text-xs">
+                <div class="bg-[#161b22] p-2.5 rounded-lg border border-[#2a323c]">
+                    <span class="font-bold text-[#e01030] block">LHD / UL</span>
+                    <span class="text-[#9aa4af]">Load Haul Dump / Underground Loader</span>
+                </div>
+                <div class="bg-[#161b22] p-2.5 rounded-lg border border-[#2a323c]">
+                    <span class="font-bold text-[#e01030] block">WL / FEL</span>
+                    <span class="text-[#9aa4af]">Wheel Loader / Front End Loader</span>
+                </div>
+                <div class="bg-[#161b22] p-2.5 rounded-lg border border-[#2a323c]">
+                    <span class="font-bold text-[#e01030] block">ADT / RDT</span>
+                    <span class="text-[#9aa4af]">Articulated / Rigid Dump Truck</span>
+                </div>
+                <div class="bg-[#161b22] p-2.5 rounded-lg border border-[#2a323c]">
+                    <span class="font-bold text-[#e01030] block">MG / WD</span>
+                    <span class="text-[#9aa4af]">Motor Grader / Wheel Dozer</span>
+                </div>
+                <div class="bg-[#161b22] p-2.5 rounded-lg border border-[#2a323c]">
+                    <span class="font-bold text-[#e01030] block">MT / RT</span>
+                    <span class="text-[#9aa4af]">Mining Haul Truck / Rigid Truck</span>
+                </div>
+                <div class="bg-[#161b22] p-2.5 rounded-lg border border-[#2a323c]">
+                    <span class="font-bold text-[#e01030] block">TH / CRANE</span>
+                    <span class="text-[#9aa4af]">Telehandler / Mobile Crane</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0a0d10] border-t border-[#2a323c] py-6 text-center text-xs text-[#9aa4af]">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>&copy; Titan Global Wheel — Earthmoving Division. All Rights Reserved.</p>
+            <p class="mt-1">All rims supplied are backed by OEM Conformance Certificates &amp; Southern African Mining Field Engineering Support.</p>
+        </div>
+    </footer>
+
+    <!-- Rim Technical Detail Modal -->
+    <div id="rim-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-[#161b22] border border-[#2a323c] rounded-2xl max-w-2xl w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeRimModal()" class="absolute top-4 right-4 text-[#9aa4af] hover:text-white p-2 rounded-lg bg-[#11151a] border border-[#2a323c]">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div id="modal-content">
+                <!-- Content inserted via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Certificate Info Modal -->
+    <div id="cert-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-[#161b22] border border-[#2a323c] rounded-2xl max-w-xl w-full p-6 shadow-2xl relative">
+            <button onclick="closeCertificateModal()" class="absolute top-4 right-4 text-[#9aa4af] hover:text-white p-2 rounded-lg bg-[#11151a] border border-[#2a323c]">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 rounded-xl bg-[#e01030]/20 text-[#e01030] flex items-center justify-center text-2xl border border-[#e01030]/30">
+                    <i class="fa-solid fa-award"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-white">Certificate of Conformance</h3>
+                    <p class="text-xs text-[#e01030]">Titan Quality Guarantee Standard</p>
+                </div>
+            </div>
+            <div class="space-y-3 text-xs text-[#b8c2cc] leading-relaxed border-t border-[#2a323c] pt-4">
+                <p>
+                    All Earthmoving &amp; Mining rims manufactured, refurbished, and supplied by <strong class="text-white">Titan Global Wheel</strong> are dispatched with an official <strong class="text-[#e01030]">Certificate of Conformance (CoC)</strong>.
+                </p>
+                <div class="bg-[#11151a] p-3 rounded-xl border border-[#2a323c] space-y-2">
+                    <div class="flex items-start gap-2">
+                        <i class="fa-solid fa-check text-[#2fb672] mt-0.5"></i>
+                        <span><strong class="text-white">Material Assurance:</strong> Structural high-tensile steel grades tested for extreme fatigue &amp; torque loads.</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <i class="fa-solid fa-check text-[#2fb672] mt-0.5"></i>
+                        <span><strong class="text-white">Workmanship:</strong> Precision submerged-arc welding, NDT weld testing, and ultra-accurate machining tolerances.</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <i class="fa-solid fa-check text-[#2fb672] mt-0.5"></i>
+                        <span><strong class="text-white">OEM Application Match:</strong> Guaranteed bolt pattern, offset, and payload compatibility for specified mining equipment.</span>
+                    </div>
+                </div>
+                <p class="text-[#9aa4af] italic">
+                    This certification ensures complete safety compliance with mining regulations across South Africa, Zambia, Mozambique, DRC, and the sub-Saharan region.
+                </p>
+            </div>
+            <div class="mt-6 flex justify-end">
+                <button onclick="closeCertificateModal()" class="px-4 py-2 bg-[#e01030] text-white font-bold rounded-lg hover:bg-[#c00e2a] text-xs transition">
+                    Understood &amp; Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Full Earthmoving Rim Dataset copied directly from Titan Global Wheel Earthmoving Rims
+        const rimData = [
+            // 24" Flat Base & Semi Drop Centre
+            { id: 1, category: "24", mfr: "AARD", model: "AARD LHD", app: "LHD", part: "EW3212HDT", size: "24 - 8.50/1.7 HD", tyre: "12.00 R24", type: "3 PCE", studs: "12 STUDS" },
+            { id: 2, category: "24", mfr: "AARD", model: "AARD LHD", app: "LHD", part: "EW3212T2", size: "24 - 8.50/1.7", tyre: "12.00 R24", type: "2 PCE", studs: "12 STUDS" },
+            { id: 3, category: "24", mfr: "GHH", model: "GHH LF-4.2", app: "LHD", part: "EW3217", size: "24 - 8.50/1.7", tyre: "12.00 R24", type: "3 PCE", studs: "10 STUDS" },
+            { id: 4, category: "24", mfr: "ATLAS COPCO", model: "ATLAS COPCO ST2D", app: "UL", part: "EW3220", size: "24 - 8.50/1.7", tyre: "12.00 R24", type: "3 PCE", studs: "10 STUDS" },
+            { id: 5, category: "24", mfr: "SCANIA", model: "SCANIA TRUCK", app: "TRUCK", part: "EW3221BO", size: "24 - 8.50/1.7", tyre: "12.00 R24", type: "2 PCE", studs: "10 STUDS" },
+            { id: 6, category: "24", mfr: "CAT", model: "CAT 140G", app: "MG", part: "EW3222", size: "24 - 8.50/1.7", tyre: "12.00 R24", type: "3 PCE", studs: "10 STUDS" },
+            { id: 7, category: "24", mfr: "EJC", model: "EJC 115", app: "UL", part: "EW3239", size: "24 - 8.50/1.7", tyre: "12.00 R24", type: "3 PCE", studs: "19 STUDS" },
+            { id: 8, category: "24", mfr: "AARD", model: "AARD D91", app: "LHD", part: "EW3240", size: "24 - 8.50/1.7", tyre: "12.00 R24", type: "3 PCE", studs: "12 STUDS" },
+            
+            { id: 9, category: "24", mfr: "EJC", model: "EJC 115", app: "UL", part: "EW4002", size: "24 - 10.00/1.7 VA", tyre: "14.00 R24 TG", type: "3 PCE", studs: "19 STUDS" },
+            { id: 10, category: "24", mfr: "VOLVO", model: "VOLVO G940", app: "MG", part: "EW4033", size: "24 - 10.00/1.7 VA", tyre: "14.00 R24 TG", type: "3 PCE", studs: "10 STUDS" },
+            { id: 11, category: "24", mfr: "CAT", model: "CAT 120G", app: "MG", part: "EW4036", size: "24 - 10.00/1.7 VA", tyre: "14.00 R24 TG", type: "3 PCE", studs: "14 STUDS" },
+
+            { id: 12, category: "24", mfr: "EJC", model: "EJC 115", app: "UL", part: "EW4102", size: "24 - 10.00/1.7", tyre: "14.00 R24", type: "3 PCE", studs: "19 STUDS" },
+            { id: 13, category: "24", mfr: "WAGNER", model: "WAGNER ST2D", app: "UL", part: "EW4104", size: "24 - 10.00/1.7", tyre: "14.00 R24", type: "3 PCE", studs: "19 STUDS" },
+            { id: 14, category: "24", mfr: "BELL", model: "BELL 770G", app: "MG", part: "EW4115", size: "24 - 10.00/1.7", tyre: "14.00 R24", type: "3 PCE", studs: "14 STUDS" },
+            { id: 15, category: "24", mfr: "EJC", model: "EJC 417", app: "DT", part: "EW4117", size: "24 - 10.00/1.7", tyre: "14.00 R24", type: "3 PCE", studs: "19 STUDS" },
+            { id: 16, category: "24", mfr: "CAT", model: "CAT TH514", app: "TH", part: "EW4119", size: "24 - 10.00/1.7", tyre: "14.00 R24", type: "3 PCE", studs: "10 STUDS" },
+            { id: 17, category: "24", mfr: "SANDVIK", model: "SANDVIK LH205", app: "LH", part: "EW4133", size: "24 - 10.00/1.7", tyre: "14.00 R24", type: "3 PCE", studs: "12 STUDS" },
+
+            // 25" 3-Piece Rims
+            { id: 18, category: "25-3p", mfr: "TANDO", model: "TANDO T250", app: "CRANE", part: "EW4407", size: "25 - 10.00/1.5", tyre: "14.00 R25", type: "3 PCE", studs: "12 STUDS" },
+            { id: 19, category: "25-3p", mfr: "CAT", model: "CAT 926", app: "WL", part: "EW4408", size: "25 - 10.00/1.5", tyre: "14.00 R25", type: "3 PCE", studs: "10 STUDS" },
+            { id: 20, category: "25-3p", mfr: "TEREX", model: "TEREX AC250", app: "CRANE", part: "EW4411", size: "25 - 10.00/1.5", tyre: "14.00 R25", type: "3 PCE", studs: "10 STUDS" },
+
+            { id: 21, category: "25-3p", mfr: "KOMATSU", model: "KOMATSU WA120", app: "WL", part: "EW4502", size: "25 - 12.00/1.5", tyre: "15.50 R25", type: "3 PCE", studs: "12 STUDS" },
+            { id: 22, category: "25-3p", mfr: "CAT", model: "CAT TH63", app: "TH", part: "EW4508", size: "25 - 12.00/1.5", tyre: "15.50 R25", type: "3 PCE", studs: "8 STUDS" },
+            { id: 23, category: "25-3p", mfr: "DEZZI", model: "DEZZI D1200", app: "FEL", part: "EW4511", size: "25 - 12.00/1.5", tyre: "15.50 R25", type: "3 PCE", studs: "10 STUDS" },
+            { id: 24, category: "25-3p", mfr: "BELL", model: "BELL 872G", app: "MG", part: "EW4517", size: "25 - 12.00/1.5", tyre: "15.50 R25", type: "3 PCE", studs: "14 STUDS" },
+
+            { id: 25, category: "25-3p", mfr: "KOMATSU", model: "KOMATSU GD 655-3", app: "MG", part: "EW5007", size: "25 - 14.00/1.5", tyre: "17.5 R25", type: "3 PCE", studs: "10 STUDS" },
+            { id: 26, category: "25-3p", mfr: "AARD", model: "AARD 5.5D81", app: "LHD", part: "EW50108", size: "25 - 14.00/1.5", tyre: "17.5 R25", type: "3 PCE", studs: "12 STUDS" },
+            { id: 27, category: "25-3p", mfr: "SEM", model: "SEM 639", app: "WL", part: "EW50110", size: "25 - 14.00/1.5", tyre: "17.5 R25", type: "3 PCE", studs: "12 STUDS" },
+            { id: 28, category: "25-3p", mfr: "KOMATSU", model: "KOMATSU WA150", app: "WL", part: "EW50113", size: "25 - 14.00/1.5", tyre: "17.5 R25", type: "3 PCE", studs: "12 STUDS" },
+            { id: 29, category: "25-3p", mfr: "MANITOU", model: "MANITOU MHT1012LT", app: "TH", part: "EW50118", size: "25 - 14.00/1.5", tyre: "17.5 R25", type: "3 PCE", studs: "10 STUDS" },
+            { id: 30, category: "25-3p", mfr: "SANDVIK", model: "SANDVIK LH208L", app: "UL", part: "EW50128", size: "25 - 14.00/1.5", tyre: "17.5 R25", type: "3 PCE", studs: "24 STUDS" },
+            { id: 31, category: "25-3p", mfr: "CAT", model: "CAT 14G", app: "MG", part: "EW5014", size: "25 - 14.00/1.5", tyre: "17.5 R25", type: "3 PCE", studs: "10 STUDS" },
+            { id: 32, category: "25-3p", mfr: "TORO", model: "TORO 007", app: "UL", part: "EW50146", size: "25 - 14.00/1.5", tyre: "17.5 R25", type: "3 PCE", studs: "24 STUDS" },
+            { id: 33, category: "25-3p", mfr: "TEREX", model: "TEREX TG190", app: "MG", part: "EW5028", size: "25 - 14.00/1.5", tyre: "17.5 R25", type: "3 PCE", studs: "10 STUDS" },
+            { id: 34, category: "25-3p", mfr: "CAT", model: "CAT 924K", app: "WL", part: "EW5038", size: "25 - 14.00/1.5", tyre: "17.5 R25", type: "3 PCE", studs: "16 STUDS" },
+            { id: 35, category: "25-3p", mfr: "ATLAS COPCO", model: "ATLAS COPCO ST3.5", app: "UL", part: "EW5041", size: "25 - 14.00/1.5", tyre: "17.5 R25", type: "3 PCE", studs: "19 STUDS" },
+            { id: 36, category: "25-3p", mfr: "BELL", model: "BELL L1204D", app: "WL", part: "EW5059", size: "25 - 14.00/1.5", tyre: "17.5 R25", type: "3 PCE", studs: "12 STUDS" },
+            { id: 37, category: "25-3p", mfr: "JCB", model: "JCB 411", app: "WL", part: "EW5064", size: "25 - 14.00/1.5", tyre: "17.5 R25", type: "3 PCE", studs: "10 STUDS" },
+            { id: 38, category: "25-3p", mfr: "ELPHINSTONE", model: "ELPHINSTONE R1300", app: "LHD", part: "EW5066", size: "25 - 14.00/1.5", tyre: "17.5 R25", type: "3 PCE", studs: "16 STUDS" },
+            { id: 39, category: "25-3p", mfr: "VOLVO", model: "VOLVO G940", app: "MG", part: "EW5076", size: "25 - 14.00/1.5", tyre: "17.5 R25", type: "3 PCE", studs: "10 STUDS" },
+            { id: 40, category: "25-3p", mfr: "DEZZI", model: "DEZZI D1700", app: "FEL", part: "EW5077", size: "25 - 14.00/1.5", tyre: "17.5 R25", type: "3 PCE", studs: "10 STUDS" },
+            { id: 41, category: "25-3p", mfr: "BELL", model: "BELL 772G", app: "MG", part: "EW5084", size: "25 - 14.00/1.5", tyre: "17.5 R25", type: "3 PCE", studs: "14 STUDS" },
+            { id: 42, category: "25-3p", mfr: "NEW HOLLAND", model: "NEW HOLLAND F170", app: "MG", part: "EW5087", size: "25 - 14.00/1.5", tyre: "17.5 R25", type: "3 PCE", studs: "10 STUDS" },
+            { id: 43, category: "25-3p", mfr: "RHAM", model: "RHAM 30HD", app: "LHD", part: "EW5090", size: "25 - 14.00/1.5", tyre: "17.5 R25", type: "3 PCE", studs: "24 STUDS" },
+
+            { id: 44, category: "25-3p", mfr: "HITACHI", model: "HITACHI ZW180", app: "WL", part: "EW5102", size: "25 - 17.00/1.7", tyre: "20.5 R25", type: "3 PCE", studs: "12 STUDS" },
+            { id: 45, category: "25-3p", mfr: "DEZZI", model: "DEZZI AD20B", app: "ADT", part: "EW5124", size: "25 - 17.00/1.7", tyre: "20.5 R25", type: "3 PCE", studs: "10 STUDS" },
+            { id: 46, category: "25-3p", mfr: "KOMATSU", model: "KOMATSU WA250", app: "WL", part: "EW5128", size: "25 - 17.00/1.7", tyre: "20.5 R25", type: "3 PCE", studs: "12 STUDS" },
+            { id: 47, category: "25-3p", mfr: "BELL", model: "BELL L1706E", app: "WL", part: "EW5140", size: "25 - 17.00/1.7", tyre: "20.5 R25", type: "3 PCE", studs: "14 STUDS" },
+            { id: 48, category: "25-3p", mfr: "KAWASAKI", model: "KAWASAKI 70ZIV-2", app: "FEL", part: "EW5152", size: "25 - 17.00/1.7", tyre: "20.5 R25", type: "3 PCE", studs: "14 STUDS" },
+            { id: 49, category: "25-3p", mfr: "VOLVO", model: "VOLVO L70E", app: "WL", part: "EW5156", size: "25 - 17.00/1.7", tyre: "20.5 R25", type: "3 PCE", studs: "16 STUDS" },
+            { id: 50, category: "25-3p", mfr: "CAT", model: "CAT 938K", app: "WL", part: "EW5166", size: "25 - 17.00/1.7", tyre: "20.5 R25", type: "3 PCE", studs: "16 STUDS" },
+
+            { id: 51, category: "25-3p", mfr: "TEREX", model: "TEREX TA25", app: "ADT", part: "EW5212", size: "25 - 19.50/2.5", tyre: "23.5 R25", type: "3 PCE", studs: "12 STUDS" },
+            { id: 52, category: "25-3p", mfr: "BELL", model: "BELL B30D", app: "ADT", part: "EW5213", size: "25 - 19.50/2.5", tyre: "23.5 R25", type: "3 PCE", studs: "12 STUDS" },
+            { id: 53, category: "25-3p", mfr: "LIUGONG", model: "LIUGONG 856", app: "WL", part: "EW5218", size: "25 - 19.50/2.5", tyre: "23.5 R25", type: "3 PCE", studs: "12 STUDS" },
+            { id: 54, category: "25-3p", mfr: "NEW HOLLAND", model: "NEW HOLLAND W190", app: "WL", part: "EW5221", size: "25 - 19.50/2.5", tyre: "23.5 R25", type: "3 PCE", studs: "16 STUDS" },
+            { id: 55, category: "25-3p", mfr: "DEZZI", model: "DEZZI AH180B", app: "AH", part: "EW5225", size: "25 - 19.50/2.5", tyre: "23.5 R25", type: "3 PCE", studs: "10 STUDS" },
+            { id: 56, category: "25-3p", mfr: "SEM", model: "SEM 658", app: "WL", part: "EW5227", size: "25 - 19.50/2.5", tyre: "23.5 R25", type: "3 PCE", studs: "12 STUDS" },
+            { id: 57, category: "25-3p", mfr: "LIEBHERR", model: "LIEBHERR 556", app: "WL", part: "EW5228", size: "25 - 19.50/2.5", tyre: "23.5 R25", type: "3 PCE", studs: "16 STUDS" },
+            { id: 58, category: "25-3p", mfr: "HITACHI", model: "HITACHI ZW220", app: "WL", part: "EW5230", size: "25 - 19.50/2.5", tyre: "23.5 R25", type: "3 PCE", studs: "18 STUDS" },
+            { id: 59, category: "25-3p", mfr: "KOMATSU", model: "KOMATSU HM300-1", app: "ADT", part: "EW5232", size: "25 - 19.50/2.5", tyre: "23.5 R25", type: "3 PCE", studs: "15 STUDS" },
+            { id: 60, category: "25-3p", mfr: "CAT", model: "CAT 950H", app: "WL", part: "EW5234", size: "25 - 19.50/2.5", tyre: "23.5 R25", type: "3 PCE", studs: "20 STUDS" },
+
+            { id: 61, category: "25-3p", mfr: "DEZZI", model: "DEZZI AD25B", app: "ADT", part: "EW5308", size: "25 - 22.00/3.0", tyre: "26.5 R25", type: "3 PCE", studs: "20 STUDS" },
+            { id: 62, category: "25-3p", mfr: "KAWASAKI", model: "KAWASAKI 90 ZIV", app: "FEL", part: "EW5311", size: "25 - 22.00/3.0", tyre: "26.5 R25", type: "3 PCE", studs: "16 STUDS" },
+            { id: 63, category: "25-3p", mfr: "HITACHI", model: "HITACHI LX190", app: "ADT", part: "EW5312", size: "25 - 22.00/3.0", tyre: "26.5 R25", type: "3 PCE", studs: "24 STUDS" },
+            { id: 64, category: "25-3p", mfr: "CAT", model: "CAT 735B", app: "ADT", part: "EW5317", size: "25 - 22.00/3.0", tyre: "26.5 R25", type: "3 PCE", studs: "24 STUDS" },
+            { id: 65, category: "25-3p", mfr: "BELL", model: "BELL B30E", app: "ADT", part: "EW5318", size: "25 - 22.00/3.0", tyre: "26.5 R25", type: "3 PCE", studs: "12 STUDS" },
+            { id: 66, category: "25-3p", mfr: "LIEBHERR", model: "LIEBHERR 580", app: "WL", part: "EW5319", size: "25 - 22.00/3.0", tyre: "26.5 R25", type: "3 PCE", studs: "19 STUDS" },
+            { id: 67, category: "25-3p", mfr: "TORO", model: "TORO 1400", app: "LH", part: "EW5320", size: "25 - 22.00/3.0", tyre: "26.5 R25", type: "3 PCE", studs: "30 STUDS" },
+
+            // 25" 5-Piece Rims
+            { id: 68, category: "25-5p", mfr: "WAGNER", model: "WAGNER MT2000", app: "MT", part: "EW7113", size: "25 - 11.25/2.0", tyre: "16.00 R25", type: "5 PCE", studs: "23 STUDS" },
+            { id: 69, category: "25-5p", mfr: "MANITOU", model: "MANITOU 7071", app: "TH", part: "EW7116", size: "25 - 11.25/2.0", tyre: "16.00 R25", type: "5 PCE", studs: "12 STUDS" },
+            { id: 70, category: "25-5p", mfr: "TEREX", model: "TEREX AC100", app: "CRANE", part: "EW7124", size: "25 - 11.25/2.0", tyre: "16.00 R25", type: "5 PCE", studs: "12 STUDS" },
+
+            { id: 71, category: "25-5p", mfr: "EUCLID", model: "EUCLID R32", app: "RDT", part: "EW7300", size: "25 - 13.00/2.5", tyre: "18.00 R25", type: "5 PCE", studs: "DEMOUNTABLE" },
+            { id: 72, category: "25-5p", mfr: "ELPHINSTONE", model: "ELPHINSTONE R1500", app: "LHD", part: "EW7305", size: "25 - 13.00/2.5", tyre: "18.00 R25", type: "5 PCE", studs: "20 STUDS" },
+            { id: 73, category: "25-5p", mfr: "ATLAS COPCO", model: "ATLAS COPCO ST1030", app: "UL", part: "EW7307", size: "25 - 13.00/2.5", tyre: "18.00 R25", type: "5 PCE", studs: "19 STUDS" },
+            { id: 74, category: "25-5p", mfr: "AARD", model: "AARD 10 D101", app: "LHD", part: "EW73105", size: "25 - 13.00/2.5", tyre: "18.00 R25", type: "5 PCE", studs: "24 STUDS" },
+            { id: 75, category: "25-5p", mfr: "TORO", model: "TORO LH410", app: "LHD", part: "EW73108", size: "25 - 13.00/2.5", tyre: "18.00 R25", type: "5 PCE", studs: "24 STUDS" },
+            { id: 76, category: "25-5p", mfr: "CAT", model: "CAT 980H", app: "WL", part: "EW73118", size: "25 - 13.00/2.5", tyre: "18.00 R25", type: "5 PCE", studs: "26 STUDS" },
+            { id: 77, category: "25-5p", mfr: "ATLAS COPCO", model: "ATLAS COPCO MT1020", app: "MT", part: "EW7330", size: "25 - 13.00/2.5", tyre: "18.00 R25", type: "5 PCE", studs: "19 STUDS" },
+            { id: 78, category: "25-5p", mfr: "EJC", model: "EJC 522", app: "DT", part: "EW7349", size: "25 - 13.00/2.5", tyre: "18.00 R25", type: "5 PCE", studs: "22 STUDS" },
+            { id: 79, category: "25-5p", mfr: "SANDVIK", model: "SANDVIK TH320", app: "DT", part: "EW7349S", size: "25 - 13.00/2.5", tyre: "18.00 R25", type: "5 PCE", studs: "22 STUDS" },
+
+            { id: 80, category: "25-5p", mfr: "EJC", model: "LH208L (EJC777)", app: "LHD", part: "EW7351", size: "25 - 14.00/2.5", tyre: "18.00 R25", type: "5 PCE", studs: "24 STUDS" },
+            { id: 81, category: "25-5p", mfr: "RHAM", model: "RHAM LHD", app: "LHD", part: "EW7354", size: "25 - 14.00/2.5", tyre: "18.00 R25", type: "5 PCE", studs: "24 STUDS" },
+            { id: 82, category: "25-5p", mfr: "AARD", model: "AARD 5.5_D81", app: "LHD", part: "EW7357", size: "25 - 14.00/2.5", tyre: "18.00 R25", type: "5 PCE", studs: "12 STUDS" },
+            { id: 83, category: "25-5p", mfr: "FERMEL", model: "FERMEL LHD", app: "LHD", part: "EW7360", size: "25 - 14.00/2.5", tyre: "18.00 R25", type: "5 PCE", studs: "19 STUDS" },
+            { id: 84, category: "25-5p", mfr: "BELL", model: "BELL 772G REAR", app: "MG", part: "EW7375", size: "25 - 14.00/2.5", tyre: "18.00 R25", type: "5 PCE", studs: "14 STUDS" },
+            { id: 85, category: "25-5p", mfr: "BELL", model: "BELL 772G FRONT", app: "MG", part: "EW7376", size: "25 - 14.00/2.5", tyre: "18.00 R25", type: "5 PCE", studs: "14 STUDS" },
+
+            { id: 86, category: "25-5p", mfr: "BELL", model: "BELL B25L", app: "ADT", part: "EW7404", size: "25 - 15.00/3.0", tyre: "21.00 R25", type: "5 PCE", studs: "12 STUDS" },
+            { id: 87, category: "25-5p", mfr: "ATLAS COPCO", model: "ATLAS COPCO MT425", app: "MT", part: "EW7405", size: "25 - 15.00/3.0", tyre: "21.00 R25", type: "5 PCE", studs: "16 STUDS" },
+            { id: 88, category: "25-5p", mfr: "EJC", model: "EJC 530", app: "DT", part: "EW7407", size: "25 - 15.00/3.0", tyre: "21.00 R25", type: "5 PCE", studs: "27 STUDS" },
+
+            { id: 89, category: "25-5p", mfr: "BELL", model: "BELL B25", app: "ADT", part: "EW7505", size: "25 - 17.00/2.0", tyre: "20.5 R25", type: "5 PCE", studs: "12 STUDS" },
+            { id: 90, category: "25-5p", mfr: "CAT", model: "CAT 936E", app: "WL", part: "EW7516", size: "25 - 17.00/2.0", tyre: "20.5 R25", type: "5 PCE", studs: "12 STUDS" },
+            { id: 91, category: "25-5p", mfr: "GHH", model: "GHH LF-7.4", app: "LHD", part: "EW7515", size: "25 - 17.00/2.0", tyre: "20.5 R25", type: "5 PCE", studs: "24 STUDS" },
+            { id: 92, category: "25-5p", mfr: "KOMATSU", model: "KOMATSU W 90-3", app: "WL", part: "EW7513", size: "25 - 17.00/2.0", tyre: "20.5 R25", type: "5 PCE", studs: "16 STUDS" },
+            { id: 93, category: "25-5p", mfr: "TORO", model: "TORO 40", app: "DT", part: "EW7514", size: "25 - 17.00/2.0", tyre: "20.5 R25", type: "5 PCE", studs: "27 STUDS" },
+
+            { id: 94, category: "25-5p", mfr: "CAT", model: "CAT 966G", app: "WL", part: "EW7603", size: "25 - 19.50/2.5", tyre: "23.5 R25", type: "5 PCE", studs: "20 STUDS" },
+            { id: 95, category: "25-5p", mfr: "CAT", model: "CAT 16H", app: "GD", part: "EW7613", size: "25 - 19.50/2.5", tyre: "23.5 R25", type: "5 PCE", studs: "10 STUDS" },
+            { id: 96, category: "25-5p", mfr: "DEZZI", model: "DEZZI AH160B", app: "AH", part: "EW7626", size: "25 - 19.50/2.5", tyre: "23.5 R25", type: "5 PCE", studs: "10 STUDS" },
+            { id: 97, category: "25-5p", mfr: "BELL", model: "BELL L1806D", app: "ADT", part: "EW7635", size: "25 - 19.50/2.5", tyre: "23.5 R25", type: "5 PCE", studs: "14 STUDS" },
+            { id: 98, category: "25-5p", mfr: "VOLVO", model: "VOLVO A30D", app: "ADT", part: "EW7638", size: "25 - 19.50/2.5", tyre: "23.5 R25", type: "5 PCE", studs: "12 STUDS" },
+            { id: 99, category: "25-5p", mfr: "CASE", model: "CASE 330B", app: "ADT", part: "EW7644", size: "25 - 19.50/2.5", tyre: "23.5 R25", type: "5 PCE", studs: "12 STUDS" },
+            { id: 100, category: "25-5p", mfr: "KOMATSU", model: "KOMATSU WA430-6", app: "WL", part: "EW7648", size: "25 - 19.50/2.5", tyre: "23.5 R25", type: "5 PCE", studs: "21 STUDS" },
+            { id: 101, category: "25-5p", mfr: "SEM", model: "SEM 658", app: "WL", part: "EW7652", size: "25 - 19.50/2.5", tyre: "23.5 R25", type: "5 PCE", studs: "12 STUDS" },
+            { id: 102, category: "25-5p", mfr: "BELL", model: "BELL B30E", app: "ADT", part: "EW7671", size: "25 - 19.50/2.5", tyre: "23.5 R25", type: "5 PCE", studs: "18 STUDS" },
+
+            { id: 103, category: "25-5p", mfr: "CAT", model: "CAT 966H", app: "WL", part: "EW7703", size: "25 - 22.00/3.0", tyre: "26.5 R25", type: "5 PCE", studs: "20 STUDS" },
+            { id: 104, category: "25-5p", mfr: "VOLVO", model: "VOLVO A35C", app: "ADT", part: "EW7709", size: "25 - 22.00/3.0", tyre: "26.5 R25", type: "5 PCE", studs: "18 STUDS" },
+            { id: 105, category: "25-5p", mfr: "WAGNER", model: "WAGNER MT433", app: "MT", part: "EW7712", size: "25 - 22.00/3.0", tyre: "26.5 R25", type: "5 PCE", studs: "27 STUDS" },
+            { id: 106, category: "25-5p", mfr: "TORO", model: "TORO 1400", app: "LHD", part: "EW7714", size: "25 - 22.00/3.0", tyre: "26.5 R25", type: "5 PCE", studs: "32 STUDS" },
+            { id: 107, category: "25-5p", mfr: "ELPHINSTONE", model: "ELPHINSTONE R1700", app: "LHD", part: "EW7715", size: "25 - 22.00/3.0", tyre: "26.5 R25", type: "5 PCE", studs: "26 STUDS" },
+            { id: 108, category: "25-5p", mfr: "SANDVIK", model: "LH514 LHD", app: "LHD", part: "EW7716", size: "25 - 22.00/3.0", tyre: "26.5 R25", type: "5 PCE", studs: "32 STUDS" },
+            { id: 109, category: "25-5p", mfr: "BELL", model: "BELL L2206D", app: "WL", part: "EW7720", size: "25 - 22.00/3.0", tyre: "26.5 R25", type: "5 PCE", studs: "14 STUDS" },
+            { id: 110, category: "25-5p", mfr: "HITACHI", model: "HITACHI ZW310", app: "WL", part: "EW7723", size: "25 - 22.00/3.0", tyre: "26.5 R25", type: "5 PCE", studs: "20 STUDS" },
+            { id: 111, category: "25-5p", mfr: "EJC", model: "EJC 533", app: "DT", part: "EW7724", size: "25 - 22.00/3.0", tyre: "26.5 R25", type: "5 PCE", studs: "27 STUDS" },
+            { id: 112, category: "25-5p", mfr: "BELL", model: "BELL B35E", app: "ADT", part: "EW7727", size: "25 - 22.00/3.0", tyre: "26.5 R25", type: "5 PCE", studs: "18 STUDS" },
+            { id: 113, category: "25-5p", mfr: "ATLAS COPCO", model: "ATLAS COPCO MT436B", app: "MT", part: "EW7732", size: "25 - 22.00/3.0", tyre: "26.5 R25", type: "5 PCE", studs: "23 STUDS" },
+            { id: 114, category: "25-5p", mfr: "WAGNER", model: "WAGNER ST14", app: "UL", part: "EW7733", size: "25 - 22.00/3.0", tyre: "26.5 R25", type: "5 PCE", studs: "35 STUDS" },
+            { id: 115, category: "25-5p", mfr: "ATLAS COPCO", model: "ATLAS COPCO ST14", app: "UL", part: "EW7735", size: "25 - 22.00/3.0", tyre: "26.5 R25", type: "5 PCE", studs: "30 STUDS" },
+            { id: 116, category: "25-5p", mfr: "KOMATSU", model: "KOMATSU WA500-3", app: "WL", part: "EW7737", size: "25 - 22.00/3.0", tyre: "26.5 R25", type: "5 PCE", studs: "31 STUDS" },
+
+            { id: 117, category: "25-5p", mfr: "CAT", model: "CAT 980H", app: "WL", part: "EW7804", size: "25 - 25.00/3.5", tyre: "29.5 R25", type: "5 PCE", studs: "26 STUDS" },
+            { id: 118, category: "25-5p", mfr: "TORO", model: "TORO 50D", app: "LHD", part: "EW7809", size: "25 - 25.00/3.5", tyre: "29.5 R25", type: "5 PCE", studs: "32 STUDS" },
+            { id: 119, category: "25-5p", mfr: "VOLVO", model: "VOLVO A40", app: "ADT", part: "EW7813", size: "25 - 25.00/3.5", tyre: "29.5 R25", type: "5 PCE", studs: "18 STUDS" },
+            { id: 120, category: "25-5p", mfr: "DOOSAN", model: "DOOSAN 500", app: "WL", part: "EW7819", size: "25 - 25.00/3.5", tyre: "29.5 R25", type: "5 PCE", studs: "19 STUDS" },
+            { id: 121, category: "25-5p", mfr: "WAGNER", model: "WAGNER ST8B", app: "LHD", part: "EW7821", size: "25 - 25.00/3.5", tyre: "29.5 R25", type: "5 PCE", studs: "27 STUDS" },
+            { id: 122, category: "25-5p", mfr: "KOMATSU", model: "KOMATSU HM400-1", app: "ADT", part: "EW7822", size: "25 - 25.00/3.5", tyre: "29.5 R25", type: "5 PCE", studs: "21 STUDS" },
+            { id: 123, category: "25-5p", mfr: "CAT", model: "CAT 740B", app: "ADT", part: "EW7826", size: "25 - 25.00/3.5", tyre: "29.5 R25", type: "5 PCE", studs: "27 STUDS" },
+            { id: 124, category: "25-5p", mfr: "TORO", model: "TORO 540 KESSLER", app: "LHD", part: "EW7828", size: "25 - 25.00/3.5", tyre: "29.5 R25", type: "5 PCE", studs: "30 STUDS" },
+            { id: 125, category: "25-5p", mfr: "BELL", model: "BELL B40E", app: "ADT", part: "EW7829", size: "25 - 25.00/3.5", tyre: "29.5 R25", type: "5 PCE", studs: "18 STUDS" },
+            { id: 126, category: "25-5p", mfr: "ATLAS COPCO", model: "ATLAS COPCO ST1530", app: "UL", part: "EW7831", size: "25 - 25.00/3.5", tyre: "29.5 R25", type: "5 PCE", studs: "30 STUDS" },
+
+            // 29" - 34" Rims
+            { id: 127, category: "29-34", mfr: "CAT", model: "CAT AD40", app: "ADT", part: "EW8405", size: "29 - 25.00/3.5", tyre: "29.5 R29", type: "5 PCE", studs: "10 STUDS" },
+            { id: 128, category: "29-34", mfr: "WAGNER", model: "WAGNER MT444", app: "MT", part: "EW8407", size: "29 - 25.00/3.5", tyre: "29.5 R29", type: "5 PCE", studs: "33 STUDS" },
+            { id: 129, category: "29-34", mfr: "ATLAS COPCO", model: "ATLAS COPCO ST1530", app: "UL", part: "EW8412", size: "29 - 25.00/3.5", tyre: "29.5 R29", type: "5 PCE", studs: "30 STUDS" },
+            { id: 130, category: "29-34", mfr: "SANDVIK", model: "SANDVIK LH517", app: "LHD", part: "EW8413", size: "29 - 25.00/3.5", tyre: "29.5 R29", type: "5 PCE", studs: "38 STUDS" },
+            { id: 131, category: "29-34", mfr: "CAT", model: "CAT R2900G", app: "WL", part: "EW8414", size: "29 - 25.00/3.5", tyre: "29.5 R29", type: "5 PCE", studs: "36 STUDS" },
+
+            { id: 132, category: "29-34", mfr: "BELL", model: "BELL B50E", app: "ADT", part: "EW8554F", size: "29 - 27.00/3.0", tyre: "875/65 R29", type: "5 PCE", studs: "18 STUDS" },
+            { id: 133, category: "29-34", mfr: "BELL", model: "BELL B45E", app: "ADT", part: "EW8558", size: "29 - 27.00/3.0", tyre: "875/65 R29", type: "5 PCE", studs: "18 STUDS" },
+            { id: 134, category: "29-34", mfr: "CAT", model: "CAT 824K", app: "WD", part: "EW8560", size: "29 - 27.00/3.0", tyre: "875/65 R29", type: "5 PCE", studs: "26 STUDS" },
+            { id: 135, category: "29-34", mfr: "VOLVO", model: "VOLVO A60", app: "DT", part: "EW8561", size: "29 - 27.00/3.0", tyre: "875/65 R29", type: "5 PCE", studs: "24 STUDS" },
+
+            { id: 136, category: "29-34", mfr: "HITACHI", model: "HITACHI EH700", app: "RT", part: "EW8700EH", size: "33 - 13.00/2.5", tyre: "18.00 R33", type: "5 PCE", studs: "DEMOUNTABLE" },
+            { id: 137, category: "29-34", mfr: "KOMATSU", model: "KOMATSU HD325", app: "RT", part: "EW8700K", size: "33 - 13.00/2.5", tyre: "18.00 R33", type: "5 PCE", studs: "DEMOUNTABLE" },
+            { id: 138, category: "29-34", mfr: "CAT", model: "CAT 769C", app: "RDT", part: "EW8702", size: "33 - 13.00/2.5", tyre: "18.00 R33", type: "5 PCE", studs: "12 STUDS" },
+            { id: 139, category: "29-34", mfr: "SANDVIK", model: "SANDVIK MT431B", app: "UL", part: "EW8709", size: "33 - 13.00/2.5", tyre: "18.00 R33", type: "5 PCE", studs: "23 STUDS" },
+            { id: 140, category: "29-34", mfr: "KOMATSU", model: "KOMATSU HD325-7", app: "RT", part: "EW8710", size: "33 - 13.00/2.5", tyre: "18.00 R33", type: "5 PCE", studs: "12 STUDS" },
+
+            { id: 141, category: "29-34", mfr: "TEREX", model: "TEREX C90", app: "WL", part: "EW8802", size: "33 - 28.00/3.5", tyre: "35/65 R33", type: "5 PCE", studs: "24 STUDS" },
+            { id: 142, category: "29-34", mfr: "CAT", model: "CAT 834B", app: "WD", part: "EW8803", size: "33 - 28.00/3.5", tyre: "35/65 R33", type: "5 PCE", studs: "40 STUDS" },
+            { id: 143, category: "29-34", mfr: "CAT", model: "CAT 834G", app: "WD", part: "EW8805", size: "33 - 28.00/3.5", tyre: "35/65 R33", type: "5 PCE", studs: "38 STUDS" },
+            { id: 144, category: "29-34", mfr: "KOMATSU", model: "KOMATSU WA600-3", app: "WL", part: "EW8806", size: "33 - 28.00/3.5", tyre: "35/65 R33", type: "5 PCE", studs: "31 STUDS" },
+            { id: 145, category: "29-34", mfr: "SANDVIK", model: "SANDVIK LH621", app: "LH", part: "EW8808", size: "33 - 28.00/3.5", tyre: "35/65 R33", type: "5 PCE", studs: "32 STUDS" },
+            { id: 146, category: "29-34", mfr: "ATLAS COPCO", model: "ATLAS COPCO MT5010", app: "MT", part: "EW8809", size: "33 - 28.00/3.5", tyre: "35/65 R33", type: "5 PCE", studs: "38 STUDS" },
+            { id: 147, category: "29-34", mfr: "KOMATSU", model: "KOMATSU WA600-6", app: "WL", part: "EW8811", size: "33 - 28.00/3.5", tyre: "35/65 R33", type: "5 PCE", studs: "38 STUDS" },
+            { id: 148, category: "29-34", mfr: "CAT", model: "CAT AD60", app: "ADT", part: "EW8813", size: "33 - 28.00/3.5", tyre: "35/65 R33", type: "5 PCE", studs: "38 STUDS" },
+
+            { id: 149, category: "29-34", mfr: "SANDVIK", model: "SANDVIK LS190 S", app: "UL", part: "EW9303", size: "34 - 16.00/1.5", tyre: "55 X 20.00 - 34", type: "5 PCE", studs: "24 STUDS" },
+
+            // 35" - 39" Rims
+            { id: 150, category: "35-39", mfr: "BELL", model: "BELL B40E", app: "ADT", part: "EW9007", size: "35 - 15.00/3.0", tyre: "21.00 R35", type: "5 PCE", studs: "12 STUDS" },
+            { id: 151, category: "35-39", mfr: "BELL", model: "BELL B60E", app: "ADT", part: "EW9107", size: "35 - 17.00/3.5", tyre: "24.00 R35", type: "5 PCE", studs: "14 STUDS" },
+            { id: 152, category: "35-39", mfr: "CAT", model: "CAT 772B", app: "DT", part: "EW9102", size: "35 - 17.00/3.5", tyre: "24.00 R35", type: "5 PCE", studs: "14 STUDS" },
+            { id: 153, category: "35-39", mfr: "KOMATSU", model: "KOMATSU 465-7", app: "RDT", part: "EW9106", size: "35 - 17.00/3.5", tyre: "24.00 R35", type: "5 PCE", studs: "14 STUDS" },
+            { id: 154, category: "35-39", mfr: "CAT", model: "CAT 773F / 775F", app: "RDT", part: "EW9402", size: "39 - 32.00/4.5", tyre: "27.00 R39", type: "5 PCE", studs: "16 STUDS" },
+
+            // 49" - 63" Giant Mining Rims
+            { id: 155, category: "giant", mfr: "CAT", model: "CAT 777", app: "RDT", part: "EW10402", size: "49 - 19.50/4.0", tyre: "27.00 R49", type: "5 PCE", studs: "14 STUDS" },
+            { id: 156, category: "giant", mfr: "KOMATSU", model: "KOMATSU 785-7", app: "RDT", part: "EW10408", size: "49 - 19.50/4.0", tyre: "27.00 R49", type: "5 PCE", studs: "20 STUDS" },
+            { id: 157, category: "giant", mfr: "CAT", model: "CAT 785", app: "RDT", part: "EW12502", size: "51 - 27.00/5.0", tyre: "33.00 R51", type: "5 PCE", studs: "24 STUDS" },
+            { id: 158, category: "giant", mfr: "KOMATSU", model: "KOMATSU 830E", app: "MT", part: "EW12508", size: "51 - 27.00/5.0", tyre: "33.00 R51", type: "5 PCE", studs: "24 STUDS" },
+            { id: 159, category: "giant", mfr: "CAT", model: "CAT 793", app: "MT", part: "EW15002", size: "57 - 60.00/6.0", tyre: "40.00 R57 / 50/80 R57", type: "5 PCE", studs: "64 STUDS" },
+            { id: 160, category: "giant", mfr: "KOMATSU", model: "KOMATSU 960E (SW)", app: "MT", part: "EW17003SW", size: "63 - 41.00/5.0", tyre: "55.00 R63", type: "7 PCE", studs: "57 STUDS" },
+            { id: 161, category: "giant", mfr: "KOMATSU", model: "KOMATSU 960E (IGLR)", app: "MT", part: "EW17003IGLR", size: "63 - 41.00/5.0", tyre: "55.00 R63", type: "6 PCE", studs: "57 STUDS" },
+            { id: 162, category: "giant", mfr: "LIEBHERR", model: "LIEBHERR T282", app: "MT", part: "EW17002", size: "63 - 41.00/5.0", tyre: "55.00 R63", type: "5 PCE", studs: "DEMOUNTABLE" }
+        ];
+
+        // Global State Variables
+        let activeTab = 'tab-all';
+        let currentSearchQuery = '';
+        let activeManufacturer = 'ALL';
+
+        // Initialize Application
+        window.addEventListener('DOMContentLoaded', () => {
+            renderTabsContent();
+            updateCounts();
+            setupKeyboardShortcuts();
+        });
+
+        function setupKeyboardShortcuts() {
+            document.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+                    e.preventDefault();
+                    document.getElementById('global-search').focus();
+                }
+                if (e.key === 'Escape') {
+                    closeRimModal();
+                    closeCertificateModal();
+                }
+            });
+        }
+
+        function renderTabsContent() {
+            const container = document.getElementById('tab-contents');
+            
+            const tabs = [
+                { id: 'tab-all', title: 'All Earthmoving Rims', filter: () => true },
+                { id: 'tab-24', title: '24 Inch Earthmoving Rims', filter: r => r.category === '24' },
+                { id: 'tab-25-3p', title: '25 Inch 3-Piece Assembly Rims', filter: r => r.category === '25-3p' },
+                { id: 'tab-25-5p', title: '25 Inch 5-Piece Heavy Duty Rims', filter: r => r.category === '25-5p' },
+                { id: 'tab-29-34', title: '29" to 34" Mining & Heavy Earthmoving Rims', filter: r => r.category === '29-34' },
+                { id: 'tab-35-39', title: '35" to 39" Severe Duty Truck & Loader Rims', filter: r => r.category === '35-39' },
+                { id: 'tab-giant', title: '49" to 63" Giant Mining Haul Truck Rims', filter: r => r.category === 'giant' }
+            ];
+
+            let html = '';
+
+            tabs.forEach(tab => {
+                const isHidden = tab.id !== activeTab ? 'hidden' : '';
+                html += `
+                    <div id="${tab.id}" class="tab-pane ${isHidden} space-y-4">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-[#e01030] inline-block"></span>
+                                ${tab.title}
+                            </h3>
+                        </div>
+                        ${buildTableHTML(tab.id, tab.filter)}
+                    </div>
+                `;
+            });
+
+            const isCompHidden = activeTab !== 'tab-components' ? 'hidden' : '';
+            html += `
+                <div id="tab-components" class="tab-pane ${isCompHidden} space-y-6">
+                    ${buildComponentsTabHTML()}
+                </div>
+            `;
+
+            container.innerHTML = html;
+            filterTables();
+        }
+
+        function buildTableHTML(tabId, filterFn) {
+            const rows = rimData.filter(filterFn);
+
+            if (rows.length === 0) {
+                return `<div class="bg-[#161b22] border border-[#2a323c] rounded-xl p-8 text-center text-[#9aa4af]">No rims available in this section.</div>`;
+            }
+
+            return `
+                <div class="overflow-x-auto rounded-xl border border-[#2a323c] bg-[#11151a] shadow-xl">
+                    <table class="w-full text-left text-xs border-collapse" id="table-${tabId}">
+                        <thead>
+                            <tr class="bg-[#161b22] border-b border-[#2a323c] text-[#b8c2cc] font-semibold uppercase tracking-wider">
+                                <th class="p-3.5 table-sticky-col min-w-[150px]">Manufacturer / Model</th>
+                                <th class="p-3.5 min-w-[90px]">App</th>
+                                <th class="p-3.5 min-w-[140px]">Titan Part #</th>
+                                <th class="p-3.5 min-w-[150px]">Rim Size Spec</th>
+                                <th class="p-3.5 min-w-[130px]">Typical Tyre Size</th>
+                                <th class="p-3.5 min-w-[100px]">Rim Type</th>
+                                <th class="p-3.5 min-w-[120px]">Studs / Mount</th>
+                                <th class="p-3.5 text-right min-w-[80px]">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-[#2a323c]/60 text-gray-200">
+                            ${rows.map(r => `
+                                <tr 
+                                    class="rim-row hover:bg-[#1d242d] transition cursor-pointer group"
+                                    data-id="${r.id}"
+                                    data-mfr="${r.mfr}"
+                                    data-model="${r.model.toLowerCase()}"
+                                    data-app="${r.app.toLowerCase()}"
+                                    data-part="${r.part.toLowerCase()}"
+                                    data-size="${r.size.toLowerCase()}"
+                                    data-tyre="${r.tyre.toLowerCase()}"
+                                    data-type="${r.type.toLowerCase()}"
+                                    data-studs="${r.studs.toLowerCase()}"
+                                    onclick="openRimModalById(${r.id})"
+                                >
+                                    <td class="p-3.5 font-bold text-white table-sticky-col group-hover:bg-[#1d242d] transition">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-[#e01030]"></span>
+                                            <span class="rim-text">${escapeHTML(r.model)}</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-3.5">
+                                        <span class="px-2 py-0.5 rounded font-mono font-bold bg-[#161b22] border border-[#2a323c] text-[#e01030]">
+                                            ${escapeHTML(r.app)}
+                                        </span>
+                                    </td>
+                                    <td class="p-3.5 font-mono text-[#e01030] font-semibold">
+                                        <span class="rim-text">${escapeHTML(r.part)}</span>
+                                    </td>
+                                    <td class="p-3.5 font-medium text-gray-200">
+                                        <span class="rim-text">${escapeHTML(r.size)}</span>
+                                    </td>
+                                    <td class="p-3.5 font-mono text-[#5b8bd0]">
+                                        <span class="rim-text">${escapeHTML(r.tyre)}</span>
+                                    </td>
+                                    <td class="p-3.5">
+                                        <span class="px-2 py-0.5 rounded text-[11px] font-bold ${r.type.includes('5') ? 'bg-[#e01030]/20 text-[#e01030] border border-[#e01030]/30' : r.type.includes('7') ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30' : 'bg-[#5b8bd0]/20 text-[#5b8bd0] border border-[#5b8bd0]/30'}">
+                                            ${escapeHTML(r.type)}
+                                        </span>
+                                    </td>
+                                    <td class="p-3.5 text-[#b8c2cc] font-medium">
+                                        <span class="rim-text">${escapeHTML(r.studs)}</span>
+                                    </td>
+                                    <td class="p-3.5 text-right">
+                                        <button class="px-2.5 py-1 rounded bg-[#161b22] border border-[#2a323c] group-hover:border-[#e01030] text-xs font-semibold text-[#e01030] group-hover:bg-[#e01030] group-hover:text-white transition">
+                                            View
+                                        </button>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+
+        function buildComponentsTabHTML() {
+            return `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Rim Assembly Types -->
+                    <div class="bg-[#11151a] border border-[#2a323c] rounded-xl p-6 shadow-xl space-y-4">
+                        <div class="flex items-center gap-3 border-b border-[#2a323c] pb-3">
+                            <div class="w-10 h-10 rounded-lg bg-[#e01030]/20 text-[#e01030] flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-layer-group"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-base font-bold text-white">Rim Construction Configurations</h4>
+                                <p class="text-xs text-[#9aa4af]">Understanding 2-Piece, 3-Piece & 5-Piece Assemblies</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3 text-xs text-[#b8c2cc]">
+                            <div class="bg-[#161b22] p-3 rounded-lg border border-[#2a323c]">
+                                <h5 class="font-bold text-[#e01030] text-sm mb-1">3-Piece Rim Assembly</h5>
+                                <p class="mb-2">Consists of a Rim Base, Side Ring, and Lock Ring. Designed for light-to-medium loaders and motor graders operating under moderate torque requirements.</p>
+                                <span class="px-2 py-0.5 rounded bg-[#e01030]/10 text-[#e01030] text-[11px]">Key Use: Motor Graders, Small Loader Units</span>
+                            </div>
+
+                            <div class="bg-[#161b22] p-3 rounded-lg border border-[#2a323c]">
+                                <h5 class="font-bold text-[#e01030] text-sm mb-1">5-Piece Rim Assembly</h5>
+                                <p class="mb-2">Consists of a Rim Base, Bead Seat Band, two Side Flanges, and a Lock Ring. Crucial for heavy haul trucks, large wheel loaders, and underground LHDs where high payload stability is required.</p>
+                                <span class="px-2 py-0.5 rounded bg-[#5b8bd0]/20 text-[#5b8bd0] text-[11px]">Key Use: Haul Trucks, Large LHDs, Underground Mining</span>
+                            </div>
+
+                            <div class="bg-[#161b22] p-3 rounded-lg border border-[#2a323c]">
+                                <h5 class="font-bold text-[#e01030] text-sm mb-1">6-Piece & 7-Piece Giant Rims</h5>
+                                <p class="mb-2">Advanced heavy mining rims (51" to 63") featuring split bead seat bands and reinforced lock rings engineered to withstand extreme torsional shock loads in open-pit mining.</p>
+                                <span class="px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 text-[11px]">Key Use: Komatsu 960E, CAT 793, Liebherr T282</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lock Ring & O-Ring Components -->
+                    <div class="bg-[#11151a] border border-[#2a323c] rounded-xl p-6 shadow-xl space-y-4">
+                        <div class="flex items-center gap-3 border-b border-[#2a323c] pb-3">
+                            <div class="w-10 h-10 rounded-lg bg-[#5b8bd0]/20 text-[#5b8bd0] flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-wrench"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-base font-bold text-white">Rim Accessories & Refurbishment</h4>
+                                <p class="text-xs text-[#9aa4af]">Original Titan Component Replacements</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3 text-xs text-[#b8c2cc]">
+                            <p class="leading-relaxed">
+                                Titan Global Wheel offers complete component servicing and replacements for all earthmover rim systems across Southern Africa.
+                            </p>
+                            
+                            <ul class="space-y-2 border-t border-[#2a323c] pt-3">
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-circle-check text-[#e01030] mt-0.5"></i>
+                                    <span><strong class="text-white">Lock Rings:</strong> High-tensile forged steel rings manufactured to tight tolerances to prevent rim roll-off.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-circle-check text-[#e01030] mt-0.5"></i>
+                                    <span><strong class="text-white">Side Flanges & Bead Seat Bands:</strong> Heavy duty heat-treated steel for uniform tire bead support.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-circle-check text-[#e01030] mt-0.5"></i>
+                                    <span><strong class="text-white">O-Rings & Drivers:</strong> Precision rubber O-rings designed for airtight sealing on tubeless earthmoving setups.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-circle-check text-[#e01030] mt-0.5"></i>
+                                    <span><strong class="text-white">Refurbishment Services:</strong> Full magnetic particle inspection (MPI), shot blasting, crack repair, and re-certification.</span>
+                                </li>
+                            </ul>
+
+                            <div class="pt-2">
+                                <button onclick="openCertificateModal()" class="w-full py-2.5 bg-[#e01030] text-white font-bold rounded-lg hover:bg-[#c00e2a] text-xs flex items-center justify-center gap-2 transition">
+                                    <i class="fa-solid fa-file-certificate"></i>
+                                    View Quality Certification Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function switchTab(tabId) {
+            activeTab = tabId;
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                if (btn.id === `btn-${tabId}`) {
+                    btn.classList.add('border-[#e01030]', 'text-[#e01030]');
+                    btn.classList.remove('border-transparent', 'text-[#9aa4af]');
+                } else {
+                    btn.classList.remove('border-[#e01030]', 'text-[#e01030]');
+                    btn.classList.add('border-transparent', 'text-[#9aa4af]');
+                }
+            });
+
+            document.querySelectorAll('.tab-pane').forEach(pane => {
+                if (pane.id === tabId) {
+                    pane.classList.remove('hidden');
+                } else {
+                    pane.classList.add('hidden');
+                }
+            });
+
+            filterTables();
+        }
+
+        function handleSearch() {
+            const input = document.getElementById('global-search');
+            currentSearchQuery = input.value.trim().toLowerCase();
+            
+            const clearBtn = document.getElementById('clear-search-btn');
+            if (currentSearchQuery.length > 0) {
+                clearBtn.classList.remove('hidden');
+            } else {
+                clearBtn.classList.add('hidden');
+            }
+
+            filterTables();
+        }
+
+        function clearSearch() {
+            const input = document.getElementById('global-search');
+            input.value = '';
+            currentSearchQuery = '';
+            document.getElementById('clear-search-btn').classList.add('hidden');
+            filterTables();
+        }
+
+        function setManufacturerFilter(mfr) {
+            activeManufacturer = mfr;
+
+            document.querySelectorAll('.mfr-btn').forEach(btn => {
+                if (btn.dataset.mfr === mfr) {
+                    btn.className = 'mfr-btn px-3 py-1.5 rounded-lg bg-[#e01030] text-white font-bold whitespace-nowrap transition';
+                } else {
+                    btn.className = 'mfr-btn px-3 py-1.5 rounded-lg bg-[#161b22] hover:bg-[#2a323c] text-[#b8c2cc] whitespace-nowrap transition border border-[#2a323c]';
+                }
+            });
+
+            document.getElementById('active-filter-label').innerText = mfr === 'ALL' ? 'Showing All' : `Filtered: ${mfr}`;
+            filterTables();
+        }
+
+        function filterTables() {
+            let visibleCount = 0;
+
+            const termDisplay = document.getElementById('search-term-display');
+            if (currentSearchQuery) {
+                termDisplay.innerText = `matching "${currentSearchQuery}"`;
+            } else {
+                termDisplay.innerText = '';
+            }
+
+            const rows = document.querySelectorAll('.rim-row');
+
+            rows.forEach(row => {
+                const rMfr = row.dataset.mfr;
+                const rModel = row.dataset.model;
+                const rApp = row.dataset.app;
+                const rPart = row.dataset.part;
+                const rSize = row.dataset.size;
+                const rTyre = row.dataset.tyre;
+                const rType = row.dataset.type;
+                const rStuds = row.dataset.studs;
+
+                const matchesMfr = activeManufacturer === 'ALL' || rMfr.toUpperCase().includes(activeManufacturer);
+
+                const fullText = `${rMfr} ${rModel} ${rApp} ${rPart} ${rSize} ${rTyre} ${rType} ${rStuds}`.toLowerCase();
+                const matchesSearch = !currentSearchQuery || fullText.includes(currentSearchQuery);
+
+                if (matchesMfr && matchesSearch) {
+                    row.classList.remove('hidden');
+                    
+                    if (row.closest('.tab-pane') && row.closest('.tab-pane').id === activeTab) {
+                        visibleCount++;
+                    }
+                } else {
+                    row.classList.add('hidden');
+                }
+            });
+
+            document.getElementById('visible-rows-count').innerText = visibleCount;
+            updateCounts();
+        }
+
+        function updateCounts() {
+            const getCount = (cat) => {
+                return rimData.filter(r => {
+                    const matchesCat = cat === 'all' ? true : r.category === cat;
+                    const matchesMfr = activeManufacturer === 'ALL' || r.mfr.toUpperCase().includes(activeManufacturer);
+                    const fullText = `${r.mfr} ${r.model} ${r.app} ${r.part} ${r.size} ${r.tyre} ${r.type} ${r.studs}`.toLowerCase();
+                    const matchesSearch = !currentSearchQuery || fullText.includes(currentSearchQuery);
+                    return matchesCat && matchesMfr && matchesSearch;
+                }).length;
+            };
+
+            document.getElementById('count-all').innerText = getCount('all');
+            document.getElementById('count-24').innerText = getCount('24');
+            document.getElementById('count-25-3p').innerText = getCount('25-3p');
+            document.getElementById('count-25-5p').innerText = getCount('25-5p');
+            document.getElementById('count-29-34').innerText = getCount('29-34');
+            document.getElementById('count-35-39').innerText = getCount('35-39');
+            document.getElementById('count-giant').innerText = getCount('giant');
+
+            document.getElementById('total-rims-count').innerText = `${rimData.length}+`;
+        }
+
+        function openRimModalById(id) {
+            const item = rimData.find(r => r.id === id);
+            if (!item) return;
+
+            const modalContent = document.getElementById('modal-content');
+            modalContent.innerHTML = `
+                <div class="space-y-4">
+                    <div class="flex items-start justify-between border-b border-[#2a323c] pb-4">
+                        <div>
+                            <span class="text-xs text-[#e01030] font-bold uppercase tracking-wider">${escapeHTML(item.mfr)} Equipment Solution</span>
+                            <h3 class="text-xl font-bold text-white mt-1">${escapeHTML(item.model)}</h3>
+                            <p class="text-xs text-[#9aa4af]">Application Code: <span class="text-[#e01030] font-mono font-bold">${escapeHTML(item.app)}</span></p>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#e01030]/20 text-[#e01030] border border-[#e01030]/30">
+                            ${escapeHTML(item.type)}
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 text-xs">
+                        <div class="bg-[#11151a] p-3 rounded-xl border border-[#2a323c]">
+                            <span class="text-[#9aa4af] block mb-1">Titan Global Part #</span>
+                            <div class="flex items-center justify-between">
+                                <span class="font-mono text-base font-bold text-[#e01030]">${escapeHTML(item.part)}</span>
+                                <button onclick="copyToClipboard('${escapeHTML(item.part)}')" class="text-[#9aa4af] hover:text-white text-xs p-1">
+                                    <i class="fa-regular fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#11151a] p-3 rounded-xl border border-[#2a323c]">
+                            <span class="text-[#9aa4af] block mb-1">Rim Size Specification</span>
+                            <span class="font-bold text-sm text-white">${escapeHTML(item.size)}</span>
+                        </div>
+
+                        <div class="bg-[#11151a] p-3 rounded-xl border border-[#2a323c]">
+                            <span class="text-[#9aa4af] block mb-1">Typical Tyre Size</span>
+                            <span class="font-mono text-sm font-bold text-[#5b8bd0]">${escapeHTML(item.tyre)}</span>
+                        </div>
+
+                        <div class="bg-[#11151a] p-3 rounded-xl border border-[#2a323c]">
+                            <span class="text-[#9aa4af] block mb-1">Stud / Demountable</span>
+                            <span class="font-bold text-sm text-gray-200">${escapeHTML(item.studs)}</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-[#11151a]/60 p-3.5 rounded-xl border border-[#2a323c] text-xs space-y-2">
+                        <div class="flex items-center justify-between font-bold text-gray-200">
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-award text-[#e01030]"></i> Quality Assurance</span>
+                            <span class="text-[#2fb672]">Certificate Included</span>
+                        </div>
+                        <p class="text-[#9aa4af]">
+                            This rim is manufactured to strict OEM dimensional offsets and material fatigue standards. Complete with a Titan Global Certificate of Conformance.
+                        </p>
+                    </div>
+
+                    <div class="flex gap-3 pt-2">
+                        <!--
+                        <button onclick="requestQuote('${escapeHTML(item.part)}')" class="flex-1 py-2.5 bg-[#e01030] text-white font-bold rounded-xl hover:bg-[#c00e2a] text-xs transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            Request Stock &amp; Quote
+                        </button>
+                        -->
+                        <!--
+                        <button onclick="closeRimModal()" class="px-4 py-2.5 bg-[#161b22] border border-[#2a323c] text-[#b8c2cc] font-semibold rounded-xl hover:text-white text-xs transition">
+                            Close
+                        </button>
+                        -->
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('rim-modal').classList.remove('hidden');
+        }
+
+        function closeRimModal() {
+            document.getElementById('rim-modal').classList.add('hidden');
+        }
+
+        function openCertificateModal() {
+            document.getElementById('cert-modal').classList.remove('hidden');
+        }
+
+        function closeCertificateModal() {
+            document.getElementById('cert-modal').classList.add('hidden');
+        }
+
+        function requestQuote(partNo) {
+            alert(`Quote Inquiry Initiated for Titan Part #: ${partNo}\n\nFor immediate pricing and availability, contact Titan Global Wheel Sales Team.`);
+        }
+
+        function copyToClipboard(text) {
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            
+            const feedback = document.createElement('div');
+            feedback.className = 'toast fixed bottom-5 right-5 z-50 bg-[#e01030] text-white px-4 py-2 rounded-xl text-xs font-bold shadow-2xl';
+            feedback.innerText = `Copied Part Number: ${text}`;
+            document.body.appendChild(feedback);
+            setTimeout(() => feedback.remove(), 2500);
+        }
+
+        function exportFilteredData() {
+            const visibleItems = rimData.filter(r => {
+                const matchesMfr = activeManufacturer === 'ALL' || r.mfr.toUpperCase().includes(activeManufacturer);
+                const fullText = `${r.mfr} ${r.model} ${r.app} ${r.part} ${r.size} ${r.tyre} ${r.type} ${r.studs}`.toLowerCase();
+                const matchesSearch = !currentSearchQuery || fullText.includes(currentSearchQuery);
+                return matchesMfr && matchesSearch;
+            });
+
+            if (visibleItems.length === 0) {
+                alert('No matching records to export.');
+                return;
+            }
+
+            let csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "Manufacturer,Model Name,Vehicle Application,Titan Part Number,Rim Size,Typical Tyre Size,Rim Type,Studs\n";
+
+            visibleItems.forEach(item => {
+                csvContent += `"${item.mfr}","${item.model}","${item.app}","${item.part}","${item.size}","${item.tyre}","${item.type}","${item.studs}"\n`;
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `Titan_Global_Wheel_Earthmoving_Rims.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    "'": '&#39;',
+                    '"': '&quot;'
+                }[tag] || tag)
+            );
+        }
+
+        function toggleMobileSearch() {
+            const container = document.getElementById('search-container');
+            container.classList.toggle('hidden');
+            if (!container.classList.contains('hidden')) {
+                document.getElementById('global-search').focus();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+RewriteEngine On
+
+# 1. Redirect index.html to the clean directory URL
+RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html(?:[\s?]) [NC]
+RewriteRule ^(.*/)?index\.html$ /%1 [R=301,L,NE]
+
+# 2. Redirect .html URLs to clean URLs
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html(?:[\s?]) [NC]
+RewriteRule ^(.+)\.html$ /$1 [R=301,L,NE]
+
+# 3. Internally serve .html files for clean URLs
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+?)/?$ $1.html [END]

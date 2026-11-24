@@ -1,0 +1,1783 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- GA Google Analytics @ https://m0n.co/ga -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D07TXJ8J69"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-D07TXJ8J69');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>News — Titan Global Wheel</title>
+  <meta name="description" content="The latest news, product launches and events from Titan Global Wheel — sub-Saharan Africa's leading off-highway wheel manufacturer." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.titanglobalwheel.co.za/news2.html" />
+  <link rel="alternate" hreflang="en-za" href="https://www.titanglobalwheel.co.za/news2.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="News — Titan Global Wheel" />
+  <meta property="og:description" content="The latest news, product launches and events from Titan Global Wheel." />
+  <meta property="og:locale" content="en_ZA" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Titan Global Wheel",
+    "url": "https://www.titanglobalwheel.co.za",
+    "description": "Leading manufacturer and supplier of off-highway wheels, rims, tyres and runflat systems in sub-Saharan Africa.",
+    "areaServed": "Sub-Saharan Africa",
+    "knowsAbout": ["Agricultural wheels", "Mining rims", "Military runflat systems", "Construction wheels"],
+    "certification": "ISO-certified design, testing and production facilities"
+  }
+  </script>
+
+
+
+
+    <link rel="icon" type="image/png" href="src/logos/favicon.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Archivo:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <!-- Shared styles (load more button + skeletons) -->
+  <link rel="stylesheet" href="css/news.css" />
+
+  <style>
+    :root {
+      /* Brand tokens */
+      --bg: #0a0d10;
+      --bg-2: #11151a;
+      --surface: #161b22;
+      --surface-2: #1d242d;
+      --line: #2a323c;
+      --text: #0a0d10;
+      --text-invert: #f4f6f8;
+      --muted: #9aa4af;
+      --muted-invert: #b8c2cc;
+      --accent: #114172;        /* Titan brand blue (from logo) - primary */
+      --accent-2: #e01030;      /* Titan brand red (from logo) - secondary */
+      --steel: #5b8bd0;         /* steel blue */
+      --ok: #2fb672;
+
+      --radius: 14px;
+      --radius-lg: 22px;
+      --maxw: 1200px;
+      --shadow: 0 18px 50px -20px rgba(0,0,0,.55);
+      --shadow-sm: 0 8px 24px -12px rgba(0,0,0,.45);
+      --shadow-md: 0 14px 40px -16px rgba(0,0,0,.35);
+
+      --font-body: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      --font-display: 'Archivo', 'Inter', system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      color: var(--text);
+      background: #ffffff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { font-family: var(--font-display); line-height: 1.05; letter-spacing: -.02em; margin: 0; }
+
+    .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 22px; }
+    .skip-link { position:absolute; left:-999px; top:0; background:var(--accent); color:#000; padding:10px 16px; z-index:100; }
+    .skip-link:focus { left: 12px; top: 12px; }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-weight: 700; font-size: 15px; letter-spacing: .01em;
+      padding: 14px 24px; border-radius: 999px; cursor: pointer;
+      border: 1.5px solid transparent; transition: transform .15s ease, background .2s ease, box-shadow .2s ease;
+      white-space: nowrap;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn-primary { background: var(--accent); color: #ffffff; box-shadow: 0 10px 26px -10px rgba(17,65,114,.55); }
+    .btn-primary:hover { background: #0d335c; }
+    .btn-ghost { border-color: currentColor; background: transparent; }
+    .btn-on-dark { color: var(--text-invert); }
+    .btn-on-dark:hover { background: rgba(255,255,255,.08); }
+    .btn-dark { background: #0a0d10; color: #fff; }
+    .btn-dark:hover { background: #1d242d; }
+    .btn .arrow { transition: transform .2s ease; }
+    .btn:hover .arrow { transform: translateX(3px); }
+
+    /* ---------- Header ---------- */
+    .site-top { position: sticky; top: 0; z-index: 50; }
+    header.site {
+      position: relative; z-index: 2;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e7eaee;
+      color: var(--text);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .brand { display:flex; align-items:center; gap:12px; }
+    .brand .logo-h { height: clamp(26px, 3.4vw, 34px); width: auto; display:block; }
+    .brand .mark {
+      width: 38px; height: 38px; border-radius: 9px;
+      background: conic-gradient(from 210deg, var(--accent), #6fa8dc, var(--accent));
+      display: grid; place-items: center; color:#fff; font-weight: 900; font-size: 18px;
+      box-shadow: inset 0 0 0 3px rgba(0,0,0,.18);
+    }
+    .brand .sub { display:block; font-family: var(--font-body); font-weight: 500; font-size: 11px; letter-spacing:.18em; color: var(--muted); text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 28px; margin-left: auto; }
+    .nav-links a { font-size: 15px; font-weight: 500; color: var(--accent); transition: color .15s; }
+    .nav-links a:hover,
+    .nav-links a:focus-visible,
+    .nav-links a.active { color: var(--accent-2); }
+    .nav-cta { display: flex; align-items: center; gap: 14px; }
+    .nav-toggle { display:none; background:none; border:0; color: var(--text); font-size:26px; cursor:pointer; }
+
+    /* Dropdown (Products) */
+    .nav-item { position: relative; }
+    .nav-links .caret {
+      display: inline-block; width: 7px; height: 7px; margin-left: 8px;
+      border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+      transform: rotate(45deg) translateY(-2px); opacity: .75;
+      transition: transform .2s ease, opacity .2s ease;
+    }
+    .has-dropdown.open .caret { transform: rotate(225deg) translateY(-2px); opacity: 1; }
+    .dropdown {
+      position: absolute; top: 100%; left: 0;
+      min-width: 232px; margin-top: 14px; padding: 8px;
+      list-style: none; background: #fff;
+      border: 1px solid #e7eaee; border-radius: 16px;
+      box-shadow: 0 22px 50px -20px rgba(10,13,16,.30);
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transform: translateY(-8px);
+      /* JS manages the open/close linger; CSS just animates the transition */
+      transition: opacity .18s ease, transform .18s ease, visibility 0s;
+    }
+    /* invisible bridge keeps hover alive across the gap above the menu */
+    .dropdown::before {
+      content: ""; position: absolute; left: 0; right: 0; top: -14px; height: 14px;
+    }
+    .dropdown li { margin: 0; }
+    .dropdown a {
+      display: flex; align-items: center; gap: 12px;
+      padding: 11px 14px; border-radius: 10px;
+      color: var(--text); font-size: 15px; font-weight: 500;
+      transition: background .15s ease, color .15s ease, padding-left .15s ease;
+    }
+    .dropdown a::before {
+      content: ""; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); opacity: .35; flex: 0 0 auto;
+      transition: opacity .15s ease, transform .15s ease;
+    }
+    .dropdown a:hover,
+    .dropdown a:focus-visible { background: rgba(17,65,114,.08); color: var(--accent); padding-left: 18px; }
+    .dropdown a:hover::before,
+    .dropdown a:focus-visible::before { opacity: 1; transform: scale(1.35); }
+    .has-dropdown:hover .dropdown,
+    .has-dropdown:focus-within .dropdown,
+    .has-dropdown.open .dropdown {
+      opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0);
+      /* open immediately, no delay */
+      transition-delay: 0s;
+    }
+
+    /* Page-head with a real photo banner (used on news.html) */
+    .page-head.has-banner {
+      padding: 0;
+      min-height: clamp(360px, 46vw, 560px);
+      display: flex; align-items: center;
+      color: var(--text-invert);
+      background:
+        linear-gradient(180deg, rgba(8,11,14,.45) 0%, rgba(8,11,14,.72) 100%),
+        url('src/news/newsbanner.png') center/cover no-repeat;
+      border-bottom: 1px solid var(--line);
+    }
+    .page-head.has-banner::after { display: none; } /* hide the grid pattern when a real image is used */
+    .page-head.has-banner .sec-head h1 { color: #fff; text-shadow: 0 2px 18px rgba(0,0,0,.55); }
+    .page-head.has-banner .sec-head h1::after { background: linear-gradient(90deg, #fff, var(--accent-2)); }
+    .page-head.has-banner .sec-head p { color: rgba(255,255,255,.92); text-shadow: 0 1px 10px rgba(0,0,0,.55); }
+    .page-head.has-banner .sec-head .kicker {
+      display: inline-block; padding: 8px 16px; border-radius: 999px;
+      background: rgba(224,16,48,.18); border: 1px solid rgba(224,16,48,.55); color: #fff;
+    }
+    /* ---------- Page intro (replaces hero) ---------- */
+    .page-head {
+      position: relative; overflow: hidden;
+      background:
+        radial-gradient(80% 140% at 88% -10%, rgba(17,65,114,.12), transparent 55%),
+        radial-gradient(70% 120% at 0% 120%, rgba(224,16,48,.08), transparent 55%),
+        linear-gradient(180deg, #f6f7f9 0%, #ffffff 100%);
+      padding: 86px 0 64px;
+    }
+    .page-head::after {
+      content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+      background-image: linear-gradient(rgba(17,65,114,.05) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(17,65,114,.05) 1px, transparent 1px);
+      background-size: 64px 64px; mask-image: radial-gradient(120% 90% at 90% 0%, #000, transparent 75%);
+    }
+    .page-head .wrap { position: relative; z-index: 2; }
+    .page-head .eyebrow { color: var(--accent-2); border-color: rgba(224,16,48,.35); }
+    .page-head h1 {
+      font-size: clamp(36px, 5.6vw, 70px); font-weight: 900; margin: 20px 0 0; max-width: 17ch;
+    }
+    .page-head h1 .accent {
+      color: var(--accent);
+      background: linear-gradient(90deg, var(--accent), var(--steel), var(--accent));
+      background-size: 200% auto;
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+      animation: shimmer 6s linear infinite;
+    }
+    @keyframes shimmer { to { background-position: 200% center; } }
+    .page-head p.lede { font-size: clamp(16px, 2vw, 20px); color: #4a535d; max-width: 60ch; margin: 22px 0 0; }
+    .page-head .hero-actions { margin-top: 34px; }
+    @keyframes floatDot { 0%,100%{ transform: translateY(0); opacity:1; } 50%{ transform: translateY(-4px); opacity:.6; } }
+    .page-head .eyebrow .dot { animation: floatDot 2.4s ease-in-out infinite; }
+
+    /* Split intro — distinct 'about' brand vibe (different from the home hero) */
+    .intro-split { display:grid; grid-template-columns: 1.15fr .85fr; gap:52px; align-items:center; }
+    .intro-copy { position:relative; z-index:2; }
+    .intro-panel {
+      position: relative; overflow:hidden; color:#fff;
+      background: linear-gradient(155deg, var(--accent) 0%, #0c2f54 100%);
+      border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-md);
+    }
+    .intro-panel::after {
+      content:""; position:absolute; inset:0; opacity:.16; pointer-events:none;
+      background-image: radial-gradient(circle at 1px 1px, #fff 1px, transparent 0); background-size: 20px 20px;
+    }
+    .intro-logo { position:relative; z-index:2; display:inline-block; background:#fff; border-radius:14px; padding:14px 16px; }
+    .intro-logo .logo-h { height:32px; width:auto; }
+    .intro-facts { list-style:none; padding:0; margin:26px 0 0; display:grid; position:relative; z-index:2; }
+    .intro-facts li { display:flex; align-items:baseline; gap:16px; padding:16px 0; border-top:1px solid rgba(255,255,255,.18); }
+    .intro-facts .f-num { font-family: var(--font-display); font-weight:900; font-size: clamp(26px,3vw,34px); color:#fff; min-width:70px; line-height:1; }
+    .intro-facts .f-lbl { color: rgba(255,255,255,.85); font-size:14.5px; }
+    .intro-tag { position:relative; z-index:2; display:inline-block; margin-top:20px; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color: rgba(255,255,255,.7); font-weight:700; }
+
+    /* stats strip */
+    .stats {
+      background:#0a0d10; color:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    }
+    .stats-grid { display:grid; grid-template-columns: repeat(4,1fr); }
+    .stat { padding: 34px 22px; border-right:1px solid var(--line); }
+    .stat:last-child { border-right:0; }
+    .stat .num { font-family: var(--font-display); font-weight:900; font-size: clamp(30px,4vw,44px); color:#fff; line-height:1; }
+    .stat .num .u { color: var(--accent); }
+    .stat .lbl { color: var(--muted); margin-top:10px; font-size:14px; }
+
+    /* ---------- Section shells ---------- */
+    section { padding: 92px 0; }
+    .sec-head { max-width: 720px; margin-bottom: 48px; }
+    .sec-head .kicker { color: var(--accent); font-weight:800; letter-spacing:.16em; text-transform:uppercase; font-size:13px; }
+    .sec-head h1 { font-size: clamp(28px, 4vw, 46px); font-weight: 800; margin-top:14px; position: relative; display: inline-block; }
+    .sec-head h1::after {
+      content:""; position:absolute; left:0; bottom:-12px; height:4px; width:0; border-radius:4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width .8s cubic-bezier(.2,.7,.2,1) .15s;
+    }
+    .sec-head.in h2::after,
+    .sec-head.reveal.in h2::after { width: 68px; }
+    .sec-head p { color:#4a535d; font-size: 18px; margin-top:16px; }
+
+    /* ---------- Product selector (4-step) ---------- */
+    .products { background: #f6f7f9; }
+    .prod-grid { display:grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+    .prod-card {
+      background:#fff; border:1px solid #e7eaee; border-radius: var(--radius-lg);
+      padding: 28px 24px 26px; position:relative; overflow:hidden;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .prod-card::before {
+      content:""; position:absolute; left:0; top:0; height:4px; width:100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2)); transform: scaleX(0); transform-origin:left; transition: transform .25s ease;
+    }
+    .prod-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: transparent; }
+    .prod-card:hover::before { transform: scaleX(1); }
+    .prod-step { font-family: var(--font-display); font-weight:900; font-size: 14px; color: var(--accent); letter-spacing:.1em; }
+    .prod-card h3 { font-size: 24px; font-weight: 800; margin: 10px 0 10px; }
+    .prod-card p { color:#566069; font-size:15px; margin:0 0 18px; }
+    .prod-list { list-style:none; padding:0; margin:0 0 20px; display:flex; flex-wrap:wrap; gap:8px; }
+    .prod-list li { font-size:12.5px; color:#3a424b; background:#eef1f4; border-radius:999px; padding:6px 12px; font-weight:600; }
+    .prod-card .more { font-weight:700; color: var(--text); font-size:14.5px; display:inline-flex; align-items:center; gap:8px; }
+    .prod-card .more .arrow { color: var(--accent); }
+
+    /* ---------- Industries ---------- */
+    .ind-grid { display:grid; grid-template-columns: repeat(2,1fr); gap: 22px; }
+    .ind-card {
+      position:relative; border-radius: var(--radius-lg); overflow:hidden; min-height: 320px;
+      display:flex; align-items:flex-end; color:#fff; isolation:isolate;
+      border:1px solid var(--line);
+    }
+    .ind-card .bg { position:absolute; inset:0; z-index:-2; }
+    .ind-card .bg::after { content:""; position:absolute; inset:0; background: linear-gradient(180deg, rgba(8,11,14,.15) 0%, rgba(8,11,14,.85) 100%); }
+    .ind-agri .bg { background: linear-gradient(135deg,#1f3d24,#3f7a45); }
+    .ind-mining .bg { background: linear-gradient(135deg,#2a1c10,#6b4a1f); }
+    .ind-military .bg { background: linear-gradient(135deg,#101418,#2b3138); }
+    .ind-construction .bg { background: linear-gradient(135deg,#1a2733,#33526b); }
+    .ind-card .pattern { position:absolute; inset:0; z-index:-1; opacity:.18;
+      background-image: radial-gradient(circle at 1px 1px, #fff 1px, transparent 0); background-size: 22px 22px; }
+    .ind-body { padding: 30px; width:100%; }
+    .ind-body .tag { font-size:12px; letter-spacing:.16em; text-transform:uppercase; color: var(--accent-2); font-weight:700; }
+    .ind-body h3 { font-size: 28px; font-weight: 800; margin: 8px 0 10px; }
+    .ind-body p { color: rgba(255,255,255,.82); font-size:15px; margin:0 0 16px; max-width: 46ch; }
+    .ind-body .more { display:inline-flex; align-items:center; gap:8px; font-weight:700; }
+    .ind-body .more .arrow { transition: transform .2s; }
+    .ind-card:hover .arrow { transform: translateX(4px); }
+
+
+    /* ---------- Featured / spotlight ---------- */
+    .spotlight { background:#f6f7f9; }
+    .spot-inner {
+      display:grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items:center;
+      background:#0a0d10; color:#fff; border-radius: var(--radius-lg); padding: 48px; overflow:hidden; position:relative;
+    }
+    .spot-inner::before {
+      content:""; position:absolute; right:-80px; top:-80px; width:320px; height:320px; border-radius:50%;
+      background: radial-gradient(circle, rgba(17,65,114,.5), transparent 70%);
+    }
+    .spot-copy { position:relative; z-index:2; }
+    .spot-copy .kicker { color: var(--accent-2); font-weight:800; letter-spacing:.16em; text-transform:uppercase; font-size:13px; }
+    .spot-copy h2 { font-size: clamp(26px,3.4vw,40px); font-weight:800; margin:14px 0 16px; }
+    .spot-copy p { color: var(--muted-invert); font-size:16px; }
+    .spot-copy ul { list-style:none; padding:0; margin:22px 0 28px; display:grid; gap:12px; }
+    .spot-copy li { display:flex; gap:12px; align-items:flex-start; color:#dde3e9; font-size:15.5px; }
+    .spot-copy li .tick { color: var(--accent); font-weight:900; flex:none; }
+    .spot-visual {
+      position:relative; z-index:2; border-radius: var(--radius); border:1px solid var(--line);
+      background: linear-gradient(160deg, #1d242d, #11151a); min-height: 280px; padding: 26px;
+      display:flex; flex-direction:column; justify-content:space-between;
+    }
+    .spec { border-bottom:1px solid var(--line); padding:14px 0; display:flex; justify-content:space-between; font-size:14px; }
+    .spec:last-child { border-bottom:0; }
+    .spec .k { color: var(--muted); }
+    .spec .v { color:#fff; font-weight:700; }
+    .spot-visual .badge { align-self:flex-start; background: rgba(47,182,114,.16); color: var(--ok); border:1px solid rgba(47,182,114,.4); border-radius:999px; padding:6px 14px; font-size:12.5px; font-weight:700; }
+
+    /* ---------- CTA band ---------- */
+    .cta {
+      background:
+        radial-gradient(100% 140% at 100% 0%, rgba(17,65,114,.35), transparent 55%),
+        linear-gradient(120deg, #0a0d10, #161b22);
+      color:#fff; text-align:center;
+    }
+    .cta h2 { font-size: clamp(28px,4vw,48px); font-weight:900; max-width: 18ch; margin:0 auto 16px; }
+    .cta p { color: var(--muted-invert); font-size:18px; max-width: 56ch; margin:0 auto 32px; }
+    .cta .hero-actions { justify-content:center; }
+
+    /* ---------- Footer ---------- */
+    footer.site { background:#070a0c; color: var(--muted); padding: 64px 0 30px; border-top:1px solid var(--line); }
+    .foot-grid { display:grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap:36px; }
+    .foot-brand .brand { color:#fff; margin-bottom:14px; }
+    /* Horizontal logo on a white badge so the dark-blue mark stays visible on the dark footer */
+    .foot-brand .brand.foot-logo { background:#ffffff; padding:10px 14px; border-radius:12px; display:inline-flex; align-items:center; margin-bottom:16px; max-width: 100%; }
+    /* Cap height AND width so the very wide horizontal logo (2700x185, ~14.6:1) keeps its aspect ratio inside the footer column instead of being squished */
+    .foot-brand .brand.foot-logo .logo-h { height:34px; width:auto; max-width: 100%; max-height: 44px; object-fit: contain; }
+    .foot-brand p { font-size:14.5px; max-width: 38ch; }
+    .foot-col h4 { color:#fff; font-size:14px; letter-spacing:.08em; text-transform:uppercase; margin:0 0 16px; font-family:var(--font-body); font-weight:700; }
+    .foot-col a { display:block; font-size:14.5px; padding:6px 0; color: var(--muted); transition: color .15s; }
+    .foot-col a:hover { color:#fff; }
+    .foot-bot { margin-top:48px; padding-top:24px; border-top:1px solid var(--line); display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; font-size:13px; }
+    .foot-social { display:flex; align-items:center; flex-wrap:wrap; justify-content:space-between; gap:24px; margin-top:36px; padding-top:28px; border-top:1px solid var(--line); }
+    .socials { display:flex; flex-wrap:wrap; gap:12px; }
+    .social { width:42px; height:42px; border-radius:50%; display:grid; place-items:center; background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); color: var(--muted-invert); transition: transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease; }
+    .social svg { width:18px; height:18px; fill: currentColor; display:block; }
+    .social:hover { transform: translateY(-3px); background: var(--accent); color:#fff; border-color: var(--accent); }
+    .foot-legal { display:flex; flex-direction:column; align-items:flex-start; gap:6px; font-size:13px; color: var(--muted); }
+    .foot-legal .legal-item { display:inline-flex; align-items:center; }
+    .foot-legal a { color: var(--muted-invert); border-bottom:1px solid transparent; transition: color .15s, border-color .15s; }
+    .foot-legal a:hover { color:#fff; border-color: rgba(255,255,255,.4); }
+    .foot-legal .cert-badge { color: var(--muted-invert); text-decoration:none; border-bottom:none; }
+    .foot-legal .cert-badge:hover { color:#fff; border-color: transparent; }
+    .foot-bot-left { display:flex; flex-wrap:wrap; gap:6px 18px; }
+    .foot-partner { display:inline-flex; align-items:center; }
+    .foot-partner img { height:105px; width:auto; }
+
+    /* ---------- Animations ---------- */
+    .reveal { opacity:0; transform: translateY(30px); transition: opacity .4s ease, transform .4s cubic-bezier(.2,.7,.2,1); transition-delay: var(--rd, 0s); will-change: opacity, transform; }
+    .reveal.in { opacity:1; transform: none; }
+
+    @keyframes floaty { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-10px); } }
+    .story-visual { animation: floaty 6s ease-in-out infinite; }
+
+    @keyframes pulseRing { 0%{ box-shadow: 0 0 0 0 rgba(17,65,114,.25);} 70%{ box-shadow: 0 0 0 14px rgba(17,65,114,0);} 100%{ box-shadow: 0 0 0 0 rgba(17,65,114,0);} }
+    .value .ic { animation: pulseRing 3.2s ease-out infinite; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity:1 !important; transform:none !important; transition:none !important; }
+      .page-head h1 .accent { animation:none; -webkit-text-fill-color: var(--accent); color: var(--accent); }
+      .story-visual, .value .ic, .page-head .eyebrow .dot { animation:none !important; }
+    }
+
+    /* ---------- About-specific ---------- */
+    .story { background:#fff; }
+    .story-grid { display:grid; grid-template-columns: 1fr 1fr; gap:48px; align-items:center; }
+    .story-copy h2 { font-size: clamp(28px,4vw,46px); font-weight:800; margin-bottom:18px; }
+    .story-copy p { color:#4a535d; font-size:17.5px; margin:0 0 18px; }
+    .story-visual {
+      border-radius: var(--radius-lg); border:1px solid var(--line); min-height: 380px;
+      background:
+        radial-gradient(120% 120% at 80% -10%, rgba(17,65,114,.45), transparent 55%),
+        linear-gradient(160deg, #11151a, #0a0d10);
+      color:#fff; padding: 40px; display:flex; flex-direction:column; justify-content:space-between; position:relative; overflow:hidden;
+    }
+    .story-visual::after {
+      content:""; position:absolute; inset:0;
+      background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,.10) 1px, transparent 0); background-size: 22px 22px;
+      pointer-events:none;
+    }
+    .story-visual .tag { position:relative; z-index:2; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color: var(--accent-2); font-weight:700; }
+    .story-visual .bigquote { position:relative; z-index:2; font-family: var(--font-display); font-weight:800; font-size: clamp(22px,2.6vw,32px); line-height:1.18; margin-top:18px; }
+    .story-visual .sig { position:relative; z-index:2; margin-top:22px; color: var(--muted-invert); font-size:14px; }
+    .story-visual .sig strong { color:#fff; display:block; font-size:16px; }
+
+    .values { background:#f6f7f9; }
+    .value-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:20px; }
+    .value {
+      background:#fff; border:1px solid #e7eaee; border-radius: var(--radius); padding: 30px 26px;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .value:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 0 0 1px rgba(17,65,114,.25), var(--shadow-sm); border-color: transparent; }
+    .value .ic {
+      width:48px; height:48px; border-radius:12px; display:grid; place-items:center;
+      background: rgba(17,65,114,.10); color: var(--accent); margin-bottom:18px; font-size:22px;
+    }
+    .value h3 { font-size: 20px; font-weight:800; margin:0 0 10px; }
+    .value p { color:#566069; font-size:15px; margin:0; }
+
+    .timeline { list-style:none; padding:0; margin: 8px 0 0; }
+    .timeline li { display:grid; grid-template-columns: 120px 1fr; gap: 28px; padding: 22px 0; border-bottom:1px solid #e7eaee; }
+    .timeline li:last-child { border-bottom:0; }
+    .timeline .year { font-family: var(--font-display); font-weight:900; font-size: 22px; color: var(--accent); }
+    .timeline .tl-body h3 { font-size: 19px; font-weight:800; margin:0 0 6px; }
+    .timeline .tl-body p { color:#4a535d; font-size:15.5px; margin:0; }
+
+    /* ---------- News — Newsroom Hub (redesign) ---------- */
+    .news-section {
+      background:
+        radial-gradient(60% 80% at 20% 0%, rgba(17,65,114,.05), transparent 70%),
+        radial-gradient(40% 60% at 100% 30%, rgba(224,16,48,.04), transparent 70%),
+        #f6f7f9;
+    }
+    .news-grid { display:grid; grid-template-columns: repeat(3,1fr); gap: 26px; perspective: 1400px; }
+
+    /* Toolbar: live search + category filters + count */
+    .news-toolbar { display:flex; flex-wrap:wrap; align-items:center; gap:16px; margin-bottom:34px; }
+    .news-search { position:relative; flex:1 1 320px; min-width:260px; display:flex; align-items:center; }
+    .news-search svg { position:absolute; left:16px; width:18px; height:18px; fill: var(--accent); opacity:.7; pointer-events:none; }
+    .news-search input {
+      width:100%; font-family: var(--font-body); font-size:15px; color: var(--text);
+      background:#fff; border:1.5px solid #d7dce1; border-radius:999px;
+      padding:13px 46px; transition: border-color .15s ease, box-shadow .15s ease;
+    }
+    .news-search input:focus { outline:none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(17,65,114,.18); }
+    .news-search input::placeholder { color:#8a929c; }
+    .news-search-clear {
+      position:absolute; right:12px; width:26px; height:26px; border:0; border-radius:50%;
+      background:#eef1f4; color:#3a424b; font-size:16px; line-height:1; cursor:pointer;
+      display:grid; place-items:center; transition: background .15s ease, color .15s ease;
+    }
+    .news-search-clear:hover { background: var(--accent-2); color:#fff; }
+    .news-filters { display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+    .news-count {
+      display:inline-flex; align-items:center; gap:6px;
+      font-size:13px; font-weight:700; color:#6a737d;
+      padding:8px 14px; border-radius:999px; background:#fff; border:1px solid #e7eaee;
+      white-space:nowrap;
+    }
+    .news-count strong { color: var(--accent); font-weight:800; }
+    .chip {
+      font-family: var(--font-body); font-size:13.5px; font-weight:700;
+      padding:9px 16px; border-radius:999px; cursor:pointer;
+      background:#fff; color: var(--accent); border:1.5px solid #d7dce1;
+      transition: transform .15s ease, background .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+    .chip:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .chip[aria-pressed="true"] {
+      background: var(--accent); color:#fff; border-color: var(--accent);
+      box-shadow: 0 10px 22px -10px rgba(17,65,114,.6);
+    }
+    .chip .chip-count { opacity:.7; font-weight:600; margin-left:6px; font-size:12px; }
+    .news-empty { grid-column:1/-1; text-align:center; color:#6b7480; padding:48px 0; font-size:16px; }
+
+    /* Category color coding for badges */
+    .news-card .meta .cat-badge {
+      display:inline-block; padding:4px 10px; border-radius:999px;
+      font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase;
+      background: rgba(17,65,114,.12); color: var(--accent);
+    }
+    .news-card .meta .cat-badge--Technology { background: rgba(17,65,114,.14); color: var(--accent); }
+    .news-card .meta .cat-badge--Product\ Launch { background: rgba(224,16,48,.14); color: var(--accent-2); }
+    .news-card .meta .cat-badge--Defence { background: rgba(91,139,208,.18); color: var(--steel); }
+    .news-card .meta .cat-badge--Events { background: rgba(47,182,114,.16); color: var(--ok); }
+    .news-card .meta .cat-badge--Mining { background: rgba(224,16,48,.14); color: var(--accent-2); }
+
+    /* ---------- Featured Article (hero card) ---------- */
+    .news-featured {
+      display:grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap:0;
+      background:#fff;
+      border:1px solid #e7eaee;
+      border-radius: var(--radius-lg);
+      overflow:hidden;
+      margin-bottom:36px;
+      transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease, border-color .35s ease;
+      box-shadow: 0 8px 28px -14px rgba(10,13,16,.12);
+      position:relative;
+    }
+    .news-featured:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 60px -24px rgba(17,65,114,.45), 0 0 0 1px rgba(17,65,114,.2);
+      border-color: transparent;
+    }
+    .news-featured:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+    .news-featured__image {
+      display:block; position:relative; aspect-ratio: 16/10; overflow:hidden; background:#11151a;
+    }
+    .news-featured__image img { width:100%; height:100%; object-fit:cover; transition: transform .6s ease; }
+    .news-featured:hover .news-featured__image img { transform: scale(1.06); }
+    .news-featured__label {
+      position:absolute; top:16px; left:16px; z-index:2;
+      display:inline-flex; align-items:center; gap:6px;
+      padding:7px 14px; border-radius:999px;
+      background: var(--accent-2); color:#fff;
+      font-size:11.5px; font-weight:800; letter-spacing:.12em; text-transform:uppercase;
+      box-shadow: 0 6px 16px -6px rgba(224,16,48,.6);
+    }
+    .news-featured__label::before {
+      content:""; width:6px; height:6px; border-radius:50%; background:#fff;
+      animation: pulseDot 2.4s ease-in-out infinite;
+    }
+    @keyframes pulseDot { 0%,100%{ opacity:1; transform:scale(1); } 50%{ opacity:.5; transform:scale(.7); } }
+    .news-featured__content {
+      padding: 40px 36px;
+      display:flex; flex-direction:column; justify-content:center;
+      position:relative;
+    }
+    .news-featured__content::before {
+      content:""; position:absolute; top:0; right:0; bottom:0; width:3px;
+      background: linear-gradient(180deg, var(--accent), var(--accent-2));
+      opacity:0; transition: opacity .3s ease;
+    }
+    .news-featured:hover .news-featured__content::before { opacity:1; }
+    .news-featured__meta {
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+      font-size:12.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+      margin-bottom:14px;
+    }
+    .news-featured__meta .cat-badge {
+      display:inline-block; padding:5px 12px; border-radius:999px;
+      font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase;
+      background: rgba(17,65,114,.12); color: var(--accent);
+    }
+    .news-featured__meta .cat-badge--Technology { background: rgba(17,65,114,.14); color: var(--accent); }
+    .news-featured__meta .cat-badge--Product\ Launch { background: rgba(224,16,48,.14); color: var(--accent-2); }
+    .news-featured__meta .cat-badge--Defence { background: rgba(91,139,208,.18); color: var(--steel); }
+    .news-featured__meta .cat-badge--Events { background: rgba(47,182,114,.16); color: var(--ok); }
+    .news-featured__meta .cat-badge--Mining { background: rgba(224,16,48,.14); color: var(--accent-2); }
+    .news-featured__meta .date { color:#6a737d; font-weight:600; }
+    .news-featured h3 {
+      font-family: var(--font-display); font-weight:800;
+      font-size: clamp(24px, 2.6vw, 34px); line-height:1.15;
+      letter-spacing: -.02em; margin:0 0 14px;
+    }
+    .news-featured p {
+      color:#4a535d; font-size:16.5px; line-height:1.55; margin:0 0 22px;
+    }
+    .news-featured .cta-link {
+      display:inline-flex; align-items:center; gap:8px;
+      font-weight:700; font-size:15px; color: var(--accent);
+      transition: color .2s ease, gap .2s ease;
+    }
+    .news-featured .cta-link .arrow { transition: transform .2s ease; }
+    .news-featured:hover .cta-link { color: var(--accent-2); gap: 12px; }
+    .news-featured:hover .cta-link .arrow { transform: translateX(4px); }
+
+    /* ---------- Standard Cards ---------- */
+    .news-card { position:relative; background:#fff; border:1px solid #e7eaee; border-radius: var(--radius-lg); overflow:hidden; display:flex; flex-direction:column; transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease, border-color .3s ease; }
+    .news-card::after {
+      content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none; z-index:3;
+      background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,.5) 50%, transparent 65%);
+      transform: translateX(-130%); transition: transform .9s ease;
+    }
+    .news-card:hover::after { transform: translateX(130%); }
+    .news-card.reveal.in:hover,
+    .news-card:hover { transform: translateY(-8px) scale(1.012); box-shadow: 0 26px 52px -22px rgba(17,65,114,.55), 0 0 0 1px rgba(17,65,114,.22); border-color: transparent; }
+    .news-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .news-card .thumb { display:block; position:relative; aspect-ratio: 16/9; overflow:hidden; background:#11151a; }
+    .news-card .thumb img { width:100%; height:100%; object-fit:cover; transition: transform .5s ease; }
+    .news-card:hover .thumb img { transform: scale(1.07); }
+    .news-card .body { padding: 22px 24px 26px; display:flex; flex-direction:column; gap:10px; }
+    .news-card .meta { font-size:12.5px; color: var(--accent); font-weight:700; letter-spacing:.08em; text-transform:uppercase; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+    .news-card .meta .date { color:#6a737d; font-weight:600; }
+    .news-card h3 { font-size: 21px; font-weight: 800; margin:0; }
+    .news-card p { color:#4a535d; font-size:15px; margin:0; }
+    .news-card .more { margin-top:4px; font-weight:700; color: var(--text); font-size:14.5px; display:inline-flex; align-items:center; gap:8px; }
+    .news-card .more .arrow { color: var(--accent); transition: transform .2s ease; }
+    .news-card:hover .more .arrow { transform: translateX(5px); }
+
+    /* Creative entrance (overrides shared .news-card.reveal) */
+    .news-card.reveal, .news-featured.reveal {
+      opacity:0; transform: translateY(42px) scale(.92) rotateX(13deg); transform-origin: center bottom;
+      filter: blur(8px);
+      transition: opacity .35s ease, transform .35s cubic-bezier(.18,.9,.2,1), filter .35s ease;
+      transition-delay: var(--rd, 0s); will-change: opacity, transform, filter;
+    }
+    .news-card.reveal.in, .news-featured.reveal.in { opacity:1; transform: none; filter: none; }
+    @media (max-width: 980px) {
+      .news-grid { grid-template-columns: repeat(2,1fr); }
+      .news-featured { grid-template-columns: 1fr; }
+      .news-featured__content { padding: 28px 24px; }
+    }
+    @media (max-width: 620px) {
+      .news-grid { grid-template-columns: 1fr; }
+      .news-featured__content { padding: 24px 20px; }
+      .news-featured h3 { font-size: 22px; }
+    }
+
+    /* ---------- Promo banner (news ticker) ---------- */
+    .tgw-promo { position: relative; z-index: 1; overflow: hidden; display: flex; align-items: center; padding: 9px 14px; background: linear-gradient(90deg, var(--accent) 0%, #0e3258 50%, var(--accent) 100%); color: #fff; font-size: 13.5px; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,.08); transition: opacity .4s ease, visibility .4s ease; }
+    .tgw-promo-ticker { flex: 1; min-width: 0; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%); }
+    .tgw-promo-track { display: inline-flex; align-items: center; white-space: nowrap; will-change: transform; animation: promoScroll 30s linear infinite; }
+    .tgw-promo-item { display: inline-flex; align-items: center; gap: 9px; padding: 0 4px; }
+    .tgw-promo-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 0 3px rgba(255,255,255,.18); flex: none; }
+    .tgw-promo-sep { padding: 0 22px; opacity: .45; }
+    @keyframes promoScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) {
+      .tgw-promo-track { animation: none; flex-wrap: wrap; justify-content: center; }
+      .tgw-promo-ticker { overflow: visible; -webkit-mask-image: none; mask-image: none; }
+    }
+    @media (max-width: 620px) { .tgw-promo { font-size: 12.5px; padding: 8px 10px; } }
+    /* ---------- Responsive ---------- */
+    @media (max-width: 980px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px; left: 0; right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: #ffffff;
+        border-bottom: 1px solid #e7eaee;
+        box-shadow: var(--shadow-sm);
+        padding: 6px 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a {
+        padding: 15px 22px;
+        color: var(--accent);
+        font-size: 16px;
+        border-bottom: 1px solid #f0f2f5;
+      }
+      .nav-links a:last-child { border-bottom: 0; }
+      .nav-toggle { display:block; }
+      /* Dropdown becomes inline in mobile menu */
+      .has-dropdown.open .dropdown,
+      .has-dropdown:hover .dropdown,
+      .has-dropdown:focus-within .dropdown { position: static; transform: none; opacity: 1; visibility: visible; pointer-events: auto; box-shadow: none; border: 0; margin: 0; padding: 0 0 4px; background: transparent; }
+      .dropdown a { padding: 11px 22px 11px 40px; border-bottom: 1px solid #f0f2f5; color: var(--accent); font-size: 15px; }
+      .dropdown li:last-child a { border-bottom: 0; }
+      .nav-links .caret { transition: transform .15s ease; }
+      .stats-grid { grid-template-columns: repeat(2,1fr); }
+      .stat:nth-child(2) { border-right:0; }
+      .prod-grid { grid-template-columns: repeat(2,1fr); }
+      .cap-grid { grid-template-columns: 1fr; }
+      .value-grid { grid-template-columns: 1fr; }
+      .story-grid { grid-template-columns: 1fr; }
+      .intro-split { grid-template-columns: 1fr; gap:32px; }
+      .spot-inner { grid-template-columns: 1fr; }
+      .foot-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 620px) {
+      section { padding: 64px 0; }
+      .page-head { padding: 56px 0 44px; }
+      .page-head.has-banner { padding: 0; min-height: clamp(320px, 80vw, 480px); }
+      .ind-grid { grid-template-columns: 1fr; }
+      .prod-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .stat { border-right:0; border-bottom:1px solid var(--line); }
+      .foot-grid { grid-template-columns: 1fr; }
+      .timeline li { grid-template-columns: 80px 1fr; gap:16px; }
+    }
+    .news-archive { padding: 72px 0; }
+    .news-archive .archive-list { list-style: none; margin: 34px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px 28px; }
+    .news-archive .archive-list li { border-bottom: 1px solid var(--line); padding: 10px 2px; }
+    .news-archive .archive-list a { color: var(--text-invert); font-weight: 600; text-decoration: none; }
+    .news-archive .archive-list a:hover { color: var(--accent-2); }
+    .news-archive .archive-list .archive-cat { display: inline-block; margin-left: 10px; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+    .news-archive .archive-list .archive-date { display: block; font-size: 12px; color: var(--muted); margin-top: 2px; }
+  </style>
+  <!-- Social: Open Graph + Twitter -->
+  <meta property="og:url" content="https://www.titanglobalwheel.co.za/news2.html" />
+  <meta property="og:site_name" content="Titan Global Wheel" />
+  <meta property="og:image" content="https://www.titanglobalwheel.co.za/og-share.png" />
+  <meta property="og:image:alt" content="Titan Global Wheel — off-highway wheel manufacturer" />
+    <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="News — Titan Global Wheel" />
+  <meta name="twitter:description" content="The latest news, product launches and events from Titan Global Wheel." />
+  <meta name="twitter:image" content="https://www.titanglobalwheel.co.za/og-share.png" />
+
+  <link rel="stylesheet" href="css/logo-banner.css" />
+  <link rel="stylesheet" href="css/mobile-nav.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ HEADER ============ -->
+  <div class="site-top">
+  <header class="site" id="top">
+    <div class="wrap nav">
+      <a class="brand" href="index.html" aria-label="Titan Global Wheel home">
+        <img class="logo-h" src="src/logos/Titan%20Global%20Wheel%20_logo_hortizontal_2021_1.png" alt="Titan Global Wheel" />
+      </a>
+      <nav id="primary-menu" class="nav-links" aria-label="Primary">
+        <a href="about.html">About</a>
+        <div class="nav-item has-dropdown">
+          <a href="products.html" aria-haspopup="true" aria-expanded="false">Products <span class="caret" aria-hidden="true"></span></a>
+          <ul class="dropdown">
+
+            <li><a href="products.html" class="dd-overview">All Products</a></li>
+
+            <li><a href="tyres.html">Tyres</a></li>
+            <li><a href="rims.html">Rims</a></li>
+            <li><a href="accessories.html">Accessories</a></li>
+            <li><a href="runflats.html">Runflats</a></li>
+            <li><a href="nama.html">NAMA X/T</a></li>
+            <li><a href="LSW.html">LSW</a></li>
+          </ul>
+        </div>
+        <a href="industries.html">Industries</a>
+        <a href="news.html" class="active" aria-current="page">News</a>
+        <a href="events.html">Events</a>
+        <a href="contact.html">Contact Us</a>
+      </nav>
+      <div class="nav-cta">
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-menu">☰</button>
+      </div>
+    </div>
+  </header>
+  <!-- ============ PROMO BANNER ============ -->
+  <div class="tgw-promo" role="region" aria-label="Announcements">
+    <div class="tgw-promo-ticker">
+      <div class="tgw-promo-track">
+        <span class="tgw-promo-item"><span class="tgw-promo-dot"></span>Find our Goodyear Lubricants exclusively on Takealot</span>
+        <span class="tgw-promo-sep">•</span>
+        <span class="tgw-promo-item">Our new NAMA tyres have launched</span>
+        <span class="tgw-promo-sep">•</span>
+        <span class="tgw-promo-item">Check out Crazy Werrie's NAMA tyres video on Facebook, Instagram, TikTok or YouTube</span>
+        <span class="tgw-promo-sep">•</span>
+        <span class="tgw-promo-item" aria-hidden="true"><span class="tgw-promo-dot"></span>Find our Goodyear Lubricants exclusively on Takealot</span>
+        <span class="tgw-promo-sep" aria-hidden="true">•</span>
+        <span class="tgw-promo-item" aria-hidden="true">Our new NAMA tyres have launched</span>
+        <span class="tgw-promo-sep" aria-hidden="true">•</span>
+        <span class="tgw-promo-item" aria-hidden="true">Check out Crazy Werrie's NAMA tyres video on Facebook, Instagram, TikTok or YouTube</span>
+        <span class="tgw-promo-sep" aria-hidden="true">•</span>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <main id="main">
+    <!-- ============ PAGE INTRO (banner) ============ -->
+    <section class="page-head has-banner">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="kicker">Newsroom</span>
+          <h1>Latest from Titan Global Wheel</h1>
+          <p>Product launches, events and engineering stories from sub-Saharan Africa's leading off-highway wheel manufacturer.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NEWS GRID — NEWSROOM HUB (REDESIGN) ============ -->
+    <section class="products news-section">
+      <div class="wrap">
+        <aside class="news-toolbar" id="news-toolbar" aria-label="Search and filter articles">
+          <div class="news-search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.71 20.29l-3.4-3.39A9 9 0 1 0 10 19a9 9 0 0 0 6.32-2.69l3.39 3.4a1 1 0 0 0 1.42-1.42zM11 17a6 6 0 1 1 6-6 6 6 0 0 1-6 6z"/></svg>
+            <input type="search" id="news-search" placeholder="Search articles, topics or tags…" aria-label="Search articles" autocomplete="off" />
+            <button type="button" class="news-search-clear" id="news-search-clear" aria-label="Clear search" hidden>&times;</button>
+          </div>
+          <div class="news-filters" id="news-filters" role="group" aria-label="Filter by category"></div>
+          <span class="news-count" id="news-count" aria-live="polite"><strong>0</strong> articles</span>
+        </aside>
+        <div id="news-featured-slot"></div>
+        <div class="news-grid" id="news-grid" aria-live="polite">
+          <!-- cards are rendered by js/news-index.js -->
+          <div class="news-skeleton" aria-hidden="true">
+            <div class="news-card skeleton"></div>
+            <div class="news-card skeleton"></div>
+            <div class="news-card skeleton"></div>
+            <div class="news-card skeleton"></div>
+          </div>
+        </div>
+        <div class="news-pagination" id="news-pagination" role="navigation" aria-label="News pages"></div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    
+    <!-- ============ ARTICLE ARCHIVE (server-rendered, crawlable) ============ -->
+ <!--   <section class="news-archive" id="news-archive">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="kicker">All stories</span>
+          <h2>Newsroom archive</h2>
+          <p>Every article published by Titan Global Wheel — product launches, engineering stories and events.</p>
+        </div>
+        <ul class="archive-list">
+        <li><a href="blog/lsws-vs-duals/">LSW vs Duals: Choosing the Right Wheel Configuration</a><span class="archive-cat">Technology</span><span class="archive-date">2026-07-14</span></li>
+        <li><a href="blog/nama-xt-launch/">Introducing the NAMA X/T Series</a><span class="archive-cat">Product Launch</span><span class="archive-date">2026-07-08</span></li>
+        <li><a href="blog/tyron-runflat-40-years/">Tyron Field-Mountable Runflats: 40 Years of Defence Support</a><span class="archive-cat">Defence</span><span class="archive-date">2026-06-12</span></li>
+        <li><a href="blog/nampo-2026-recap/">Titan Global Wheel at NAMPO Harvest Day 2026</a><span class="archive-cat">Events</span><span class="archive-date">2026-05-30</span></li>
+        <li><a href="blog/mining-rims-51-platinum/">New 51″ Mining Rims Shipped to Two Major Platinum Operations</a><span class="archive-cat">Mining</span><span class="archive-date">2026-05-21</span></li>
+        <li><a href="blog/farmspace-japie-breedt-interview/">Farmspace- Japie Breedt Interview</a><span class="archive-cat">Events</span><span class="archive-date">2025-09-11</span></li>
+        <li><a href="blog/lsws-stocked-up/">LSW's Stocked UP</a><span class="archive-cat">Featured Products</span><span class="archive-date">2025-09-02</span></li>
+        <li><a href="blog/why-choose-lsw-tyres/">Why Choose LSW Tyres?</a><span class="archive-cat">Featured Products</span><span class="archive-date">2025-09-02</span></li>
+        <li><a href="blog/spring-2025/">Spring 2025!</a><span class="archive-cat">Events</span><span class="archive-date">2025-09-01</span></li>
+        <li><a href="blog/crazy-werrie/">Crazy Werrie!</a><span class="archive-cat">Events</span><span class="archive-date">2025-06-01</span></li>
+        <li><a href="blog/nampo-2025/">Nampo 2025</a><span class="archive-cat">Events</span><span class="archive-date">2025-05-16</span></li>
+        <li><a href="blog/tyron-easyfit-runflats/">Tyron Easyfit Runflats</a><span class="archive-cat">Featured Products</span><span class="archive-date">2025-01-20</span></li>
+        <li><a href="blog/the-wait-is-over-titan-sttr/">The Wait is Over: Titan STTR!</a><span class="archive-cat">Featured Products</span><span class="archive-date">2024-11-01</span></li>
+        <li><a href="blog/coming-soon-titan-sttr/">Coming Soon: Titan STTR!</a><span class="archive-cat">News</span><span class="archive-date">2024-08-27</span></li>
+        <li><a href="blog/long-service-awards/">Long Service Awards 2024!</a><span class="archive-cat">Events</span><span class="archive-date">2024-08-09</span></li>
+        <li><a href="blog/why-the-lsw-tyre-from-titan-global-wheel-is-so-impressive/">Why the LSW tyre from Titan Global Wheel is so Impressive.</a><span class="archive-cat">Articles</span><span class="archive-date">2024-07-25</span></li>
+        <li><a href="blog/happy-womens-day-from-our-team-of-titans/">Happy Women's Day!</a><span class="archive-cat">Events</span><span class="archive-date">2023-08-12</span></li>
+        <li><a href="blog/goodyear-dyna-rib/">Goodyear DYNA RIB</a><span class="archive-cat">Featured Products</span><span class="archive-date">2023-08-03</span></li>
+        <li><a href="blog/goodyear-rib-tractor/">Goodyear RIB TRACTOR</a><span class="archive-cat">Featured Products</span><span class="archive-date">2023-07-06</span></li>
+        <li><a href="blog/goodyear-optitrac/">Goodyear Optitrac</a><span class="archive-cat">Featured Products</span><span class="archive-date">2023-06-22</span></li>
+        <li><a href="blog/6037-2/">Go Team Beastie!</a><span class="archive-cat">Events</span><span class="archive-date">2023-06-20</span></li>
+        <li><a href="blog/celebrate-the-you-in-youth/">Celebrate the You in Youth!</a><span class="archive-cat">Events</span><span class="archive-date">2023-06-20</span></li>
+        <li><a href="blog/nampo-2023-done-and-dusted/">Nampo 2023 done and dusted. See you again in 2024.</a><span class="archive-cat">News</span><span class="archive-date">2023-06-20</span></li>
+        <li><a href="blog/titan-global-wheel-launches-new-innovative-product-range-at-nampo/">Titan Global Wheel launches new innovative product range at Nampo</a><span class="archive-cat">News</span><span class="archive-date">2023-04-05</span></li>
+        <li><a href="blog/we-thank-you-for-your-loyal-support-shown-in-2022/">We thank you for your loyal support</a><span class="archive-cat">Events</span><span class="archive-date">2022-12-08</span></li>
+        <li><a href="blog/new-goodyear-lsw-stock-just-landed/">New Goodyear LSW stock just landed</a><span class="archive-cat">LSW</span><span class="archive-date">2022-10-20</span></li>
+        <li><a href="blog/another-goodyear-lsw-bites-south-african-dust/">Another Goodyear LSW bites South African dust</a><span class="archive-cat">LSW</span><span class="archive-date">2022-08-22</span></li>
+        <li><a href="blog/first-lsws-fitted-in-south-africa/">TGW shows off one of the first LSWs fitted in South Africa</a><span class="archive-cat">News</span><span class="archive-date">2022-08-15</span></li>
+        <li><a href="blog/titan-global-wheel-offers-otr-wheel-repairs/">Titan Global Wheel repairs OTR wheels</a><span class="archive-cat">News</span><span class="archive-date">2022-07-20</span></li>
+        <li><a href="blog/first-goodyear-lsws-fitted-in-south-africa/">First Goodyear LSWs fitted in South Africa</a><span class="archive-cat">LSW</span><span class="archive-date">2022-06-06</span></li>
+        <li><a href="blog/titan-global-wheel-team-wheely/">Titan Global Wheel at NAMPO 2022. – Our Titan Global Wheel Team</a><span class="archive-cat">News</span><span class="archive-date">2022-05-23</span></li>
+        <li><a href="blog/happy-freedom-day/">Happy Freedom Day</a><span class="archive-cat">Events</span><span class="archive-date">2022-04-25</span></li>
+        <li><a href="blog/off-the-road-to-nampo-2022/">‘Off The Road’ to NAMPO 2022</a><span class="archive-cat">News</span><span class="archive-date">2022-04-11</span></li>
+        <li><a href="blog/titan-e2-99-a5/">Titan ♥</a><span class="archive-cat">News</span><span class="archive-date">2022-02-16</span></li>
+        <li><a href="blog/titan-here-you-see-our-repair-lines-giving-some-love-to-these-57-63-inch-iglr-an/">Titan ♥</a><span class="archive-cat">News</span><span class="archive-date">2022-02-15</span></li>
+        <li><a href="blog/move-the-ground-with-us-in-2022/">Move the ground with us in 2022!</a><span class="archive-cat">News</span><span class="archive-date">2022-01-20</span></li>
+        <li><a href="blog/goodyear-agricultural-titan-tyres-first-shipment-hits-sa-shores/">Goodyear Agricultural &amp; Titan Tyres hit SA shores</a><span class="archive-cat">News</span><span class="archive-date">2021-11-15</span></li>
+        <li><a href="blog/tractor-radial-tyres/">Tractor Radial Tyres</a><span class="archive-cat">Featured Products</span><span class="archive-date">2021-10-21</span></li>
+        <li><a href="blog/happy-heritage-day/">Happy Heritage Month</a><span class="archive-cat">Events</span><span class="archive-date">2021-09-20</span></li>
+        <li><a href="blog/our-exciting-new-journey-begins/">Steel bolt together wheels for military</a><span class="archive-cat">News</span><span class="archive-date">2021-09-20</span></li>
+        <li><a href="blog/mfwd-tyres/">MFWD Tyres</a><span class="archive-cat">Featured Products</span><span class="archive-date">2021-08-18</span></li>
+        <li><a href="blog/titan-act-wheel-system/">Titan ACT Wheel System</a><span class="archive-cat">Featured Products</span><span class="archive-date">2021-08-18</span></li>
+        <li><a href="blog/womens-day/">Happy Women's Day</a><span class="archive-cat">Events</span><span class="archive-date">2021-08-09</span></li>
+        <li><a href="blog/newsflash-our-exciting-new-journey-begins/">Our exciting new journey begins..</a><span class="archive-cat">News</span><span class="archive-date">2021-06-25</span></li>
+        <li><a href="blog/standing-tall-and-proud/">Standing tall and proud</a><span class="archive-cat">News</span><span class="archive-date">2021-06-23</span></li>
+        <li><a href="blog/time-for-some-fresh-air/">Time for some fresh air</a><span class="archive-cat">News</span><span class="archive-date">2021-06-23</span></li>
+        <li><a href="blog/youth-day/">Happy Youth Day</a><span class="archive-cat">Events</span><span class="archive-date">2021-06-16</span></li>
+        <li><a href="blog/news-titan-global/">Titan Global Wheel</a><span class="archive-cat">News</span><span class="archive-date">2021-06-04</span></li>
+        <li><a href="blog/lsw-technology/">LSW Technology takes on the toughest jobs</a><span class="archive-cat">Featured Products</span><span class="archive-date">2021-03-10</span></li>
+        <li><a href="blog/tyron-run-flat/">Tyron Runflat System</a><span class="archive-cat">Featured Products</span><span class="archive-date">2021-03-10</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="wrap">
+        <h2>Have a project in mind?</h2>
+        <p>Our wheel specialists are ready to spec the right tyre, rim and runflat system for your operation.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="contact.html">Contact our team <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </section> -->
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand foot-logo" href="index.html" aria-label="Titan Global Wheel home">
+            <img class="logo-h" src="src/logos/Titan%20Global%20Wheel%20_logo_hortizontal_2021_1.png" alt="Titan Global Wheel" />
+          </a>
+          <p>One of the largest combined manufacturers and suppliers of commercial, mining, agricultural, earthmoving and military wheels in sub-Saharan Africa.</p>
+        </div>
+        <div class="foot-col">
+          <h4>Products</h4>
+          <a href="tyres.html">Tyres</a>
+          <a href="rims.html">Rims</a>
+          <a href="accessories.html">Accessories</a>
+          <a href="runflats.html">Runflats</a>
+          <a href="feedback.html">Customer Feedback</a>
+        </div>
+        <div class="foot-col">
+          <h4>Industries</h4>
+          <a href="agriculture.html">Agriculture</a>
+          <a href="mining.html">Mining</a>
+          <a href="military.html">Military</a>
+          <a href="construction.html">Construction</a>
+        </div>
+        <div class="foot-col">
+          <h4>Company</h4>
+          <a href="specials.html">Specials</a>
+          <a href="about.html">About</a>
+          <a href="news.html">News</a>
+          <a href="events.html">Events</a>
+          <a href="repairs.html">Repairs</a>
+          <a href="#">Request a Quote</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div class="foot-social">
+        <div class="socials">
+          <a class="social" href="https://www.linkedin.com/company/titan-global-wheel" target="_blank" rel="noopener" aria-label="Titan Global Wheel on LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+          </a>
+          <a class="social" href="https://www.facebook.com/TitanGlobalWheel" target="_blank" rel="noopener" aria-label="Titan Global Wheel on Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073c0 6.026 4.388 11.02 10.125 11.927v-8.437H7.078v-3.49h3.047V9.43c0-3.007 1.792-4.668 4.533-4.668 1.313 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.93-1.956 1.885v2.267h3.328l-.532 3.49h-2.796v8.437C19.612 23.094 24 18.1 24 12.073z"/></svg>
+          </a>
+          <a class="social" href="https://www.instagram.com/titanglobalwheel" target="_blank" rel="noopener" aria-label="Titan Global Wheel on Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+          <a class="social" href="https://x.com/titanglobalwhee" target="_blank" rel="noopener" aria-label="Titan Global Wheel on X">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+          </a>
+          <a class="social" href="https://www.tiktok.com/@titan.global.wheel" target="_blank" rel="noopener" aria-label="Titan Global Wheel on TikTok">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.43 3.9-1.41 1.87-4.32 2.37-6.21 1.06-.91-.56-1.6-1.5-1.92-2.5-.31-1-.34-2.07-.15-3.09.38-2.52 2.67-4.16 5.18-3.85.71.08 1.39.22 2.04.45.4-.66.51-1.45.27-2.18-.45-1.28-1.97-1.89-3.2-1.67-.9.15-1.69.72-2.08 1.54-.24.5-.31 1.06-.25 1.6v-4.3c.79-.07 1.59-.06 2.38-.05z"/></svg>
+          </a>
+          <a class="social" href="https://www.youtube.com/@TitanGlobalWheel" target="_blank" rel="noopener" aria-label="Titan Global Wheel on YouTube">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+        <div class="foot-partners">
+          <a class="foot-partner" href="#" target="_blank" rel="noopener" aria-label="Goodyear">
+            <img src="src/logos/goodyear-logo.png" alt="Goodyear" />
+          </a>
+          <a class="foot-partner" href="nama.html" rel="noopener" aria-label="NAMA X/T tyres - see product page">
+            <img src="src/logos/nama.png" alt="NAMA" />
+          </a>
+        </div>
+        <div class="foot-legal">
+          <span class="legal-item">Company Reg No. 2010/014325/07</span>
+          <span class="legal-item">VAT No. 4690261328</span>
+          <a class="cert-badge" href="./src/public/pdfs/B-BBEE%20Certificate%20TGW.pdf" target="_blank" rel="noopener noreferrer">B-BBEE Certificate</a>
+          <a class="cert-badge" href="./src/public/pdfs/ISO-9001.pdf" target="_blank" rel="noopener noreferrer">ISO 9001 Certificate</a>
+        </div>
+      </div>
+      <div class="foot-bot">
+        <div class="foot-bot-left">
+          <span>© 2026 Titan Global Wheel. ISO-certified manufacturer.</span>
+          <span>Goodyear &amp; Tyron partner · Sub-Saharan Africa</span>
+          <a href="Privacy-Policy.html">Privacy Policy</a>
+          <a href="Cookies-Policy.html">Cookies Policy</a>
+        </div>
+      </div>
+      <div class="foot-powered" style="text-align:center; margin-top:20px; padding-top:16px; border-top:1px solid var(--line); font-size:12.5px; color:var(--muted); letter-spacing:.02em;">Powered By <a href="https://goodstuffdesigns.co.za/" target="_blank" rel="noopener noreferrer" style="color:#ffffff; font-weight:700; text-decoration:none; border-bottom:1px solid rgba(255,255,255,.35);">GoodStuff-Designs</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle (accessible)
+    (function () {
+      const toggle = document.querySelector('.nav-toggle');
+      const menu = document.getElementById('primary-menu');
+      if (!toggle || !menu) return;
+
+      function setMenu(open) {
+        menu.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.textContent = open ? '✕' : '☰';
+        if (!open) {
+          menu.querySelectorAll('.has-dropdown.open').forEach(function (d) {
+            d.classList.remove('open');
+            const p = d.querySelector('a');
+            if (p) p.setAttribute('aria-expanded', 'false');
+          });
+        }
+      }
+
+      toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setMenu(!menu.classList.contains('open'));
+      });
+
+      // Products dropdown: open on hover, keep open across the gap, linger on leave
+      const dropdownItems = menu.querySelectorAll('.has-dropdown');
+      dropdownItems.forEach(function (item) {
+        let closeTimer;
+        const parentLink = item.querySelector('a');
+        function openDropdown() {
+          clearTimeout(closeTimer);
+          item.classList.add('open');
+          if (parentLink) parentLink.setAttribute('aria-expanded', 'true');
+        }
+        function closeDropdown() {
+          clearTimeout(closeTimer);
+          closeTimer = setTimeout(function () {
+            item.classList.remove('open');
+            if (parentLink) parentLink.setAttribute('aria-expanded', 'false');
+          }, 250);
+        }
+        item.addEventListener('mouseenter', openDropdown);
+        item.addEventListener('mouseleave', closeDropdown);
+        // also cancel any pending close when focus moves inside (keyboard)
+        item.addEventListener('focusin', openDropdown);
+        item.addEventListener('focusout', closeDropdown);
+      });
+
+      // Products dropdown toggle (tap on mobile)
+      const dropdownParents = menu.querySelectorAll('.has-dropdown > a');
+      dropdownParents.forEach(function (parentLink) {
+        parentLink.addEventListener('click', function (e) {
+          const isMobile = window.matchMedia('(max-width: 980px)').matches;
+          if (!isMobile) return; // desktop relies on hover
+          e.preventDefault();
+          e.stopPropagation();
+          const item = parentLink.parentElement;
+          const open = item.classList.toggle('open');
+          parentLink.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      });
+
+      // Close after choosing a link
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { setMenu(false); });
+      });
+
+      // Close on outside click
+      document.addEventListener('click', function (e) {
+        if (menu.classList.contains('open') && !menu.contains(e.target) && !toggle.contains(e.target)) {
+          setMenu(false);
+        }
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') setMenu(false);
+      });
+
+      // Reset when resizing up to desktop
+      window.addEventListener('resize', function () {
+        if (window.innerWidth > 980) setMenu(false);
+      });
+    })();
+
+    // Scrollspy: highlight the nav link for the section in view
+    (function () {
+      const links = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+      const map = new Map();
+      links.forEach(function (l) {
+        const id = l.getAttribute('href').slice(1);
+        const sec = id && document.getElementById(id);
+        if (sec) map.set(sec, l);
+      });
+      if (!('IntersectionObserver' in window) || !map.size) return;
+      const obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            links.forEach(function (l) { l.classList.remove('active'); });
+            const link = map.get(e.target);
+            if (link) link.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+      map.forEach(function (_, sec) { obs.observe(sec); });
+    })();
+
+    // Scroll reveal + animated stat counters
+    (function () {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const reveals = Array.from(document.querySelectorAll('.reveal'));
+      const counters = Array.from(document.querySelectorAll('.count'));
+
+      function setFinal() {
+        reveals.forEach(function (el) { el.classList.add('in'); });
+        counters.forEach(function (el) { el.textContent = el.getAttribute('data-to'); });
+      }
+
+      if (reduce || !('IntersectionObserver' in window)) { setFinal(); return; }
+
+      const revObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); revObs.unobserve(e.target); }
+        });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+      reveals.forEach(function (el) { revObs.observe(el); });
+
+      function runCounter(el) {
+        const to = parseFloat(el.getAttribute('data-to')) || 0;
+        const dur = 1500, start = performance.now();
+        function tick(now) {
+          const p = Math.min(1, (now - start) / dur);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(to * eased);
+          if (p < 1) requestAnimationFrame(tick);
+          else el.textContent = to;
+        }
+        requestAnimationFrame(tick);
+      }
+
+      const cObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { runCounter(e.target); cObs.unobserve(e.target); }
+        });
+      }, { threshold: 0.4 });
+      counters.forEach(function (el) { cObs.observe(el); });
+    })();
+  </script>
+
+  <!-- Article data embedded inline so the news grid works when the file is opened directly (file://)
+       as well as when served. Keep this in sync with /blog/ pages (manifest at src/news/articles/manifest.json). -->
+  <script type="application/json" id="news-data">
+{
+  "articles": [
+    {
+      "slug": "lsws-vs-duals",
+      "title": "LSW vs Duals: Choosing the Right Wheel Configuration",
+      "category": "Technology",
+      "date": "2026-07-14",
+      "excerpt": "Low sidewall (LSW) wheels and traditional duals each offer distinct benefits for tractors and haulers. This guide compares footprint, stability, and cost.",
+      "image": "src/news/images/lsw-vs-duals.jpg",
+      "tags": [
+        "LSW",
+        "Agriculture",
+        "Technology"
+      ],
+      "url": "blog/lsws-vs-duals/"
+    },
+    {
+      "slug": "nama-xt-launch",
+      "title": "Introducing the NAMA X/T Series",
+      "category": "Product Launch",
+      "date": "2026-07-08",
+      "excerpt": "The new Titan NAMA X/T tyre range — aggressive tread, reinforced sidewalls, and rugged durability for every terrain.",
+      "image": "src/news/images/nama-xt-launch.jpg",
+      "tags": [
+        "NAMA",
+        "Product Launch",
+        "Agricultural Tyres"
+      ],
+      "url": "blog/nama-xt-launch/"
+    },
+    {
+      "slug": "tyron-runflat-40-years",
+      "title": "Tyron Field-Mountable Runflats: 40 Years of Defence Support",
+      "category": "Defence",
+      "date": "2026-06-12",
+      "excerpt": "The only field-mountable rubber runflat in the world — keeping defence and off-road vehicles moving when the terrain turns hostile.",
+      "image": "src/news/images/tyron-runflat-40-years.jpg",
+      "tags": [
+        "Tyron",
+        "Runflats",
+        "Defence",
+        "Military"
+      ],
+      "url": "blog/tyron-runflat-40-years/"
+    },
+    {
+      "slug": "nampo-2026-recap",
+      "title": "Titan Global Wheel at NAMPO Harvest Day 2026",
+      "category": "Events",
+      "date": "2026-05-30",
+      "excerpt": "A recap of our stand at NAMPO 2026 — including the biggest agricultural tyre on display in Southern Africa.",
+      "image": "src/news/images/nampo-2026-recap.jpg",
+      "tags": [
+        "Events",
+        "NAMPO",
+        "Agriculture",
+        "2026"
+      ],
+      "url": "blog/nampo-2026-recap/"
+    },
+    {
+      "slug": "mining-rims-51-platinum",
+      "title": "New 51″ Mining Rims Shipped to Two Major Platinum Operations",
+      "category": "Mining",
+      "date": "2026-05-21",
+      "excerpt": "Titan has completed delivery of 51-inch heavy-load rims to two Tier-1 platinum operations in the Bushveld Complex.",
+      "image": "src/news/images/mining-rims-51-platinum.jpg",
+      "tags": [
+        "Mining",
+        "Rims",
+        "Platinum",
+        "Heavy Load"
+      ],
+      "url": "blog/mining-rims-51-platinum/"
+    },
+    {
+      "slug": "farmspace-japie-breedt-interview",
+      "title": "Farmspace- Japie Breedt Interview",
+      "category": "Events",
+      "date": "2025-09-11",
+      "excerpt": "FarmSpace- Japie Breedt Interview Mr Japie Breedt talking about his LSW tyres. Thank you to FarmSpace for this excellent interview!",
+      "image": "src/news/images/farmspace-japie-breedt-interview-featured.jpg",
+      "tags": [
+        "Events"
+      ],
+      "url": "blog/farmspace-japie-breedt-interview/"
+    },
+    {
+      "slug": "lsws-stocked-up",
+      "title": "LSW's Stocked UP",
+      "category": "Featured Products",
+      "date": "2025-09-02",
+      "excerpt": "LSW's Stocked UP Bigger footprint. Smoother ride. More productivity. LSW (Low Sidewall Technology) tyres are built to reduce power hop, improve stability,…",
+      "image": "src/news/images/lsws-stocked-up-featured.jpg",
+      "tags": [
+        "Featured Products"
+      ],
+      "url": "blog/lsws-stocked-up/"
+    },
+    {
+      "slug": "why-choose-lsw-tyres",
+      "title": "Why Choose LSW Tyres?",
+      "category": "Featured Products",
+      "date": "2025-09-02",
+      "excerpt": "Why Choose LSW Tyres? LSW (Low Sidewall Technology) represents the next evolution in tyre and wheel design — built for demanding applications where…",
+      "image": "src/news/images/why-choose-lsw-tyres-featured.jpg",
+      "tags": [
+        "Featured Products",
+        "Earthmover"
+      ],
+      "url": "blog/why-choose-lsw-tyres/"
+    },
+    {
+      "slug": "spring-2025",
+      "title": "Spring 2025!",
+      "category": "Events",
+      "date": "2025-09-01",
+      "excerpt": "Spring is here — and so is that fresh burst of energy! ðŸŒ¸Longer days, warmer weather, and everything blooming again — it’s the perfect time to hit refresh,…",
+      "image": "src/news/images/spring-2025-featured.jpg",
+      "tags": [
+        "Events"
+      ],
+      "url": "blog/spring-2025/"
+    },
+    {
+      "slug": "crazy-werrie",
+      "title": "Crazy Werrie!",
+      "category": "Events",
+      "date": "2025-06-01",
+      "excerpt": "Crazy Werrie went full throttle at NAMPO 2025 – and guess what he caught on camera? ðŸ’¥From the power of our LSW Tyres built for the toughest agricultural…",
+      "image": "src/news/images/crazy-werrie-featured.jpg",
+      "tags": [
+        "Events"
+      ],
+      "url": "blog/crazy-werrie/"
+    },
+    {
+      "slug": "nampo-2025",
+      "title": "Nampo 2025",
+      "category": "Events",
+      "date": "2025-05-16",
+      "excerpt": "Thank You for Visiting Titan Global Wheel at NAMPO 2025 NAMPO Harvest Day 2025 has come to a close, and what an incredible event it was! We’d like to…",
+      "image": "src/news/images/nampo-2025-featured.jpg",
+      "tags": [
+        "Events"
+      ],
+      "url": "blog/nampo-2025/"
+    },
+    {
+      "slug": "tyron-easyfit-runflats",
+      "title": "Tyron Easyfit Runflats",
+      "category": "Featured Products",
+      "date": "2025-01-20",
+      "excerpt": "Tyron Easyfit Runflats are specialized safety systems designed to keep vehicles moving in the event of a tire puncture, blowout, or other damage that would…",
+      "image": "src/news/images/tyron-easyfit-runflats-featured.jpg",
+      "tags": [
+        "Featured Products"
+      ],
+      "url": "blog/tyron-easyfit-runflats/"
+    },
+    {
+      "slug": "the-wait-is-over-titan-sttr",
+      "title": "The Wait is Over: Titan STTR!",
+      "category": "Featured Products",
+      "date": "2024-11-01",
+      "excerpt": "The Wait is over: Titan STTR! Get ready for the next level in tire performance! Our Titan STTR tyres are engineered for maximum durability and…",
+      "image": "src/news/images/the-wait-is-over-titan-sttr-featured.jpg",
+      "tags": [
+        "Featured Products",
+        "Earthmover",
+        "Loader",
+        "STTR"
+      ],
+      "url": "blog/the-wait-is-over-titan-sttr/"
+    },
+    {
+      "slug": "coming-soon-titan-sttr",
+      "title": "Coming Soon: Titan STTR!",
+      "category": "News",
+      "date": "2024-08-27",
+      "excerpt": "Coming Soon: Titan STTR! Get ready for the next level in tire performance! Our Titan STTR tyres are engineered for maximum durability and…",
+      "image": "src/news/images/coming-soon-titan-sttr-featured.png",
+      "tags": [
+        "News",
+        "Earthmover",
+        "Loader",
+        "STTR"
+      ],
+      "url": "blog/coming-soon-titan-sttr/"
+    },
+    {
+      "slug": "long-service-awards",
+      "title": "Long Service Awards 2024!",
+      "category": "Events",
+      "date": "2024-08-09",
+      "excerpt": "Titan Global Wheel's annual Long Service Awards 2024! Dedication and Excellence! At Titan Global Wheel, we are proud to honor the incredible commitment and…",
+      "image": "src/news/images/long-service-awards-featured.jpg",
+      "tags": [
+        "Events"
+      ],
+      "url": "blog/long-service-awards/"
+    },
+    {
+      "slug": "why-the-lsw-tyre-from-titan-global-wheel-is-so-impressive",
+      "title": "Why the LSW tyre from Titan Global Wheel is so Impressive.",
+      "category": "Articles",
+      "date": "2024-07-25",
+      "excerpt": "The LSW tyre from Titan has been making waves in the agricultural industry for its impressive performance and durability. Farmers and industry experts…",
+      "image": "src/news/images/why-the-lsw-tyre-from-titan-global-wheel-is-so-impressive-featured.jpg",
+      "tags": [
+        "Articles"
+      ],
+      "url": "blog/why-the-lsw-tyre-from-titan-global-wheel-is-so-impressive/"
+    },
+    {
+      "slug": "happy-womens-day-from-our-team-of-titans",
+      "title": "Happy Women's Day!",
+      "category": "Events",
+      "date": "2023-08-12",
+      "excerpt": "&quot;There is no force more powerful than a woman determined to rise.&quot; – Bosa Sebele",
+      "image": "src/news/images/happy-womens-day-from-our-team-of-titans-featured.jpg",
+      "tags": [
+        "Events"
+      ],
+      "url": "blog/happy-womens-day-from-our-team-of-titans/"
+    },
+    {
+      "slug": "goodyear-dyna-rib",
+      "title": "Goodyear DYNA RIB",
+      "category": "Featured Products",
+      "date": "2023-08-03",
+      "excerpt": "*General services on low power and free axle tractors. Keep moving with us…",
+      "image": "src/news/images/goodyear-dyna-rib-featured.jpg",
+      "tags": [
+        "Featured Products"
+      ],
+      "url": "blog/goodyear-dyna-rib/"
+    },
+    {
+      "slug": "goodyear-rib-tractor",
+      "title": "Goodyear RIB TRACTOR",
+      "category": "Featured Products",
+      "date": "2023-07-06",
+      "excerpt": "*General services on low power and free axle tractors Keep moving with us…",
+      "image": "src/news/images/goodyear-rib-tractor-featured.jpg",
+      "tags": [
+        "Featured Products"
+      ],
+      "url": "blog/goodyear-rib-tractor/"
+    },
+    {
+      "slug": "goodyear-optitrac",
+      "title": "Goodyear Optitrac",
+      "category": "Featured Products",
+      "date": "2023-06-22",
+      "excerpt": "New lug and carcass shape for better durability and ride. Lugs have exrta hight…",
+      "image": "src/news/images/goodyear-optitrac-featured.png",
+      "tags": [
+        "Featured Products"
+      ],
+      "url": "blog/goodyear-optitrac/"
+    },
+    {
+      "slug": "6037-2",
+      "title": "Go Team Beastie!",
+      "category": "Events",
+      "date": "2023-06-20",
+      "excerpt": "",
+      "image": "src/news/images/6037-2-featured.jpg",
+      "tags": [
+        "Events"
+      ],
+      "url": "blog/6037-2/"
+    },
+    {
+      "slug": "celebrate-the-you-in-youth",
+      "title": "Celebrate the You in Youth!",
+      "category": "Events",
+      "date": "2023-06-20",
+      "excerpt": "",
+      "image": "src/news/images/celebrate-the-you-in-youth-featured.jpg",
+      "tags": [
+        "Events"
+      ],
+      "url": "blog/celebrate-the-you-in-youth/"
+    },
+    {
+      "slug": "nampo-2023-done-and-dusted",
+      "title": "Nampo 2023 done and dusted. See you again in 2024.",
+      "category": "News",
+      "date": "2023-06-20",
+      "excerpt": "And so #NAMPO2023 comes to an end; another incredible showcase. Titan Global Wheel would like to thank the organisers, all visitors for joining ….",
+      "image": "src/news/images/nampo-2023-done-and-dusted-featured.jpg",
+      "tags": [
+        "News"
+      ],
+      "url": "blog/nampo-2023-done-and-dusted/"
+    },
+    {
+      "slug": "titan-global-wheel-launches-new-innovative-product-range-at-nampo",
+      "title": "Titan Global Wheel launches new innovative product range at Nampo",
+      "category": "News",
+      "date": "2023-04-05",
+      "excerpt": "Recognised as the SA suppliers of the Goodyear Agricultural brand of tyres and rims…",
+      "image": "src/news/images/titan-global-wheel-launches-new-innovative-product-range-at--featured.jpg",
+      "tags": [
+        "News"
+      ],
+      "url": "blog/titan-global-wheel-launches-new-innovative-product-range-at-nampo/"
+    },
+    {
+      "slug": "we-thank-you-for-your-loyal-support-shown-in-2022",
+      "title": "We thank you for your loyal support",
+      "category": "Events",
+      "date": "2022-12-08",
+      "excerpt": "We thank you for your loyal support shown in 2022 and look forward to growing with you in a well-oiled 2023!",
+      "image": "src/news/images/we-thank-you-for-your-loyal-support-shown-in-2022-featured.jpg",
+      "tags": [
+        "Events"
+      ],
+      "url": "blog/we-thank-you-for-your-loyal-support-shown-in-2022/"
+    },
+    {
+      "slug": "new-goodyear-lsw-stock-just-landed",
+      "title": "New Goodyear LSW stock just landed",
+      "category": "LSW",
+      "date": "2022-10-20",
+      "excerpt": "New Goodyear LSW stock just landed: 1000/45R32 and 1100/45R46.",
+      "image": "src/news/images/new-goodyear-lsw-stock-just-landed-featured.jpg",
+      "tags": [
+        "LSW"
+      ],
+      "url": "blog/new-goodyear-lsw-stock-just-landed/"
+    },
+    {
+      "slug": "another-goodyear-lsw-bites-south-african-dust",
+      "title": "Another Goodyear LSW bites South African dust",
+      "category": "LSW",
+      "date": "2022-08-22",
+      "excerpt": "We extend another warm welcome to the Goodyear LSW family; Andre Le Roux from Rustvark Boerdery, Free State.",
+      "image": "src/news/images/another-goodyear-lsw-bites-south-african-dust-featured.png",
+      "tags": [
+        "LSW"
+      ],
+      "url": "blog/another-goodyear-lsw-bites-south-african-dust/"
+    },
+    {
+      "slug": "first-lsws-fitted-in-south-africa",
+      "title": "TGW shows off one of the first LSWs fitted in South Africa",
+      "category": "News",
+      "date": "2022-08-15",
+      "excerpt": "Welcome to the Goodyear LSW family Mr Lukas Erasmus from Kalkoennes Boerdery in the Free State.",
+      "image": "src/news/images/first-lsws-fitted-in-south-africa-featured.png",
+      "tags": [
+        "News"
+      ],
+      "url": "blog/first-lsws-fitted-in-south-africa/"
+    },
+    {
+      "slug": "titan-global-wheel-offers-otr-wheel-repairs",
+      "title": "Titan Global Wheel repairs OTR wheels",
+      "category": "News",
+      "date": "2022-07-20",
+      "excerpt": "Titan Global Wheel has been repairing OTR wheels for more than 30 years.",
+      "image": "src/news/images/titan-global-wheel-offers-otr-wheel-repairs-featured.png",
+      "tags": [
+        "News"
+      ],
+      "url": "blog/titan-global-wheel-offers-otr-wheel-repairs/"
+    },
+    {
+      "slug": "first-goodyear-lsws-fitted-in-south-africa",
+      "title": "First Goodyear LSWs fitted in South Africa",
+      "category": "LSW",
+      "date": "2022-06-06",
+      "excerpt": "Titan Global Wheel's first Goodyear LSWs have been fitted in South Africa. The solution to harvesting wet and muddy fields.",
+      "image": "src/news/images/first-goodyear-lsws-fitted-in-south-africa-featured.png",
+      "tags": [
+        "LSW"
+      ],
+      "url": "blog/first-goodyear-lsws-fitted-in-south-africa/"
+    },
+    {
+      "slug": "titan-global-wheel-team-wheely",
+      "title": "Titan Global Wheel at NAMPO 2022. – Our Titan Global Wheel Team",
+      "category": "News",
+      "date": "2022-05-23",
+      "excerpt": "Our Titan Global Wheel team 'wheely' enjoyed a successful week at #nampo2022. A BIG thank you to the organisers, fellow colleagues and to all who visited…",
+      "image": "src/news/images/titan-global-wheel-team-wheely-featured.jpg",
+      "tags": [
+        "News"
+      ],
+      "url": "blog/titan-global-wheel-team-wheely/"
+    },
+    {
+      "slug": "happy-freedom-day",
+      "title": "Happy Freedom Day",
+      "category": "Events",
+      "date": "2022-04-25",
+      "excerpt": "",
+      "image": "src/news/images/happy-freedom-day-featured.jpg",
+      "tags": [
+        "Events"
+      ],
+      "url": "blog/happy-freedom-day/"
+    },
+    {
+      "slug": "off-the-road-to-nampo-2022",
+      "title": "‘Off The Road’ to NAMPO 2022",
+      "category": "News",
+      "date": "2022-04-11",
+      "excerpt": "At this year’s NAMPO Harvest Festival, Titan Global Wheel will demonstrate an exciting range of Goodyear Agricultural tyres for farmers that reduce both…",
+      "image": "src/news/images/off-the-road-to-nampo-2022-featured.jpg",
+      "tags": [
+        "News"
+      ],
+      "url": "blog/off-the-road-to-nampo-2022/"
+    },
+    {
+      "slug": "titan-e2-99-a5",
+      "title": "Titan ♥",
+      "category": "News",
+      "date": "2022-02-16",
+      "excerpt": "Another load on its way to keep the mine moving in Tanzania. Contents: 45 – 36.00/4.5&amp;#8243; 5-piece rims",
+      "image": "src/news/images/titan-e2-99-a5-featured.png",
+      "tags": [
+        "News"
+      ],
+      "url": "blog/titan-e2-99-a5/"
+    },
+    {
+      "slug": "titan-here-you-see-our-repair-lines-giving-some-love-to-these-57-63-inch-iglr-an",
+      "title": "Titan ♥",
+      "category": "News",
+      "date": "2022-02-15",
+      "excerpt": "Here you see our repair lines giving some love to these 57-63 inch IGLR and speed wheels.",
+      "image": "src/news/images/titan-here-you-see-our-repair-lines-giving-some-love-to-thes-featured.png",
+      "tags": [
+        "News"
+      ],
+      "url": "blog/titan-here-you-see-our-repair-lines-giving-some-love-to-these-57-63-inch-iglr-an/"
+    },
+    {
+      "slug": "move-the-ground-with-us-in-2022",
+      "title": "Move the ground with us in 2022!",
+      "category": "News",
+      "date": "2022-01-20",
+      "excerpt": "TITAN tyres now available in South Africa. Contact Louis Enslin: +27 66 129 8286 / louis@titangw.co.za",
+      "image": "src/news/images/move-the-ground-with-us-in-2022-featured.jpg",
+      "tags": [
+        "News"
+      ],
+      "url": "blog/move-the-ground-with-us-in-2022/"
+    },
+    {
+      "slug": "goodyear-agricultural-titan-tyres-first-shipment-hits-sa-shores",
+      "title": "Goodyear Agricultural &amp; Titan Tyres hit SA shores",
+      "category": "News",
+      "date": "2021-11-15",
+      "excerpt": "",
+      "image": "src/news/images/goodyear-agricultural-titan-tyres-first-shipment-hits-sa-sho-featured.jpg",
+      "tags": [
+        "News"
+      ],
+      "url": "blog/goodyear-agricultural-titan-tyres-first-shipment-hits-sa-shores/"
+    },
+    {
+      "slug": "tractor-radial-tyres",
+      "title": "Tractor Radial Tyres",
+      "category": "Featured Products",
+      "date": "2021-10-21",
+      "excerpt": "Optitrac R-1W for all-round in the field and on the road performance. Key benefits…",
+      "image": "src/news/images/tractor-radial-tyres-featured.jpg",
+      "tags": [
+        "Featured Products"
+      ],
+      "url": "blog/tractor-radial-tyres/"
+    },
+    {
+      "slug": "happy-heritage-day",
+      "title": "Happy Heritage Month",
+      "category": "Events",
+      "date": "2021-09-20",
+      "excerpt": "",
+      "image": "src/news/images/happy-heritage-day-featured.jpg",
+      "tags": [
+        "Events"
+      ],
+      "url": "blog/happy-heritage-day/"
+    },
+    {
+      "slug": "our-exciting-new-journey-begins",
+      "title": "Steel bolt together wheels for military",
+      "category": "News",
+      "date": "2021-09-20",
+      "excerpt": "Here you can see our team at Titan Global Wheel assembling 20…",
+      "image": "src/news/images/our-exciting-new-journey-begins-featured.png",
+      "tags": [
+        "News"
+      ],
+      "url": "blog/our-exciting-new-journey-begins/"
+    },
+    {
+      "slug": "mfwd-tyres",
+      "title": "MFWD Tyres",
+      "category": "Featured Products",
+      "date": "2021-08-18",
+      "excerpt": "Titan produces a variety of styles and sizes to suit your operations, from dry conditions to boggy wet applications.",
+      "image": "src/news/images/mfwd-tyres-featured.jpg",
+      "tags": [
+        "Featured Products"
+      ],
+      "url": "blog/mfwd-tyres/"
+    },
+    {
+      "slug": "titan-act-wheel-system",
+      "title": "Titan ACT Wheel System",
+      "category": "Featured Products",
+      "date": "2021-08-18",
+      "excerpt": "The Accelerated Change Technology (ACT) Wheel system allows the inner tyre to be removed without having to remove the outer wheel, which reduces downtime…",
+      "image": "src/news/images/titan-act-wheel-system-featured.png",
+      "tags": [
+        "Featured Products"
+      ],
+      "url": "blog/titan-act-wheel-system/"
+    },
+    {
+      "slug": "womens-day",
+      "title": "Happy Women's Day",
+      "category": "Events",
+      "date": "2021-08-09",
+      "excerpt": "",
+      "image": "src/news/images/womens-day-featured.jpg",
+      "tags": [
+        "Events"
+      ],
+      "url": "blog/womens-day/"
+    },
+    {
+      "slug": "newsflash-our-exciting-new-journey-begins",
+      "title": "Our exciting new journey begins..",
+      "category": "News",
+      "date": "2021-06-25",
+      "excerpt": "Newsflash: out exciting new journey begins… The first #Goodyear #agricultural stock has landed in South Africa: 13.6-24 and 14.9-24s. The Goodyear Dyna…",
+      "image": "src/news/images/newsflash-our-exciting-new-journey-begins-featured.png",
+      "tags": [
+        "News"
+      ],
+      "url": "blog/newsflash-our-exciting-new-journey-begins/"
+    },
+    {
+      "slug": "standing-tall-and-proud",
+      "title": "Standing tall and proud",
+      "category": "News",
+      "date": "2021-06-23",
+      "excerpt": "Standing tall and proud Theo von Bardeleben with Jonathan Thompson in front of a 63 inch rim for a 260 ton rigid dump truck. This photo was taken on a trip…",
+      "image": "src/news/images/standing-tall-and-proud-featured.png",
+      "tags": [
+        "News"
+      ],
+      "url": "blog/standing-tall-and-proud/"
+    },
+    {
+      "slug": "time-for-some-fresh-air",
+      "title": "Time for some fresh air",
+      "category": "News",
+      "date": "2021-06-23",
+      "excerpt": "Time for some fresh air Titan Global Wheel recently installed its new Bouwa Variable Speed Drive Air Compressor. A successful implementation that is…",
+      "image": "src/news/images/time-for-some-fresh-air-featured.png",
+      "tags": [
+        "News"
+      ],
+      "url": "blog/time-for-some-fresh-air/"
+    },
+    {
+      "slug": "youth-day",
+      "title": "Happy Youth Day",
+      "category": "Events",
+      "date": "2021-06-16",
+      "excerpt": "",
+      "image": "src/news/images/youth-day-featured.jpg",
+      "tags": [
+        "Events"
+      ],
+      "url": "blog/youth-day/"
+    },
+    {
+      "slug": "news-titan-global",
+      "title": "Titan Global Wheel",
+      "category": "News",
+      "date": "2021-06-04",
+      "excerpt": "2 June 2021 Titan Global Wheel is proud to announce its partnership with an international customer to provide aluminium wheels for military application.…",
+      "image": "src/news/images/news-titan-global-featured.jpg",
+      "tags": [
+        "News"
+      ],
+      "url": "blog/news-titan-global/"
+    },
+    {
+      "slug": "lsw-technology",
+      "title": "LSW Technology takes on the toughest jobs",
+      "category": "Featured Products",
+      "date": "2021-03-10",
+      "excerpt": "Low Sidewall Technology™ (LSW®) helps equipment operators unlock…",
+      "image": "src/news/images/lsw-technology-featured.jpg",
+      "tags": [
+        "Featured Products"
+      ],
+      "url": "blog/lsw-technology/"
+    },
+    {
+      "slug": "tyron-run-flat",
+      "title": "Tyron Runflat System",
+      "category": "Featured Products",
+      "date": "2021-03-10",
+      "excerpt": "This modular design does not require a hydraulic press to squeeze the runflat into the tyre, making",
+      "image": "src/news/images/tyron-run-flat-featured.jpg",
+      "tags": [
+        "Featured Products"
+      ],
+      "url": "blog/tyron-run-flat/"
+    }
+  ]
+}
+  </script>
+
+  <!-- News index: loads manifest.json and implements "load 6, then 4 more" -->
+  <script src="js/news-index.js" defer></script>
+  <script>
+    (function(){var p=document.querySelector('.tgw-promo');if(!p)return;var t=120,r=false;function o(){p.style.opacity=window.scrollY>t?'0':'1';p.style.visibility=window.scrollY>t?'hidden':'visible'}window.addEventListener('scroll',function(){if(!r){requestAnimationFrame(function(){o();r=false});r=true}},{passive:true});o()})();
+  </script>
+  <script src="js/logo-banner.js"></script>
+  <script src="js/mobile-nav.js" defer></script>
+
+  <!-- Black November 2026 promo (delete these 3 lines to retire the ads) -->
+  <link rel="stylesheet" href="css/promo-bn.css">
+  <script src="js/promo-bn.js" defer></script>
+</body>
+</html>
+
+

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- GA Google Analytics @ https://m0n.co/ga -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D07TXJ8J69"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-D07TXJ8J69');
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Titan Global Wheel — Promo Reel</title>
+  <style>
+    :root{--blue:#114172;--red:#e01030}
+    *{box-sizing:border-box} html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#080b10;color:#fff;font-family:Arial,Helvetica,sans-serif}
+    .reel{position:relative;width:100%;height:100%;isolation:isolate}
+    .slide{position:absolute;inset:0;display:grid;align-items:end;opacity:0;animation:show 24s infinite;background:#10151c}
+    .slide:nth-child(1){animation-delay:0s}.slide:nth-child(2){animation-delay:6s}.slide:nth-child(3){animation-delay:12s}.slide:nth-child(4){animation-delay:18s}
+    .slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.9)}
+    .slide:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,8,13,.92),rgba(4,8,13,.38) 55%,rgba(4,8,13,.12)),linear-gradient(0deg,rgba(4,8,13,.8),transparent 55%)}
+    .copy{position:relative;z-index:1;max-width:760px;padding:clamp(32px,7vw,100px);padding-bottom:clamp(56px,10vw,130px)}
+    .logo{width:min(330px,58vw);margin-bottom:clamp(28px,6vw,72px);filter:brightness(0) invert(1)}
+    .eyebrow{color:#f04a63;font-weight:800;letter-spacing:.2em;text-transform:uppercase;font-size:clamp(11px,1.4vw,16px)}
+    h1{font-size:clamp(38px,7vw,100px);line-height:.94;margin:16px 0 22px;letter-spacing:-.05em}
+    h1 span{color:#5b8bd0}.copy p{max-width:600px;color:#c8d1dc;font-size:clamp(16px,2vw,25px);line-height:1.45;margin:0}
+    .bar{position:absolute;z-index:3;left:0;bottom:0;height:6px;background:var(--red);animation:progress 24s linear infinite;width:0}
+    .tag{position:absolute;right:clamp(24px,6vw,90px);top:clamp(24px,6vw,70px);z-index:3;color:#fff;border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:10px 16px;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+    @keyframes show{0%,22%{opacity:0;transform:scale(1.04)}4%,18%{opacity:1;transform:scale(1)}25%,100%{opacity:0;transform:scale(1)}}
+    @keyframes progress{to{width:100%}}
+    @media(prefers-reduced-motion:reduce){.slide{animation:none;opacity:1}.slide~.slide,.bar{display:none}}
+  </style>
+</head>
+<body>
+  <main class="reel" aria-label="Titan Global Wheel promotional reel">
+    <div class="tag">Titan Global Wheel</div>
+    <section class="slide">
+      <img src="src/homepage/hero.JPG" alt="">
+      <div class="copy"><img class="logo" src="src/logos/Titan Global Wheel _logo_hortizontal_2021_1.png" alt="Titan Global Wheel"><div class="eyebrow">Engineered for the toughest terrain</div><h1>Complete wheel systems for <span>work that never stops.</span></h1><p>Off-highway tyres, rims and runflat systems designed, tested and supplied across Africa.</p></div>
+    </section>
+    <section class="slide">
+      <img src="src/homepage/agri.webp" alt="">
+      <div class="copy"><div class="eyebrow">Agriculture</div><h1>More traction.<br><span>Less compaction.</span></h1><p>Goodyear agricultural tyres, LSW technology and wheel solutions for modern farming.</p></div>
+    </section>
+    <section class="slide">
+      <img src="src/homepage/mining.webp" alt="">
+      <div class="copy"><div class="eyebrow">Mining &amp; construction</div><h1>Built for the<br><span>weight of the world.</span></h1><p>Heavy-duty rims, tyres and repair expertise for the harshest working environments.</p></div>
+    </section>
+    <section class="slide">
+      <img src="src/homepage/military.jpg" alt="">
+      <div class="copy"><div class="eyebrow">Military &amp; defence</div><h1>Reliability when<br><span>mobility matters.</span></h1><p>Defence-grade rims and Tyron runflat systems backed by decades of engineering.</p></div>
+    </section>
+    <div class="bar"></div>
+  </main>
+</body>
+</html>

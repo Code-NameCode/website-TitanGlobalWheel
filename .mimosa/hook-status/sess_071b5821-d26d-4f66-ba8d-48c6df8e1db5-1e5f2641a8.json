@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "mimosa-hook-status/v1",
+  "recordedAt": "2026-11-16T11:34:27.479Z",
+  "sessionId": "sess_071b5821-d26d-4f66-ba8d-48c6df8e1db5",
+  "event": "PostToolUse",
+  "toolName": "Write",
+  "file": "loto-tags/print/PRINT-SPECS.txt",
+  "outcome": "clear",
+  "coverage": "complete",
+  "findingCount": 0,
+  "durationMs": 4,
+  "hostState": "hook_complete",
+  "reportHint": ".mimosa/reports/"
+}

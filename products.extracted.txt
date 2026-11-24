@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- GA Google Analytics @ https://m0n.co/ga -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D07TXJ8J69"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-D07TXJ8J69');
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0d10" />
+  <link rel="canonical" href="https://www.titanglobalwheel.co.za/products.html" />
+  <link rel="alternate" hreflang="en-za" href="https://www.titanglobalwheel.co.za/products.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Products | Titan Global Wheel" />
+  <meta property="og:description" content="Explore Titan Global Wheel's off-highway tyres, rims, LSW technology, runflat systems and wheel accessories." />
+  <meta property="og:url" content="https://www.titanglobalwheel.co.za/products.html" />
+  <meta property="og:site_name" content="Titan Global Wheel" />
+  <meta property="og:locale" content="en_ZA" />
+  <meta property="og:image" content="https://www.titanglobalwheel.co.za/og-share.png" />
+  <meta property="og:image:alt" content="Titan Global Wheel off-highway wheel products" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Products | Titan Global Wheel" />
+  <meta name="twitter:description" content="Off-highway tyres, rims, LSW technology, runflat systems and wheel accessories from Titan Global Wheel." />
+  <meta name="twitter:image" content="https://www.titanglobalwheel.co.za/og-share.png" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Titan Global Wheel Products","url":"https://www.titanglobalwheel.co.za/products.html","description":"Off-highway tyres, rims, LSW technology, runflat systems and wheel accessories from Titan Global Wheel.","isPartOf":{"@type":"WebSite","name":"Titan Global Wheel","url":"https://www.titanglobalwheel.co.za/"}}</script>
+  <title>Products — Titan Global Wheel</title>
+  <meta name="description" content="Explore Titan Global Wheel's complete range of off-highway tyres, rims, LSW technology, runflat systems and wheel accessories." />
+  <link rel="stylesheet" href="css/logo-banner.css" />
+  <style>
+    :root { --ink:#0a0d10; --blue:#114172; --red:#e01030; --muted:#697583; --line:#e5e9ee; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); font-family:Arial,Helvetica,sans-serif; background:#fff; }
+    a { color:inherit; text-decoration:none; }
+    .hero { background:linear-gradient(135deg,#0a0d10 0%,#102c4e 100%); color:#fff; padding:clamp(48px,7vw,92px) 24px; }
+    .hero-inner { max-width:1180px; margin:auto; display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:48px; }
+    .eyebrow { color:#ffb7c2; text-transform:uppercase; letter-spacing:.16em; font-size:12px; font-weight:800; }
+    h1 { font-size:clamp(2.2rem,5vw,4.5rem); line-height:1.02; margin:14px 0 18px; }
+    .hero p { color:#c9d2dc; font-size:18px; line-height:1.6; max-width:56ch; }
+    .hero img { width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:18px; display:block; box-shadow:0 24px 70px rgba(0,0,0,.35); }
+    .products { max-width:1180px; margin:auto; padding:76px 24px; }
+    .products-head { max-width:680px; margin-bottom:34px; }
+    h2 { font-size:clamp(2rem,3.5vw,3.2rem); margin:0 0 12px; }
+    .products-head p { color:var(--muted); font-size:17px; line-height:1.6; }
+    .product-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .product-card { border:1px solid var(--line); border-radius:16px; overflow:hidden; min-height:210px; display:flex; flex-direction:column; justify-content:space-between; transition:transform .2s ease,box-shadow .2s ease; background:#fff; }
+    .product-card__image { width:100%; height:168px; object-fit:cover; display:block; }
+    .product-card__body { display:flex; flex:1; flex-direction:column; justify-content:space-between; padding:22px 24px 24px; }
+    .product-card:hover { transform:translateY(-4px); box-shadow:0 16px 35px rgba(17,65,114,.12); }
+    .product-card h3 { color:var(--blue); font-size:22px; margin:0 0 10px; }
+    .product-card p { color:var(--muted); line-height:1.55; margin:0 0 20px; }
+    .product-card a { color:var(--red); font-weight:800; }
+    .product-detail { background:#f6f8fb; padding:76px 24px; }
+    .product-detail-inner { max-width:1180px; margin:0 auto; }
+    .product-detail-head { max-width:720px; margin-bottom:32px; }
+    .product-detail-head h2 { color:var(--ink); }
+    .product-detail-head p { color:var(--muted); font-size:17px; line-height:1.65; }
+    .application-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+    .application-card { min-height:190px; padding:24px; border:1px solid var(--line); border-radius:16px; background:#fff; }
+    .application-card span { color:var(--red); font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
+    .application-card h3 { margin:10px 0 8px; color:var(--blue); font-size:21px; }
+    .application-card p { margin:0; color:var(--muted); font-size:14px; line-height:1.55; }
+    .product-proof { display:grid; grid-template-columns:repeat(4,1fr); max-width:1180px; margin:0 auto; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .product-proof div { padding:28px 24px; border-right:1px solid var(--line); }
+    .product-proof div:last-child { border-right:0; }
+    .product-proof strong { display:block; color:var(--blue); font-size:27px; }
+    .product-proof span { color:var(--muted); font-size:13px; line-height:1.45; }
+    .cta { background:#f5f7f9; text-align:center; padding:62px 24px; }
+    .cta p { color:var(--muted); margin:10px auto 24px; }
+    .btn { display:inline-block; background:var(--blue); color:#fff; border-radius:999px; padding:13px 22px; font-weight:800; }
+    @media (max-width:800px) { .hero-inner { grid-template-columns:1fr; gap:26px; } .product-grid { grid-template-columns:1fr 1fr; } .application-grid { grid-template-columns:1fr 1fr; } .product-proof { grid-template-columns:1fr 1fr; } .product-proof div:nth-child(2) { border-right:0; } .product-proof div:nth-child(-n+2) { border-bottom:1px solid var(--line); } .nav-links { gap:12px; font-size:13px; } }
+    @media (max-width:560px) { .nav { min-height:64px; padding-inline:16px; } .brand img { width:200px; } .nav-links { display:none; } .product-grid, .application-grid, .product-proof { grid-template-columns:1fr; } .product-proof div, .product-proof div:nth-child(2) { border-right:0; border-bottom:1px solid var(--line); } .product-proof div:last-child { border-bottom:0; } .products { padding-block:52px; } }
+  </style>
+  <link rel="stylesheet" href="css/site-chrome.css" />
+  <link rel="stylesheet" href="css/mobile-nav.css" />
+  <style>
+    /* Promo banner (news ticker) — matches index.html */
+    .tgw-promo { position: relative; z-index: 1; overflow: hidden; display: flex; align-items: center; padding: 9px 14px; background: linear-gradient(90deg, var(--blue) 0%, #0e3258 50%, var(--blue) 100%); color: #fff; font-size: 13.5px; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,.08); transition: opacity .4s ease, visibility .4s ease; }
+    .tgw-promo-ticker { flex: 1; min-width: 0; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%); }
+    .tgw-promo-track { display: inline-flex; align-items: center; white-space: nowrap; will-change: transform; animation: promoScroll 30s linear infinite; }
+    .tgw-promo-item { display: inline-flex; align-items: center; gap: 9px; padding: 0 4px; }
+    .tgw-promo-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 3px rgba(255,255,255,.18); flex: none; }
+    .tgw-promo-sep { padding: 0 22px; opacity: .45; }
+    @keyframes promoScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) {
+      .tgw-promo-track { animation: none; flex-wrap: wrap; justify-content: center; }
+      .tgw-promo-ticker { overflow: visible; -webkit-mask-image: none; mask-image: none; }
+    }
+    @media (max-width: 620px) { .tgw-promo { font-size: 12.5px; padding: 8px 10px; } }
+  </style>
+</head>
+<body>
+  <div class="site-top">
+  <header class="site" id="top">
+    <div class="wrap nav">
+      <a class="brand" href="index.html" aria-label="Titan Global Wheel home">
+        <img class="logo-h" src="src/logos/Titan%20Global%20Wheel%20_logo_hortizontal_2021_1.png" alt="Titan Global Wheel" />
+      </a>
+      <nav id="primary-menu" class="nav-links" aria-label="Primary">
+        <a href="about.html">About</a>
+        <div class="nav-item has-dropdown">
+          <a href="products.html" aria-haspopup="true" aria-expanded="false">Products <span class="caret" aria-hidden="true"></span></a>
+          <ul class="dropdown">
+
+            <li><a href="products.html" class="dd-overview">All Products</a></li>
+
+            <li><a href="tyres.html">Tyres</a></li>
+            <li><a href="rims.html">Rims</a></li>
+            <li><a href="accessories.html">Accessories</a></li>
+            <li><a href="runflats.html">Runflats</a></li>
+            <li><a href="nama.html">NAMA X/T</a></li>
+            <li><a href="LSW.html">LSW</a></li>
+          </ul>
+        </div>
+        <a href="industries.html">Industries</a>
+        <a href="news.html">News</a>
+        <a href="events.html">Events</a>
+        <a href="contact.html">Contact Us</a>
+      </nav>
+      <div class="nav-cta">
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-menu">☰</button>
+      </div>
+    </div>
+  </header>
+  <!-- ============ PROMO BANNER ============ -->
+  <div class="tgw-promo" role="region" aria-label="Announcements">
+    <div class="tgw-promo-ticker">
+      <div class="tgw-promo-track">
+        <span class="tgw-promo-item"><span class="tgw-promo-dot"></span>Find our Goodyear Lubricants exclusively on Takealot</span>
+        <span class="tgw-promo-sep">•</span>
+        <span class="tgw-promo-item">Our new NAMA tyres have launched</span>
+        <span class="tgw-promo-sep">•</span>
+        <span class="tgw-promo-item">Check out Crazy Werrie's NAMA tyres video on Facebook, Instagram, TikTok or YouTube</span>
+        <span class="tgw-promo-sep">•</span>
+        <span class="tgw-promo-item" aria-hidden="true"><span class="tgw-promo-dot"></span>Find our Goodyear Lubricants exclusively on Takealot</span>
+        <span class="tgw-promo-sep" aria-hidden="true">•</span>
+        <span class="tgw-promo-item" aria-hidden="true">Our new NAMA tyres have launched</span>
+        <span class="tgw-promo-sep" aria-hidden="true">•</span>
+        <span class="tgw-promo-item" aria-hidden="true">Check out Crazy Werrie's NAMA tyres video on Facebook, Instagram, TikTok or YouTube</span>
+        <span class="tgw-promo-sep" aria-hidden="true">•</span>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <main>
+    <section class="hero"><div class="hero-inner"><div><span class="eyebrow">The complete wheel system</span><h1>Products built for the world's toughest terrain.</h1><p>Titan Global Wheel delivers an end-to-end off-highway product offering for agriculture, construction, mining, forestry, commercial and military applications. Our ISO-certified facilities support the design, testing and supply of tyres, rims, wheels and runflat systems engineered for demanding conditions.</p></div><img src="src/products/LSW.jpg" alt="Goodyear LSW low sidewall technology on agricultural equipment" /></div></section>
+    <section class="products"><div class="products-head"><h2>Explore our product range.</h2><p>Choose the product family that matches your equipment, terrain, load and operating requirements. Titan combines local wheel expertise with access to a broad off-highway tyre catalogue.</p></div><div class="product-grid">
+      <article class="product-card"><img class="product-card__image" src="src/homepage/agri.webp" alt="Agricultural tractor working in a field" loading="lazy" /><div class="product-card__body"><div><h3>Agricultural tyres</h3><p>Goodyear Farm Tyres, tractor tyres, harvester tyres, implements and irrigation solutions.</p></div><a href="agriculture.html">Explore agriculture →</a></div></article>
+      <article class="product-card"><img class="product-card__image" src="src/products/LSW.jpg" alt="Goodyear LSW agricultural tyre and wheel system" loading="lazy" /><div class="product-card__body"><div><h3>LSW technology</h3><p>Low Sidewall Technology for improved stability, traction, road handling and reduced soil compaction.</p></div><a href="tyres.html">Explore LSW tyres →</a></div></article>
+      <article class="product-card"><img class="product-card__image" src="src/rims/Steel.jpeg" alt="Titan steel rims in a workshop" loading="lazy" /><div class="product-card__body"><div><h3>Steel &amp; aluminium rims</h3><p>Commercial, agricultural, construction and mining rims from compact applications to giant haul-truck sizes.</p></div><a href="rims.html">Explore rims →</a></div></article>
+      <article class="product-card"><img class="product-card__image" src="src/images/tyres/tyres-hero.webp" alt="Titan off-highway tyre" loading="lazy" /><div class="product-card__body"><div><h3>Off-highway tyres</h3><p>Tyres for mining, construction, earthmoving, military and specialised industrial equipment.</p></div><a href="tyres.html">Explore tyres →</a></div></article>
+      <article class="product-card"><img class="product-card__image" src="src/runflats/images/Tyron-Easyfit-Runflat.jpg" alt="Tyron Easyfit runflat system" loading="lazy" /><div class="product-card__body"><div><h3>Tyron runflats</h3><p>Field-mountable runflat inserts and bead-lock systems for defence, security and emergency vehicles.</p></div><a href="runflats.html">Explore runflats →</a></div></article>
+      <article class="product-card"><img class="product-card__image" src="src/accessories/images/accessories.webp" alt="Wheel accessories and components" loading="lazy" /><div class="product-card__body"><div><h3>Wheel accessories</h3><p>Lock rings, studs, CTIS components and supporting wheel hardware for complete assemblies.</p></div><a href="accessories.html">Explore accessories →</a></div></article>
+    </div></section>
+    <section class="product-detail"><div class="product-detail-inner"><div class="product-detail-head"><h2>Solutions for every working environment.</h2><p>From the field to the mine site, each product family is selected around the equipment and application. Explore the capabilities behind the range.</p></div><div class="application-grid">
+      <article class="application-card"><span>LSW technology</span><h3>More stability, less compaction.</h3><p>A larger rim and smaller sidewall maintain the outside diameter while supporting a wider footprint, improved stability and lower inflation pressures.</p></article>
+      <article class="application-card"><span>Agriculture</span><h3>From tractors to harvesters.</h3><p>Goodyear Farm Tyres and LSW solutions cover tractors, trailers, harvesters, implements and irrigation equipment, with agricultural wheel sizes from 18 to 54 inches.</p></article>
+      <article class="application-card"><span>Rims &amp; wheels</span><h3>Built around the machine.</h3><p>Steel and aluminium rims are matched to vehicle application, offset, PCD, bore, stud quantity and mounting configuration.</p></article>
+      <article class="application-card"><span>Tyron runflats</span><h3>Protection when it matters.</h3><p>The modular Tyron system is field-mountable and demountable without a hydraulic press, supporting military and off-road vehicles facing unpredictable hazards.</p></article>
+    </div></div></section>
+    <section class="product-proof" aria-label="Titan product capabilities"><div><strong>18–54″</strong><span>Agricultural wheel sizes across tractor, trailer, harvesting, implement and irrigation applications.</span></div><div><strong>ISO 9001</strong><span>Certified design and production processes supporting consistent product quality.</span></div><div><strong>4×4</strong><span>Core application sectors: agriculture, construction, mining and military.</span></div><div><strong>End-to-end</strong><span>Tyres, rims, accessories, wheels and runflat systems from one specialist team.</span></div></section>
+    <section class="cta"><h2>Need help specifying a product?</h2><p>Tell us your machine, load and terrain and our team will help you choose the right system.</p><a class="btn" href="contact.html">Talk to our team</a></section>
+  </main>
+  <!-- ============ FOOTER ============ -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand foot-logo" href="index.html" aria-label="Titan Global Wheel home">
+            <img class="logo-h" src="src/logos/Titan%20Global%20Wheel%20_logo_hortizontal_2021_1.png" alt="Titan Global Wheel" />
+          </a>
+          <p>Titan Global Wheel is one of the largest combined manufacturers and suppliers of off-highway wheels, rims, industrial tyres and Tyron runflat systems for commercial, mining, agricultural, earthmoving and military fleets across sub-Saharan Africa. ISO 9001 and B-BBEE certified.</p>
+        </div>
+        <div class="foot-col">
+          <h4>Products</h4>
+          <a href="tyres.html">Tyres</a>
+          <a href="rims.html">Rims</a>
+          <a href="accessories.html">Accessories</a>
+          <a href="runflats.html">Runflats</a>
+          <a href="feedback.html">Customer Feedback</a>
+        </div>
+        <div class="foot-col">
+          <h4>Industries</h4>
+          <a href="agriculture.html">Agriculture</a>
+          <a href="mining.html">Mining</a>
+          <a href="military.html">Military</a>
+          <a href="construction.html">Construction</a>
+        </div>
+        <div class="foot-col">
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="news.html">News</a>
+          <a href="events.html">Events</a>
+          <a href="repairs.html">Repairs</a>
+          <a href="contact.html">Request a Quote</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div class="foot-social">
+        <div class="socials">
+          <a class="social" href="https://www.linkedin.com/company/titan-global-wheel" target="_blank" rel="noopener" aria-label="Titan Global Wheel on LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+          </a>
+          <a class="social" href="https://www.facebook.com/TitanGlobalWheel" target="_blank" rel="noopener" aria-label="Titan Global Wheel on Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073c0 6.026 4.388 11.02 10.125 11.927v-8.437H7.078v-3.49h3.047V9.43c0-3.007 1.792-4.668 4.533-4.668 1.313 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.93-1.956 1.885v2.267h3.328l-.532 3.49h-2.796v8.437C19.612 23.094 24 18.1 24 12.073z"/></svg>
+          </a>
+          <a class="social" href="https://www.instagram.com/titanglobalwheel" target="_blank" rel="noopener" aria-label="Titan Global Wheel on Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+          <a class="social" href="https://x.com/titanglobalwhee" target="_blank" rel="noopener" aria-label="Titan Global Wheel on X">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+          </a>
+          <a class="social" href="https://www.tiktok.com/@titan.global.wheel" target="_blank" rel="noopener" aria-label="Titan Global Wheel on TikTok">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.43 3.9-1.41 1.87-4.32 2.37-6.21 1.06-.91-.56-1.6-1.5-1.92-2.5-.31-1-.34-2.07-.15-3.09.38-2.52 2.67-4.16 5.18-3.85.71.08 1.39.22 2.04.45.4-.66.51-1.45.27-2.18-.45-1.28-1.97-1.89-3.2-1.67-.9.15-1.69.72-2.08 1.54-.24.5-.31 1.06-.25 1.6v-4.3c.79-.07 1.59-.06 2.38-.05z"/></svg>
+          </a>
+          <a class="social" href="https://www.youtube.com/@TitanGlobalWheel" target="_blank" rel="noopener" aria-label="Titan Global Wheel on YouTube">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+        <div class="foot-partners">
+          <a class="foot-partner" href="tyres.html" rel="noopener" aria-label="Goodyear agricultural tyres - learn more">
+            <img src="src/logos/goodyear-logo.png" alt="Goodyear licensed agricultural tyre partner" />
+          </a>
+          <a class="foot-partner" href="nama.html" rel="noopener" aria-label="NAMA X/T tyres - see product page">
+            <img src="src/logos/nama.png" alt="NAMA agricultural tyres - featured product range" />
+          </a>
+        </div>
+        <div class="foot-legal">
+          <span class="legal-item">Company Reg No. 2010/014325/07</span>
+          <span class="legal-item">VAT No. 4690261328</span>
+          <a class="cert-badge" href="./src/public/pdfs/B-BBEE%20Certificate%20TGW.pdf" target="_blank" rel="noopener noreferrer">B-BBEE Certificate</a>
+          <a class="cert-badge" href="./src/public/pdfs/ISO-9001.pdf" target="_blank" rel="noopener noreferrer">ISO 9001 Certificate</a>
+        </div>
+      </div>
+      <div class="foot-bot">
+        <div class="foot-bot-left">
+          <span>© 2026 Titan Global Wheel (Pty) Ltd · </span>
+          <span>Goodyear &amp; Tyron partner · Sub-Saharan Africa</span>
+          <a href="contact.html">Request a Quote</a>
+          <a href="Privacy-Policy.html">Privacy Policy</a>
+          <a href="Cookies-Policy.html">Cookies Policy</a>
+        </div>
+      </div>
+      <div class="foot-powered" style="text-align:center; margin-top:20px; padding-top:16px; border-top:1px solid var(--line); font-size:12.5px; color:var(--muted); letter-spacing:.02em;">Powered By <a href="https://goodstuffdesigns.co.za/" target="_blank" rel="noopener noreferrer" style="color:#ffffff; font-weight:700; text-decoration:none; border-bottom:1px solid rgba(255,255,255,.35);">GoodStuff-Designs</a></div>
+    </div>
+  </footer>
+  <script src="js/site-nav.js"></script>
+  <script>
+    // Hide promo banner after scrolling past 120px (matches index.html)
+    (function(){var p=document.querySelector('.tgw-promo');if(!p)return;var t=120,r=false;function o(){p.style.opacity=window.scrollY>t?'0':'1';p.style.visibility=window.scrollY>t?'hidden':'visible'}window.addEventListener('scroll',function(){if(!r){requestAnimationFrame(function(){o();r=false});r=true}},{passive:true});o()})();
+  </script>
+  <script src="js/logo-banner.js"></script>
+  <script src="js/mobile-nav.js" defer></script>
+</body>
+</html>

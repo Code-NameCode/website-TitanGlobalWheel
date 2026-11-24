@@ -1,0 +1,94 @@
+@import url('site-overrides.css');
+
+.tgw-promo { display: none !important; }
+
+.tgw-logo-banner {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  height: clamp(56px, 5vw, 68px);
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-bottom: 1px solid #e7eaee;
+  isolation: isolate;
+  opacity: .55;
+  transform: translateY(18px);
+  transition: opacity .8s ease, transform .8s cubic-bezier(.22,1,.36,1);
+}
+
+.tgw-logo-banner.is-visible { opacity: 1; transform: translateY(0); }
+
+.tgw-logo-banner::before,
+.tgw-logo-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 20%;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(90deg, #fff 0%, #fff 18%, rgba(255,255,255,.82) 52%, rgba(255,255,255,0) 100%);
+}
+
+.tgw-logo-banner::after {
+  left: auto;
+  right: 0;
+  transform: scaleX(-1);
+}
+
+.tgw-logo-banner__track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: tgwLogoScroll 34s linear infinite;
+  will-change: transform;
+}
+
+.tgw-logo-banner__item {
+  box-sizing: border-box;
+  width: clamp(145px, 13vw, 190px);
+  height: clamp(42px, 4vw, 54px);
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  padding: 4px 10px;
+  transform: translateY(10px);
+  opacity: 0;
+  transition: transform .75s cubic-bezier(.22,1,.36,1), opacity .75s ease;
+}
+
+.tgw-logo-banner.is-visible .tgw-logo-banner__item { transform: translateY(0); opacity: 1; }
+.tgw-logo-banner.is-visible .tgw-logo-banner__item:nth-child(2n) { transition-delay: .08s; }
+.tgw-logo-banner.is-visible .tgw-logo-banner__item:nth-child(3n) { transition-delay: .16s; }
+
+.tgw-logo-banner__item img {
+  display: block;
+  width: 194px;
+  height: 48px;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Brand-specific optical sizing for the source artwork proportions. */
+.tgw-logo-banner__item:nth-child(2) img,
+.tgw-logo-banner__item:nth-child(11) img { transform: scale(1.18); }
+
+.tgw-logo-banner__item:nth-child(8) img,
+.tgw-logo-banner__item:nth-child(17) img { transform: scale(.82); }
+
+@keyframes tgwLogoScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tgw-logo-banner { opacity: 1; transform: none; transition: none; }
+  .tgw-logo-banner__track { animation: none; justify-content: center; width: 100%; }
+  .tgw-logo-banner__item { opacity: 1; transform: none; transition: none; }
+}
+
+@media (max-width: 620px) {
+  .tgw-logo-banner { width: 100%; }
+  .tgw-logo-banner__item { width: 122px; padding: 3px 5px; }
+  .tgw-logo-banner__item img { width: 142px; height: 40px; }
+}

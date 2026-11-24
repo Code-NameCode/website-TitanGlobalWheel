@@ -1,0 +1,871 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tyres — Titan Global Wheel</title>
+  <meta name="description" content="Explore Titan Global Wheel's range of agricultural, construction, mining and military tyres. Browse technical PDFs and product specifications." />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tyres — Titan Global Wheel" />
+  <meta property="og:description" content="Agricultural, construction, mining and military tyres from sub-Saharan Africa's leading wheel manufacturer." />
+  <meta property="og:locale" content="en_ZA" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Titan Global Wheel",
+    "url": "https://www.titanglobalwheel.co.za",
+    "description": "Leading manufacturer and supplier of off-highway wheels, rims, tyres and runflat systems in sub-Saharan Africa.",
+    "areaServed": "Sub-Saharan Africa",
+    "knowsAbout": ["Agricultural tyres", "Mining tyres", "Military tyres", "Construction tyres"],
+    "certification": "ISO-certified design, testing and production facilities"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Archivo:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+
+  <style>
+    :root {
+      --bg: #0a0d10;
+      --bg-2: #11151a;
+      --surface: #161b22;
+      --surface-2: #1d242d;
+      --line: #2a323c;
+      --text: #0a0d10;
+      --text-invert: #f4f6f8;
+      --muted: #9aa4af;
+      --muted-invert: #b8c2cc;
+      --accent: #114172;
+      --accent-2: #e01030;
+      --steel: #5b8bd0;
+      --ok: #2fb672;
+      --radius: 14px;
+      --radius-lg: 22px;
+      --maxw: 1200px;
+      --shadow: 0 18px 50px -20px rgba(0,0,0,.55);
+      --shadow-sm: 0 8px 24px -12px rgba(0,0,0,.45);
+      --shadow-md: 0 14px 40px -16px rgba(0,0,0,.35);
+      --font-body: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      --font-display: 'Archivo', 'Inter', system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      color: var(--text);
+      background: #ffffff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { font-family: var(--font-display); line-height: 1.05; letter-spacing: -.02em; margin: 0; }
+
+    .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 22px; }
+    .skip-link { position:absolute; left:-999px; top:0; background:var(--accent); color:#000; padding:10px 16px; z-index:100; }
+    .skip-link:focus { left: 12px; top: 12px; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-weight: 700; font-size: 15px; letter-spacing: .01em;
+      padding: 14px 24px; border-radius: 999px; cursor: pointer;
+      border: 1.5px solid transparent; transition: transform .15s ease, background .2s ease, box-shadow .2s ease;
+      white-space: nowrap;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 10px 26px -10px rgba(17,65,114,.55); }
+    .btn-primary:hover { background: #0d335c; }
+    .btn-ghost { border-color: currentColor; background: transparent; }
+    .btn-on-dark { color: var(--text-invert); }
+    .btn-on-dark:hover { background: rgba(255,255,255,.08); }
+    .btn-sm { padding: 10px 18px; font-size: 13px; }
+
+    /* Header */
+    .site-top { position: sticky; top: 0; z-index: 50; }
+    header.site {
+      position: relative; z-index: 2;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e7eaee;
+      color: var(--text);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .brand { display:flex; align-items:center; gap:12px; }
+    .brand .logo-h { height: clamp(26px, 3.4vw, 34px); width: auto; display:block; }
+    .nav-links { display: flex; align-items: center; gap: 28px; margin-left: auto; }
+    .nav-links a { font-size: 15px; font-weight: 500; color: var(--accent); transition: color .15s; }
+    .nav-links a:hover,
+    .nav-links a:focus-visible,
+    .nav-links a.active { color: var(--accent-2); }
+    .nav-cta { display: flex; align-items: center; gap: 14px; }
+    .nav-toggle { display:none; background:none; border:0; color: var(--text); font-size:26px; cursor:pointer; }
+
+    .nav-item { position: relative; }
+    .nav-links .caret {
+      display: inline-block; width: 7px; height: 7px; margin-left: 8px;
+      border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+      transform: rotate(45deg) translateY(-2px); opacity: .75;
+      transition: transform .2s ease, opacity .2s ease;
+    }
+    .has-dropdown.open .caret { transform: rotate(225deg) translateY(-2px); opacity: 1; }
+    .dropdown {
+      position: absolute; top: 100%; left: 0;
+      min-width: 232px; margin-top: 14px; padding: 8px;
+      list-style: none; background: #fff;
+      border: 1px solid #e7eaee; border-radius: 16px;
+      box-shadow: 0 22px 50px -20px rgba(10,13,16,.30);
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transform: translateY(-8px);
+      transition: opacity .18s ease, transform .18s ease, visibility 0s;
+    }
+    .dropdown::before {
+      content: ""; position: absolute; left: 0; right: 0; top: -14px; height: 14px;
+    }
+    .dropdown li { margin: 0; }
+    .dropdown a {
+      display: flex; align-items: center; gap: 12px;
+      padding: 11px 14px; border-radius: 10px;
+      color: var(--text); font-size: 15px; font-weight: 500;
+      transition: background .15s ease, color .15s ease, padding-left .15s ease;
+    }
+    .dropdown a::before {
+      content: ""; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); opacity: .35; flex: 0 0 auto;
+      transition: opacity .15s ease, transform .15s ease;
+    }
+    .dropdown a:hover,
+    .dropdown a:focus-visible { background: rgba(17,65,114,.08); color: var(--accent); padding-left: 18px; }
+    .dropdown a:hover::before,
+    .dropdown a:focus-visible::before { opacity: 1; transform: scale(1.35); }
+    .has-dropdown:hover .dropdown,
+    .has-dropdown:focus-within .dropdown,
+    .has-dropdown.open .dropdown {
+      opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0);
+      transition-delay: 0s;
+    }
+
+    /* Page intro */
+    .page-head {
+      position: relative; overflow: hidden;
+      background:
+        radial-gradient(80% 140% at 88% -10%, rgba(17,65,114,.12), transparent 55%),
+        radial-gradient(70% 120% at 0% 120%, rgba(224,16,48,.08), transparent 55%),
+        linear-gradient(180deg, #f6f7f9 0%, #ffffff 100%);
+      padding: 86px 0 64px;
+    }
+    .page-head::after {
+      content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+      background-image: linear-gradient(rgba(17,65,114,.05) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(17,65,114,.05) 1px, transparent 1px);
+      background-size: 64px 64px; mask-image: radial-gradient(120% 90% at 90% 0%, #000, transparent 75%);
+    }
+    .page-head .wrap { position: relative; z-index: 2; }
+    .page-head h1 {
+      font-size: clamp(36px, 5.6vw, 70px); font-weight: 900; margin: 20px 0 0; max-width: 17ch;
+    }
+    .page-head h1 .accent {
+      color: var(--accent);
+      background: linear-gradient(90deg, var(--accent), var(--steel), var(--accent));
+      background-size: 200% auto;
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+      animation: shimmer 6s linear infinite;
+    }
+    .page-head .sub { font-size: clamp(17px, 2vw, 22px); color: #000; margin-top: 20px; max-width: 56ch; line-height: 1.5; }
+    @keyframes shimmer { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+    /* Contact-style hero (dark background with image overlay) */
+    .page-head.contact-hero { background:#11151a; color:#fff; isolation:isolate; }
+    .page-head.contact-hero::after { display:none; }
+    .page-head.contact-hero .bg { position:absolute; inset:0; z-index:0; background:#11151a; }
+    .page-head.contact-hero .bg img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .page-head.contact-hero .bg::after { content:""; position:absolute; inset:0; background: linear-gradient(180deg, rgba(8,11,14,.45) 0%, rgba(8,11,14,.82) 100%); }
+    .page-head.contact-hero .sec-head h1 { color:#fff; }
+    .page-head.contact-hero .sec-head p { color: rgba(255,255,255,.82); }
+    .sec-head .kicker { color: var(--accent); font-weight:800; letter-spacing:.16em; text-transform:uppercase; font-size:13px; }
+    .page-head.contact-hero .sec-head .kicker { color: var(--accent-2); }
+    .page-head.contact-hero .sec-head h1 .accent {
+      color: var(--accent-2);
+      background: linear-gradient(90deg, var(--accent-2), #ff4d6a, var(--accent-2));
+      background-size: 200% auto;
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+      animation: shimmer 6s linear infinite;
+    }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--accent);
+      border: 1px solid rgba(17,65,114,.25); border-radius: 999px; padding: 6px 18px 6px 8px;
+    }
+    .eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+
+    /* Sections */
+    section { padding: 92px 0; }
+    .section-title {
+      font-size: clamp(30px, 4vw, 46px); font-weight: 900; margin-bottom: 12px;
+    }
+    .section-title .hl { color: var(--accent); }
+    .section-desc { color: #000; font-size: 17px; max-width: 60ch; margin-bottom: 40px; }
+
+    /* PDF pill buttons */
+    .pdf-pills {
+      display: flex; flex-wrap: wrap; gap: 12px;
+    }
+    .pdf-pill {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 12px 22px; border-radius: 999px;
+      background: var(--accent); color: #fff; font-weight: 600; font-size: 14px;
+      border: 1.5px solid transparent; cursor: pointer;
+      transition: background .2s ease, transform .15s ease, box-shadow .2s ease;
+      white-space: nowrap;
+    }
+    .pdf-pill:hover {
+      background: #0d335c; transform: translateY(-2px);
+      box-shadow: 0 8px 20px -10px rgba(17,65,114,.5);
+    }
+    .pdf-pill .icon {
+      width: 20px; height: 20px; flex: none;
+      background: rgba(255,255,255,.2); border-radius: 50%;
+      display: grid; place-items: center; font-size: 11px; font-weight: 800;
+    }
+
+    /* PDF pills on dark backgrounds */
+    .section-dark .pdf-pill {
+      background: var(--accent-2); color: #fff;
+    }
+    .section-dark .pdf-pill:hover {
+      background: #b80d28;
+      box-shadow: 0 8px 20px -10px rgba(224,16,48,.5);
+    }
+    .section-dark .pdf-pill .icon {
+      background: rgba(255,255,255,.25);
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,.75); backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity .3s ease, visibility 0s .3s;
+    }
+    .modal-overlay.open { opacity: 1; visibility: visible; pointer-events: auto; transition-delay: 0s; }
+    .modal {
+      position: relative; width: 92%; max-width: 900px; max-height: 90vh;
+      background: #fff; border-radius: var(--radius-lg); overflow: hidden;
+      display: flex; flex-direction: column; box-shadow: var(--shadow);
+      transform: scale(.94) translateY(20px); transition: transform .3s ease;
+    }
+    .modal-overlay.open .modal { transform: scale(1) translateY(0); }
+    .modal-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 22px; border-bottom: 1px solid #e7eaee;
+    }
+    .modal-head h3 { font-size: 17px; font-weight: 700; }
+    .modal-close {
+      width: 36px; height: 36px; border-radius: 50%; border: 0; background: #f0f2f4;
+      font-size: 20px; cursor: pointer; display: grid; place-items: center;
+      transition: background .15s; color: var(--text);
+    }
+    .modal-close:hover { background: #e0e4e8; }
+    .modal-body { flex: 1; min-height: 0; }
+    .modal-body iframe { width: 100%; height: 100%; min-height: 70vh; border: 0; display: block; }
+
+    /* Military tables */
+    .table-wrap {
+      overflow-x: auto; margin: 30px 0 50px;
+      border: 1px solid var(--line); border-radius: var(--radius);
+    }
+    .table-wrap table {
+      width: 100%; border-collapse: collapse; font-size: 14px;
+    }
+    .table-wrap thead { background: var(--surface-2); }
+    .table-wrap th {
+      padding: 14px 16px; font-weight: 700; text-align: left; white-space: nowrap;
+      font-family: var(--font-display); font-size: 13px; letter-spacing: .02em;
+      border-bottom: 2px solid var(--line); color: var(--text-invert);
+    }
+    .table-wrap td { padding: 12px 16px; border-bottom: 1px solid var(--line); color: var(--muted-invert); }
+    .table-wrap tbody tr:hover { background: rgba(255,255,255,.04); }
+    .table-subtitle {
+      font-size: 13px; color: var(--muted-invert); margin-top: -16px; margin-bottom: 20px;
+      border-left: 3px solid var(--accent); padding-left: 16px;
+    }
+
+    /* Reveal animation */
+    .reveal { opacity:0; transform: translateY(30px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); transition-delay: var(--rd, 0s); will-change: opacity, transform; }
+    .reveal.in { opacity:1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity:1 !important; transform:none !important; transition:none !important; }
+      .page-head h1 .accent { animation:none; -webkit-text-fill-color: var(--accent); color: var(--accent); }
+    }
+
+    /* Promo banner */
+    .tgw-promo { position: relative; z-index: 1; overflow: hidden; display: flex; align-items: center; padding: 9px 14px; background: linear-gradient(90deg, var(--accent) 0%, #0e3258 50%, var(--accent) 100%); color: #fff; font-size: 13.5px; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,.08); transition: opacity .4s ease, visibility .4s ease; }
+    .tgw-promo-ticker { flex: 1; min-width: 0; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%); }
+    .tgw-promo-track { display: inline-flex; align-items: center; white-space: nowrap; will-change: transform; animation: promoScroll 30s linear infinite; }
+    .tgw-promo-item { display: inline-flex; align-items: center; gap: 9px; padding: 0 4px; }
+    .tgw-promo-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 0 3px rgba(255,255,255,.18); flex: none; }
+    .tgw-promo-sep { padding: 0 22px; opacity: .45; }
+    @keyframes promoScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) {
+      .tgw-promo-track { animation: none; flex-wrap: wrap; justify-content: center; }
+      .tgw-promo-ticker { overflow: visible; -webkit-mask-image: none; mask-image: none; }
+    }
+    @media (max-width: 620px) { .tgw-promo { font-size: 12.5px; padding: 8px 10px; } }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px; left: 0; right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: #ffffff;
+        border-bottom: 1px solid #e7eaee;
+        box-shadow: var(--shadow-sm);
+        padding: 6px 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a {
+        padding: 15px 22px;
+        color: var(--accent);
+        font-size: 16px;
+        border-bottom: 1px solid #f0f2f5;
+      }
+      .nav-links a:last-child { border-bottom: 0; }
+      .nav-toggle { display:block; }
+      .has-dropdown.open .dropdown,
+      .has-dropdown:hover .dropdown,
+      .has-dropdown:focus-within .dropdown { position: static; transform: none; opacity: 1; visibility: visible; pointer-events: auto; box-shadow: none; border: 0; margin: 0; padding: 0 0 4px; background: transparent; }
+      .dropdown a { padding: 11px 22px 11px 40px; border-bottom: 1px solid #f0f2f5; color: var(--accent); font-size: 15px; }
+      .dropdown li:last-child a { border-bottom: 0; }
+      .nav-links .caret { transition: transform .15s ease; }
+    }
+  </style>
+  <link rel="stylesheet" href="css/logo-banner.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ HEADER ============ -->
+  <div class="site-top">
+  <header class="site" id="top">
+    <div class="wrap nav">
+      <a class="brand" href="index.html" aria-label="Titan Global Wheel home">
+        <img class="logo-h" src="src/logos/Titan%20Global%20Wheel%20_logo_hortizontal_2021_1.png" alt="Titan Global Wheel" />
+      </a>
+      <nav id="primary-menu" class="nav-links" aria-label="Primary">
+        <a href="about.html">About</a>
+        <div class="nav-item has-dropdown">
+          <a href="products.html" aria-haspopup="true" aria-expanded="false">Products <span class="caret" aria-hidden="true"></span></a>
+          <ul class="dropdown">
+
+            <li><a href="tyres.html">Tyres</a></li>
+            <li><a href="rims.html">Rims</a></li>
+            <li><a href="accessories.html">Accessories</a></li>
+            <li><a href="runflats.html">Runflats</a></li>
+            <li><a href="nama.html">NAMA X/T</a></li>
+            <li><a href="LSW.html">LSW</a></li>
+          </ul>
+        </div>
+        <a href="industries.html">Industries</a>
+        <a href="news.html">News</a>
+        <a href="events.html">Events</a>
+        <a href="contact.html">Contact Us</a>
+      </nav>
+      <div class="nav-cta">
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-menu">☰</button>
+      </div>
+    </div>
+  </header>
+  <!-- ============ PROMO BANNER ============ -->
+  <div class="tgw-promo" role="region" aria-label="Announcements">
+    <div class="tgw-promo-ticker">
+      <div class="tgw-promo-track">
+        <span class="tgw-promo-item"><span class="tgw-promo-dot"></span>Find our Goodyear Lubricants exclusively on Takealot</span>
+        <span class="tgw-promo-sep">•</span>
+        <span class="tgw-promo-item">Our new NAMA tyres have launched</span>
+        <span class="tgw-promo-sep">•</span>
+        <span class="tgw-promo-item">Check out Crazy Werrie's NAMA tyres video on Facebook, Instagram, TikTok or YouTube</span>
+        <span class="tgw-promo-sep">•</span>
+        <span class="tgw-promo-item" aria-hidden="true"><span class="tgw-promo-dot"></span>Find our Goodyear Lubricants exclusively on Takealot</span>
+        <span class="tgw-promo-sep" aria-hidden="true">•</span>
+        <span class="tgw-promo-item" aria-hidden="true">Our new NAMA tyres have launched</span>
+        <span class="tgw-promo-sep" aria-hidden="true">•</span>
+        <span class="tgw-promo-item" aria-hidden="true">Check out Crazy Werrie's NAMA tyres video on Facebook, Instagram, TikTok or YouTube</span>
+        <span class="tgw-promo-sep" aria-hidden="true">•</span>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="page-head contact-hero" id="top">
+      <span class="bg"><img src="src/images/tyres/tyres-hero.webp" alt="Titan Global Wheel — off-highway tyres" loading="lazy"></span>
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="kicker">Tyres</span>
+          <h1>Built for the <span class="accent">toughest terrain</span> on earth</h1>
+          <p>Titan Global Wheel supplies a comprehensive range of off-highway tyres for agriculture, construction, mining and military applications - engineered for durability, traction and payload in the most demanding conditions. <br> We have access to the Titan International wide range of 'off-highway' rims, and we are able to tap into their tyre catalogue.
+This differentiates us in the market, as Titan International has the license for the agricultural Goodyear brand, which enables us to reintroduce this popular brand into both the local and sub-Saharan African markets.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ AGRICULTURAL ============ -->
+    <section id="agricultural" style="padding-top:20px;padding-bottom: 20px;background:linear-gradient(180deg, rgba(249,250,251,.20) 0%, rgba(249,250,251,.75) 100%), url('src/images/tyres/tyres-agri-banner.jpeg') center / cover no-repeat;">
+      <div class="wrap">
+        <span class="eyebrow reveal"><span class="dot"></span> Agriculture</span>
+        <h2 class="section-title reveal"><span class="hl">Agricultural</span> Tyres</h2>
+        <p class="section-desc reveal">High-performance agricultural tyres designed for tractors, harvesters, sprayers and trailers. Our range includes extreme flotation, LSW (Low Sidewall) and MFWD solutions to reduce soil compaction and improve traction across all field conditions. <br>
+          Our priority is to move the agricultural world to anticipate industry trends.  This is why cutting edge technology and premium designs are used on the Goodyear tyres, manufactured by Titan, that move tractors, harvesting machines, bulk carriers and implements.
+        </p>
+        <div class="pdf-pills reveal" id="agri-pills"></div>
+      </div>
+    </section>
+
+    <!-- ============ CONSTRUCTION ============ -->
+    <section id="construction" style="padding-top:20px;padding-bottom: 20px;background:linear-gradient(180deg, rgba(255,255,255,.0) 0%, rgba(255,255,255,) 100%), url('src/images/tyres/tyres-construction-banner.webp') center / cover no-repeat;">
+      <div class="wrap">
+        <span class="eyebrow reveal"><span class="dot"></span> Construction</span>
+        <h2 class="section-title reveal"><span class="hl">Construction</span> Tyres</h2>
+        <p class="section-desc reveal">Off-the-road (OTR) tyres for earthmoving, road building and construction equipment. Our load and inflation tables and OTR databook provide comprehensive technical specifications for selecting the right tyre for the job. <br>
+Titan Global Wheel has a complete range of products from multi-piece 15” rims through to a tubeless 22.5” single piece rims in forged aluminium and or steel. The variables thereof are numerous depending on the vehicle’s application, offset, PCD, Bore, Stud quantity and configuration.
+
+In accordance with our own stringent quality standards, we visit our partners on a regular basis to ensure the quality approval process is fully adhered to. This would include that all rims supplied have been tested and approved.
+As such, Titan Global Wheel warrants its products accordingly. </p>
+        <div class="pdf-pills reveal" id="construction-pills"></div>
+      </div>
+    </section>
+
+    <!-- ============ MINING ============ -->
+    <section id="mining" style="padding-top:20px;padding-bottom: 20px;background:linear-gradient(180deg, rgba(249,250,251,.50) 0%, rgba(249,250,251,.75) 100%), url('src/images/tyres/tyres-mining-banner.webp') center / cover no-repeat;">
+      <div class="wrap">
+        <span class="eyebrow reveal"><span class="dot"></span> Mining</span>
+        <h2 class="section-title reveal"><span class="hl">Mining</span> Tyres</h2>
+        <p class="section-desc reveal">Durable OTR tyres for the mining industry, built to withstand severe rock conditions, high temperatures and extreme loads in open-pit and underground operations. <br> Titan Global Wheel has a strong presence at most major mining sites throughout Southern Africa. We are an approved OEM supplier as well as an aftermarket supplier. We can assist with wheel solutions for all vehicles currently in operation.
+Our dealers cater for specified requirements for the variety of size and type of tyres for nearly any equipment in your mine. <br>
+Apart from new manufactured tyres, rims and components, we also offer rim refurbishment.
+</p>
+        <div class="pdf-pills reveal" id="mining-pills"></div>
+      </div>
+    </section>
+
+    <!-- ============ MILITARY ============ -->
+    <section id="military" style="background:#0a0d10;color:var(--text-invert);">
+      <div class="wrap">
+        <span class="eyebrow reveal" style="color:var(--accent-2);border-color:rgba(224,16,48,.35);"><span class="dot"></span> Defence</span>
+        <h2 class="section-title reveal"><span class="hl" style="color:var(--accent-2);">Military</span> Tyres, Rims &amp; Run Flat Systems</h2>
+        <div class="reveal">
+          <p style="color:var(--muted-invert);font-size:17px;max-width:66ch;margin-bottom:30px;line-height:1.6;">
+            We have been a major player in supporting passive applications to the defence forces around the world for over 40 years. The undeniable and irrefutable quality and consistency of our products remains a hallmark of who we are. Our niche is our ability to design and test specific steel and aluminium rim requirements and manufacture small to large batch quantities that provides our customers with flexibility and shorter lead times.
+          </p>
+          <p style="color:var(--muted-invert);font-size:17px;max-width:66ch;margin-bottom:30px;line-height:1.6;">
+            We have also strengthened our partnership with Tyron Run Flat Systems to become their distributor of Run Flat Inserts in Africa. This alliance together with various military tyre manufacturers provides us the ability to supply a complete Tyre, Rim and Run Flat Insert assembly.
+          </p>
+          <p style="color:var(--muted-invert);font-size:17px;max-width:66ch;margin-bottom:40px;line-height:1.6;">
+            Tyron, the originators of the well filler band, have designed and developed a unique rubber run flat system for military and off-road vehicles. This patented system is a modular design and does not require a hydraulic press to squeeze the run flat into the tyre, making this the only field mountable and demountable rubber run flat system in the world.
+          </p>
+        </div>
+
+        <!-- Table 1 -->
+        <div class="reveal">
+          <h3 style="font-size:clamp(22px,2.8vw,30px);font-weight:800;margin:0 0 4px;">Tyron Run Flat Insert</h3>
+          <h4 style="font-size:18px;font-weight:600;color:var(--accent-2);margin:0 0 6px;">20 – 11.00″ SDC</h4>
+          <p class="table-subtitle" style="border-color:var(--accent-2);color:var(--muted);">Semi Drop Centre (SDC) rim — flange height 25.4mm, bead seat diameter 512.8mm, nominal diameter 500mm</p>
+          <div class="table-wrap" style="border-color:#2a323c;">
+            <table>
+              <thead>
+                <tr><th>Tyre Size</th><th>Rim Size</th><th>Tyron Part Number</th><th>RFI Load Rating</th><th>Tyre Load Rating</th><th>Rim Load Rating</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>335/80R20</td><td>20 – 11.00″ SDC</td><td>ATR20-750 RFI</td><td>3000 kg</td><td>2575 kg</td><td>3000 kg</td></tr>
+                <tr><td>365/80R20</td><td>20 – 11.00″ SDC</td><td>ATR20-750 RFI</td><td>3000 kg</td><td>3550 kg</td><td>3000 kg</td></tr>
+                <tr><td>12.5R20</td><td>20 – 11.00″ SDC</td><td>ATR20-750 RFI</td><td>3000 kg</td><td>2575 kg</td><td>3000 kg</td></tr>
+                <tr><td>14.5R20</td><td>20 – 11.00″ SDC</td><td>ATR20-750 RFI</td><td>3000 kg</td><td>3550 kg</td><td>3000 kg</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Table 2 -->
+        <div class="reveal">
+          <h4 style="font-size:18px;font-weight:600;color:var(--accent-2);margin:30px 0 6px;">20 – 10.00″ Flat Base</h4>
+          <p class="table-subtitle" style="border-color:var(--accent-2);color:var(--muted);">Flat base rim — flange height 50.8mm, bead seat diameter 514.4mm, nominal diameter 508mm</p>
+          <div class="table-wrap" style="border-color:#2a323c;">
+            <table>
+              <thead>
+                <tr><th>Tyre Size</th><th>Rim Size</th><th>Tyron Part Number</th><th>RFI Load Rating</th><th>Tyre Load Rating</th><th>Rim Load Rating</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>365/85R20</td><td>20 – 10.00″ Flat Base</td><td>ATR20-825 RFI</td><td>5000 kg</td><td>5000 kg</td><td>5000 kg</td></tr>
+                <tr><td>395/85R20</td><td>20 – 10.00″ Flat Base</td><td>ATR20-875 RFI</td><td>5000 kg</td><td>5600 kg</td><td>5000/5500 kg</td></tr>
+                <tr><td>14.00R20</td><td>20 – 10.00″ Flat Base</td><td>ATR20-950 RFI</td><td>5000 kg</td><td>5000 kg</td><td>5000/5500 kg</td></tr>
+                <tr><td>16.00R20</td><td>20 – 10.00″ Flat Base</td><td>ATR20-950 RFI</td><td>5000 kg</td><td>6500 kg</td><td>5000/5500 kg</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Table 3 -->
+        <div class="reveal">
+          <h3 style="font-size:clamp(22px,2.8vw,30px);font-weight:800;margin:40px 0 4px;">Tyron Bead Locks</h3>
+          <h4 style="font-size:18px;font-weight:600;color:var(--accent-2);margin:0 0 6px;">20 – 11.00″ SDC</h4>
+          <p class="table-subtitle" style="border-color:var(--accent-2);color:var(--muted);">Semi Drop Centre (SDC) rim — flange height 25.4mm, bead seat diameter 512.8mm, nominal diameter 500mm</p>
+          <div class="table-wrap" style="border-color:#2a323c;">
+            <table>
+              <thead>
+                <tr><th>Tyre Size</th><th>Rim Size</th><th>Tyron Part Number</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>335/80R20</td><td>20 – 11.00″ SDC</td><td>BL2011</td></tr>
+                <tr><td>365/80R20</td><td>20 – 11.00″ SDC</td><td>BL2011</td></tr>
+                <tr><td>12.5R20</td><td>20 – 11.00″ SDC</td><td>BL2011</td></tr>
+                <tr><td>14.5R20</td><td>20 – 11.00″ SDC</td><td>BL2011</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Table 4 -->
+        <div class="reveal">
+          <h4 style="font-size:18px;font-weight:600;color:var(--accent-2);margin:30px 0 6px;">20 – 10.00″ Flat Base</h4>
+          <p class="table-subtitle" style="border-color:var(--accent-2);color:var(--muted);">Flat base rim — flange height 50.8mm, bead seat diameter 514.4mm, nominal diameter 508mm</p>
+          <div class="table-wrap" style="border-color:#2a323c;">
+            <table>
+              <thead>
+                <tr><th>Tyre Size</th><th>Rim Size</th><th>Tyron Part Number</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>365/85R20</td><td>20 – 10.00″ Flat Base</td><td>BL2010</td></tr>
+                <tr><td>395/85R20</td><td>20 – 10.00″ Flat Base</td><td>BL2010</td></tr>
+                <tr><td>14.00R20</td><td>20 – 10.00″ Flat Base</td><td>BL2010</td></tr>
+                <tr><td>16.00R20</td><td>20 – 10.00″ Flat Base</td><td>BL2010</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Table 5 -->
+        <div class="reveal">
+          <h4 style="font-size:18px;font-weight:600;color:var(--accent-2);margin:30px 0 6px;">22.5 – 16.00″</h4>
+          <div class="table-wrap" style="border-color:#2a323c;">
+            <table>
+              <thead>
+                <tr><th>Tyre Size</th><th>Rim Size</th><th>Tyron Part Number</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>500/65R22.5</td><td>22.5 – 16.00″</td><td>BL22.5X16</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Military PDFs as pills -->
+        <div class="reveal" style="margin-top:50px;">
+          <h3 style="font-size:clamp(20px,2.4vw,28px);font-weight:800;margin:0 0 20px;">Military Product Data Sheets</h3>
+          <div class="pdf-pills reveal" id="military-pills"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand foot-logo" href="index.html" aria-label="Titan Global Wheel home">
+            <img class="logo-h" src="src/logos/Titan%20Global%20Wheel%20_logo_hortizontal_2021_1.png" alt="Titan Global Wheel" />
+          </a>
+          <p>One of the largest combined manufacturers and suppliers of commercial, mining, agricultural, earthmoving and military wheels in sub-Saharan Africa.</p>
+        </div>
+        <div class="foot-col">
+          <h4>Products</h4>
+          <a href="tyres.html">Tyres</a>
+          <a href="rims.html">Rims</a>
+          <a href="accessories.html">Accessories</a>
+          <a href="runflats.html">Runflats</a>
+          <a href="featured.html">Featured Products</a>
+        </div>
+        <div class="foot-col">
+          <h4>Industries</h4>
+          <a href="agriculture.html">Agriculture</a>
+          <a href="mining.html">Mining</a>
+          <a href="military.html">Military</a>
+          <a href="construction.html">Construction</a>
+        </div>
+        <div class="foot-col">
+          <h4>Company</h4>
+          <a href="/specials.html">Specials</a>
+          <a href="about.html">About</a>
+          <a href="news.html">News</a>
+          <a href="events.html">Events</a>
+          <a href="#">Dealer Locator</a>
+          <a href="#">Request a Quote</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div class="foot-social">
+        <div class="socials">
+          <a class="social" href="https://www.linkedin.com/company/titan-global-wheel" target="_blank" rel="noopener" aria-label="Titan Global Wheel on LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+          </a>
+          <a class="social" href="https://www.facebook.com/TitanGlobalWheel" target="_blank" rel="noopener" aria-label="Titan Global Wheel on Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073c0 6.026 4.388 11.02 10.125 11.927v-8.437H7.078v-3.49h3.047V9.43c0-3.007 1.792-4.668 4.533-4.668 1.313 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.93-1.956 1.885v2.267h3.328l-.532 3.49h-2.796v8.437C19.612 23.094 24 18.1 24 12.073z"/></svg>
+          </a>
+          <a class="social" href="https://www.instagram.com/titanglobalwheel" target="_blank" rel="noopener" aria-label="Titan Global Wheel on Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+          <a class="social" href="https://x.com/titanglobalwhee" target="_blank" rel="noopener" aria-label="Titan Global Wheel on X">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+          </a>
+          <a class="social" href="https://www.tiktok.com/@titan.global.wheel" target="_blank" rel="noopener" aria-label="Titan Global Wheel on TikTok">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.43 3.9-1.41 1.87-4.32 2.37-6.21 1.06-.91-.56-1.6-1.5-1.92-2.5-.31-1-.34-2.07-.15-3.09.38-2.52 2.67-4.16 5.18-3.85.71.08 1.39.22 2.04.45.4-.66.51-1.45.27-2.18-.45-1.28-1.97-1.89-3.2-1.67-.9.15-1.69.72-2.08 1.54-.24.5-.31 1.06-.25 1.6v-4.3c.79-.07 1.59-.06 2.38-.05z"/></svg>
+          </a>
+          <a class="social" href="https://www.youtube.com/@TitanGlobalWheel" target="_blank" rel="noopener" aria-label="Titan Global Wheel on YouTube">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+        <div class="foot-partners">
+          <a class="foot-partner" href="#" target="_blank" rel="noopener" aria-label="Goodyear">
+            <img src="src/logos/goodyear-logo.png" alt="Goodyear" />
+          </a>
+          <a class="foot-partner" href="nama.html" rel="noopener" aria-label="NAMA X/T tyres - see product page">
+            <img src="src/logos/nama.png" alt="NAMA" />
+          </a>
+        </div>
+        <div class="foot-legal">
+          <span class="legal-item">Company Reg No. 2010/014325/07</span>
+          <span class="legal-item">VAT No. 4690261328</span>
+          <a class="cert-badge" href="./src/public/pdfs/B-BBEE%20Certificate%20TGW.pdf" target="_blank" rel="noopener noreferrer">B-BBEE Certificate</a>
+          <a class="cert-badge" href="./src/public/pdfs/ISO-9001.pdf" target="_blank" rel="noopener noreferrer">ISO 9001 Certificate</a>
+        </div>
+      </div>
+      <div class="foot-bot">
+        <div class="foot-bot-left">
+          <span>© 2026 Titan Global Wheel. ISO-certified manufacturer.</span>
+          <span>Goodyear &amp; Tyron partner · Sub-Saharan Africa</span>
+          <a href="Privacy-Policy.html">Privacy Policy</a>
+          <a href="Cookies-Policy.html">Cookies Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ MODAL ============ -->
+  <div class="modal-overlay" id="pdfModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <div class="modal-head">
+        <h3 id="modalTitle">PDF Viewer</h3>
+        <button class="modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <iframe id="modalIframe" title="PDF preview" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /* Nav toggle */
+      var toggle = document.querySelector('.nav-toggle');
+      var menu = document.getElementById('primary-menu');
+      if (!toggle || !menu) return;
+
+      function setMenu(open) {
+        menu.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.textContent = open ? '\u2715' : '\u2630';
+        if (!open) {
+          menu.querySelectorAll('.has-dropdown.open').forEach(function (d) {
+            d.classList.remove('open');
+            var p = d.querySelector('a');
+            if (p) p.setAttribute('aria-expanded', 'false');
+          });
+        }
+      }
+
+      toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setMenu(!menu.classList.contains('open'));
+      });
+
+      /* Dropdown hover */
+      var dropdownItems = menu.querySelectorAll('.has-dropdown');
+      dropdownItems.forEach(function (item) {
+        var closeTimer;
+        var parentLink = item.querySelector('a');
+        function openDropdown() {
+          clearTimeout(closeTimer);
+          item.classList.add('open');
+          if (parentLink) parentLink.setAttribute('aria-expanded', 'true');
+        }
+        function closeDropdown() {
+          clearTimeout(closeTimer);
+          closeTimer = setTimeout(function () {
+            item.classList.remove('open');
+            if (parentLink) parentLink.setAttribute('aria-expanded', 'false');
+          }, 250);
+        }
+        item.addEventListener('mouseenter', openDropdown);
+        item.addEventListener('mouseleave', closeDropdown);
+        item.addEventListener('focusin', openDropdown);
+        item.addEventListener('focusout', closeDropdown);
+      });
+
+      /* Mobile tap */
+      var dropdownParents = menu.querySelectorAll('.has-dropdown > a');
+      dropdownParents.forEach(function (parentLink) {
+        parentLink.addEventListener('click', function (e) {
+          var isMobile = window.matchMedia('(max-width: 980px)').matches;
+          if (!isMobile) return;
+          e.preventDefault();
+          e.stopPropagation();
+          var item = parentLink.parentElement;
+          var open = item.classList.toggle('open');
+          parentLink.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      });
+
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { setMenu(false); });
+      });
+
+      document.addEventListener('click', function (e) {
+        if (menu.classList.contains('open') && !menu.contains(e.target) && !toggle.contains(e.target)) {
+          setMenu(false);
+        }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') setMenu(false);
+      });
+      window.addEventListener('resize', function () {
+        if (window.innerWidth > 980) setMenu(false);
+      });
+
+      /* Modal */
+      var modalOverlay = document.getElementById('pdfModal');
+      var modalIframe = document.getElementById('modalIframe');
+      var modalTitle = document.getElementById('modalTitle');
+      var modalClose = modalOverlay.querySelector('.modal-close');
+
+      function openModal(src, title) {
+        modalIframe.src = src;
+        modalTitle.textContent = title || 'PDF Viewer';
+        modalOverlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modalOverlay.classList.remove('open');
+        modalIframe.src = '';
+        document.body.style.overflow = '';
+      }
+
+      modalClose.addEventListener('click', closeModal);
+      modalOverlay.addEventListener('click', function (e) {
+        if (e.target === modalOverlay) closeModal();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modalOverlay.classList.contains('open')) closeModal();
+      });
+
+      /* Build PDF pill buttons */
+      function makePillLabel(path) {
+        var name = path.split('/').pop().replace(/_/g, ' ').replace(/\.pdf$/i, '');
+        name = name.replace(/ A4 \d{4}.*/, '').replace(/-[\dA-Z]+$/, '').replace(/-PRINT$/, '').replace(/_compressed$/, '');
+        return name.trim();
+      }
+
+      function addPills(containerId, pdfs) {
+        var container = document.getElementById(containerId);
+        if (!container) return;
+        pdfs.forEach(function (path) {
+          var btn = document.createElement('button');
+          btn.className = 'pdf-pill';
+          var icon = document.createElement('span');
+          icon.className = 'icon';
+          icon.textContent = 'PDF';
+          btn.appendChild(icon);
+          var label = document.createElement('span');
+          label.textContent = makePillLabel(path);
+          btn.appendChild(label);
+          btn.addEventListener('click', function () {
+            openModal(path, label.textContent);
+          });
+          container.appendChild(btn);
+        });
+      }
+
+      addPills('agri-pills', [
+        'src/agti%20tyres/TGW_Extreme_flotation_A4_2022_1F.pdf',
+        'src/agti%20tyres/TGW_LSW_ultimate_A4_2022_1F-1.pdf',
+        'src/agti%20tyres/TGW_MFWD_A4_2022_1F-1.pdf',
+        'src/agti%20tyres/Titan-Brazil-Agri-Good-Year-Catalog.pdf'
+      ]);
+
+      addPills('construction-pills', [
+        'src/construction%20tyres/OTR-Load-Inflation-10032022.pdf',
+        'src/construction%20tyres/Vol-11-OTR-Tires-Databook.pdf'
+      ]);
+
+      addPills('mining-pills', [
+        'src/minning%20tyres/Vol-11-OTR-Tires-Databook.pdf'
+      ]);
+
+      addPills('military-pills', [
+        'src/military%20tyres/2016_Conti_CST_SpecOps_A4_EN_160526_v5-PRINT.pdf',
+        'src/military%20tyres/Military-Brochure_2011-12_GB_A4_Bdef.pdf',
+        'src/military%20tyres/PS22-Technical-Specifications.pdf'
+      ]);
+    })();
+  </script>
+
+  <!-- Scroll reveal observer -->
+  <script>
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var reveals = Array.from(document.querySelectorAll('.reveal'));
+
+      function setFinal() {
+        reveals.forEach(function (el) { el.classList.add('in'); });
+      }
+      if (reduce || !('IntersectionObserver' in window)) { setFinal(); return; }
+
+      var revObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); revObs.unobserve(e.target); }
+        });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+      reveals.forEach(function (el) { revObs.observe(el); });
+    })();
+  </script>
+  <script>
+    (function(){var p=document.querySelector('.tgw-promo');if(!p)return;var t=120,r=false;function o(){p.style.opacity=window.scrollY>t?'0':'1';p.style.visibility=window.scrollY>t?'hidden':'visible'}window.addEventListener('scroll',function(){if(!r){requestAnimationFrame(function(){o();r=false});r=true}},{passive:true});o()})();
+  </script>
+  <script src="js/logo-banner.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,40 @@
+# robots.txt — www.titanglobalwheel.co.za
+# Titan Global Wheel (Pty) Ltd
+# Off-highway wheels, rims, tyres & runflat systems
+#
+# Public pages (/, about, tyres, rims, accessories, runflats, nama,
+# featured, industries, agriculture, mining, military, construction,
+# repairs, news, events, contact, Privacy & Cookies policies) are
+# allowed. Only dev artifacts and working files are blocked below.
+
+User-agent: *
+Allow: /
+
+# --- Dev / legacy artifacts: never index ---
+Disallow: /old%20Site/
+Disallow: /original-index.html
+Disallow: /rims%20-%20backup.html
+Disallow: /tyres%20-%20Copy.html
+Disallow: /pi-session-
+
+# --- Build tooling & working directories ---
+Disallow: /.scrape/
+Disallow: /_scrape/
+Disallow: /partials/
+Disallow: /node_modules/
+Disallow: /jsonl
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /README.md
+Disallow: /_check.js
+Disallow: /_serve.cjs
+Disallow: /_serve.log
+Disallow: /generate-news.cjs
+
+# --- Private / internal directories (add as needed) ---
+# Disallow: /admin/
+# Disallow: /cgi-bin/
+# Disallow: /tmp/
+
+# Sitemap
+Sitemap: https://www.titanglobalwheel.co.za/sitemap.xml

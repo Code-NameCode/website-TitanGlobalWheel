@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- GA Google Analytics @ https://m0n.co/ga -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D07TXJ8J69"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-D07TXJ8J69');
+  </script>
+
+  <title>Customer Feedback | Titan Global Wheel</title>
+  <meta name="description" content="Tell us how Titan Global Wheel is doing. Share your experience with our tyres, rims, runflats and service — every message is read by our team." />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0d10" />
+
+  <link rel="canonical" href="https://www.titanglobalwheel.co.za/feedback.html" />
+  <link rel="alternate" hreflang="en-za" href="https://www.titanglobalwheel.co.za/feedback.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Customer Feedback | Titan Global Wheel" />
+  <meta property="og:description" content="Tell us how Titan Global Wheel is doing. Every message is read by our team — we reply within one business day." />
+  <meta property="og:url" content="https://www.titanglobalwheel.co.za/feedback.html" />
+  <meta property="og:site_name" content="Titan Global Wheel" />
+  <meta property="og:locale" content="en_ZA" />
+  <meta property="og:image" content="https://www.titanglobalwheel.co.za/og-share.png" />
+  <meta property="og:image:alt" content="Titan Global Wheel — off-highway wheel manufacturer" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Customer Feedback | Titan Global Wheel" />
+  <meta name="twitter:description" content="Tell us how Titan Global Wheel is doing. Every message is read by our team — we reply within one business day." />
+  <meta name="twitter:image" content="https://www.titanglobalwheel.co.za/og-share.png" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ContactPage",
+        "@id": "https://www.titanglobalwheel.co.za/feedback.html#webpage",
+        "url": "https://www.titanglobalwheel.co.za/feedback.html",
+        "name": "Customer Feedback",
+        "description": "Tell Titan Global Wheel how we are doing — feedback on our tyres, rims, runflat systems and service.",
+        "isPartOf": { "@id": "https://www.titanglobalwheel.co.za/#website" },
+        "inLanguage": "en-ZA"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.titanglobalwheel.co.za/#website",
+        "url": "https://www.titanglobalwheel.co.za/",
+        "name": "Titan Global Wheel",
+        "inLanguage": "en-ZA"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.titanglobalwheel.co.za/index.html" },
+          { "@type": "ListItem", "position": 2, "name": "Customer Feedback", "item": "https://www.titanglobalwheel.co.za/feedback.html" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Will I get a reply to my feedback?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Every message is read by our team and we aim to reply within one business day. If your feedback relates to a safety or warranty concern, we prioritise those and will contact you as soon as possible."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What should I include in my feedback?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tell us what you bought, the machine or vehicle it was fitted to, your working conditions and what went well or could be better. Photos of the wheel, tyre or installation help us a lot."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="icon" type="image/png" href="src/logos/favicon.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Archivo:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/mobile-nav.css" />
+
+  <style>
+    :root {
+      /* Brand tokens (match the home page) */
+      --bg: #0a0d10;
+      --bg-2: #11151a;
+      --surface: #161b22;
+      --surface-2: #1d242d;
+      --line: #2a323c;
+      --text: #0a0d10;
+      --text-invert: #f4f6f8;
+      --muted: #9aa4af;
+      --muted-invert: #b8c2cc;
+      --accent: #114172;        /* Titan brand blue */
+      --accent-2: #e01030;      /* Titan brand red */
+      --steel: #5b8bd0;
+      --ok: #2fb672;
+
+      --radius: 14px;
+      --radius-lg: 22px;
+      --maxw: 1200px;
+      --shadow: 0 18px 50px -20px rgba(0,0,0,.55);
+      --shadow-sm: 0 8px 24px -12px rgba(0,0,0,.45);
+      --shadow-md: 0 14px 40px -16px rgba(0,0,0,.35);
+
+      --font-body: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      --font-display: 'Archivo', 'Inter', system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      color: var(--text);
+      background: #ffffff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { font-family: var(--font-display); line-height: 1.05; letter-spacing: -.02em; margin: 0; }
+    .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 22px; }
+    .skip-link { position:absolute; left:-999px; top:0; background:var(--accent); color:#fff; padding:10px 16px; z-index:100; }
+    .skip-link:focus { left: 12px; top: 12px; }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-weight: 700; font-size: 15px; letter-spacing: .01em;
+      padding: 14px 24px; border-radius: 999px; cursor: pointer;
+      border: 1.5px solid transparent; transition: transform .15s ease, background .2s ease, box-shadow .2s ease;
+      white-space: nowrap;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn-primary { background: var(--accent); color: #ffffff; box-shadow: 0 10px 26px -10px rgba(17,65,114,.55); }
+    .btn-primary:hover { background: #0d335c; }
+    .btn-ghost { border-color: currentColor; background: transparent; }
+    .btn-on-dark { color: var(--text-invert); }
+    .btn-on-dark:hover { background: rgba(255,255,255,.08); }
+    .btn-dark { background: var(--bg); color: #fff; }
+    .btn-dark:hover { background: #1d242d; }
+    .btn .arrow { transition: transform .2s ease; }
+    .btn:hover .arrow { transform: translateX(3px); }
+
+    /* ---------- Hero (home-page hero treatment) ---------- */
+    .hero {
+      position: relative; color: var(--text-invert);
+      background:
+        radial-gradient(120% 120% at 80% -10%, rgba(17,65,114,.30), transparent 55%),
+        radial-gradient(90% 90% at 0% 110%, rgba(91,139,208,.18), transparent 50%),
+        linear-gradient(180deg, #0a0d10 0%, #11151a 60%, #0a0d10 100%);
+      overflow: hidden;
+    }
+    .hero::after {
+      content:""; position:absolute; inset:0;
+      background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 64px 64px; mask-image: radial-gradient(100% 80% at 50% 0%, #000, transparent 75%);
+      pointer-events:none;
+    }
+    .hero-inner { position: relative; z-index: 2; padding-top: 92px; padding-bottom: 84px; }
+    .eyebrow {
+      display:inline-flex; align-items:center; gap:10px;
+      font-size: 12.5px; letter-spacing:.2em; text-transform:uppercase; color: var(--accent-2);
+      border:1px solid rgba(224,16,48,.45); border-radius:999px; padding:8px 16px; font-weight:700;
+    }
+    .eyebrow .dot { width:7px; height:7px; border-radius:50%; background: var(--accent); box-shadow:0 0 12px var(--accent); }
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 76px); font-weight: 900; margin: 22px 0 0; max-width: 16ch;
+    }
+    .hero h1 .accent {
+      color: var(--accent);
+      background: linear-gradient(90deg, var(--accent), var(--steel), var(--accent));
+      background-size: 200% auto;
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+      animation: shimmer 6s linear infinite;
+    }
+    @keyframes shimmer { to { background-position: 200% center; } }
+    .hero p.lede { font-size: clamp(17px, 2vw, 21px); color: var(--muted-invert); max-width: 60ch; margin: 24px 0 0; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:14px; margin-top: 36px; }
+
+    /* ---------- Trust band (home-page stats strip) ---------- */
+    .trust-band {
+      background:#0a0d10; color:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    }
+    .trust-grid { display:grid; grid-template-columns: repeat(3,1fr); }
+    .trust-cell { padding: 34px 22px; border-right:1px solid var(--line); }
+    .trust-cell:last-child { border-right:0; }
+    .trust-cell .num {
+      font-family: var(--font-display); font-weight:900; font-size: clamp(22px,2.6vw,30px);
+      color:#fff; line-height:1.05;
+    }
+    .trust-cell .num .u { color: var(--accent); }
+    .trust-cell .lbl { color: var(--muted); margin-top:10px; font-size:14px; }
+
+    /* ---------- Section shells (home-page) ---------- */
+    section { padding: 92px 0; }
+    .sec-head { max-width: 720px; margin-bottom: 48px; }
+    .sec-head .kicker { color: var(--accent); font-weight:800; letter-spacing:.16em; text-transform:uppercase; font-size:13px; }
+    .sec-head h2 { font-size: clamp(28px, 4vw, 46px); font-weight: 800; margin-top:14px; }
+    .sec-head p { color:#4a535d; font-size: 18px; margin-top:16px; }
+
+    /* ---------- Form ---------- */
+    .form-shell {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 40px;
+      align-items: start;
+      background: #fff;
+      border: 1px solid #e7eaee;
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      box-shadow: 0 8px 28px -12px rgba(10,13,16,.1);
+    }
+    .form-side h3 {
+      font-size: clamp(22px, 2.4vw, 28px);
+      font-weight: 800;
+      letter-spacing: -.02em;
+      line-height: 1.15;
+      margin: 0 0 14px;
+    }
+    .form-side p { color: #4a535d; font-size: 15px; line-height: 1.6; margin: 0 0 22px; }
+    .form-side__list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+    .form-side__list li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: #3a424b; }
+    .form-side__list li svg { width: 18px; height: 18px; color: var(--ok); flex: 0 0 auto; margin-top: 1px; }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field { display: flex; flex-direction: column; gap: 7px; position: relative; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { font-size: 13px; font-weight: 700; color: #3a424b; letter-spacing: .01em; }
+    .field input,
+    .field textarea {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--text);
+      background: #f8f9fb;
+      border: 1.5px solid #e2e7ec;
+      border-radius: 12px;
+      padding: 14px 16px;
+      transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+      width: 100%;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .field input::placeholder,
+    .field textarea::placeholder { color: #9aa4af; }
+    .field .req { color: var(--accent-2); margin-left: 2px; font-weight: 800; }
+    .field-error {
+      display: block;
+      margin-top: 4px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #a01b1b;
+      letter-spacing: .01em;
+    }
+    .field.has-error input,
+    .field.has-error textarea {
+      border-color: #d24a4a;
+      background: #fff7f7;
+      box-shadow: 0 0 0 4px rgba(210,74,74,.10);
+    }
+    .field.has-error input:focus,
+    .field.has-error textarea:focus { box-shadow: 0 0 0 4px rgba(210,74,74,.18); }
+    .field input:hover,
+    .field textarea:hover { border-color: #c2cad2; }
+    .field input:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(17,65,114,.12);
+      background: #fff;
+    }
+    .field textarea { resize: vertical; min-height: 150px; }
+
+    /* ---------- Form status (live region) ---------- */
+    .form-status {
+      display: none;
+      margin-bottom: 18px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 14.5px;
+      font-weight: 600;
+      line-height: 1.5;
+      border: 1.5px solid transparent;
+    }
+    .form-status:not(:empty) { display: block; }
+    .form-status--pending { background: #eef4fb; color: #114172; border-color: #b9cce4; }
+    .form-status--success { background: #e8f7ee; color: #1b6b3a; border-color: #b3e0c2; }
+    .form-status--error   { background: #fdecec; color: #a01b1b; border-color: #f1b5b5; }
+
+    /* Submit button loading state */
+    .btn[disabled], .btn.is-loading { cursor: not-allowed; opacity: .7; transform: none; box-shadow: none; }
+    .spinner {
+      display: inline-block;
+      width: 14px; height: 14px;
+      margin-right: 6px;
+      border: 2px solid rgba(255,255,255,.35);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: tgw-spin .7s linear infinite;
+      vertical-align: -2px;
+    }
+    @keyframes tgw-spin { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) { .spinner { animation: none; border-top-color: rgba(255,255,255,.85); } }
+    .form-grid .btn { width: 100%; justify-content: center; padding: 16px 24px; font-size: 15px; }
+
+    /* Fixed subject chip — the subject is always "Customer Feedback". */
+    .fb-subject {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin: 0 0 18px; padding: 7px 13px;
+      border: 1px solid #d9e4f2; border-radius: 999px;
+      background: #eef4fb; color: var(--accent);
+      font-size: 12.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+    }
+    .fb-subject svg { width: 14px; height: 14px; }
+
+    /* ---------- Closing CTA ---------- */
+    .cta-strip { background: #f6f7f9; }
+    .cta-copy { max-width: 720px; }
+    .cta-copy h2 { font-size: clamp(26px, 3.6vw, 40px); font-weight: 800; }
+    .cta-copy p { color: #4a535d; font-size: 17px; margin: 16px 0 26px; }
+    .cta-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+
+    /* ---------- Reveal ---------- */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 980px) {
+      .hero-inner { padding-top: 64px; padding-bottom: 58px; }
+      .hero h1 { font-size: clamp(2rem, 6.5vw, 3.4rem); }
+      section { padding: 68px 0; }
+      .trust-grid { grid-template-columns: 1fr; }
+      .trust-cell { border-right: 0; border-bottom: 1px solid var(--line); }
+      .trust-cell:last-child { border-bottom: 0; }
+      .form-shell { grid-template-columns: 1fr; padding: 28px; gap: 28px; }
+    }
+    @media (max-width: 620px) {
+      .hero-inner { padding-top: 44px; padding-bottom: 40px; }
+      .hero h1 { font-size: clamp(1.75rem, 7.5vw, 2.4rem); }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+      section { padding: 56px 0; }
+      .trust-cell { padding: 24px 20px; }
+      .form-shell { padding: 22px 18px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .sec-head { margin-bottom: 34px; }
+      .cta-actions .btn { width: 100%; justify-content: center; }
+    }
+  </style>
+
+  <script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+  <script type="text/javascript">
+    // EmailJS — same service/template as the contact page.
+    (function () {
+      try {
+        emailjs.init({ publicKey: 'HbawkQbDCSfUZdOkU' });
+      } catch (e) {
+        console.warn('EmailJS SDK not available yet:', e);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ HEADER (mirrors index.html) ============ -->
+  <div class="site-top">
+    <header class="site" id="top">
+      <div class="wrap nav">
+        <a class="brand" href="index.html" aria-label="Titan Global Wheel home">
+          <img class="logo-h" src="src/logos/Titan%20Global%20Wheel%20_logo_hortizontal_2021_1.png" alt="Titan Global Wheel" style="height:clamp(26px,3.4vw,34px);width:auto;display:block;" />
+        </a>
+        <nav id="primary-menu" class="nav-links" aria-label="Primary">
+          <a href="about.html">About</a>
+          <div class="nav-item has-dropdown">
+            <a href="products.html" aria-haspopup="true" aria-expanded="false">Products <span class="caret" aria-hidden="true"></span></a>
+            <ul class="dropdown">
+              <li><a href="products.html" class="dd-overview">All Products</a></li>
+              <li><a href="tyres.html">Tyres</a></li>
+              <li><a href="rims.html">Rims</a></li>
+              <li><a href="accessories.html">Accessories</a></li>
+              <li><a href="runflats.html">Runflats</a></li>
+              <li><a href="nama.html">NAMA X/T</a></li>
+              <li><a href="LSW.html">LSW</a></li>
+            </ul>
+          </div>
+          <a href="industries.html">Industries</a>
+          <a href="news.html">News</a>
+          <a href="events.html">Events</a>
+          <a href="contact.html">Contact Us</a>
+        </nav>
+        <div class="nav-cta">
+          <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-menu">☰</button>
+        </div>
+      </div>
+    </header>
+    <!-- No rotating banners on this page: the announcement ticker and the
+         partner-logo marquee are intentionally omitted. -->
+  </div>
+
+  <style>
+    /* Header / promo chrome (same rules as index.html) */
+    .site-top { position: sticky; top: 0; z-index: 50; }
+    header.site {
+      position: relative; z-index: 2;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e7eaee;
+      color: var(--text);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .nav-links { display: flex; align-items: center; gap: 28px; margin-left: auto; }
+    .nav-links a { font-size: 15px; font-weight: 500; color: var(--accent); transition: color .15s; }
+    .nav-links a:hover, .nav-links a:focus-visible, .nav-links a.active { color: var(--accent-2); }
+    .nav-cta { display: flex; align-items: center; gap: 14px; }
+    .nav-toggle { display:none; background:none; border:0; color: var(--text); font-size:26px; cursor:pointer; }
+    .nav-item { position: relative; }
+    .nav-links .caret {
+      display: inline-block; width: 7px; height: 7px; margin-left: 8px;
+      border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+      transform: rotate(45deg) translateY(-2px); opacity: .75;
+      transition: transform .2s ease, opacity .2s ease;
+    }
+    .has-dropdown.open .caret { transform: rotate(225deg) translateY(-2px); opacity: 1; }
+    .dropdown {
+      position: absolute; top: 100%; left: 0;
+      min-width: 232px; margin-top: 14px; padding: 8px;
+      list-style: none; background: #fff;
+      border: 1px solid #e7eaee; border-radius: 16px;
+      box-shadow: 0 22px 50px -20px rgba(10,13,16,.30);
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transform: translateY(-8px);
+      transition: opacity .18s ease, transform .18s ease, visibility 0s;
+    }
+    .dropdown::before { content: ""; position: absolute; left: 0; right: 0; top: -14px; height: 14px; }
+    .dropdown li { margin: 0; }
+    .dropdown a {
+      display: flex; align-items: center; gap: 12px;
+      padding: 11px 14px; border-radius: 10px;
+      color: var(--text); font-size: 15px; font-weight: 500;
+      transition: background .15s ease, color .15s ease, padding-left .15s ease;
+    }
+    .dropdown a::before {
+      content: ""; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); opacity: .35; flex: 0 0 auto;
+      transition: opacity .15s ease, transform .15s ease;
+    }
+    .dropdown a:hover, .dropdown a:focus-visible { background: rgba(17,65,114,.08); color: var(--accent); padding-left: 18px; }
+    .dropdown a:hover::before, .dropdown a:focus-visible::before { opacity: 1; transform: scale(1.35); }
+    .has-dropdown:hover .dropdown,
+    .has-dropdown:focus-within .dropdown,
+    .has-dropdown.open .dropdown {
+      opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0);
+      transition-delay: 0s;
+    }
+    /* Desktop nav -> mobile dropdown fallback (only for no-JS/older cases; mobile-nav.js drives the drawer) */
+    @media (max-width: 980px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px; left: 0; right: 0;
+        flex-direction: column; align-items: stretch; gap: 0;
+        background: #ffffff; border-bottom: 1px solid #e7eaee;
+        box-shadow: var(--shadow-sm); padding: 6px 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display:block; }
+      .has-dropdown.open .dropdown,
+      .has-dropdown:hover .dropdown,
+      .has-dropdown:focus-within .dropdown {
+        position: static; transform: none; opacity: 1; visibility: visible; pointer-events: auto;
+        box-shadow: none; border: 0; margin: 0; padding: 0 0 4px; background: transparent;
+      }
+      .dropdown a { padding: 11px 22px 11px 40px; color: var(--accent); font-size: 15px; }
+      .nav-links > a, .nav-links > .nav-item > a { display:block; padding:15px 22px; border-bottom:1px solid #f0f2f5; font-size:16px; }
+    }
+  </style>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <span class="eyebrow"><span class="dot"></span>Customer Feedback</span>
+        <h1>Tell us how <span class="accent">we're doing</span></h1>
+        <p class="lede">Your experience with our tyres, rims, runflat systems and service shapes what we build next. Share the good, share the problems — every message is read by our team.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#feedback">Share your feedback <span class="arrow">↓</span></a>
+          <a class="btn btn-ghost btn-on-dark" href="contact.html">Contact us <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TRUST BAND ============ -->
+    <section class="trust-band" style="padding:0;">
+      <div class="wrap">
+        <div class="trust-grid">
+          <div class="trust-cell">
+            <div class="num">Every message <span class="u">is read</span></div>
+            <div class="lbl">Directly by our team — nothing is filtered or auto-answered.</div>
+          </div>
+          <div class="trust-cell">
+            <div class="num">1 <span class="u">business day</span></div>
+            <div class="lbl">Typical reply time on feedback and follow-up questions.</div>
+          </div>
+          <div class="trust-cell">
+            <div class="num">It shapes <span class="u">the range</span></div>
+            <div class="lbl">Fitments, availability and service standards all change because of feedback like yours.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEEDBACK FORM ============ -->
+    <section id="feedback" style="background:#f6f7f9;">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="kicker">Your voice</span>
+          <h2>Share your <span style="color:var(--accent);">experience</span></h2>
+          <p>Praise, problems, ideas or a hard-won tip — it all reaches the same small team. Fields marked with an asterisk are required.</p>
+        </div>
+
+        <div class="form-shell reveal">
+          <div class="form-side">
+            <h3>Tell us about <span style="color:var(--accent);">your experience</span></h3>
+            <p>Help us help you better. The more context you give, the faster we can put it right.</p>
+            <ul class="form-side__list">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                What you bought and which machine or vehicle it went on
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Your working conditions — load, terrain, hours
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Safety, warranty or quality issues — these are prioritised
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Photos help enormously — include them in a reply email if you have them
+              </li>
+            </ul>
+          </div>
+
+          <form id="feedback-form" action="#" method="post" novalidate autocomplete="on">
+            <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+
+            <p class="fb-subject" aria-label="Subject: Customer Feedback">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m4 6 8 6 8-6"/></svg>
+              Subject: Customer Feedback
+            </p>
+
+            <div class="form-grid">
+              <div class="field">
+                <label for="ff-name">Your name <span class="req" aria-hidden="true">*</span></label>
+                <input id="ff-name" name="name" type="text" placeholder="Full name" required aria-required="true" autocomplete="name" maxlength="80" minlength="2" pattern="[A-Za-z\u00C0-\u017F .'\-]{2,80}" />
+                <small class="field-error" id="ff-name-err" hidden></small>
+              </div>
+              <div class="field">
+                <label for="ff-email">Your email <span class="req" aria-hidden="true">*</span></label>
+                <input id="ff-email" name="email" type="email" placeholder="you@example.com" required aria-required="true" autocomplete="email" maxlength="120" />
+                <small class="field-error" id="ff-email-err" hidden></small>
+              </div>
+              <div class="field full">
+                <label for="ff-company">Company name <span class="req" aria-hidden="true">*</span></label>
+                <input id="ff-company" name="company" type="text" placeholder="Company, farm or fleet name" required aria-required="true" autocomplete="organization" maxlength="120" minlength="2" />
+                <small class="field-error" id="ff-company-err" hidden></small>
+              </div>
+              <div class="field">
+                <label for="ff-phone">Phone (optional)</label>
+                <input id="ff-phone" name="phone" type="tel" placeholder="+27 ..." autocomplete="tel" maxlength="20" pattern="[0-9 +()\-]{0,20}" />
+                <small class="field-error" id="ff-phone-err" hidden></small>
+              </div>
+              <div class="field">
+                <label for="ff-role">You are (optional)</label>
+                <input id="ff-role" name="role" type="text" placeholder="e.g. Fleet manager, farmer" maxlength="80" />
+                <small class="field-error" id="ff-role-err" hidden></small>
+              </div>
+              <div class="field full">
+                <label for="ff-comment">Your comment <span class="req" aria-hidden="true">*</span></label>
+                <textarea id="ff-comment" name="comment" placeholder="Tell us what happened, what worked well and what we should change..." required aria-required="true" maxlength="2000" minlength="10"></textarea>
+                <small class="field-error" id="ff-comment-err" hidden></small>
+              </div>
+              <div class="field full">
+                <button class="btn btn-primary" type="submit" id="submit-btn">
+                  <span id="btn-text">Send feedback <span class="arrow">→</span></span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CLOSING CTA ============ -->
+    <section class="cta-strip">
+      <div class="wrap">
+        <div class="cta-copy reveal">
+          <span class="eyebrow" style="color:var(--accent);border-color:rgba(17,65,114,.35);">Still need help?</span>
+          <h2>Feedback is not the only way to reach us</h2>
+          <p>For quotations, technical sizing, warranty claims or urgent matters, the contact page puts you straight through to our team — or call the switchboard on +27 (0)16 341 9800.</p>
+          <div class="cta-actions">
+            <a class="btn btn-primary" href="contact.html">Go to contact page <span class="arrow">→</span></a>
+            <a class="btn btn-ghost" href="about.html">About Titan</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER (mirrors the site footer; Customer Feedback replaces Featured Products) ============ -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand foot-logo" href="index.html" aria-label="Titan Global Wheel home">
+            <img class="logo-h" src="src/logos/Titan%20Global%20Wheel%20_logo_hortizontal_2021_1.png" alt="Titan Global Wheel" />
+          </a>
+          <p>One of the largest combined manufacturers and suppliers of commercial, mining, agricultural, earthmoving and military wheels in sub-Saharan Africa.</p>
+        </div>
+        <div class="foot-col">
+          <h4>Products</h4>
+          <a href="tyres.html">Tyres</a>
+          <a href="rims.html">Rims</a>
+          <a href="accessories.html">Accessories</a>
+          <a href="runflats.html">Runflats</a>
+          <a href="feedback.html">Customer Feedback</a>
+        </div>
+        <div class="foot-col">
+          <h4>Industries</h4>
+          <a href="agriculture.html">Agriculture</a>
+          <a href="mining.html">Mining</a>
+          <a href="military.html">Military</a>
+          <a href="construction.html">Construction</a>
+        </div>
+        <div class="foot-col">
+          <h4>Company</h4>
+          <a href="specials.html">Specials</a>
+          <a href="about.html">About</a>
+          <a href="news.html">News</a>
+          <a href="events.html">Events</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div class="foot-social">
+        <div class="socials">
+          <a class="social" href="https://www.linkedin.com/company/titan-global-wheel" target="_blank" rel="noopener" aria-label="Titan Global Wheel on LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+          </a>
+          <a class="social" href="https://www.facebook.com/TitanGlobalWheel" target="_blank" rel="noopener" aria-label="Titan Global Wheel on Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073c0 6.026 4.388 11.02 10.125 11.927v-8.437H7.078v-3.49h3.047V9.43c0-3.007 1.792-4.668 4.533-4.668 1.313 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.93-1.956 1.885v2.267h3.328l-.532 3.49h-2.796v8.437C19.612 23.094 24 18.1 24 12.073z"/></svg>
+          </a>
+          <a class="social" href="https://www.instagram.com/titanglobalwheel" target="_blank" rel="noopener" aria-label="Titan Global Wheel on Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+          <a class="social" href="https://x.com/titanglobalwhee" target="_blank" rel="noopener" aria-label="Titan Global Wheel on X">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298z"/></svg>
+          </a>
+          <a class="social" href="https://www.tiktok.com/@titan.global.wheel" target="_blank" rel="noopener" aria-label="Titan Global Wheel on TikTok">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.43 3.9-1.41 1.87-4.32 2.37-6.21 1.06-.91-.56-1.6-1.5-1.92-2.5-.31-1-.34-2.07-.15-3.09.38-2.52 2.67-4.16 5.18-3.85.71.08 1.39.22 2.04.45.4-.66.51-1.45.27-2.18-.45-1.28-1.97-1.89-3.2-1.67-.9.15-1.69.72-2.08 1.54-.24.5-.31 1.06-.25 1.6v-4.3c.79-.07 1.59-.06 2.38-.05z"/></svg>
+          </a>
+          <a class="social" href="https://www.youtube.com/@TitanGlobalWheel" target="_blank" rel="noopener" aria-label="Titan Global Wheel on YouTube">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+        <div class="foot-legal">
+          <span class="legal-item">Company Reg No. 2010/014325/07</span>
+          <span class="legal-item">VAT No. 4690261328</span>
+        </div>
+      </div>
+      <div class="foot-bot">
+        <div class="foot-bot-left">
+          <span>© 2026 Titan Global Wheel. ISO-certified manufacturer.</span>
+          <span>Goodyear &amp; Tyron partner · Sub-Saharan Africa</span>
+          <a href="Privacy-Policy.html">Privacy Policy</a>
+          <a href="Cookies-Policy.html">Cookies Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    /* Footer chrome (mirrors the site footer) */
+    footer.site { background:#070a0c; color:#97a4b1; padding:64px 0 30px; border-top:1px solid #27313b; }
+    .foot-grid { display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:36px; }
+    .foot-brand .brand.foot-logo { display:inline-flex; align-items:center; max-width:100%; margin-bottom:16px; padding:10px 14px; background:#fff; border-radius:12px; }
+    .foot-brand .brand.foot-logo .logo-h { display:block; width:auto; max-width:100%; height:34px; max-height:44px; object-fit:contain; }
+    .foot-brand p { max-width:38ch; font-size:14.5px; }
+    .foot-col h4 { margin:0 0 16px; color:#fff; font-size:14px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+    .foot-col a { display:block; padding:6px 0; color:#97a4b1; font-size:14.5px; transition:color .15s; }
+    .foot-col a:hover { color:#fff; }
+    .foot-social { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:24px; margin-top:36px; padding-top:28px; border-top:1px solid #27313b; }
+    .socials { display:flex; flex-wrap:wrap; gap:12px; }
+    .social { display:grid; width:42px; height:42px; place-items:center; border:1px solid rgba(255,255,255,.12); border-radius:50%; background:rgba(255,255,255,.06); color:#c7d1da; transition:transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease; }
+    .social svg { display:block; width:18px; height:18px; fill:currentColor; }
+    .social:hover { transform:translateY(-3px); border-color:#114172; background:#114172; color:#fff; }
+    .foot-legal { display:flex; flex-direction:column; align-items:flex-start; gap:6px; color:#97a4b1; font-size:13px; }
+    .foot-bot { display:flex; flex-wrap:wrap; justify-content:space-between; gap:14px; margin-top:48px; padding-top:24px; border-top:1px solid #27313b; font-size:13px; }
+    .foot-bot-left { display:flex; flex-wrap:wrap; gap:6px 18px; }
+    @media (max-width: 980px) { .foot-grid { grid-template-columns:1fr 1fr; } }
+    @media (max-width: 620px) { .foot-grid { grid-template-columns:1fr; } }
+  </style>
+
+  <script src="js/mobile-nav.js" defer></script>
+
+  <script>
+    /* =========================================================================
+       Customer feedback form — EmailJS submission, same service and template as
+       the contact page, with the same input sanitization & validation.
+       The subject is fixed to "Customer Feedback" and is not user-editable.
+       ========================================================================= */
+    (function () {
+      var form = document.getElementById('feedback-form');
+      if (!form) return;
+
+      var SUBJECT = 'Customer Feedback';
+      var status = document.getElementById('form-status');
+      var submitBtn = document.getElementById('submit-btn');
+      var btnText = document.getElementById('btn-text');
+      var defaultBtnHTML = btnText ? btnText.innerHTML : null;
+
+      var FIELDS = ['name', 'email', 'company', 'phone', 'role', 'comment'];
+      var REQUIRED = ['name', 'email', 'company', 'comment'];
+
+      // Strip HTML tags, neutralise EmailJS/Mustache syntax, drop control
+      // characters & zero-width Unicode (header-injection / invisible-char
+      // defence). Everything user-typed is treated as untrusted plain text.
+      function clean(s) {
+        if (s == null) return '';
+        var out = String(s);
+        out = out.replace(/<[^>]*>/g, '');
+        out = out
+          .replace(/&lt;/gi, '<').replace(/&gt;/gi, '>')
+          .replace(/&quot;/gi, '"').replace(/&#39;/gi, "'")
+          .replace(/&amp;/gi, '&');
+        out = out.replace(/<[^>]*>/g, '');
+        out = out.replace(/\{\{/g, '{ {').replace(/\}\}/g, '} }');
+        out = out.replace(/[\u0000-\u001F\u007F\u200B-\u200F\u2028\u2029\uFEFF]+/g, ' ');
+        out = out.replace(/\s{2,}/g, ' ').trim();
+        return out;
+      }
+      function cap(s, n) { s = String(s == null ? '' : s); return s.length > n ? s.slice(0, n) : s; }
+
+      var EMAIL_RE = /^[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,24}$/;
+
+      function showFieldError(name, message) {
+        var field = form.querySelector('[name="' + name + '"]');
+        if (!field) return;
+        var wrap = field.closest('.field');
+        if (wrap) wrap.classList.add('has-error');
+        var err = document.getElementById('ff-' + name + '-err');
+        if (err) { err.textContent = message; err.hidden = false; }
+      }
+      function clearFieldError(name) {
+        var field = form.querySelector('[name="' + name + '"]');
+        if (!field) return;
+        var wrap = field.closest('.field');
+        if (wrap) wrap.classList.remove('has-error');
+        var err = document.getElementById('ff-' + name + '-err');
+        if (err) { err.textContent = ''; err.hidden = true; }
+      }
+      function clearAllErrors() { FIELDS.forEach(clearFieldError); }
+
+      FIELDS.forEach(function (n) {
+        var el = form.querySelector('[name="' + n + '"]');
+        if (!el) return;
+        el.addEventListener('input', function () { clearFieldError(n); });
+      });
+
+      function setStatus(message, kind) {
+        if (!status) return;
+        status.textContent = message;
+        status.className = 'form-status' + (kind ? ' form-status--' + kind : '');
+      }
+      function setLoading(loading) {
+        if (!submitBtn) return;
+        submitBtn.disabled = !!loading;
+        submitBtn.classList.toggle('is-loading', !!loading);
+        if (btnText) {
+          btnText.innerHTML = loading
+            ? '<span class="spinner" aria-hidden="true"></span> Sending\u2026'
+            : (defaultBtnHTML || btnText.innerHTML);
+        }
+      }
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        clearAllErrors();
+
+        // ---- 1) Pull & sanitise every value ----
+        var name    = cap(clean(form.name.value), 80);
+        var email   = cap(clean(form.email.value), 120);
+        var company = cap(clean(form.company.value), 120);
+        var phone   = cap(clean(form.phone.value), 20);
+        var role    = cap(clean(form.role.value), 80);
+        var comment = cap(clean(form.comment.value), 2000);
+
+        // ---- 2) Per-field validation ----
+        var firstInvalid = null;
+        function fail(name_, msg) {
+          showFieldError(name_, msg);
+          if (!firstInvalid) firstInvalid = name_;
+        }
+
+        if (!name) fail('name', 'Please enter your name.');
+        else if (name.length < 2) fail('name', 'Name is too short.');
+        else if (!/^[A-Za-z\u00C0-\u017F .'\-]+$/.test(name))
+          fail('name', 'Name may only contain letters, spaces, hyphens, apostrophes and dots.');
+
+        if (!email) fail('email', 'Please enter your email address.');
+        else if (!EMAIL_RE.test(email)) fail('email', 'That email address doesn\u2019t look right.');
+
+        if (!company) fail('company', 'Please enter your company name.');
+        else if (company.length < 2) fail('company', 'Company name is too short.');
+
+        if (phone && !/^[0-9 +()\-]+$/.test(phone))
+          fail('phone', 'Phone may only contain digits, spaces and + - ( ).');
+        if (phone && phone.replace(/\D/g, '').length < 6)
+          fail('phone', 'Phone number is too short.');
+
+        if (!comment) fail('comment', 'Please tell us about your experience.');
+        else if (comment.length < 10) fail('comment', 'Please add a little more detail (at least 10 characters).');
+
+        if (firstInvalid) {
+          setStatus('Please fix the highlighted field' + (firstInvalid ? 's' : '') + ' and try again.', 'error');
+          var f = form.querySelector('[name="' + firstInvalid + '"]');
+          if (f && f.focus) f.focus();
+          return;
+        }
+
+        if (typeof emailjs === 'undefined' || typeof emailjs.send !== 'function') {
+          setStatus('Email service is not available right now. Please call +27 (0)16 341 9800.', 'error');
+          return;
+        }
+
+        // ---- 3) Submit (subject is always "Customer Feedback") ----
+        setStatus('Sending your feedback\u2026', 'pending');
+        setLoading(true);
+
+        var params = {
+          from_name: name,
+          reply_to:  email,
+          company:   company,
+          phone:     phone || 'Not provided',
+          role:      role || 'Not provided',
+          subject:   SUBJECT,
+          message:   comment,
+          to_name:   'Titan Global Wheel'
+        };
+
+        emailjs
+          .send('service_contacttitan', 'template_ity769j', params, {
+            publicKey: 'HbawkQbDCSfUZdOkU'
+          })
+          .then(function () {
+            setStatus('Thank you! Your feedback has been sent \u2014 we\u2019ll be in touch within one business day.', 'success');
+            form.reset();
+          })
+          .catch(function (error) {
+            console.error('EmailJS Error:', error);
+            setStatus('Sorry, we couldn\u2019t send your feedback right now. Please email info@titangw.co.za or call +27 (0)16 341 9800.', 'error');
+          })
+          .finally(function () {
+            setLoading(false);
+          });
+      });
+    })();
+  </script>
+
+  <!-- Scroll reveal -->
+  <script>
+    (function () {
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('in'); });
+        return;
+      }
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+      els.forEach(function (el) { obs.observe(el); });
+    })();
+  </script>
+</body>
+</html>

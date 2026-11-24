@@ -1,0 +1,56 @@
+/* Shared navigation and footer chrome for standalone Titan pages. */
+.site-top { position:sticky; top:0; z-index:50; background:#fff; }
+header.site { position:relative; z-index:2; background:rgba(255,255,255,.92); backdrop-filter:blur(12px); border-bottom:1px solid #e7eaee; color:#0a0d10; }
+header.site .wrap, footer.site .wrap { width:min(100% - 44px, 1200px); margin-inline:auto; }
+header.site .nav { display:flex; align-items:center; justify-content:space-between; height:72px; }
+header.site .brand { display:flex; align-items:center; gap:12px; }
+header.site .brand .logo-h { display:block; width:auto; height:clamp(26px, 3.4vw, 34px); }
+header.site .nav-links { display:flex; align-items:center; gap:28px; margin-left:auto; }
+header.site .nav-links a { color:#114172; font-size:15px; font-weight:500; transition:color .15s; }
+header.site .nav-links a:hover, header.site .nav-links a:focus-visible, header.site .nav-links a.active { color:#e01030; }
+header.site .nav-cta { display:flex; align-items:center; gap:14px; }
+header.site .nav-toggle { display:none; border:0; background:none; color:#0a0d10; font-size:26px; cursor:pointer; }
+header.site .nav-item { position:relative; }
+header.site .nav-links .caret { display:inline-block; width:7px; height:7px; margin-left:8px; border-right:2px solid currentColor; border-bottom:2px solid currentColor; transform:rotate(45deg) translateY(-2px); opacity:.75; transition:transform .2s ease, opacity .2s ease; }
+header.site .has-dropdown.open .caret { transform:rotate(225deg) translateY(-2px); opacity:1; }
+header.site .dropdown { position:absolute; top:100%; left:0; min-width:232px; margin-top:14px; padding:8px; list-style:none; background:#fff; border:1px solid #e7eaee; border-radius:16px; box-shadow:0 22px 50px -20px rgba(10,13,16,.30); opacity:0; visibility:hidden; pointer-events:none; transform:translateY(-8px); transition:opacity .18s ease, transform .18s ease, visibility 0s; }
+header.site .dropdown::before { content:""; position:absolute; inset:-14px 0 auto; height:14px; }
+header.site .dropdown li { margin:0; }
+header.site .dropdown a { display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:10px; color:#0a0d10; font-size:15px; font-weight:500; transition:background .15s ease, color .15s ease, padding-left .15s ease; }
+header.site .dropdown a::before { content:""; width:6px; height:6px; border-radius:50%; flex:0 0 auto; background:#114172; opacity:.35; transition:opacity .15s ease, transform .15s ease; }
+header.site .dropdown a:hover, header.site .dropdown a:focus-visible { background:rgba(17,65,114,.08); color:#114172; padding-left:18px; }
+header.site .dropdown a:hover::before, header.site .dropdown a:focus-visible::before { opacity:1; transform:scale(1.35); }
+header.site .has-dropdown:hover .dropdown, header.site .has-dropdown:focus-within .dropdown, header.site .has-dropdown.open .dropdown { opacity:1; visibility:visible; pointer-events:auto; transform:translateY(0); }
+
+footer.site { background:#070a0c; color:#97a4b1; padding:64px 0 30px; border-top:1px solid #27313b; }
+footer.site .foot-grid { display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:36px; }
+footer.site .foot-brand .brand { color:#fff; margin-bottom:14px; }
+footer.site .foot-brand .brand.foot-logo { display:inline-flex; align-items:center; max-width:100%; margin-bottom:16px; padding:10px 14px; background:#fff; border-radius:12px; }
+footer.site .foot-brand .brand.foot-logo .logo-h { display:block; width:auto; max-width:100%; height:34px; max-height:44px; object-fit:contain; }
+footer.site .foot-brand p { max-width:38ch; font-size:14.5px; }
+footer.site .foot-col h4 { margin:0 0 16px; color:#fff; font-size:14px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+footer.site .foot-col a { display:block; padding:6px 0; color:#97a4b1; font-size:14.5px; transition:color .15s; }
+footer.site .foot-col a:hover { color:#fff; }
+footer.site .foot-social { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:24px; margin-top:36px; padding-top:28px; border-top:1px solid #27313b; }
+footer.site .socials { display:flex; flex-wrap:wrap; gap:12px; }
+footer.site .social { display:grid; width:42px; height:42px; place-items:center; border:1px solid rgba(255,255,255,.12); border-radius:50%; background:rgba(255,255,255,.06); color:#c7d1da; transition:transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease; }
+footer.site .social svg { display:block; width:18px; height:18px; fill:currentColor; }
+footer.site .social:hover { transform:translateY(-3px); border-color:#114172; background:#114172; color:#fff; }
+footer.site .foot-partners { display:flex; flex-wrap:wrap; align-items:center; gap:16px; }
+footer.site .foot-partner { display:inline-flex; align-items:center; }
+footer.site .foot-partner img { width:auto; height:105px; }
+footer.site .foot-legal { display:flex; flex-direction:column; align-items:flex-start; gap:6px; color:#97a4b1; font-size:13px; }
+footer.site .foot-legal a { color:#c7d1da; }
+footer.site .foot-bot { display:flex; flex-wrap:wrap; justify-content:space-between; gap:14px; margin-top:48px; padding-top:24px; border-top:1px solid #27313b; font-size:13px; }
+footer.site .foot-bot-left { display:flex; flex-wrap:wrap; gap:6px 18px; }
+
+@media (max-width:980px) {
+  header.site .nav-links { position:absolute; top:72px; right:0; left:0; display:none; flex-direction:column; align-items:stretch; gap:0; padding:6px 0; border-bottom:1px solid #e7eaee; background:#fff; box-shadow:0 10px 22px rgba(10,13,16,.10); }
+  header.site .nav-links.open { display:flex; }
+  header.site .nav-links > a, header.site .nav-links > .nav-item > a { display:block; padding:15px 22px; border-bottom:1px solid #f0f2f5; font-size:16px; }
+  header.site .nav-toggle { display:block; }
+  header.site .has-dropdown.open .dropdown, header.site .has-dropdown:hover .dropdown, header.site .has-dropdown:focus-within .dropdown { position:static; display:block; margin:0; padding:0 0 4px; border:0; border-radius:0; background:transparent; box-shadow:none; transform:none; }
+  header.site .dropdown a { padding:11px 22px 11px 40px; border-bottom:1px solid #f0f2f5; color:#114172; font-size:15px; }
+  footer.site .foot-grid { grid-template-columns:1fr 1fr; }
+}
+@media (max-width:620px) { footer.site .foot-grid { grid-template-columns:1fr; } }

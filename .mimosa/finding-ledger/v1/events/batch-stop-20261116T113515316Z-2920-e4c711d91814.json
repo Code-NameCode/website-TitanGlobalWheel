@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "mimosa-finding-ledger-batch/v1",
+  "batchId": "stop-20261116T113515316Z-2920-e4c711d91814",
+  "runId": "20261116T113515316Z-2920-e4c711d91814",
+  "runStatus": "completed",
+  "coverage": {
+    "status": "complete",
+    "reasons": []
+  },
+  "source": {
+    "component": "zcode-hook",
+    "operationId": "Stop"
+  },
+  "revision": null,
+  "diffHash": "56690182303d303f6c7e2f872bdf5bac1d40e2750753484278b676b82e9d6f35",
+  "rulesVersion": "unavailable",
+  "sessionHash": "1e5f2641a8469b14efacc6b92ca592f00deca4d67003aed5dcb987d74f7850c4",
+  "reportRef": ".mimosa/reports/task-review-sess_071b5821-d26d-4f66-ba8d-48c6df8e1db5-20261116T113515316Z-2920-e4c711d91814.json",
+  "events": [],
+  "observedFindingIds": [],
+  "verifiedFiles": [
+    {
+      "file": "loto-tags/build/build_loto_pdfs.py",
+      "direct": "complete",
+      "projectContext": "partial"
+    }
+  ],
+  "recordedAt": "2026-11-16T11:35:15.763Z"
+}
